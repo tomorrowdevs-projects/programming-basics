@@ -3,9 +3,7 @@
 Positions on a chess board are identified by a letter and a number. 
 The letter identifies the column, while the number identifies the row, as shown below:
 
-<img src="https://www.iconspng.com/images/2d-chess-set-chessboard-3/2d-chess-set-chessboard-3.jpg" />
-
-![Tux, the Linux mascot](https://www.iconspng.com/images/2d-chess-set-chessboard-3/2d-chess-set-chessboard-3.jpg)
+<img src="https://upload.wikimedia.org/wikipedia/commons/5/5b/Chess-board-with-letters_nevit_111.svg" />
 
 Write a program that reads a position from the user. 
 Use an if statement to determine if the column begins with a black square or a white square. 
