@@ -13,6 +13,6 @@ For this project solution you may use:
 - Iteration
 - Strings
 
-# Estimate
+# Deadline
 
 This project requires to be completed in a maximum of **2 hours**
