@@ -10,9 +10,6 @@ Your program should continue by computing and displaying the refund that will be
 For this project solution you may use:
 
 - Variables, expressions, statements
-- Functions
-- Conditionals and recursion
-- Iteration
 - Strings
 
 # Deadline

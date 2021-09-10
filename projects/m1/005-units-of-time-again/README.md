@@ -11,9 +11,6 @@ Use your research skills determine what additional character needs to be include
 For this project solution you may use:
 
 - Variables, expressions, statements
-- Functions
-- Conditionals and recursion
-- Iteration
 - Strings
 
 # Deadline

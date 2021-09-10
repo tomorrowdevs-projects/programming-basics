@@ -11,7 +11,6 @@ Ensure that the discount amounts and the new prices are rounded to 2 decimal pla
 For this project solution you may use:
 
 - Variables, expressions, statements
-- Functions
 - Conditionals and recursion
 - Iteration
 - Strings

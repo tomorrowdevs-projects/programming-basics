@@ -9,7 +9,6 @@ Then your program should display the number of days in that month. Display “28
 For this project solution you may use:
 
 - Variables, expressions, statements
-- Functions
 - Conditionals and recursion
 - Iteration
 - Strings

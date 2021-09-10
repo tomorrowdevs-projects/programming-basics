@@ -15,7 +15,6 @@ Write a program that reads a year from the user and displays a message indicatin
 For this project solution you may use:
 
 - Variables, expressions, statements
-- Functions
 - Conditionals and recursion
 - Iteration
 - Strings

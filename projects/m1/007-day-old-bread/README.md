@@ -12,9 +12,6 @@ All of the values should be displayed using two decimal places, and the decimal 
 For this project solution you may use:
 
 - Variables, expressions, statements
-- Functions
-- Conditionals and recursion
-- Iteration
 - Strings
 
 # Deadline

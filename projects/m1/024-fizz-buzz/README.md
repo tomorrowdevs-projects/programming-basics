@@ -21,7 +21,6 @@ Write a program that displays the answers for the first 100 numbers in the Fizz-
 For this project solution you may use:
 
 - Variables, expressions, statements
-- Functions
 - Conditionals and recursion
 - Iteration
 - Strings

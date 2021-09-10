@@ -14,7 +14,6 @@ Ailihphilia is the fondness for or love of palindromes. It was constructed in th
 For this project solution you may use:
 
 - Variables, expressions, statements
-- Functions
 - Conditionals and recursion
 - Iteration
 - Strings

@@ -12,7 +12,6 @@ Hint: Because the 0 marks the end of the input it should not be included in the 
 For this project solution you may use:
 
 - Variables, expressions, statements
-- Functions
 - Conditionals and recursion
 - Iteration
 - Strings

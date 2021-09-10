@@ -8,9 +8,6 @@ unit you are more comfortable working with.
 For this project solution you may use:
 
 - Variables, expressions, statements
-- Functions
-- Conditionals and recursion
-- Iteration
 - Strings
 
 # Deadline

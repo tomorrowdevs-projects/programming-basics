@@ -13,7 +13,6 @@ Ensure that all of the charges are displayed using 2 decimal places.
 For this project solution you may use:
 
 - Variables, expressions, statements
-- Functions
 - Conditionals and recursion
 - Iteration
 - Strings

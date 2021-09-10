@@ -8,9 +8,6 @@ For example, if the user enters 3141 then your program should display 3+1+4+1=9.
 For this project solution you may use:
 
 - Variables, expressions, statements
-- Functions
-- Conditionals and recursion
-- Iteration
 - Strings
 
 # Deadline

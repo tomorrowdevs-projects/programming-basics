@@ -18,7 +18,6 @@ It does not need to perform any error checking.
 For this project solution you may use:
 
 - Variables, expressions, statements
-- Functions
 - Conditionals and recursion
 - Iteration
 - Strings

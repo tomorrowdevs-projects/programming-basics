@@ -32,7 +32,6 @@ If the simulation results in 0 or 00 then your program should display `Pay 0` or
 For this project solution you may use:
 
 - Variables, expressions, statements
-- Functions
 - Conditionals and recursion
 - Iteration
 - Strings

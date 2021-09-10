@@ -50,7 +50,6 @@ The maximum value was updated 5 times
 For this project solution you may use:
 
 - Variables, expressions, statements
-- Functions
 - Conditionals and recursion
 - Iteration
 - Strings

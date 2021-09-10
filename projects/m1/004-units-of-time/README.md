@@ -8,9 +8,6 @@ Compute and display the total number of seconds represented by this duration.
 For this project solution you may use:
 
 - Variables, expressions, statements
-- Functions
-- Conditionals and recursion
-- Iteration
 - Strings
 
 # Deadline

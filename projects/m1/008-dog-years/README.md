@@ -13,9 +13,6 @@ Your program should display an appropriate error message if the user enters a ne
 For this project solution you may use:
 
 - Variables, expressions, statements
-- Functions
-- Conditionals and recursion
-- Iteration
 - Strings
 
 # Deadline

@@ -26,7 +26,6 @@ Enter an integer (2 or greater): 72 The prime factors of 72 are:
 For this project solution you may use:
 
 - Variables, expressions, statements
-- Functions
 - Conditionals and recursion
 - Iteration
 - Strings

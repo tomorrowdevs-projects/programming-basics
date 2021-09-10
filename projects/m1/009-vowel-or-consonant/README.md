@@ -10,7 +10,6 @@ Otherwise your program should display a message indicating that the letter is a 
 For this project solution you may use:
 
 - Variables, expressions, statements
-- Functions
 - Conditionals and recursion
 - Iteration
 - Strings

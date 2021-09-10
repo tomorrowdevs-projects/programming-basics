@@ -27,7 +27,6 @@ Then your program should report the user’s zodiac sign as part of an appropria
 For this project solution you may use:
 
 - Variables, expressions, statements
-- Functions
 - Conditionals and recursion
 - Iteration
 - Strings

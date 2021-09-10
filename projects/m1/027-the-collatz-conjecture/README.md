@@ -22,7 +22,6 @@ Your program should allow the user to continue entering new n values (and your p
 For this project solution you may use:
 
 - Variables, expressions, statements
-- Functions
 - Conditionals and recursion
 - Iteration
 - Strings

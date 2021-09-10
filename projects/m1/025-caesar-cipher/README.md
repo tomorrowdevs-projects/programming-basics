@@ -17,7 +17,6 @@ Ensure that your program encodes both uppercase and lowercase letters. Your prog
 For this project solution you may use:
 
 - Variables, expressions, statements
-- Functions
 - Conditionals and recursion
 - Iteration
 - Strings

@@ -11,9 +11,6 @@ The change should be given using as few coins as possible. Assume that the machi
 For this project solution you may use:
 
 - Variables, expressions, statements
-- Functions
-- Conditionals and recursion
-- Iteration
 - Strings
 
 # Deadline

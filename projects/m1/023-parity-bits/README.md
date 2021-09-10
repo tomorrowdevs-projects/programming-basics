@@ -18,7 +18,6 @@ Information about the count method is available online.
 For this project solution you may use:
 
 - Variables, expressions, statements
-- Functions
 - Conditionals and recursion
 - Iteration
 - Strings

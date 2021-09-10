@@ -34,7 +34,6 @@ where x is the octave number entered by the user. This will halve or double the 
 For this project solution you may use:
 
 - Variables, expressions, statements
-- Functions
 - Conditionals and recursion
 - Iteration
 - Strings
