@@ -10,8 +10,6 @@ Some challenge instructions.
 
 Some useful challenge links.
 
-# Acceptance criteria
+# Deadline
 
-- [ ] Criteria 1
-- [ ] Criteria 2
-- [ ] Criteria 3
+An estimate of the time required to implement the solution
