@@ -15,4 +15,4 @@ For this project solution you may use:
 
 # Estimate
 
-This project requires to be completed in a maximum of 2 hours
+This project requires to be completed in a maximum of **2 hours**
