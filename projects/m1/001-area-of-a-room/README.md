@@ -12,3 +12,7 @@ For this project solution you may use:
 - Conditionals and recursion
 - Iteration
 - Strings
+
+# Estimate
+
+This project requires to be completed in a maximum of 2 hours
