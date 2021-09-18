@@ -12,7 +12,7 @@ We will only consider the following subset of them in this exercise:
 - Odd versus Even (Note that 0 and 00 do not pay out for even) 
 - 1 to 18 versus 19 to 36
 
-Write a program that simulates a spin of a roulette wheel by using Python’s random number generator. Display the number that was selected and all of the bets that must be payed. 
+Write a program that simulates a spin of a roulette wheel by using a random number generator. Display the number that was selected and all of the bets that must be payed. 
 
 For example, if 13 is selected then your program should display:
 
