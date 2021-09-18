@@ -1,11 +1,9 @@
-# Reduce Measures
+# Magic Dates
 
-Many recipe books still use cups, tablespoons and teaspoons to describe the volumes of ingredients used when cooking or baking. While such recipes are easy enough to follow if you have the appropriate measuring cups and spoons, they can be difficult to double, triple or quadruple when cooking Christmas dinner for the entire extended family. For example, a recipe that calls for 4 tablespoons of an ingredient requires 16 tablespoons when quadrupled. However, 16 tablespoons would be better expressed (and easier to measure) as 1 cup.
-Write a function that expresses an imperial volume using the largest units possible. 
-The function will take the number of units as its first parameter, and the unit of measure (cup, tablespoon or teaspoon) as its second parameter. 
-It will return a string representing the measure using the largest possible units as its only result. 
-For example, if the function is provided with parameters representing 59 teaspoons then it should return the string “1 cup, 3 tablespoons, 2 teaspoons”.
-
+A magic date is a date where the day multiplied by the month is equal to the two digit year. 
+For example, June 10, 1960 is a magic date because June is the sixth month, and 6 times 10 is 60, which is equal to the two digit year. 
+Write a function that determines whether or not a date is a magic date. 
+Use your function to create a main program that finds and displays all of the magic dates in the 20th century.
 
 # Documentation
 
