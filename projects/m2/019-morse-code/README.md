@@ -1,6 +1,6 @@
 # Morse Code
 
-(15 Lines) Morse code is an encoding scheme that uses dashes and dots to represent digits and letters. 
+Morse code is an encoding scheme that uses dashes and dots to represent digits and letters. 
 In this exercise, you will write a program that uses a dictionary to store the mapping from these symbols to Morse code. 
 
 Use a period to represent a dot, and a hyphen to represent a dash. The mapping from characters to dashes and dots is shown in Table 6.1.
