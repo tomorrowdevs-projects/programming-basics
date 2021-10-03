@@ -24,8 +24,10 @@ Before committing anything to that repo, please read the contribution guide at [
 
 
 ## 🤝 Consulting / Mentorship / Coaching
-Stuck with some problem? Need help in solution development, guidance, training or capacity building? 
-We are a community of Software Engineers turned Project Manager with years of technical and leadership experience in a diverse range of technologies and domains. 
+Stuck with some problem? 
+Need help in solution development, guidance, training or capacity building, career coaching or preparing for technical interviews?
+
+We are a community of Software Engineers with years of technical and leadership experience in a diverse range of technologies and domains. 
 
 Let us know what problem you are facing at <b>http://www.tomorrowdevs.com</b> and we can schedule a consultation meeting to help you get through it.
 
