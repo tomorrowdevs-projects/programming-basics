@@ -1,4 +1,5 @@
-n = input()
+n = input("Type a four-digit number:\n")
+
 import re
 if not re.match("^[0-9]+$", n):
     print("This is not allowed!")
@@ -13,4 +14,4 @@ elif len(n) < 4:
 num = [int(d) for d in n]
 number = sum(num)
             
-print(number)
+print('The sum of its own digits is:\n' + str(number))
