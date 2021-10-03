@@ -10,10 +10,10 @@ There are treasure-items scattered throughout the castle for the financially inc
 
 Once an item is picked, you can drop it in any room if you want. If a monster is attacked without the weapon that he can be killed with in your bag, you’ll die. If you get out of the castle without freeing the princess, you’ll lose the game.
 
-![](../master/images/i.png)
+![](./i.png)
 
 ## Interface
-![interface](../master/images/interface.png)
+![interface](./interface.png)
 
 ## Project Requirements
 Your project is to implement this game. Here are a few requirements that need to be implemented. 
