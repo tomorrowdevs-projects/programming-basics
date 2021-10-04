@@ -15,3 +15,4 @@ num = [int(d) for d in n]
 number = sum(num)
             
 print('The sum of its own digits is:\n' + str(number))
+
