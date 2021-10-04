@@ -28,4 +28,4 @@ elif room_shape.lower() == "tesseract":
     print("C'mon you are not in a black hole!")
 
 else:
-    print("Wrong value")
+    print("Wrong value, try again")
