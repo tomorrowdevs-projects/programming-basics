@@ -9,5 +9,5 @@ dime = (cents_number % 25) // 10
 nickel = (cents_number % 10) // 5
 penny = (cents_number % 5) // 1 
 
-print(f"You're change is : {toonie} toonies, {loonie} loonies, "
+print(f"You're change is : {toonie} toonies, {loonie} loonies,"
     f"{quarter} quarters, {dime} dimes, {nickel} nickels, {penny} pennies")
