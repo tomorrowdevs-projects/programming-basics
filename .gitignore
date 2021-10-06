@@ -360,3 +360,5 @@ Cargo.lock
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/node,go,java,intellij,visualstudiocode,haskell,erlang,elixir,rust
+/.vs/ProjectSettings.json
+/.vs/slnx.sqlite
