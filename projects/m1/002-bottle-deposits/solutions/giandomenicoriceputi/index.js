@@ -4,23 +4,18 @@ const moreThanOneLiterBottlePrice = 0.25;
 
 const firstQuestion = prompt("Is your bottles one liter or less answer just with 'true' or 'false' ?")
 
-if(firstQuestion === "true") {
+calculateTotal(firstQuestion)
 
-  let numberOfBottles = parseInt(prompt("how many bottles do you have ?"), 10);
-  calculateTotal(numberOfBottles, oneLiterBottlePrice)
-
-} else if(firstQuestion === "false") {
-
-  let numberOfBottles = parseInt(prompt("how many bottles do you have ?"), 10)
-
-  calculateTotal(numberOfBottles, moreThanOneLiterBottlePrice)
-}
-
-function calculateTotal (value, price) {
+function calculateTotal ( firstQuestion) {
   let temp;
-  value = parseInt(prompt("how many bottles do you have ?"), 10)
+ let value = parseInt(prompt("how many bottles do you have ?"), 10)
+  isNaN(value) ? alert("no baby no way !") : temp = value
 
-  typeof(value) !== "number" || value === Number.isNaN ? alert("Very bad Baby") : temp = value
+  console.log(temp)
 
- return alert(`This is your guaranteed cash back baby $${(temp * price).toFixed(2)}`)
+firstQuestion === "true" ?
+   alert(`This is your guaranteed cash back baby $${(temp * oneLiterBottlePrice).toFixed(2)}`)
+  :
+   alert(`This is your guaranteed cash back baby $${(temp * moreThanOneLiterBottlePrice).toFixed(2)}`)
+
 }
