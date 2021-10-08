@@ -8,14 +8,7 @@ calculateTotal(firstQuestion)
 
 function calculateTotal ( firstQuestion) {
   let temp;
- let value = parseInt(prompt("how many bottles do you have ?"), 10)
-  isNaN(value) ? alert("no baby no way !") : temp = value
-
-  console.log(temp)
-
-firstQuestion === "true" ?
-   alert(`This is your guaranteed cash back baby $${(temp * oneLiterBottlePrice).toFixed(2)}`)
-  :
-   alert(`This is your guaranteed cash back baby $${(temp * moreThanOneLiterBottlePrice).toFixed(2)}`)
-
+    let value = parseInt(prompt("how many bottles do you have ?"), 10)
+    isNaN(value) ? alert("no baby no way !") : temp = value
+    alert(`This is your guaranteed cash back baby $${(temp * (firstQuestion === "true" ? oneLiterBottlePrice : moreThanOneLiterBottlePrice)).toFixed(2)}`)
 }
