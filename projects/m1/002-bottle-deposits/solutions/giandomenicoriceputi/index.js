@@ -1,22 +1,19 @@
-const price1 = 0.10;
-const price2 = 0.25;
-let temp1;
-let temp2;
+const oneLiterBottlePrice = 0.10;
+const moreThanOneLiterBottlePrice = 0.25;
 
 
 const firstQuestion = prompt("Is your bottles one liter or less answer just with 'true' or 'false' ?")
 
 if(firstQuestion === "true") {
 
-  temp1 = parseInt(prompt("how many bottles do you have ?"), 10)
-
-  calculateTotal(temp1, price1)
+  let numberOfBottles = parseInt(prompt("how many bottles do you have ?"), 10);
+  calculateTotal(numberOfBottles, oneLiterBottlePrice)
 
 } else if(firstQuestion === "false") {
 
-  temp2 = parseInt(prompt("how many bottles do you have ?"), 10)
+  let numberOfBottles = parseInt(prompt("how many bottles do you have ?"), 10)
 
-  calculateTotal(temp2, price2)
+  calculateTotal(numberOfBottles, moreThanOneLiterBottlePrice)
 }
 
 function calculateTotal (value, price) {
