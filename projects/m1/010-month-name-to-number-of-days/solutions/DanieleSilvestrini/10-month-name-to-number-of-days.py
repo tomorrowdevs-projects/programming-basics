@@ -1,5 +1,5 @@
 month_30 = ['april', 'june', 'september', 'november']
-month_31 = ['january', 'march', 'may', 'july', 'august', 'october', 'dicember']
+month_31 = ['january', 'march', 'may', 'july', 'august', 'october', 'december']
 
 
 def check_month():
