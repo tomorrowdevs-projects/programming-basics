@@ -15,16 +15,17 @@ def edit_distance(first_str, second_str):
         return len(second_str)
     if len(second_str) == 0:
         return len(first_str)
-    cost = 0
+ 
     
     # Recursive Case
-    if first_str[-1] != second_str[-1]:
-        cost = 1
-    d1 = edit_distance(first_str[:-1], second_str) + 1
-    d2 = edit_distance(first_str, second_str[:-1]) + 1
-    d3 = edit_distance(first_str[:-1], second_str[:-1]) + cost
+    if first_str[-1] == second_str[-1]:
+        return edit_distance(first_str[:-1], second_str[:-1])
+    else:
+        d1 = edit_distance(first_str[:-1], second_str) + 1
+        d2 = edit_distance(first_str, second_str[:-1]) + 1
+        d3 = edit_distance(first_str[:-1], second_str[:-1]) + 1
 
-    return min(d1, d2, d3)
+        return min(d1, d2, d3)
 
 
 def main():
