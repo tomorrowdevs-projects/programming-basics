@@ -11,30 +11,17 @@ print("\nEnter an integer between 1 and 12")
 integer = int(input())
 
 def ordinal(number):
+    number_conversion = ["one", "two", "three", "four", "fi", "six", "seven", "eight", "nine", "ten", "eleven", "twel"]
     if number == 1:
         ordinal_number = "first"
     elif number == 2:
         ordinal_number = "second"
     elif number == 3:
         ordinal_number = "third"
-    elif number == 4:
-        ordinal_number = "fourth"
-    elif number == 5:
-        ordinal_number = "fifth"
-    elif number == 6:
-        ordinal_number = "sixth"
-    elif number == 7:
-        ordinal_number = "seventh"
-    elif number == 8:
-        ordinal_number = "eighth"
-    elif number == 9:
-        ordinal_number = "ninth"
-    elif number == 10:
-        ordinal_number = "tenth"
-    elif number == 11:
-        ordinal_number = "eleventh"
-    elif number == 12:
-        ordinal_number = "twelfth"
+    elif number == 5 or number == 12:
+        ordinal_number = str(number_conversion[number - 1]) + "fth"
+    elif number == 4 or number > 5 and number < 12:
+        ordinal_number = str(number_conversion[number - 1]) + "th"
     else:
         ordinal_number = " "
     return print(ordinal_number)
