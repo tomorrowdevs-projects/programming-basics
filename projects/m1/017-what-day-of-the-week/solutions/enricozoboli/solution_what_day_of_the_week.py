@@ -1,6 +1,7 @@
 import math
 
-year = int(input("Insert year: "))
+user_year = int(input("Insert year: "))
+year = user_year
 
 day_of_the_week =(year + math.floor((year - 1) / 4) - math.floor((year - 1) / 100) + math.floor((year - 1) / 400)) % 7
 
