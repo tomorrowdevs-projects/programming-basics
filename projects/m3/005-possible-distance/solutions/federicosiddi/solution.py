@@ -1,7 +1,5 @@
 from functools import lru_cache
 
-from functools import lru_cache
-
 
 @lru_cache
 def possible_change(total, num_of_coins, results=[]):
