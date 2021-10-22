@@ -32,7 +32,7 @@ def psw_validation(p):
         else:
             testOther.append(n)
 
-    if len(testLower) >= 1 and len(testUpper) >= 1 and len(testDigits) >= 1:
+    if len(testLower) >= 1 and len(testUpper) >= 1 and len(testDigits) >= 1 and len(p) >= 8:
         print("\nGreat! Your password is safe.")
     else:
         print("\nError! Your password has to be at least 8 characters long and contains at least one uppercase letter, at least one lowercase letter, and at least one number.")
