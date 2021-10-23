@@ -10,11 +10,11 @@ while True:
         print("Bye!")
         break
     
-    if len(bit_string) <= 8 and bit_string != " " and bit_string.count("1") % 2 == 0:
+    if bit_string.count("1") % 2 == 0:
         print("Parity bit should be 0")   
         continue
     
-    if len(bit_string) <= 8 and bit_string != " " and bit_string.count("1") % 2 != 0:
+    if bit_string.count("1") % 2 != 0:
         print("Parity bit should be 1")   
         continue
     
