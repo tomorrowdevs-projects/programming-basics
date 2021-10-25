@@ -15,4 +15,4 @@ function responseInSecond() {
 
 responseInSecond()
 
-console.log(typeof(result), result )
+alert( result)
