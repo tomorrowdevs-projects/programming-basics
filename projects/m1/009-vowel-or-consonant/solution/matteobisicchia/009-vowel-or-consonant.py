@@ -1,15 +1,7 @@
 letter =input("inserisci una lettera : ")
-if (letter==("a")):
-	print("la lettera inserita è una vocale")
-elif (letter==("e")):
-	print("la lettera e una vocale ")
-elif (letter==("i")):
-	print("la lettera e una vocale ")
-elif (letter==("o")):
-	print("la lettera e una vocale ")
-elif (letter==("u")):
-	print("la lettera e una vocale ")
+if ((letter==("a"))or(letter==("e"))or (letter==("i"))or(letter==("o"))or(letter==("u"))):
+	print("la lettera inserita : una vocale")
 elif (letter==("y")):
-	print("la lettera e una vocale che una consonate")
+	print("la lettera inserita : una vocale che una consonate")
 else :
-	print("la lettera è una consonate")
+	print("la lettera : una consonate")
