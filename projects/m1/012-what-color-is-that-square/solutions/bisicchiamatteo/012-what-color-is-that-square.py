@@ -1,68 +1,17 @@
-A="10101010"        
-B="01010101"  
-C="10101010" 
-D="01010101" 
-E="10101010" 
-F="01010101" 
-G="10101010" 
-H="01010101" 
-coordinates =input("inserisci una nota della scacchiera : ")
-if (coordinates[0]==("A")):
-	position=int(coordinates[1])
-	color=A[position-1]
-	if (int(color)!=1):
-		print ("il colore della casella è bianco")
-	else :
-		print ("il colore della casella è nero")
-elif (coordinates[0]==("B")):
-	position=int(coordinates[1])
-	color=B[position-1]
-	if (int(color)!=1):
-		print ("il colore della casella è bianco")
-	else :
-		print ("il colore della casella è nero")
-elif (coordinates[0]==("C")):
-	position=int(coordinates[1])
-	color=C[position-1]
-	if (int(color)!=1):
-		print ("il colore della casella è bianco")
-	else :
-		print ("il colore della casella è nero")
-elif (coordinates[0]==("D")):
-	position=int(coordinates[1])
-	color=D[position-1]
-	if (int(color)!=1):
-		print ("il colore della casella è bianco")
-	else :
-		print ("il colore della casella è nero")
-elif (coordinates[0]==("E")):
-	position=int(coordinates[1])
-	color=E[position-1]
-	if (int(color)!=1):
-		print ("il colore della casella è bianco")
-	else :
-		print ("il colore della casella è nero")
-elif (coordinates[0]==("F")):
-	position=int(coordinates[1])
-	color=F[position-1]
-	if (int(color)!=1):
-		print ("il colore della casella è bianco")
-	else :
-		print ("il colore della casella è nero")
-elif (coordinates[0]==("G")):
-	position=int(coordinates[1])
-	color=G[position-1]
-	if (int(color)!=1):
-		print ("il colore della casella è bianco")
-	else :
-		print ("il colore della casella è nero")
-elif (coordinates[0]==("H")):
-	position=int(coordinates[1])
-	color=H[position-1]
-	if (int(color)!=1):
-		print ("il colore della casella è bianco")
-	else :
-		print ("il colore della casella è nero")
+PAIR="01010101"  
+ODD="10101010" 
+
+coordinates =input("inserisci una coordinata della scacchiera : ")
+if ((coordinates[0].upper()==("A")) or (coordinates[0].upper()==("C"))or (coordinates[0].upper()==("E"))or (coordinates[0].upper()==("G"))):
+	x=PAIR
+	
+elif ((coordinates[0].upper()==("B")) or (coordinates[0].upper()==("D"))or (coordinates[0].upper()==("F"))or (coordinates[0].upper()==("H"))):
+	x=ODD
 	
 else :
-	print("il valore inserito non è una nota")
+	print("il valore inserito non e una cordinata")
+y=int(coordinates[1])-1
+if (int (x[y])!=1):
+		print ("il colore della casella ï¿½ nero")
+else :
+		print ("il colore della casella ï¿½ bianco")
