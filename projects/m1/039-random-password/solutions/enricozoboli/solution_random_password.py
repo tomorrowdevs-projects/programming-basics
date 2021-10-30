@@ -6,6 +6,5 @@ def generate_password():
         password += chr(random.randint(33, 126))
     return password
     
-
 if __name__== "__main__":
     print(generate_password())
