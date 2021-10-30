@@ -8,15 +8,16 @@ def myfun():
     user_month = user_month.capitalize()
     if user_month not in months:
         print('ERROR! you should insert a month')
-        return
+        return 
 
     # Ask the user for an input and check if it' s correct
     user_day = int(input('Please insert your day of birth in number: '))
     if user_day < 1 or user_day > 31:
         print ('ERROR! you should insert a day')
+        return 
     elif user_month == 'February' and user_day > 29:
         print('ERROR! Maybe you are not born in February?')
-        return
+        return 
     
     # If statment to determine the Output
     if user_month == 'January' and user_day >= 20 or user_month == 'February' and user_day <= 18:
