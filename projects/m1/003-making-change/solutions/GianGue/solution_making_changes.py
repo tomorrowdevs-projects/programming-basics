@@ -27,6 +27,7 @@ nickel = rest // 5
 rest = rest - nickel*5
 pennie = rest 
 print('Total of toonie,', toonie, 'of loonie,', loonie, 'of quarter,', quarter, 'of dime,', dime, 'of nickel,', nickel, 'of penny,', pennie )
-#update
+#update #newupdate
+
 
 
