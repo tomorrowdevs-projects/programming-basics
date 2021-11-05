@@ -1,6 +1,6 @@
 def remove_punctuation(s):
     splitted_s = s.split(" ")
-    punctuation = [",", ".", "!", "?", ":", ";"]
+    punctuation = [",", ".", "!", "?", ":", ";", "-"]
     ticks = ["'", '"', "’", "’"]
     listed_words = []
     for w in range(0,len(splitted_s)):
