@@ -12,19 +12,36 @@ new_year = year
 new_month = month
 new_day = day
 
+def change_day(day):
+    new_day = day + 1
+    return new_day
+
+# Create a function to change month (and year in case of December)
+def change_month(month, year):
+    if month == 12:
+        new_day = 1
+        new_month = 1
+        new_year = year + 1
+
+    else:    
+        new_day = 1
+        new_month = month + 1
+        new_year = year
+    
+    return new_day, new_month, new_year
+    
+
 def my_fun(new_year, new_month, new_day):
     # Define the possibilties with February and leap years with appropriate
     # error message
     if month == february:
         if year % 400 == 0 or (year % 100 != 0 and year % 4 == 0):
             if day == 29:
-                new_day = 1
-                new_month = month + 1
+                new_day, new_month, new_year = change_month(month, year)
             elif day <= 28:
-                new_day = day + 1
+                new_day = change_day(day)
         elif day == 28:
-            new_day = 1
-            new_month = month + 1 
+            new_day, new_month, new_year = change_month(month, year)
         else:
             if day > 28:
                 print('ERROR! this is not a leap year')
@@ -35,32 +52,28 @@ def my_fun(new_year, new_month, new_day):
     # Define the possibilties with 30-day months with appropriate error message 
     elif month in month_30:
         if day == 30:
-            new_day = 1
-            new_month = month + 1
+            new_day, new_month, new_year = change_month(month, year)
         elif day <=0 or day > 30:
             print('ERROR! maybe this date does not exist')
             return
         else:
-            new_day = day + 1
+            new_day = change_day(day)
 
     # Define the possibilties with 31-day months with appropriate error message
     elif month in month_31:       
         if day == 31:
-            new_day = 1
-            new_month = month + 1
+            new_day, new_month, new_year = change_month(month, year)
         elif day <=0 or day > 31:
             print('ERROR! maybe this date does not exist')
             return
         else:
-            new_day = day + 1
+            new_day = change_day(day)
 
     # Define the possibilties with December and new year 
     # with appropriate error message
     elif month == december:
         if day == 31:
-            new_day = 1
-            new_month = 1
-            new_year = year + 1
+            new_day, new_month, new_year = change_month(month, year)            
             print('HAPPY NEW YEAR!!!')
         elif day <=0 or day > 31:
             print('ERROR! maybe this date does not exist') 
