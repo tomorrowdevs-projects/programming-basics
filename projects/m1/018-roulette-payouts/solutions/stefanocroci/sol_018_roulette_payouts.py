@@ -11,14 +11,10 @@ black = [2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35]
 # Print the various output
 if num == 37:
     print('The spin resulted in 00...')
-else:
-    print('The spin resulted in ' + str(num) + '...')
-
-# Pay number
-if num == 37:
     print('Pay 00')
 else:
-    print('Pay ' + str(num))
+    print('The spin resulted in ' + str(num) + '...')
+    print('Pay ' + str(num))  
 
 # Pay colour
 if num in red:
