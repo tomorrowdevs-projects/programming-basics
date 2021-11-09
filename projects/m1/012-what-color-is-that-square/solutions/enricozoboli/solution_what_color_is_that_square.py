@@ -14,6 +14,6 @@ else:
     if int(user_position[1]) % 2 == 0:
         square_color = "black"
     else:
-        square_square = "white"
+        square_color = "white"
 
 print(f"You're on a {square_color} square.")

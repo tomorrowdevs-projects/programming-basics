@@ -6,8 +6,7 @@ if human_years < 0:
 elif human_years == 0:
     print("Hey your dog hasn't been born yet!!")
 else: 
-    is_more_than_two = (human_years - 2) > 0
-    is_more_than_two = int(is_more_than_two) # 1 if > 2, 0 if <= 2
+    is_more_than_two = int(human_years - 2) > 0     # 1 if > 2, 0 if <= 2
     is_less_or_equal = not is_more_than_two  
     is_less_or_equal = int(is_less_or_equal) # 0 if > 2, 1 if <= 2
 

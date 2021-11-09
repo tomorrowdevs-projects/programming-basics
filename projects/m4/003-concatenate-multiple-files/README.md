@@ -1,22 +1,17 @@
-# Letter Frequencies
+# Concatenate Multiple Files
 
-One technique that can be used to help break some simple forms of encryption is frequency analysis. 
+Unix-based operating systems typically include a tool named cat, which is short for concatenate. 
 
-This analysis examines the encrypted text to determine which characters are most common. 
+Its purpose is to display the concatenation of one or more files whose names are provided as command line arguments. 
 
-Then it tries to map the most common letters in English,
-such as E and T, to the most commonly occurring characters in the encrypted text. 
+The files are displayed in the same
+order that they appear on the command line.
 
-Write a program that initiates this process by determining and displaying the frequencies of all of the letters in a file. 
 
-Ignore spaces, punctuation marks, and digits as you perform this analysis. 
+Create a Python program that performs this task. It should generate an appropriate
+error message for any file that cannot be displayed, and then proceed to the next file. 
 
-Your program should be case insensitive, treating a and A as equivalent. 
-
-The user will provide the name of the file to analyze as a command line argument. 
-
-Your program should display a meaningful error message if the user provides the wrong number of command line arguments, or if the program is unable
-to open the file indicated by the user.
+Display an appropriate error message if your program is started without any command line arguments.
 		 
 # Documentation
 
