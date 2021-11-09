@@ -1,29 +1,41 @@
-pennie = 1
-nickel = 5
-dime = 10
-quarter = 25
-loonie = 100
-toonie = 200
-payment = float(input("totale pagato "))
-payment_float = "{:.2f}".format(payment)
-cent= int(payment_float[-2:])
-print("the change could be: " + str(cent / pennie) + " pennies or " + str(cent / nickel) + " nickels or " + str(cent / dime) + " dimes or " + str(cent / quarter) + " quarters" )
+price = "{:.0f}".format(float(input("prezzo del bene ")) * 100 )
+payment = "{:.0f}".format(float(input("totale pagato ")) * 100 )
+def verify (x,y):
+    difference = int(x) - int(y)
+    if difference == 0:
+        print('Nessun resto dovuto')
+    elif difference < 0:
+        print('Il pagamento non è sufficiente')
+    else:
+        return difference
+change = verify (payment,price)
+def coins (c):
+    toonie = 0
+    loonie = 0
+    quater = 0
+    dime = 0
+    nickel = 0
+    pennie = 0
+    while c > 0:
+        if c >= 200:
+            toonie += 1
+            c -= 200
+        elif c < 200 and c >= 100:
+            loonie += 1
+            c -= 100
+        elif c < 100 and c >= 25:
+            quater += 1
+            c-= 25
+        elif c < 25 and c >= 10:
+            dime += 1
+            c -= 10
+        elif c < 10 and c >= 5:
+            nickel += 1
+            c -= 5
+        elif c < 5:
+            pennie = c 
+            c = c * 0
+    else:
+        print('your change is: ' + str(toonie) + ' toonie ' + str(loonie) + ' loonie ' + str(quater) + ' quater ' + str(dime) + ' dime ' + str(nickel) + ' nickel ' + str(pennie) + ' pennie ')
+coins(change)
 
-
-
-
-
-# import sys
-# def change_coins(coins, m, difference):
-#     if (difference == 0):
-#             return 0
-#     res = sys.maxsize
-#     for i in range(0, m):
-#         if (coins[i] <= difference):
-#             sub_res = change_coins(coins, m, difference-coins[i])
-#             if (sub_res != sys.maxsize and sub_res + 1 < res):
-#                 res = sub_res + 1
-#     return res
-# coins = [0.01, 0.05, 0.10, 0.25, 1 , 2]
-# m = len(coins)
-# print("minimum coins required is", change_coins(coins, m, difference))
