@@ -18,9 +18,9 @@ while True:
             tot_ticket =tot_ticket+18.00
             print(" il tiket ha un costo di 18.00$")
         else:
-            print("il valore inserito non è valdo")
+            print("il valore inserito non ï¿½ valdo")
 
-print ("il costo totale è : " + str (tot_ticket)+"$")
+print ("il costo totale ï¿½ : " + str (tot_ticket)+"$")
     
 
 
