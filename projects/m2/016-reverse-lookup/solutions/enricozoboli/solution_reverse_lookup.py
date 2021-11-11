@@ -24,7 +24,6 @@ def print_keys(r):
         print("Thers's no key.")
     else:
         print(' '.join(r))
-        #print(f"Key/s: {key_string}")
         
         
 if __name__ == "__main__":
