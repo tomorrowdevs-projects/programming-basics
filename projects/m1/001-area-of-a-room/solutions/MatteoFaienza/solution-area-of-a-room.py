@@ -1,3 +1,3 @@
-#Start ecercise
+#Start exercise
 
 width=20
