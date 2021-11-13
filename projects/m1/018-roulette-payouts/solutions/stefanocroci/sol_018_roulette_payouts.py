@@ -12,6 +12,7 @@ black = [2, 4, 6, 8, 10, 11, 13, 15, 17, 20, 22, 24, 26, 28, 29, 31, 33, 35]
 if num == 37:
     print('The spin resulted in 00...')
     print('Pay 00')
+    quit()
 else:
     print('The spin resulted in ' + str(num) + '...')
     print('Pay ' + str(num))  
@@ -31,7 +32,7 @@ elif num % 2 != 0 and num != 37:
 # Pay less than 18 or more than 19
 if 1 <= num <= 18:
     print('Pay 1 to 18')
-elif num > 18 and num != 37:
+elif num > 18:
     print('Pay 19 to 36')    
 
 
