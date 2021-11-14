@@ -1,3 +1,4 @@
+import math
 def list_prime(num):
     """
     This function take a limit number as parameter, lists all 
@@ -22,7 +23,19 @@ def list_prime(num):
             continue
     return prime_list
 
-
+def check_prime(p):
+    checked_list = []
+    for d in p:
+        for n in range(2, int(math.sqrt(d))+3):
+            if d % n != 0 and d not in checked_list:
+                checked_list.append(d)
+    if checked_list == p:
+        return True
+    return False
+                    
 if __name__ == "__main__":
-    limit_num = int(input("Enter the limit number: "))
-    print(f"{list_prime(limit_num)}")
+    limit_num = int(input("Enter a number: "))
+    unchecked_result = list_prime(limit_num)
+    print(unchecked_result)
+    if check_prime(list_prime(limit_num)):
+        print("All numbers are prime")
