@@ -15,7 +15,7 @@ class BillPrinter:
     @staticmethod
     def print_bills(bills):
         """
-        Takes a bills list in input and prints it in a pretty asci art format like this:
+        Takes a bills list as input and prints it in a pretty asci art format like this:
 
         +----------+----------+------------------------------+----------+
         | TICKET N | GIOCATA  |        NUMERI GIOCATI        |  RUOTA   |

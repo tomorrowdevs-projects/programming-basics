@@ -7,8 +7,8 @@ class Cities:
               "Tutte"]
 
     @staticmethod
-    def print():
-        print("Type the corresponding city name to select the bill city:")
+    def city_choice_info():
+        print("Type the corresponding city name to select the bill city")
         print(*Cities.CITIES)
 
     @staticmethod
@@ -18,9 +18,13 @@ class Cities:
 
         :return: type str, returns a valid city name that is present in CITIES list variable
         """
-
-        city_choice = input("Enter value here -->: ")
-        while city_choice.capitalize() not in Cities.CITIES:
-            print("Please enter a valid city")
-            city_choice = input("Enter city name here -->: ")
-        return city_choice.capitalize()
+        while True:
+            try:
+                city_choice = input("Enter value here -->: ")
+                while city_choice.capitalize() not in Cities.CITIES:
+                    print("Please enter a valid city")
+                    city_choice = input("Enter city name here -->: ")
+                return city_choice.capitalize()
+            except ValueError as err:
+                print(err)
+                
