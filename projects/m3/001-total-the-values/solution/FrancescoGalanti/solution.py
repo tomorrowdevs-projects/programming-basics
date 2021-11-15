@@ -1,9 +1,4 @@
 
-
-
-
-
-
 def getTheValue():
     inp = input("insert a number")
     if(inp != ""):
@@ -11,9 +6,6 @@ def getTheValue():
       inp = input("please, insert a number no a value")
       return inp
     return inp
-
-
-    
 
 
 def getValueUntilBank():
