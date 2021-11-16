@@ -11,7 +11,7 @@ char_point = {
 def build_chars_dict(s):
     d = dict()
     for c in s.lower() :
-       if ord(c) in range(97, 123):
+        if ord(c) in range(97, 123):
             d[c] = d.get(c, 0)
             d[c] += 1
     return d
@@ -24,7 +24,6 @@ def compute_point(s):
                 tot_point += n * v
     return tot_point
 
-
 def main():
     while True:
         s = input("Enter a word(blank for exit): ")
@@ -32,7 +31,6 @@ def main():
             break
         else:
             print(f"Total points: {compute_point(s)}")
-
 
 if __name__ == "__main__":
     main()
