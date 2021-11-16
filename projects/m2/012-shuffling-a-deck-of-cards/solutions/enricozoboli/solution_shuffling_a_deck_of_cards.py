@@ -15,21 +15,7 @@ def create_deck():
     return deck_of_cards
 
 
-def biased_shuffle(deck_of_cards):
-    list_range = range(len(deck_of_cards))
-    for i in list_range:
-        j = random.randint(list_range[0], list_range[-1])
-        deck_of_cards[i], deck_of_cards[j] = deck_of_cards[j], deck_of_cards[i]
-    return deck_of_cards
-
-def unbiased_shuffle(deck_of_cards):
-    list_range = range(len(deck_of_cards))
-    for i in list_range:
-        j = random.randint(i, len(deck_of_cards)-1)
-        deck_of_cards[i], deck_of_cards[j] = deck_of_cards[j], deck_of_cards[i]
-    return deck_of_cards
-
-def fisher_yates_shuffle(deck_of_cards):
+def shuffle_cards(deck_of_cards):
     for i in range(len(deck_of_cards)-1 , 1, -1):
         j = random.randint(0, i)  
         deck_of_cards[i], deck_of_cards[j] = deck_of_cards[j], deck_of_cards[i]
@@ -38,11 +24,7 @@ def fisher_yates_shuffle(deck_of_cards):
 
 if __name__ == "__main__":
     deck = create_deck()
-    deck_2 = create_deck()
-    deck_3 = create_deck()
     print(f"Unshuffled deck:\n\t{create_deck()}\n")
-    print(f"Biased shuffle:\n\t{biased_shuffle(deck)}\n")
-    print(f"Unbiased shuffle:\n\t{unbiased_shuffle(deck_2)}\n")
-    print(f"Fisher-Yates shuffle:\n\t{fisher_yates_shuffle(deck_3)}")
+    print(f"Shuffled deck:\n\t{shuffle_cards(deck)}")
     
 
