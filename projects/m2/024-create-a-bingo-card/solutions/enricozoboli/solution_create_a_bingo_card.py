@@ -6,7 +6,7 @@ def create_card():
     d = dict()
     for c in s:
         i = 0
-        while i <= 5:
+        while i <= 4:
             n = random.randint(l, l+14)
             if c not in d:
                 d[c] = d.get(n, [])
