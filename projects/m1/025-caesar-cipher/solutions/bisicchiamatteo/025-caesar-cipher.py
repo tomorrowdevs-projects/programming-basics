@@ -12,7 +12,7 @@ print (alfabeth)
 print (new_alfabeth)
 period=input("inserisci la frase che vuoi codificare :")
 point = len(period)
-period_list=list(period)
+period_list=list(period.lower)
 
 for i in range(point) :
     letter= period_list[i]
