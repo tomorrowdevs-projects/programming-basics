@@ -32,7 +32,7 @@ def column_win(card):
 def row_win(card):
     """
     This function create an always winning bingo card
-    with a vertical line of zero's.
+    with a horizontal line of zero's.
     """
     pos = random.randint(0, 4)
     for k in card.keys():
@@ -40,6 +40,10 @@ def row_win(card):
     return card
 
 def diagonal_win(card):
+    """
+    This function create an always winning bingo card
+    with a diagonal line of zero's.
+    """
     x = bool(random.getrandbits(1))
     i = 0
     d = 4
@@ -53,6 +57,12 @@ def diagonal_win(card):
     return card
 
 def casual_extraction(card):
+    """
+    This function create a bingo card with only 
+    five zero's. His purpose is to show the correctness 
+    of the check_win functions. However there's a small
+    chance that a winning card come out.
+    """
     count = 0
     while count <= 4:
         bingo_letters = random.choice(list(card.keys()))
