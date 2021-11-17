@@ -1,7 +1,7 @@
 
 while True :
     number=input("inserisci il numero") 
-    if number=="":
+    if int(number)<=0:
         break
     else:
         while (int(number) > 1):
