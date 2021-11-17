@@ -7,7 +7,7 @@ def create_card():
     for c in s:
         i = 0
         while i <= 4:
-            n = random.randint(l, l+14)
+            n = random.randint(l, l+15)
             if c not in d:
                 d[c] = d.get(n, [])
                 d[c].append(n)
