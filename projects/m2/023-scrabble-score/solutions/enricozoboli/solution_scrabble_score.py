@@ -1,7 +1,10 @@
 def compute_points(s):
     """
     Takes a string and return the total points. Every sigle letters
-    is equivalent to a number of point 
+    is equivalent to an amount of points based on the scrabble point
+    dictionary
+    Parameter: string
+    Return: int
     """
     characters = ['aeilnorstu','dg', 'bcmp', 'fhvwy','k', 'jx', 'qz']
     char_point = [1 ,2 ,3 ,4, 5, 8, 10] 
