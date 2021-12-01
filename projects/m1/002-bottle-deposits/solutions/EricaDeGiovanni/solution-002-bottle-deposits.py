@@ -6,7 +6,7 @@ big_container = int(input('How many containers holding more than 1L do you have?
 
 #display the total refund 
 deposit = round(small_container * 0.10 + big_container * 0.25, 2)
-print(f'Geat! You earned {deposit}$')
+print(f'Great! You earned {deposit}$')
 
 
 
