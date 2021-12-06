@@ -57,9 +57,7 @@ def create_spend_chart(categories):
         total += c.get_total_spent()
     for c in categories:
         percentage = c.get_total_spent() / total
-        #percentage = round(percentage, 1)
         percentage *= 100
-        percentage = int(percentage)
         spend_data[c.name] = percentage
     s += "Percentage spent by category\n"
     for i in range(100, 0-10, -10):
