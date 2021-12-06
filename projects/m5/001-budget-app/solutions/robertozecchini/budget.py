@@ -4,7 +4,7 @@ class Category:
         self.ledger = []
 
     def deposit(self, amount, description=""):
-        pass
+        self.ledger.append({"amount": amount, "description": description})
 
     def withdraw(self, amount, description=""):
         pass
