@@ -20,7 +20,10 @@ class Category:
         pass
 
     def check_funds(self, amount):
-        pass
+        if amount > self.get_balance():
+            return False
+        else:
+            return True
 
 def create_spend_chart(categories):
     pass
