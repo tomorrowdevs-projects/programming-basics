@@ -39,5 +39,14 @@ class Category:
         else:
             return True
 
+    def get_total_spent(self):
+        total = 0
+        for mov in self.ledger:
+            if mov["amount"] < 0:
+                total += abs(mov["amount"])
+        return total
+        
+        
+
 def create_spend_chart(categories):
     pass
