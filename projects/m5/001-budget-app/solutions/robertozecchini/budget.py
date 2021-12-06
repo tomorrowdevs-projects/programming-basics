@@ -1,6 +1,7 @@
 class Category:
     def __init__(self, name):
-        pass
+        self.name = name
+        self.ledger = []
 
     def deposit(self, amount, description=""):
         pass
