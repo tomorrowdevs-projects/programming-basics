@@ -2,6 +2,13 @@ class Category:
     def __init__(self, name):
         self.name = name
         self.ledger = []
+    
+    def __str__(self):
+        s = self.name.center(30, '*') + "\n"
+        for mov in self.ledger:
+            s += f"{mov['description'][:23]:<23s}{mov['amount']:>-7.2f}\n"
+        s += "Total: " + str(self.get_balance())
+        return s
 
     def deposit(self, amount, description=""):
         self.ledger.append({"amount": amount, "description": description})
