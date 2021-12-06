@@ -14,7 +14,10 @@ class Category:
             return False
 
     def get_balance(self):
-        pass
+        balance = 0
+        for mov in self.ledger:
+            balance += mov["amount"]
+        return balance
 
     def transfer(self, amount, category):
         pass
