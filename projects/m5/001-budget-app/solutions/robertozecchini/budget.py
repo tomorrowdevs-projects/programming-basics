@@ -42,11 +42,48 @@ class Category:
     def get_total_spent(self):
         total = 0
         for mov in self.ledger:
-            if mov["amount"] < 0:
+            if mov["amount"] < 0:           #consider only withdraws
                 total += abs(mov["amount"])
         return total
         
         
 
 def create_spend_chart(categories):
-    pass
+    total = 0
+    n_cat = len(categories)
+    spend_data = {}
+    s = ""
+    for c in categories:
+        total += c.get_total_spent()
+    for c in categories:
+        percentage = c.get_total_spent() / total
+        #percentage = round(percentage, 1)
+        percentage *= 100
+        percentage = int(percentage)
+        spend_data[c.name] = percentage
+    s += "Percentage spent by category\n"
+    for i in range(100, 0-10, -10):
+        s += f"{i:>3d}|"
+        for key in spend_data:
+            if spend_data[key] >= i:
+                s += " o "
+            else:
+                s += "   "
+        s += " \n"
+    s += "    " + (3*n_cat + 1)*"-" + "\n"
+    l_max = 0
+    for key in spend_data:
+        if len(key) > l_max:
+            l_max = len(key)
+    for i in range(l_max):
+        s += "    "
+        for key in spend_data:
+            if len(key) > i:
+                s += f" {key[i]} "
+            else:
+                s += "   "
+        if i < (l_max-1):
+            s += " \n"
+        else:
+            s += " "                #to match the test
+    return s
