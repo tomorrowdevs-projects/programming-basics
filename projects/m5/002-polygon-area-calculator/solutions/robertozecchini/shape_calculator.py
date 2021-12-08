@@ -13,10 +13,10 @@ class Rectangle:
         self.height = h
 
     def get_area(self):
-        pass
+        return self.width * self.height
 
     def get_perimeter(self):
-        pass
+        return self.width * 2 + self.height * 2
 
     def get_diagonal(self):
         pass
