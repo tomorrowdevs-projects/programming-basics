@@ -7,10 +7,10 @@ class Rectangle:
         return f"Rectangle(width={self.width}, height={self.height})"
 
     def set_width(self, w):
-        pass
+        self.width = w
 
     def set_height(self, h):
-        pass
+        self.height = h
 
     def get_area(self):
         pass
@@ -36,10 +36,16 @@ class Square(Rectangle):
         return f"Square(side={self.side})"
 
     def set_side(self, s):
-        pass
+        self.side = s
+        Rectangle.set_width(self, s)
+        Rectangle.set_height(self, s)
 
     def set_width(self, w):
-        pass
+        self.side = w
+        Rectangle.set_width(self, w)
+        Rectangle.set_height(self, w)
 
     def set_height(self, h):
-        pass
+        self.side = h
+        Rectangle.set_width(self, h)
+        Rectangle.set_height(self, h)
