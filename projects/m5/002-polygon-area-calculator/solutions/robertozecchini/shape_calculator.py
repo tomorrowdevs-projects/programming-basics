@@ -32,8 +32,11 @@ class Rectangle:
                 s += self.width * "*" + "\n"
             return s
 
-    def get_amount_inside(self):
-        pass
+    def get_amount_inside(self, other_shape):
+        n_width = self.width // other_shape.width
+        n_height = self.height // other_shape.height
+        return n_width * n_height
+        
 
 class Square(Rectangle):
     def __init__(self, side):
