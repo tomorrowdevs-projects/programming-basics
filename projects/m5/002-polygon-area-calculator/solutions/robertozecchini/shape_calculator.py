@@ -6,39 +6,39 @@ class Rectangle:
     def __str__(self):
         return f"Rectangle(width={self.width}, height={self.height})"
 
-    def set_width(w):
+    def set_width(self, w):
         pass
 
-    def set_height(h):
+    def set_height(self, h):
         pass
 
-    def get_area():
+    def get_area(self):
         pass
 
-    def get_perimeter():
+    def get_perimeter(self):
         pass
 
-    def get_diagonal():
+    def get_diagonal(self):
         pass
 
-    def get_picture():
+    def get_picture(self):
         pass
 
-    def get_amount_inside():
+    def get_amount_inside(self):
         pass
 
 class Square(Rectangle):
-    def __init__(side):
+    def __init__(self, side):
         pass
 
-    def __str__():
+    def __str__(self):
         pass
 
-    def set_side(s):
+    def set_side(self, s):
         pass
 
-    def set_width(w):
+    def set_width(self, w):
         pass
 
-    def set_height(h):
+    def set_height(self, h):
         pass
