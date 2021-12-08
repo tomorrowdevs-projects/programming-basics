@@ -43,11 +43,7 @@ class Square(Rectangle):
         Rectangle.set_height(self, s)
 
     def set_width(self, w):
-        self.side = w
-        Rectangle.set_width(self, w)
-        Rectangle.set_height(self, w)
+        self.set_side(w)
 
     def set_height(self, h):
-        self.side = h
-        Rectangle.set_width(self, h)
-        Rectangle.set_height(self, h)
+        self.set_side(h)
