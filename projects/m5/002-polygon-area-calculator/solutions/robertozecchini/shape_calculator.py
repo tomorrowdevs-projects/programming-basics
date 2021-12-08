@@ -24,7 +24,13 @@ class Rectangle:
         return math.sqrt(self.width**2+self.height**2)
 
     def get_picture(self):
-        pass
+        if self.width > 50 or self.height > 50:
+            return "Too big for picture."
+        else:
+            s = ""
+            for h in range(self.height):
+                s += self.width * "*" + "\n"
+            return s
 
     def get_amount_inside(self):
         pass
