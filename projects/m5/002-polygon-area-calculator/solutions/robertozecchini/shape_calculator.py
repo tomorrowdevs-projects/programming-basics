@@ -29,10 +29,11 @@ class Rectangle:
 
 class Square(Rectangle):
     def __init__(self, side):
-        pass
+        self.side = side
+        Rectangle.__init__(self, side, side)
 
     def __str__(self):
-        pass
+        return f"Square(side={self.side})"
 
     def set_side(self, s):
         pass
