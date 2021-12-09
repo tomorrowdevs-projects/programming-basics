@@ -1,3 +1,17 @@
+<?php
+require "budget.php";
+
+$food = new Categories("Food");
+
+$food->deposit(1000, "initial deposit");
+$food->withdraw(200, "initial deposit");
+
+print_r($food->totalAmount)
+?>
+
+
+
+
 # This entrypoint file to be used in development. Start by reading README.md
 import budget
 from budget import create_spend_chart
