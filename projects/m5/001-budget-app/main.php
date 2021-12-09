@@ -4,9 +4,13 @@ require "budget.php";
 $food = new Categories("Food");
 
 $food->deposit(1000, "initial deposit");
-$food->withdraw(200, "initial deposit");
+$food->withdraw(200, "bananas");
+$food->withdraw(200, "fruit");
 
-print_r($food->totalAmount)
+
+$clothing = new Categories("Clothing");
+$food->transfer(200, $clothing);
+print_r($clothing->get_balance())
 ?>
 
 
