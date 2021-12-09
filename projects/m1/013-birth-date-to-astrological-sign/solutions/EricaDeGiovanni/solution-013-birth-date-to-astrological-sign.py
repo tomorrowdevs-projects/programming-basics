@@ -1,92 +1,44 @@
-# Zodiac Sign	Date Range
-# Capricorn	    December 22 to January 19
-# Aquarius	    January 20 to February 18
-# Pisces	    February 19 to March 20
-# Aries	        March 21 to April 19
-# Taurus	    April 20 to May 20
-# Gemini	    May 21 to June 20
-# Cancer	    June 21 to July 22
-# Leo	        July 23 to August 22
-# Virgo	        August 23 to September 22
-# Libra         September 23 to October 22
-# Scorpio	    October 23 to November 21
-# Sagittarius	November 22 to December 21
 
 # asks the user to enter the month and day of birth.
 date = input('Enter your month of birth: ').lower()
 number = int(input('Enter the number of your day of birth: '))
 
 # report the user’s zodiac sign as part of an appropriate output message.
-if 'december' == date:
- if 22 <= number <= 31:
+if date == 'december' and 22 <= number <= 31 or date == 'january' and 1 <= number <= 19:
     sign ='capricorn'
- else:
-    sign = 'sagittarius'
-
-elif 'january' == date:
- if 20 <= number <= 31:
-    sign = 'acquarius'
- else:
-    sign = 'capricorn'
-
-elif 'february' == date:
- if 19 <= number <= 29:
-    sign = 'pisces'
- else:
+  
+elif date == 'january'and 20 <= number <= 31 or date == 'february' and 1 <= number <= 18:
     sign = 'aquarius'
 
-elif 'march' == date:
- if 21 <= number <= 31:
-    sign = 'aries'
- else:
+elif date == 'february' and 19 <= number <= 29 or date == 'march' and 1 <= number <= 20:
     sign = 'pisces'
-
-elif 'april' == date:
- if 20 <= number <= 30:
-    sign = 'taurus'
- else:
+ 
+elif date == 'march' and 21 <= number <= 31 or date == 'april' and 1<= number <= 19:
     sign = 'aries'
     
-elif 'may' == date:
- if 21 <= number <= 31:
-    sign = 'gemini'
- else:
+elif date == 'april' and 20 <= number <= 30 or date == 'may' and 1 <= number <= 20:
     sign = 'taurus'
-
-elif 'june' == date:
- if 21 <= number <= 30:
-    sign = 'cancer'
- else:
+   
+elif date == 'may' and 21 <= number <= 31 or date == 'june' and 1 <= number <= 20:
     sign = 'gemini'
 
-elif 'july' == date:
- if 23 <= number <= 31:
-    sign = 'leo'
- else:
+elif date == 'june' and 21 <= number <= 30 or date == 'july' and 1 <= number <= 22:
     sign = 'cancer'
-
-elif 'august' == date:
- if 23 <= number <= 31:
-    sign = 'virgo'
- else:
+ 
+elif date == 'july' and 23 <= number <= 31 or date == 'august' and 1 <= number <= 22:
     sign = 'leo'
 
-elif 'september' == date:
- if 23 <= number <= 30:
-    sign = 'libra'
- else:
+elif date == 'august' and 23 <= number <= 31 or date == 'september' and 1 <= number <= 22:
     sign = 'virgo'
 
-elif 'october' == date:
- if 23 <= number <= 31:
-    sign = 'scorpio'
- else:
+elif date == 'september' and 23 <= number <= 30 or date == 'october' and 1 <= number <= 22:
     sign = 'libra'
-
-elif 'november' in date:
- if 22 <= number <= 30:
-    sign = 'sagittarius'
- else:
+ 
+elif date == 'october' and 23 <= number <= 31 or date == 'november' and 1 <= number <= 21:
     sign = 'scorpio'
+
+elif date == 'november'  and 22 <= number <= 30 or date == 'december' and 1 <= number <= 21:
+    sign = 'sagittarius'
+
 
 print(f'Your zodiac sign is {sign}.')
