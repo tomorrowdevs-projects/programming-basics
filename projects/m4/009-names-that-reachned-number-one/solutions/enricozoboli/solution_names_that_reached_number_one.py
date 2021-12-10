@@ -2,6 +2,16 @@ import os
 
 PATH = "009-names-that-reachned-number-one/solutions/enricozoboli/baby_names"
 def open_read_files(path):
+    """
+    Takes a path to a directory, opens every files(full of yearly most used 
+    names in descending order) in that directory, takes the first element of 
+    the first line, and puts it in a list of the most used name.
+    Parameter:
+        A relative path to a directory.
+    Return:
+        A list.
+    """
+    
     try:
         files_lst = os.listdir(PATH)
         boys_names = []
