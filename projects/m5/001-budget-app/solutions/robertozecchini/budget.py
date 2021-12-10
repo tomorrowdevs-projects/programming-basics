@@ -4,16 +4,19 @@ class Category:
         self.ledger = []
     
     def __str__(self):
-        s = self.name.center(30, '*') + "\n"
-        for mov in self.ledger:
-            s += f"{mov['description'][:23]:<23s}{mov['amount']:>-7.2f}\n"
-        s += "Total: " + str(self.get_balance())
-        return s
+        #return a string containing a summary of the budget category ready to be printed
+        output_string = self.name.center(30, '*') + "\n"
+        for movement in self.ledger:
+            output_string += f"{movement['description'][:23]:<23s}{movement['amount']:>-7.2f}\n"
+        output_string += "Total: " + str(self.get_balance())
+        return output_string
 
     def deposit(self, amount, description=""):
+        #add a deposit to ledger
         self.ledger.append({"amount": amount, "description": description})
 
     def withdraw(self, amount, description=""):
+        #add a withdraw to ledger (if there is enough credit)
         if self.check_funds(amount):
             self.ledger.append({"amount": -amount, "description": description})
             return True
@@ -21,12 +24,14 @@ class Category:
             return False
 
     def get_balance(self):
+        #return the total amount of money for the category
         balance = 0
-        for mov in self.ledger:
-            balance += mov["amount"]
+        for movement in self.ledger:
+            balance += movement["amount"]
         return balance
 
     def transfer(self, amount, category):
+        #transfer money to another category
         if self.withdraw(amount, "Transfer to " + category.name):
             category.deposit(amount, "Transfer from " + self.name)
             return True
@@ -34,54 +39,75 @@ class Category:
             return False
 
     def check_funds(self, amount):
+        #verify if you have enough credit
         if amount > self.get_balance():
             return False
         else:
             return True
 
     def get_total_spent(self):
+        #return the sum of all the expenses in the category
         total = 0
-        for mov in self.ledger:
-            if mov["amount"] < 0:           #consider only withdraws
-                total += abs(mov["amount"])
+        for movement in self.ledger:
+            if movement["amount"] < 0:           #consider only withdraws
+                total += abs(movement["amount"])
         return total
         
         
+def get_spending_percentages(categories):
+    #return a dictionary with the spending percentage for each category (category name is the key)
+    total_spending = 0
+    spending_data = {}
+    #calculate the data value for each category
+    for category in categories:
+        total_spending += category.get_total_spent()
+    for category in categories:
+        percentage = category.get_total_spent() / total_spending
+        percentage *= 100
+        spending_data[category.name] = percentage
+    return spending_data
+
 
 def create_spend_chart(categories):
-    total = 0
-    n_cat = len(categories)
-    spend_data = {}
-    s = ""
-    for c in categories:
-        total += c.get_total_spent()
-    for c in categories:
-        percentage = c.get_total_spent() / total
-        percentage *= 100
-        spend_data[c.name] = percentage
-    s += "Percentage spent by category\n"
-    for i in range(100, 0-10, -10):
-        s += f"{i:>3d}|"
-        for key in spend_data:
-            if spend_data[key] >= i:
-                s += " o "
+    #return a string representing a chart summarizing expenses' percentage for each category
+    
+    categories_count = len(categories)
+    output_string = ""
+    spending_percentages = get_spending_percentages(categories)
+
+    #find the lenght of the longest category name
+    max_lenght = 0
+    for category in spending_percentages:
+        if len(category) > max_lenght:
+            max_lenght = len(category)
+    
+    #title
+    output_string += "Percentage spent by category\n"
+
+    #spending chart
+    for position in range(100, 0-10, -10):
+        output_string += f"{position:>3d}|"
+        for category in spending_percentages:
+            if spending_percentages[category] >= position:
+                output_string += " o "
             else:
-                s += "   "
-        s += " \n"
-    s += "    " + (3*n_cat + 1)*"-" + "\n"
-    l_max = 0
-    for key in spend_data:
-        if len(key) > l_max:
-            l_max = len(key)
-    for i in range(l_max):
-        s += "    "
-        for key in spend_data:
-            if len(key) > i:
-                s += f" {key[i]} "
+                output_string += "   "
+        output_string += " \n"
+    
+    #separator line
+    output_string += "    " + (3 * categories_count + 1) * "-" + "\n"
+    
+    #category names printed vertically
+    for position in range(max_lenght):
+        output_string += "    "
+        for category in spending_percentages:
+            if len(category) > position:
+                output_string += f" {category[position]} "
             else:
-                s += "   "
-        if i < (l_max-1):
-            s += " \n"
+                output_string += "   "
+        if position < (max_lenght-1):
+            output_string += " \n"
         else:
-            s += " "                #to match the test
-    return s
+            output_string += " "                #to match the test (it requires no \n on the last line)
+
+    return output_string
