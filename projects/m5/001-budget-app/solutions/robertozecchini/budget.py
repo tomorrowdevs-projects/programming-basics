@@ -75,8 +75,8 @@ def create_spend_chart(categories):
     output_string = ""
     spending_percentages = get_spending_percentages(categories)
 
-    #find the lenght of the longest category name
-    max_lenght = len(max(spending_percentages.keys(), key=len))
+    #find the length of the longest category name
+    max_length = len(max(spending_percentages.keys(), key=len))
     
     #title
     output_string += "Percentage spent by category\n"
@@ -95,14 +95,14 @@ def create_spend_chart(categories):
     output_string += "    " + (3 * categories_count + 1) * "-" + "\n"
     
     #category names printed vertically
-    for position in range(max_lenght):
+    for position in range(max_length):
         output_string += "    "
         for category in spending_percentages:
             if len(category) > position:
                 output_string += f" {category[position]} "
             else:
                 output_string += "   "
-        if position < (max_lenght-1):
+        if position < (max_length-1):
             output_string += " \n"
         else:
             output_string += " "                #to match the test (it requires no \n on the last line)
