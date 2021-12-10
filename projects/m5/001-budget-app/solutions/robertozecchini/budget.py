@@ -76,10 +76,7 @@ def create_spend_chart(categories):
     spending_percentages = get_spending_percentages(categories)
 
     #find the lenght of the longest category name
-    max_lenght = 0
-    for category in spending_percentages:
-        if len(category) > max_lenght:
-            max_lenght = len(category)
+    max_lenght = len(max(spending_percentages.keys(), key=len))
     
     #title
     output_string += "Percentage spent by category\n"
