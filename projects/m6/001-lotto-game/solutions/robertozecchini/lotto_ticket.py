@@ -1,6 +1,7 @@
 #Class defining a lotto bill
 
 import random
+from ascii_table import ascii_table
 
 class Ticket:
     types = ("Ambata", "Ambo", "Terna", "Quaterna", "Cinquina")
@@ -14,4 +15,5 @@ class Ticket:
             self.numbers.append(random.randrange(1, 90+1))
     
     def __str__(self):
-        pass
+        numbers_str = ' '.join(map(str,self.numbers))
+        return ascii_table("Lotto ticket", type = self.type, city = self.city, numbers = numbers_str)
