@@ -1,9 +1,9 @@
 #read a date from the user 
 
 # calc number of days
-year_user = next_year = 1988
-month_user = next_month = 12
-day_user = next_day = 311
+year_user = next_year = int(input('Insert a year: '))
+month_user = next_month = int(input('Insert the number of a month: '))
+day_user = next_day = int(input('Insert the number of a day: '))
 
 days_30 = [11, 4, 6, 9]
 days_31 = [1, 3, 5, 7, 8, 10, 12]
