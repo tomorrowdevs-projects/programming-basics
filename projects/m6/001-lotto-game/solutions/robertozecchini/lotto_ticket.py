@@ -13,6 +13,7 @@ class Ticket:
         self.numbers = []
         for n in range(numbers):
             self.numbers.append(random.randrange(1, 90+1))
+        self.numbers.sort()
     
     def __str__(self):
         numbers_str = ' '.join(map(str,self.numbers))
