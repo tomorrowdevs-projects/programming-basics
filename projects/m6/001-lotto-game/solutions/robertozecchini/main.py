@@ -13,7 +13,19 @@ for n in range(num_tickets):
     print(f"Ticket number {n}")
     ticket_type, ticket_type_txt = input_from_list(lotto_ticket.Ticket.types, "Which type of bill do you want?")
     ticket_city, ticket_city_txt = input_from_list(lotto_ticket.Ticket.cities, "Which city do you want?")
-    ticket_numbers = input_int("How many numbers do you want (1-10)?", min=1, max=10)
+    if ticket_type_txt == "Ambata":
+        min_numbers = 1
+    elif ticket_type_txt == "Ambo":
+        min_numbers = 2
+    elif ticket_type_txt == "Terna":
+        min_numbers = 3
+    elif ticket_type_txt == "Quaterna":
+        min_numbers = 4
+    elif ticket_type_txt == "Cinquina":
+        min_numbers = 5
+    else:
+        min_numbers = 1
+    ticket_numbers = input_int("How many numbers do you want (1-10 but the minimum is depending from your bill)?", min=min_numbers, max=10)
     t = lotto_ticket.Ticket(ticket_type_txt, ticket_city_txt, ticket_numbers)
     tickets_list.append(t)
 for t in tickets_list:
