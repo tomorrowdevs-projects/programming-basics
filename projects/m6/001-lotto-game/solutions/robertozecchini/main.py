@@ -1,4 +1,5 @@
 import lotto_ticket
+import fake_extraction
 from unittest import main
 from input import input_from_list
 from input import input_int
@@ -6,6 +7,8 @@ from input import input_int
 print("This program will generate lotto tickets.")
 num_tickets = -1
 tickets_list = []
+winning_tickets = []
+extraction = fake_extraction.Extraction()
 num_tickets = input_int("How many tickets do you want (1-5; 0 to exit)?", min=0, max=5)
 if num_tickets == 0:
     exit()
@@ -30,6 +33,20 @@ for n in range(num_tickets):
     tickets_list.append(t)
 for t in tickets_list:
     print(t)
+print("Extraction results:")
+print(extraction)
+for t in tickets_list:
+    if t.isWinning(extraction):
+        winning_tickets.append(t)
+if len(winning_tickets) == 0:
+    print("I'm sorry, no money for you.")
+elif len(winning_tickets) == 1:
+    print(f"Many compliments, you have a winning ticket:")
+    print(winning_tickets[0])
+else:
+    print(f"Many compliments, you have {len(winning_tickets)} winning tickets.")
+    for t in winning_tickets:
+        print(t)
 
 # Run unit tests automatically
 main(module='test_module', exit=False)
