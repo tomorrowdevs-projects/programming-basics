@@ -11,8 +11,8 @@ class Extraction:
     
     def __str__(self):
         output_string = ""
-        for city, numbers in self.results:
-            output_string += f"{city} - {' '.join(map(str, numbers))}"
+        for city, numbers in self.results.items():
+            output_string += f"{city} - {' '.join(map(str, numbers))}\n"
         return output_string
     
     def extraction(self):
