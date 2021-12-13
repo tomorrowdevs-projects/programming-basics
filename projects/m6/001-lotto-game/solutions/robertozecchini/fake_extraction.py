@@ -18,6 +18,6 @@ class Extraction:
     def extraction(self):
         numbers = []
         for i in range(6):
-            numbers.append(random.randint(1, 90))
+            numbers.append(random.randint(1, 90+1))
         numbers.sort()
         return numbers
