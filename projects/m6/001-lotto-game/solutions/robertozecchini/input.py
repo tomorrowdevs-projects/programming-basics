@@ -9,7 +9,7 @@ def input_from_list(options_list, text = ""):
     if text:
         print(text)
     for index, value in enumerate(options_list):
-        print(f"{index+1} - {type}")
+        print(f"{index+1} - {value}")
     while True:
         try:
             choice = int(input("Your choice: ")) - 1
