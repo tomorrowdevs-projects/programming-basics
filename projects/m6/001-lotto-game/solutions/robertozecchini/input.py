@@ -13,13 +13,13 @@ def input_from_list(options_list, text = ""):
     while True:
         try:
             choice = int(input("Your choice: ")) - 1
-            if choice <= 0 or choice > len(options_list):
+            if choice < 0 or choice >= len(options_list):
                 raise ValueError
         except ValueError:
             print("Not a valid choice, you have to choose the desired index.")
         else:
             break
-    return index, value
+    return choice, options_list[choice]
 
 '''
 Takes 3 arguments:
