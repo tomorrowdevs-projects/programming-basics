@@ -12,7 +12,10 @@ class Extraction:
     def __str__(self):
         output_string = ""
         for city, numbers in self.results.items():
-            output_string += f"{city} - {' '.join(map(str, numbers))}\n"
+            num_str = ""
+            for n in numbers:
+                num_str += str(n).rjust(3)
+            output_string += f"{city:10s}{num_str}\n"
         return output_string
     
     def extraction(self):
@@ -21,3 +24,7 @@ class Extraction:
             numbers.append(random.randint(1, 90+1))
         numbers.sort()
         return numbers
+
+if __name__ == "__main__":
+    e = Extraction()
+    print(e)
