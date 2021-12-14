@@ -8,7 +8,7 @@ class Ticket:
     bills = {"Ambata": 1, "Ambo": 2, "Terna": 3, "Quaterna": 4, "Cinquina": 5}
     cities = ("Bari", "Cagliari", "Firenze", "Genova", "Milano", "Napoli", "Palermo", "Roma", "Torino", "Venezia", "Tutte")
     
-    def __init__(self, type, city, numbers):
+    def __init__(self, type, city, numbers, money = 1):
         self.type = type
         self.city = city
         self.numbers = []
@@ -17,10 +17,12 @@ class Ticket:
             if n not in self.numbers:
                 self.numbers.append(n)
         self.numbers.sort()
+        self.money = money
     
     def __str__(self):
         numbers_str = ' '.join(map(str,self.numbers))
-        return ascii_table("Lotto ticket", type = self.type, city = self.city, numbers = numbers_str)
+        money_str = f"{self.money:3.2f} €"
+        return ascii_table("Lotto ticket", type = self.type, city = self.city, bet = money_str, numbers = numbers_str)
 
     def isValid(self, extraction):
         if not isinstance(extraction, fake_extraction.Extraction):

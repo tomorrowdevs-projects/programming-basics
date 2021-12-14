@@ -17,9 +17,10 @@ def lotto():
         print(f"Ticket number {n}")
         ticket_type, ticket_type_txt = input_from_list(list(lotto_ticket.Ticket.bills), "Which type of bill do you want?")
         ticket_city, ticket_city_txt = input_from_list(lotto_ticket.Ticket.cities, "Which city do you want?")
+        ticket_money = input_int("How much euros do you want to bet on this ticket (1€-200€)?", min=1, max=200)
         min_numbers = lotto_ticket.Ticket.bills[ticket_type_txt]
         ticket_numbers = input_int("How many numbers do you want (1-10 but the minimum is depending from your bill)?", min=min_numbers, max=10)
-        t = lotto_ticket.Ticket(ticket_type_txt, ticket_city_txt, ticket_numbers)
+        t = lotto_ticket.Ticket(ticket_type_txt, ticket_city_txt, ticket_numbers, ticket_money)
         tickets_list.append(t)
     for t in tickets_list:
         print(t)
