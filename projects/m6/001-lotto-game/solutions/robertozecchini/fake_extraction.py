@@ -20,8 +20,10 @@ class Extraction:
     
     def extraction(self):
         numbers = []
-        for i in range(6):
-            numbers.append(random.randint(1, 90+1))
+        while len(numbers) < 6:
+            n = random.randrange(1, 90+1)
+            if n not in numbers:
+                numbers.append(n)
         numbers.sort()
         return numbers
 
