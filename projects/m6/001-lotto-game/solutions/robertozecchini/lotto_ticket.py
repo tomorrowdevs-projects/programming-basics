@@ -12,8 +12,10 @@ class Ticket:
         self.type = type
         self.city = city
         self.numbers = []
-        for n in range(numbers):
-            self.numbers.append(random.randrange(1, 90+1))
+        while len(self.numbers) < numbers:
+            n = random.randrange(1, 90+1)
+            if n not in self.numbers:
+                self.numbers.append(n)
         self.numbers.sort()
     
     def __str__(self):
