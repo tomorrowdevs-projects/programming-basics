@@ -1,11 +1,11 @@
-#Class defining a lotto bill
+#Class defining a lotto ticket
 
 import random
 import fake_extraction
 from ascii_table import ascii_table
 
 class Ticket:
-    types = ("Ambata", "Ambo", "Terna", "Quaterna", "Cinquina")
+    bills = {"Ambata": 1, "Ambo": 2, "Terna": 3, "Quaterna": 4, "Cinquina": 5}
     cities = ("Bari", "Cagliari", "Firenze", "Genova", "Milano", "Napoli", "Palermo", "Roma", "Torino", "Venezia", "Tutte")
     
     def __init__(self, type, city, numbers):
@@ -46,15 +46,7 @@ class Ticket:
         played = set(self.numbers)
         extracted = set(extracted_numbers)
         winnings = played & extracted
-        if self.type == "Ambata" and len(winnings) >= 1:
-            return True
-        elif self.type == "Ambo" and len(winnings) >= 2:
-            return True
-        elif self.type == "Terna" and len(winnings) >= 3:
-            return True
-        elif self.type == "Quaterna" and len(winnings) >= 4:
-            return True
-        elif self.type == "Cinquina" and len(winnings) >= 5:
+        if len(winnings) >= self.bills[self.type]:
             return True
         else:
             return False
