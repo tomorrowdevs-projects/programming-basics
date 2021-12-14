@@ -34,6 +34,8 @@ def lotto():
     elif len(winning_tickets) == 1:
         print(f"Many compliments, you have a winning ticket:")
         print(winning_tickets[0])
+        gross, net = t.winningAmount(extraction)
+        print(f"You win {gross:.2f}€ ({net:.2f}€ net of taxes)")
     else:
         print(f"Many compliments, you have {len(winning_tickets)} winning tickets.")
         for t in winning_tickets:
