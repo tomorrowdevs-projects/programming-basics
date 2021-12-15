@@ -3,6 +3,7 @@ Solution for problem 004-zelda-game on Milestone6
 '''
 import hero
 import map
+import os
 
 # Read the content of a given text file and return it as a string
 # If the file does not exist returns an empty string
@@ -20,6 +21,7 @@ def zelda_game():
     #get player name
     playerName = input("Enter your name: ")
     #print incipit
+    print(os.getcwd())
     print(read_from_file("Start.txt"))
     #read rooms descriptions
     rooms_descriptions = read_from_file("Rooms.txt")
@@ -29,12 +31,15 @@ def zelda_game():
     while True:
         #take an action from player until the end of the program
         print(castle.currentRoom)
+        print(player)
         move = input("What do you want to do: ").upper()
         command = move.split(' ')[0]
         if command == "EXIT":
+            print("You have chosen to exit")
             exit()
         elif command == "LOOK":
             print(castle.currentRoom)
+            print(player)
         elif command == "PICK":
             item = move.split(' ')[1]
             if player.roomInBag and item in castle.currentRoom.items:
@@ -71,15 +76,15 @@ def zelda_game():
                     print(f"You have successfully been moved to room {castle.currentRoom.num}")
         elif command == "ATTACK":
             if castle.currentRoom.monster:
-                if not castle.currentRoom.monster.isAlive():
+                if not castle.currentRoom.monster.isAlive:
                     print("The monster is already dead")
-                for item in player.bag:
-                    if castle.currentRoom.monster.strike(item):
-                        print("You killed the monster")
                 else:
-                    print("You died")
-                    print(read_from_file("EndDead.txt"))
-                    exit()
+                    if castle.currentRoom.attack_monster(player.bag):
+                        print("You killed the monster")
+                    else:
+                        print("You died")
+                        print(read_from_file("EndDead.txt"))
+                        exit()
             else:
                 print("No monster in this room")
         else:
