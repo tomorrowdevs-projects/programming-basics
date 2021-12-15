@@ -9,7 +9,6 @@ full_ticket = 0 # all other guests $23.00.
 print('Here you can calculate the total admission price for your group.')
 guest_age = input('Insert the age of each guest (enter a blank line if there are no more guests): ')
 
-# The user will enter a blank line to indicate that there are no more guests
 while guest_age != "":
     
    guest_age = int(guest_age)
