@@ -1,5 +1,5 @@
 sec = int(input('Hello! Insert the number of seconds--> '))
-#Calcolo 
+#calcolo il quoziente in numeri interi e poi il resto 
 days =  str(sec // 86400)
 dd = sec % 86400
 hours = str(dd // 3600)

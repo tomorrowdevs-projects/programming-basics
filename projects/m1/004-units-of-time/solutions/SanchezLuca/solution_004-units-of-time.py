@@ -1,6 +1,6 @@
 print('Hello!!! Here you can calculate the number of seconds by entering the number of days, hours, minutes and seconds.\n')
 print('Please insert below the number of days, hours, minutes and seconds as integer. ')
-#faccio inserire all'utente il numero di giorni, ore, minuti, secondi
+
 days = int(input('Days--> ' ))
 hours = int(input('Hours--> '))
 minutes = int(input('Minutes--> '))

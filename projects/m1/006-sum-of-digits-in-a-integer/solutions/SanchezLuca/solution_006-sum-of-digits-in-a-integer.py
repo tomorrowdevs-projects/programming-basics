@@ -1,5 +1,5 @@
 x = int(input('Please insert a four-digit integer for display the sum of its digits--> '))
-
+#calcolo il quoziente in numeri interi e poi il resto 
 x1 = x // 1000
 x_1 = x % 1000
 x2 = x_1 // 100
