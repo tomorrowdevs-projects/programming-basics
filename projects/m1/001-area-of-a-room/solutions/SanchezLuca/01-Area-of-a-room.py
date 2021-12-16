@@ -1,5 +1,0 @@
-print('--Hello! Here you can calculate the area of a room in m^2.--')
-Width = float(input('Type the width in meter--> '))
-Lenght = float(input('Type the lenght in meter--> '))
-Area = (Width * Lenght)
-print('The area of the room is-->',Area,'m^2')
