@@ -1,5 +1,5 @@
 import random
-total_f = 0
+total_flip = 0
 
 for flip_cont in range(11):
     i_tail = 0
@@ -13,15 +13,15 @@ for flip_cont in range(11):
             i_head += 1
             i_tail = 0
             flip_row += 1
-            total_f += 1
+            total_flip+= 1
             print(flip_now, end=" ")
         else:
             i_tail += 1
             i_head = 0
             flip_row += 1
-            total_f += 1
+            total_flip += 1
             print(flip_now, end=" ")
     print(f"({flip_row} flips)")
 
-average = total_f / flip_cont
+average = total_flip / flip_cont
 print(f"On average, {average} flips were needed.")
