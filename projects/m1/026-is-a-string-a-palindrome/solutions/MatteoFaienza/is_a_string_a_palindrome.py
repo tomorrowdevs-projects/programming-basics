@@ -14,5 +14,6 @@ for letter in user_word :
 
     else :
         user_word_palindrome_or_not = user_word + " isn't palindrome" 
+        break
 
 print ('The word',user_word_palindrome_or_not) 
