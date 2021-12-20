@@ -5,8 +5,6 @@ class Category:
         self.ledger = []
 
     def deposit(self, amount, description=""):
-        # item = dict()
-        # item[amount] = description
         self.ledger.append({amount: description})
 
     def withdraw(self):
