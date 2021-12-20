@@ -1,3 +1,4 @@
+import string
 list_numbers=[]
 
 
@@ -6,8 +7,7 @@ def insert_number():
          number=input("isert the number : ")
          if number =="0":
              break
-         x=number.isalnum()
-         if x==True:
+         if number.isnumeric()==True:
             list_numbers.append(int(number))
          else:
              print ("the value insert is not a number")
