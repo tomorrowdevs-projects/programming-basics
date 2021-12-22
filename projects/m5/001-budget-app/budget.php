@@ -65,46 +65,51 @@ class Categories  {
 
 function create_spend_chart($categories) {
     $output_string = "Percentage spent by category<br><table>";
-    $sum = 0;
     $percentage = [];
-
     foreach($categories as $category) {
-        $category_array = $category->ledger;
-        foreach($category_array as $value) {
-            
-            $decoded_array = json_decode($value);
-            if($decoded_array->amount < 0) {
-                $sum += $decoded_array->amount;
-            } else {
-            $total = $decoded_array->amount;
-            }
-        };
-        array_push($percentage, (abs($sum / $total) * 100));
-        for($i=100; $i>=0; $i-=10) {
+        $percentage[$category->name] = findPercentage($category);
+    }
+    for($i=100; $i>=-10; $i-=10) {
+
+        if($i === -10) {
+            $output_string .= "<tr style='text-align:right'><td></td>";
+        } else {
             $output_string .= "<tr style='text-align:right'><td>" . $i  . "|</td>";
-            foreach($percentage as $value) {
-                
-                if($value == $i) {
-                    $output_string .= "<td>";
-                    for($j=$i; $j>=0; $j-=10) {
-                        //$output_string .= "<tr style='text-align:right'><td>" . $j . "| </td><td>0</td></tr>";
+        }
+        
+        
+        foreach($percentage as $key => $value) {            
+            if($value >= $i) {
+                    if($i == -10) {
+                        $output_string .= "<td style='text-align:left; writing-mode: vertical-lr;text-orientation: upright; border-top: 2px dashed black;'>" . $key . "</td>";
+                    } else {
                         $output_string .= "<td style='text-align:right'>0</td>";
                     }
-                    break;
-                } 
+                   
+                } else {
+                    $output_string .= "<td style='text-align:right'></td>";
+            }
         }
-    }
-    
-
-    
         
-    }
-    
+    }         
     $output_string .= "</table>";
 
     return $output_string;
 }
-//def create_spend_chart(categories):
+
+function findPercentage($category) {
+    $sum = 0;
+    $category_array = $category->ledger;
+    foreach($category_array as $value) {
+        $decoded_array = json_decode($value);
+        if($decoded_array->amount < 0) {
+            $sum += $decoded_array->amount;
+        } else {
+            $total = $decoded_array->amount;
+        }
+    };
+    return (abs($sum / $total) * 100);
+}
 
 ?>
 
