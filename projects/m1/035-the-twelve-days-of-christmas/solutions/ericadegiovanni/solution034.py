@@ -6,29 +6,29 @@ def cardinal_to_ordinal(n):
     # return an empty string if 1 > n > 12
 
     if n == 1:
-        return 'First'
+        return 'first'
     elif n == 2:
-        return 'Second'
+        return 'second'
     elif n == 3:
-        return 'Third'
+        return 'third'
     elif n == 4:
-        return 'Fourth'
+        return 'fourth'
     elif n == 5:
-        return 'Fifth'
+        return 'fifth'
     elif n == 6:
-        return 'Sixth'
+        return 'sixth'
     elif n == 7:
-        return 'Seventh'
+        return 'seventh'
     elif n == 8:
-        return 'Eighth'
+        return 'eighth'
     elif n == 9:
-        return 'Ninth'
+        return 'ninth'
     elif n == 10:
-        return 'Tenth'
+        return 'tenth'
     elif n == 11:
-        return 'Eleventh'
+        return 'eleventh'
     elif n == 12:
-        return 'Twelfth'
+        return 'twelfth'
     else:    
         return ' '
     

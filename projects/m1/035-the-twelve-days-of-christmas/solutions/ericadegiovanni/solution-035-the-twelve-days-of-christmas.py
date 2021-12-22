@@ -13,7 +13,7 @@ def display_verse(n):
             while n > 1:
                 if n == 2:
                         print('Two turtle doves,')
-                        print('And partridge in a pear tree.*')
+                        print('And a partridge in a pear tree.*')
                 elif n == 3:
                         print('Three French hens,')
                 elif n == 4:
