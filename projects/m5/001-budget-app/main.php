@@ -10,6 +10,9 @@ $food->withdraw(200, "fruit");
 
 $clothing = new Categories("Clothing");
 $food->transfer(200, $clothing);
+$clothing->withdraw(25.55);
+$clothing->withdraw(100);
+$clothing->withdraw(50);
 echo $food;
 echo $clothing;
 echo create_spend_chart([$food, $clothing]);
