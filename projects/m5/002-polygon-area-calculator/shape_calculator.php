@@ -6,6 +6,10 @@ class Rectangle {
         $this->height = $height;
     }
 
+    public function __toString() {
+        return get_class($this) . "(width=$this->width, height=$this->height)";
+    }
+
     public function set_width(int $width) {
         return $this->width = $width;
     }
@@ -75,6 +79,8 @@ $rec = new Rectangle(4,8);
 $square = new Square(4);
 print_r($square->get_picture());
 
+echo $rec;
+echo $square;
 ?>
 
 
