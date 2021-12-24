@@ -14,28 +14,46 @@ class Hat {
                 array_push($this->content, $key);  
             }
         }
+        $this->content = json_encode($this->content);
     }
 
     public function draw(int $ball) {
-        print_r($this->content);
+        $content = json_decode($this->content);
+        if($ball > count($content)) {
+            $ball = count($content);
+        }
         $pick = [];
-        $random_pick = array_rand($this->content,$ball);
+        $random_pick = array_rand($content,$ball);
 
         for($i=0; $i < $ball; $i++) {
-            array_push($pick, $this->content[$random_pick[$i]]);
-            unset($this->content[$random_pick[$i]]);
+            array_push($pick, $content[$random_pick[$i]]);
+            unset($content[$random_pick[$i]]);
         }
-        return json_encode($pick);
+     
+        return $pick;
     }
 }
 
-function experiment($hat, $expected_balls, $num_balls_drawn, $num_experiments) {
+function experiment($hat=null, $expected_balls=null, $num_balls_drawn=null, $num_experiments=null) {
+    $counter = 0;
+    
+    for($i=0; $i < $num_experiments; $i++) {
+        $pick = $hat->draw($num_balls_drawn);
+        $real_pick = array_count_values($pick);
+        
+        $expected_pick = json_decode($expected_balls, true);
 
+        if(count(array_intersect_assoc($real_pick, $expected_pick)) === count($expected_pick)) {
+            $counter +=1;
+        };
+    }
+    
+    return $counter/$num_experiments * 100 . "%";
 };
 
-$hat = new Hat(red:2, blue:1);
+$hat = new Hat(red:2, green:1, yellow:3);
 
-$hat->draw(2);
+echo experiment(hat:$hat, expected_balls:'{"red":2, "green":1}', num_balls_drawn:5, num_experiments:100);
 
 
 
