@@ -22,10 +22,8 @@ refund_bottle_under_liter = round(deposit_under_liter * bottle_under_liter,2)
 refund_bottle_over_liter = round(deposit_over_liter * bottle_over_liter,2)
 refund_bottle_total = round(refund_bottle_under_liter + refund_bottle_over_liter,2)
 
-
 print()
 print()
-
 
 # Mostra il prezzo dei contenitori
 print("Prezzo contenitori da litro:                  "+ str(format_two_decimal % round(deposit_under_liter,2))+ currency_current)
