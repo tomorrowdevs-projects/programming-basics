@@ -1,27 +1,3 @@
-<?php
-require "budget.php";
-
-$food = new Categories("Food");
-
-$food->deposit(1000, "initial deposit");
-$food->withdraw(200, "bananas");
-$food->withdraw(200, "fruit");
-
-
-$clothing = new Categories("Clothing");
-$food->transfer(200, $clothing);
-$clothing->withdraw(25.55);
-$clothing->withdraw(100);
-$clothing->withdraw(50);
-echo $food;
-echo $clothing;
-echo create_spend_chart([$food, $clothing]);
-
-
-
-
-
-/*
 # This entrypoint file to be used in development. Start by reading README.md
 import budget
 from budget import create_spend_chart
@@ -47,6 +23,3 @@ print(create_spend_chart([food, clothing, auto]))
 
 # Run unit tests automatically
 main(module='test_module', exit=False)
-*/
-
-?>
