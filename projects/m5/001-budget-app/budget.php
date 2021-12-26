@@ -18,9 +18,9 @@ class Categories  {
             "<br/>" . 
             "<div style='width:300px; position:relative'>" 
             . substr($decoded_array->description,0,23) . 
-            "<span style='text-align:right; position:absolute; right:0'> 
-            {$decoded_array->amount} </span>" . 
-            "</div>";
+            "<span style='text-align:right; position:absolute; right:0'>" 
+            . substr(round($decoded_array->amount, 2),0,8) . 
+            "</span></div>";
         };
         return $output_string;
     }
