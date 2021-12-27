@@ -24,6 +24,9 @@ toonies_value = 200
 resto = 706
 print('Resto: '+  str(resto))
 
+print()
+
+
 print (str(resto // toonies_value)+ ' toonies')
 resto = resto  % toonies_value
 print (str(resto // loonies_value)+ ' loonies')
