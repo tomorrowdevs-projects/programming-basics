@@ -1,8 +1,7 @@
 import unittest
-
 import lotto.bill
 import lotto.numbers_generator
-
+import lotto.cities
 
 class UnitTests(unittest.TestCase):
     def setUp(self) -> None:
@@ -26,6 +25,11 @@ class UnitTests(unittest.TestCase):
 
     def test_type_numbers_generator(self):
         self.assertEqual(type(lotto.numbers_generator.NumberGenerator.num_gen(7)[0]), int)
+
+    def test_cities_validate(self):
+        self.assertTrue(lotto.cities.Cities.validate_city('Torino'))
+        self.assertFalse(lotto.cities.Cities.validate_city('Trento'))
+
 
 if __name__ == "__main__":
     unittest.main()
