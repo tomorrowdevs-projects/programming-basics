@@ -1,6 +1,9 @@
+import typing
+
+
 class Cities:
 
-    cities: list[str] = ['Bari', 'Cagliari', 'Firenze', 'Genova',
+    cities: typing.List[str] = ['Bari', 'Cagliari', 'Firenze', 'Genova',
                          'Milano', 'Napoli', 'Palermo', 'Roma',
                          'Torino', 'Venezia', 'Tutte']
 

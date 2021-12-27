@@ -1,10 +1,13 @@
+import typing
+
+
 class Bill:
     """Represent a bill object"""
     def __init__(
             self, bill_number: int,
             bill_type: str,
             city: str,
-            numbers: list[int]) -> None:
+            numbers: typing.List[int]) -> None:
 
         self.bill_number = bill_number
         self.bill_type = bill_type
