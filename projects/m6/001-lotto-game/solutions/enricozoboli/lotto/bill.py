@@ -15,8 +15,10 @@ class Bill:
         self.numbers = numbers
 
     def __str__(self) -> str:
-        return f"Bill number {self.bill_number}| city: {self.city}| "\
-            f"type: {self.bill_type}| numbers: {self.numbers}."
+        return f"Bill number {self.bill_number + 1}"\
+                f"|city: {self.city.capitalize()}"\
+                f"|type: {self.bill_type.capitalize()}"\
+                f"|numbers: {self.numbers}."
 
 
 
