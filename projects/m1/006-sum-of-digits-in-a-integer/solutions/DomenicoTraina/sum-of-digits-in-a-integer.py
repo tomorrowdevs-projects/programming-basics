@@ -1,11 +1,11 @@
 
-number= int (input ("Please enter a 4 digit number: "))
+number_string = str (input ("Please enter a number: "))
 
-number_string = str(number)
-digit1=int(number_string[0])
-digit2=int(number_string[1])
-digit3=int(number_string[2])
-digit4=int(number_string[3])
+number_of_digits=(len(number_string))
 
-sum_of_digits=digit1+digit2+digit3+digit4
-print(sum_of_digits)
+sum_of_digits=0
+
+for i in range(number_of_digits):    
+    sum_of_digits=sum_of_digits+int(number_string[i])
+    
+print("Sum of {} digits is {} " .format(number_of_digits,sum_of_digits))
