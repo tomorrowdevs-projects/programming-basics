@@ -2,6 +2,7 @@ from .cities import Cities
 from .bet_type import BetType
 from .bill import Bill
 from .numbers_generator import NumberGenerator
+from .print_bill import PrintBill
 
 
 class Lotto:
@@ -18,8 +19,8 @@ class Lotto:
             bill_city = Lotto.ask_city()
             bill = Bill(i, bill_bet_type, bill_city, numbers)
             self.bills_lst.append(bill)
-            print(bill)
-        print(self.bills_lst)
+        for b in self.bills_lst:
+            PrintBill.print_bill(b)
 
     @staticmethod
     def ask_city() -> str:
@@ -66,7 +67,7 @@ class Lotto:
                     break
                 else:
                     print(f"Number must be at least"
-                          f"{BetType.bet_types[bet_cap]}"
+                          f" {BetType.bet_types[bet_cap]}"
                           f" or greater for {bet_cap}")
                     continue
             else:
