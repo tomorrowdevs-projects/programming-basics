@@ -2,6 +2,11 @@ import typing
 
 
 class Cities:
+    """
+    A class representing the city (aka 'Ruota') that user can choose.
+    Choices : Bari, Cagliari, Firenze, Genova, Milano, Napoli, Palermo,
+    Roma, Torino, Venezia, Tutte.
+    """
     cities: typing.List[str] = ['Bari', 'Cagliari', 'Firenze', 'Genova',
                                 'Milano', 'Napoli', 'Palermo', 'Roma',
                                 'Torino', 'Venezia', 'Tutte']

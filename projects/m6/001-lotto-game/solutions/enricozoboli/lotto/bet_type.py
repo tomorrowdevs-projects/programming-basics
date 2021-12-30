@@ -2,6 +2,11 @@ import typing
 
 
 class BetType:
+    """
+    A class representing the type of bet which user can choose.
+    Choices : ambata, ambo, terno, quaterna, cinquina.
+    """
+
     bet_types: typing.Dict[str, int] = {'Ambata': 1, 'Ambo': 2, 'Terno': 3,
                                         'Quaterna': 4, 'Cinquina': 5}
 

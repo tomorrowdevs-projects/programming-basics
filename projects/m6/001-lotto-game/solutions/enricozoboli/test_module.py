@@ -17,7 +17,7 @@ class UnitTests(unittest.TestCase):
 
     def test_bill_string(self) -> None:
         actual: str = str(self.bill_t)
-        expected: str = "Bill number 2| city: milano| type: ambo| numbers: [2, 45, 35, 67, 88, 90, 1, 51]."
+        expected: str = "Bill number 3|city: Milano|type: Ambo|numbers: [2, 45, 35, 67, 88, 90, 1, 51]."
         self.assertEqual(actual, expected, "Incorrect string representation")
 
     def test_numbers_generator(self) -> None:

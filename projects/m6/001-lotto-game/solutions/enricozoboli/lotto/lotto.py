@@ -1,12 +1,19 @@
-from .cities import Cities
-from .bet_type import BetType
-from .bill import Bill
-from .numbers_generator import NumberGenerator
-from .print_bill import PrintBill
+from lotto.cities import Cities  # type: ignore
+from lotto.bet_type import BetType  # type: ignore
+from lotto.bill import Bill  # type: ignore
+from lotto.numbers_generator import NumberGenerator  # type: ignore
+from lotto.print_bill import PrintBill  # type: ignore
 
 
 class Lotto:
-
+    """
+    A class implementing the business logic of the program.
+    It asks inputs from the user( bet type, how many numbers to extract, and city),
+    generates a list of numbers(calling NumbersGenerator.num_gen), builds a bill
+    object and appends it to a list. It repeats this process n times, where n is
+    a number representing how many bills the user want(passed as argument in main.py).
+    Finally, it prints out every bill.
+    """
     def __init__(self, n: int) -> None:
         self.bills_number = n
         self.bills_lst = []
