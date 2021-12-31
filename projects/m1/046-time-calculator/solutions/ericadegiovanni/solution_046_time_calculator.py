@@ -50,7 +50,7 @@ def add_time(start, duration, week_day = ''):
     if hours == 0: hours = 12
 
     #display result
-    result = f'Total duration: {hours:02d}:{min:02d} {clock_format}, '
+    result = f'Total duration: {hours:02d}:{min:02d} {clock_format} '
 
     # if is given week_day
     weekdays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday','Friday','Saturday', 'Sunday']
