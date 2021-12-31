@@ -1,22 +1,23 @@
 
-# calc minutes
 def time_2minutes(hours, minutes, days = 0):
+    # return the total amount of minutes from given hours, minutes and days (optional)
     return ((minutes * 60) + (hours * 60 * 60) + (days * 24 * 60 * 60))
 
 
-def minutes_2time(s):
+def minutes_2time(m):
 
-    # display the  amount of seconds in day minutes and hours
-    day = s // 60 // 60 // 24
-    hour = (s // 60 // 60) % 24
-    min = (s // 60) % 60   
+    # display an amount of minutes in days and hours
+    day = m // 60 // 60 // 24
+    hour = (m // 60 // 60) % 24
+    min = (m // 60) % 60   
     return day, hour, min
 
+def slice_time(digital_time):
 
-def slice_time(time):
-    colons_position = time.find(':')
-    hours = int(time[:colons_position])
-    minutes = int(time[colons_position + 1: colons_position + 3])
+    # return integer digits from a digital time string
+    colons_position = digital_time.find(':')
+    hours = int(digital_time[:colons_position])
+    minutes = int(digital_time[colons_position + 1: colons_position + 3])
     return hours, minutes
 
 
@@ -64,7 +65,7 @@ def add_time(start, duration, week_day = ''):
         elif days == 1:
             result += ' (next day)'
 
-        # display n days later if there are more tha one day passed
+        # display n days later if there are more than one day passed
         elif days > 1:
             start_day = weekdays.index(week_day) + 1
             end_day_index = (start_day + days - 1) % len(weekdays) 
