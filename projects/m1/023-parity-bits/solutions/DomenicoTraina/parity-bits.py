@@ -5,11 +5,9 @@ parity_bit=0
 high_bit=0
 
 while True:
-    bit=input("Enter bit n {} of string: ".format(index+1))
-    
+    bit=str(input("Enter bit n {} of string: ".format(index+1)))
     if index==0 and bit==' ':
         break
-    
     bit_string.append(bit)
     index+=1
     if index==8:
@@ -20,5 +18,5 @@ while True:
         else:parity_bit=0
         print("Parity bit è {}".format(parity_bit))
         index=0
-        del bit_string[0:7]
+        del bit_string[0:8]
 print("Fine Programma")  
