@@ -1,10 +1,9 @@
 coded_word=[]
-index=0
+
 index2=0
-strr=""
 
 alphabet="abcdefghijklmnopqrstuvwxyz"
-word=str(input("Enter word to coding: "))
+word=input("Enter word to coding: ")
 
 for index in range (len(word)):
     while index2<=25:
@@ -18,5 +17,5 @@ for index in range (len(word)):
         index2+=1
     index2=0
 
-newword=strr.join(coded_word)
+newword="".join(coded_word)
 print(f"Coded Word is: {newword}")      
