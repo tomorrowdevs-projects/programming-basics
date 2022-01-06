@@ -27,8 +27,32 @@ function isPalindrome(string) {
     // Reverse the items of the list of words and assign its value (turning it into a string) to a new variable 
     let reverseString = cleanList.reverse().join(" "); // Reversed Array --> String
     
-    // Compare the original string with the reverse one
+    // Compare the original string with the reversed one
     if (originalString == reverseString) {
+        return true;
+    } else {
+        return false;
+    }
+
+} // end function 
+
+/////////////////////  Optimized Function  //////////////////////
+
+function isPalindrome(string) {
+
+    // Remove the punctuation marks from the string entered by user, turn it into an array and removed che empty strings with filter()
+    let cleanList = string.replace(/[^a-zA-Z0-9]/mg, " ").split(" ").filter(function(value) { 
+    return value != ""; 
+    })
+    
+    // Assign the value of the cleaned list (turning it into a string) to a new variable
+    let originalString = cleanList.join(" "); // Array --> String
+    
+    // Create a new array (using concat) with reversed items and assign its value (turning it into a string) to a new variable 
+    let reverseString = [].concat(cleanList).reverse().join(" "); // Reversed Array --> String
+    
+    // Compare the original string with the reversed one
+    if (originalString === reverseString) {
         return true;
     } else {
         return false;
