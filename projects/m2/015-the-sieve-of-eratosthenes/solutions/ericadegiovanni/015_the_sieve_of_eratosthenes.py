@@ -1,7 +1,4 @@
 
-# not simulate crossing out a number by removing it from the list. 
-# Instead, you should simulate crossing out a number by replacing it with 0.
-
 limit = 100
 p = 2
 #list of numbers from 2 to n
