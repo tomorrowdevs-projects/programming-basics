@@ -1,7 +1,7 @@
 # esempio m1/area-of-a-room
 # refactoring nomi variabili e messaggi output
 
-room_width   =   10.50
+room_width     =   10.50
 room_lenght    =   20.60
 
 room_width = float(input('digit room width :  '))
