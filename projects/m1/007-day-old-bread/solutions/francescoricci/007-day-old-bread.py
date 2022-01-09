@@ -5,8 +5,6 @@ format_two_decimal = "%.2f"
 bread_price_pz = 3.49
 currency_money = '$'
 
-#hard code
-#bread_numebr_buy = 13
 bread_numebr_buy = int(input('Bread Number pay: '))
 product_description = 'PANE VECCHIO'
 
