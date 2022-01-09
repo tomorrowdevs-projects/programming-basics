@@ -117,7 +117,7 @@ Process finished with exit code 0
 
 ```
 
-Run code after remove hard cede
+Run code 5 after remove hard code
 ```
 C:\Users\user\AppData\Local\Programs\Python\Python310\python.exe "C:/Users/user/Desktop/tommorowdevs-github/Repo TD/programming-basics/projects/m1/014-cell-phone-bill/solutions/francescoricci/014-cell-phone-bill.py"
 Enter minutes used in mounth: 75
