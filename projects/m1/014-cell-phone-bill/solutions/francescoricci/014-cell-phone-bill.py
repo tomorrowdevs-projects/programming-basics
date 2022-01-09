@@ -1,3 +1,5 @@
+#execise m1/014 by Francesco Ricci
+
 voice_base = 50
 sms_base = 50
 plane_base_price = 15.00
@@ -9,21 +11,20 @@ extra_charges = False
 contribution_911_price = 0.44
 tax_percent = 0.05
 
-
 #read minutes and sms used in mounth
 # voice_total = input('Enter minutes used in mounth: ')
 # sms_total =  input('Enter sms used in mounth: ')
 
-#hard code remove for releases
-voice_total = '55'
-sms_total =  '55'
+#hard code remove before send pull request
+voice_total = '60'
+sms_total =  '50'
 # print(voice_total)
 # print(sms_total)
 
-#formattare
+# see you info phone plan
 print(f'Your phone plan includes {voice_base:2d} minutes and {sms_base:2d} sms.Its price is {plane_base_price:.2f} €')
 
-#per eliminare il typerror
+#avoid typerror
 voice_total = int(voice_total)
 sms_total = int(sms_total)
 
@@ -44,18 +45,7 @@ else:
     print('There are no extra charges in your phone plan this month')
 
 # see result
-
 bill_total = plane_base_price + (voice_extra * voice_extra_price) + (sms_extra * sms_extra_price)
-#due cifre decimali
 
-
+#two decimal format number
 print(f"\nTotal bill amount: {bill_total:.2f} €")
-
-
-
-
-
-
-
-
-
