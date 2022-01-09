@@ -71,7 +71,48 @@ This project requires to be completed in a maximum of **2 hours**
 
 # The output run code
 
+Run code 1
 ```
-c:\
+C:\Users\user\AppData\Local\Programs\Python\Python310\python.exe "C:/Users/user/Desktop/tommorowdevs-github/Repo TD/programming-basics/projects/m1/014-cell-phone-bill/solutions/francescoricci/014-cell-phone-bill.py"
+Your phone plan includes 50 minutes and 50 sms.Its price is 15.00 €
+Extra voice minutes: 10
+There are extra charges in your phone plan this month
+
+Total bill amount: 17.50 €
+
+Process finished with exit code 0
+```
+Run code 1
+```
+C:\Users\user\AppData\Local\Programs\Python\Python310\python.exe "C:/Users/user/Desktop/tommorowdevs-github/Repo TD/programming-basics/projects/m1/014-cell-phone-bill/solutions/francescoricci/014-cell-phone-bill.py"
+Your phone plan includes 50 minutes and 50 sms.Its price is 15.00 €
+Extra sms: 10
+There are extra charges in your phone plan this month
+
+Total bill amount: 16.50 €
+
+Process finished with exit code 0
+```
+Run code 3
+```
+C:\Users\user\AppData\Local\Programs\Python\Python310\python.exe "C:/Users/user/Desktop/tommorowdevs-github/Repo TD/programming-basics/projects/m1/014-cell-phone-bill/solutions/francescoricci/014-cell-phone-bill.py"
+Your phone plan includes 50 minutes and 50 sms.Its price is 15.00 €
+Extra voice minutes: 25
+Extra sms: 40
+There are extra charges in your phone plan this month
+
+Total bill amount: 27.25 €
+
+Process finished with exit code 0
+```
+Run code 4
+```
+C:\Users\user\AppData\Local\Programs\Python\Python310\python.exe "C:/Users/user/Desktop/tommorowdevs-github/Repo TD/programming-basics/projects/m1/014-cell-phone-bill/solutions/francescoricci/014-cell-phone-bill.py"
+Your phone plan includes 50 minutes and 50 sms.Its price is 15.00 €
+There are no extra charges in your phone plan this month
+
+Total bill amount: 15.00 €
+
+Process finished with exit code 0
 
 ```

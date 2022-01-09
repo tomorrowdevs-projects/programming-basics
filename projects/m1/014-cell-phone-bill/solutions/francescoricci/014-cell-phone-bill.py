@@ -16,7 +16,7 @@ tax_percent = 0.05
 # sms_total =  input('Enter sms used in mounth: ')
 
 #hard code remove before send pull request
-voice_total = '60'
+voice_total = '50'
 sms_total =  '50'
 # print(voice_total)
 # print(sms_total)
