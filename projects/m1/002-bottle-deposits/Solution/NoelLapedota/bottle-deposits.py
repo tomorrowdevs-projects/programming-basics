@@ -7,6 +7,3 @@ if size_b and size_s != 0 :
 tot = size_s + size_b
 refund = (size_s * 0.10) + (size_b * 0.25)
 print("Full refound $ {.2f},for a total of bottles n.{}".format(refund,tot))
-
-
-continue
