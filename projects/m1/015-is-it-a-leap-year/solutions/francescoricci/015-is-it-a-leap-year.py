@@ -1,8 +1,8 @@
 # exercise 015 by Francesco Ricci
-def getLeapYear(anno):
-    return "leap year" if (anno % 400 == 0) or (anno % 4 == 0 and (not(anno % 100 == 0))) else "not leap year"
+def getLeapYear(year):
+    return "leap year" if (year % 400 == 0) or (year % 4 == 0 and (not(year % 100 == 0))) else "not leap year"
 
-for year in range(2016,2024):
+for year in range(2014,2028):
     print(str(year) + ' is ' + getLeapYear(year))
 
 
