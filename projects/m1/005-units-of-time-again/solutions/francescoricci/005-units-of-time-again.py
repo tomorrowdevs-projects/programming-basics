@@ -5,9 +5,7 @@
 separate_section = '-'*20
 format_two_number = "%02d"
 
-#hard code remove before send pull request
-second_total = 90010
-#second_total = int(input('Enter number second total: '))
+second_total = int(input('Enter number second total: '))
 
 # see header total second
 print("\nTotal second: " + str(second_total))
