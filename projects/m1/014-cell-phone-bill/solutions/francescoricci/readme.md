@@ -116,3 +116,18 @@ Total bill amount: 15.00 €
 Process finished with exit code 0
 
 ```
+
+Run code after remove hard cede
+```
+C:\Users\user\AppData\Local\Programs\Python\Python310\python.exe "C:/Users/user/Desktop/tommorowdevs-github/Repo TD/programming-basics/projects/m1/014-cell-phone-bill/solutions/francescoricci/014-cell-phone-bill.py"
+Enter minutes used in mounth: 75
+Enter sms used in mounth: 90
+Your phone plan includes 50 minutes and 50 sms.Its price is 15.00 €
+Extra voice minutes: 25
+Extra sms: 40
+There are extra charges in your phone plan this month
+
+Total bill amount: 27.25 €
+
+Process finished with exit code 0
+```

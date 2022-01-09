@@ -12,14 +12,8 @@ contribution_911_price = 0.44
 tax_percent = 0.05
 
 #read minutes and sms used in mounth
-# voice_total = input('Enter minutes used in mounth: ')
-# sms_total =  input('Enter sms used in mounth: ')
-
-#hard code remove before send pull request
-voice_total = '50'
-sms_total =  '50'
-# print(voice_total)
-# print(sms_total)
+voice_total = input('Enter minutes used in mounth: ')
+sms_total =  input('Enter sms used in mounth: ')
 
 # see you info phone plan
 print(f'Your phone plan includes {voice_base:2d} minutes and {sms_base:2d} sms.Its price is {plane_base_price:.2f} €')
