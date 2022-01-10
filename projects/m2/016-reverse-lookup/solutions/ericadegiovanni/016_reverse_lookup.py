@@ -12,16 +12,16 @@ def reverseLookup(d, value):
 
 def main():
 
-    prova_d = {'name': 'Jack',
+    user_info = {'name': 'Jack',
                'age': 25,
                'job': 'programmer',
                'home town': 'London',
                'birthplace': 'London'
                }
     
-    print(reverseLookup(prova_d, 'London'))
-    print(reverseLookup(prova_d, 25))
-    print(reverseLookup(prova_d, 'dog'))
+    print(reverseLookup(user_info, 'London'))
+    print(reverseLookup(user_info, 25))
+    print(reverseLookup(user_info, 'dog'))
 
 if __name__ == '__main__':
     main()
