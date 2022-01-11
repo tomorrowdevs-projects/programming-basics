@@ -46,3 +46,16 @@ The next day    is: 2023/1/1
 
 Process finished with exit code 0
 ```
+
+correct and format output with leading zero
+```
+C:\Users\user\AppData\Local\Programs\Python\Python310\python.exe "C:/Users/user/Desktop/tommorowdevs-github/Repo TD/programming-basics/projects/m1/016-next-day/solutions/francescoricci/016-next-day.py"
+The year current is: 2024
+The mounth current is: 1
+The day current is: 1
+The day current is: 2024/01/01
+The next day    is: 2024/01/02
+```
+
+
+Process finished with exit code 0

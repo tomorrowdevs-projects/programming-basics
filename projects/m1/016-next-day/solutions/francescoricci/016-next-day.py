@@ -15,7 +15,7 @@ def nextYear(year):
     #function service by getNextDay
     return year + 1
 
-def isLayDayYear(day,mounth):
+def isLastDayYear(day,mounth):
     return True if (day == 31) and (mounth == 12) else False
 
 def isLastDayMounth(day,mounth,year):
@@ -64,18 +64,18 @@ year = int(input('The year current is: '))
 mounth = int(input('The mounth current is: '))
 day = int(input('The day current is: '))
 
-user_input = str(year) + '/' + str(mounth) + '/' + str(day)
+user_input = str(year) + '/' + str(mounth).zfill(2) + '/' + str(day).zfill(2)
 print('The day current is: ' + user_input)
 
 #passiama la stringa current_day senza nessun controllo
 def getNextDay(day,mounth,year):
     if isLastDayMounth(day,mounth,year):
-        if isLayDayYear(day,mounth):
-            return (str(year+1) + '/' + str(1) + '/' + str(1))
+        if isLastDayYear(day,mounth):
+            return (str(year+1) + '/' + str(1).zfill(2) + '/' + str(1).zfill(2))
         else:
-            return (str(year) + '/' + str(mounth + 1) + '/' + str(1))
+            return (str(year) + '/' + str(mounth + 1).zfill(2) + '/' + str(1).zfill(2))
     else:
-        return (str(year) + '/' + str(mounth) + '/' + str(day+1))
+        return (str(year) + '/' + str(mounth).zfill(2) + '/' + str(day+1).zfill(2))
 
 
 print('The next day    is: '+ getNextDay(day,mounth,year))
