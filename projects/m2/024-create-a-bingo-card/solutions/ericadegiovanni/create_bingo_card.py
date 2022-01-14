@@ -32,13 +32,13 @@ def display_bingo_card(card):
     # labelled appropriately. 
 
     label = 'BINGO'
-    print('B  I  N  G  O ')
+    print('B   I   N   G   O ')
     for i in range(len(label)):
         for i2 in range(len(label)):
             if i2 == 4:
                 print(card[label[i2]][i])
             else:
-                print(card[label[i2]][i], end=' ')
+                print(str(card[label[i2]][i]).ljust(3), end=' ')
 
 def main():
     card = create_bingo_card()          
