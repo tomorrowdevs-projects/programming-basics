@@ -15,7 +15,7 @@ def create_bingo_card():
      
     labels = 'BINGO'
     start = 1
-    stop = 15
+    stop = 16
     bingo_card = {}
 
     for i in range(len(labels)):
