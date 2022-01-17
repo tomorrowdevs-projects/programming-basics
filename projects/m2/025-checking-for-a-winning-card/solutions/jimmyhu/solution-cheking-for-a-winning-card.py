@@ -1,6 +1,4 @@
 import random
-from tokenize import Double
-from traceback import print_tb
 def checking(card):
     # row winning condition
     for key in card:
