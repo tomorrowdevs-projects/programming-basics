@@ -1,7 +1,4 @@
 
-#Use the following algorithm:
-
-
 def string_edit_distance(s,t):
     """
     Let s and t be the strings
