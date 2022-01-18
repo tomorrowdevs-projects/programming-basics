@@ -11,6 +11,10 @@ The remaining days of the week following in sequence through to Saturday, which 
 Use the formula above to write a program that reads a year from the user and reports the day of the week for January 1 of that year. 
 The output from your program should include the full name of the day of the week, not just the integer returned by the formula.
 
+To better structure the source code I have created two functions.</br>
+The first getDayOfWeek(year) return number day of week associating zero to Sunday.</br>
+The second getDayTextName return day text of the week associating zero to Sunday
+
 
 # Documentation
 
