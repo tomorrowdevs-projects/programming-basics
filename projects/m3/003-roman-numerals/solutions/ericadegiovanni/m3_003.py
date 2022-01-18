@@ -36,7 +36,7 @@ def roman_toNumerals(numeral):
 # write a main program that reads a Roman numeral from the user and displays its value.
 def main():
     roman_numeral = input('Insert a roman numeral: ').upper()
-    print(f'The roman numeral {roman_numeral} is the numberv {roman_toNumerals(roman_numeral)}.')
+    print(f'The roman numeral {roman_numeral} is the number {roman_toNumerals(roman_numeral)}.')
 
 
 if __name__ == '__main__':
