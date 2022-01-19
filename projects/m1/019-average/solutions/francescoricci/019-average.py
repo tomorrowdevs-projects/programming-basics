@@ -6,7 +6,7 @@ while True:
 	quit = True if user_input == 0 else False
 	if quit:
 		if user_input == 0 and count == 0:
-			print('error insert almeno one value')
+			print('error insert at least one value')
 			break
 		else:
 			print(f'The average is {int(sum / count)}')
