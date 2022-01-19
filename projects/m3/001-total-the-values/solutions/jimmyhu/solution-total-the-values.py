@@ -1,6 +1,3 @@
-import numbers
-
-
 def calc():
     num = input('Test: ')
     if num == ' ' or num == '':
