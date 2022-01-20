@@ -52,7 +52,7 @@ special = [0, 99]
 def draw(pick):
     return random.choice(pick)
 
-# Creating a function that chacks if a number is odd or even
+# Creating a function that checks if a number is odd or even
 def odd_check(number):
     if number % 2 == 0:
         return "EVEN"
@@ -75,8 +75,7 @@ if number_pick in special:
         print("PAY {}".format(number_pick))
     else:
         print("PAY 00")
-
-if number_pick not in special:
+else:
     print("PAY {}".format(number_pick))  # displaying winning single number
     print("PAY {}".format(draw(colour)))  # displaying winning colour
     print("PAY {}".format(odd_check(number_pick)))  # displaying winning odd or even
