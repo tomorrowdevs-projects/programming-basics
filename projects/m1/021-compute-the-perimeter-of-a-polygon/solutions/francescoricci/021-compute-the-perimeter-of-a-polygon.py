@@ -1,4 +1,4 @@
-excercise m1/020 by francesco ricci
+#excercise m1/020 by francesco ricci
 from math import sqrt
 
 def computeLenght(x1,y1,x2,y2):
