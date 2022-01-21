@@ -20,7 +20,15 @@ def computePerimeter(number_sides):
 min_sides_polygon = 3
 # number_sides = 4
 number_sides = input('Insert number sides: ')
-computePerimeter(int(number_sides))
+if number_sides.isdigit():
+    if int(number_sides) >= min_sides_polygon:
+        computePerimeter(int(number_sides))
+    else:
+        print('Insert a minim sides of polygon [3] ')
+else:
+    print('Insert numeric value')
+
+
 
 
 
