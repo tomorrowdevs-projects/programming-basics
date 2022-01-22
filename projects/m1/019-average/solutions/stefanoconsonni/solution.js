@@ -1,19 +1,15 @@
-let arrayOfNumbers = [];
+let listOfNums = [];
 
-let firstNumber = parseInt(prompt("Please enter a number:"));
-arrayOfNumbers.push(firstNumber);
-
-if (arrayOfNumbers[0] == 0) {
-	alert("The first value cannot be zero. Please reload the page and enter a valid value.");
-}
-
-while (arrayOfNumbers[0] != 0 && !arrayOfNumbers.includes(0)) {
+do {
 	let enteredNumber = parseInt(prompt("Please enter a number:"));
-	arrayOfNumbers.push(enteredNumber);
-}
+	listOfNums.push(enteredNumber);
 
-arrayOfNumbers.pop();
+	if (listOfNums[0] === 0) {
+		alert("The first value cannot be zero. Please reload the page and enter a valid value.");
+	}
+} while (listOfNums[0] !== 0 && !listOfNums.includes(0));
+
+listOfNums.pop();
 const averageValue = (list) => list.reduce((a, b) => a + b) / list.length;
-let list = arrayOfNumbers;
 
-alert(`The average value is: ${averageValue(list)}`);
+alert(`The average value is: ${averageValue(listOfNums)}`);
