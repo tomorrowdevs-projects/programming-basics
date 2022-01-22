@@ -1,32 +1,20 @@
 let enteredYear = prompt("Please enter a year (you must enter four digits):");
-let enteredMonth = prompt("Please enter a month (you must enter one or two digits):");
-let enteredDay = prompt("Please enter a day (you must enter one or two digits):");
+let enteredMonth = prompt("Please enter a month:\n(from 1 to 12)");
+let enteredDay = prompt("Please enter a day:\n(from 1 to 31, depending on the month)");
 
-let enteredDate = `${enteredYear}-${enteredMonth}-${enteredDay}`;
-
-let isLeapYear;
-if (enteredYear % 400 == 0) {
+let isLeapYear = false;
+if (enteredYear % 400 == 0 || (enteredYear % 100 != 0 && enteredYear % 4 == 0)) {
 	isLeapYear = true;
-} else if (enteredYear % 400 != 0 && enteredYear % 100 == 0) {
-	isLeapYear = false;
-} else if (enteredYear % 400 != 0 && enteredYear % 100 != 0 && enteredYear % 4 == 0) {
-	isLeapYear = true;
-} else {
-	isLeapYear = false;
 }
 
-let monthOf30Days;
+let monthOf30Days = false;
 if (enteredMonth == 4 || enteredMonth == 6 || enteredMonth == 9 || enteredMonth == 11) {
 	monthOf30Days = true;
-} else {
-	monthOf30Days = false;
 }
 
-let monthOf31Days;
+let monthOf31Days = false;
 if (enteredMonth == 1 || enteredMonth == 3 || enteredMonth == 5 || enteredMonth == 7 || enteredMonth == 8 || enteredMonth == 10 || enteredMonth == 12) {
 	monthOf31Days = true;
-} else {
-	monthOf31Days = false;
 }
 
 if (enteredMonth == 12 && enteredDay == 31) {
