@@ -1,4 +1,4 @@
-
+#excercise 024 by francesco ricci
 def fizzBuzz(count,end):
     message = ''
     if count % 3 ==0 and count % 5 ==0:
@@ -20,8 +20,3 @@ def fizzBuzz(count,end):
         fizzBuzz(count,end)
 
 fizzBuzz(1,100)
-
-
-
-
-
