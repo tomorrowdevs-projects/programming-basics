@@ -21,7 +21,4 @@ def validation (password):
         print("password is not valid")
         return False
 
-
-
-
 validation(password)
