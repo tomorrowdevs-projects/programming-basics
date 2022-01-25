@@ -1,4 +1,3 @@
-from re import T
 import sys
 
 """
