@@ -48,4 +48,4 @@ for i in age_group:
     else:
         total_fee.append(23)
 # add every index in total_fee and display the message
-print("Total admission fee is {}$".format(sum(total_fee)))
+print("Total admission fee is {:.2f}$".format(sum(total_fee)))
