@@ -1,4 +1,3 @@
-from calendar import SATURDAY, WEDNESDAY
 from math import floor
 
 #variables
