@@ -4,6 +4,9 @@ class Category(object):
         self.category = category
         self.total = 0
 
+    def __str__(self):
+        return self.category
+
     def deposit(self, amount, description=''):
         self.ledger.append({"amount": amount, "description": description})
         self.total += amount
@@ -33,12 +36,27 @@ class Category(object):
             return True
 
     def check_funds(self, amount):
-        if self.ledger is True:
-            if amount > self.ledger[0]['amount']:
-                return False
-            else:
-                return True
+        if amount > self.ledger[0]['amount']:
+            return False
+        else:
+            return True
 
 
 def create_spend_chart(categories):
     print("Percentage spent by category")
+
+
+
+food = Category("Food")
+food.deposit(1000, "initial deposit")
+food.withdraw(10.15, "groceries")
+food.withdraw(15.89, "restaurant and more food for dessert")
+print(food.get_balance())
+clothing = Category("Clothing")
+food.transfer(50, clothing)
+clothing.withdraw(25.55)
+clothing.withdraw(100)
+auto = Category("Auto")
+auto.deposit(1000, "initial deposit")
+auto.withdraw(15)
+
