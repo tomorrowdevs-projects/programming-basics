@@ -1,9 +1,9 @@
 # Fattorizzazione di un numero
 
-1.Creare la funzione isFactory(n,f)
+1.Creare la funzione isFactor(n,f)
 La funzione restituisce True se un numero n è divisibile per f 
 
-2.Creare la funzione factorization(n,factory)
+2.Creare la funzione factorization(n,factor)
 
 
 
