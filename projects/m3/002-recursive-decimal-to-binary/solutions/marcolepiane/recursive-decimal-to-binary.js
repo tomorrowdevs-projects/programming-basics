@@ -10,6 +10,7 @@ if (userInput <0){
     document.write("Value is " + userInput );
 
 } else if ( userInput > 0){
+    
     let result = (Math.floor(userInput / 2));
     
     result = userInput.toString(2);
