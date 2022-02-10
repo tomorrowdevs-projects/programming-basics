@@ -8,7 +8,7 @@ def conjecture(number):
             else:
                 collatz.append(number*3+1)
         elif number == 1:
-            print(collatz)
+            return(collatz)
 
 number=1
 while number > 0:
