@@ -36,9 +36,9 @@ def bingo_card():
     print(bc)
 
 # you win if vertical
-def vert():     
+def vert(card):     
 
-    for t, k in winning_card.iterms():
+    for t, k in card.iterms():
         if k == [0,0,0,0,0]:
             return True
         else:
