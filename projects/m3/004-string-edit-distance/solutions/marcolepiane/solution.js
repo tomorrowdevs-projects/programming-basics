@@ -1,3 +1,6 @@
+let firstString= prompt('insert first string');
+let secondString = prompt('insert second string');
+
 function editDistance(firstString, secondString){
     if(firstString.length === 0){
         return secondString.length;
