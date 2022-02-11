@@ -4,7 +4,7 @@ request_bread_old = int(input('How many loaves from yesterday do you want?'))
 
 price_loave = 3.49
 
-loaves_fresh = (request_bread_fresh*price_loaves)
+loaves_fresh = (request_bread_fresh*price_loave)
 
 print(f'The amount for the fresh loaves is = {loaves_fresh}$')
 
