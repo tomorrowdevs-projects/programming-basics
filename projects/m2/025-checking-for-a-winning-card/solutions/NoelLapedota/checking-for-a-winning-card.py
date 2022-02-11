@@ -37,12 +37,18 @@ def bingo_card():
 
 # you win if vertical
 def vert(card):     
-
-    for t, k in card.iterms():
-        if k == [0,0,0,0,0]:
-            return True
-        else:
-            return False    
+    k =[]
+    while True :
+        if k != [0, 0, 0, 0, 0] :
+            number_estr = random.randint(1,76)
+            print(number_estr)
+            for n, k in card.items():
+              if number_estr in k[0:]:
+                  k.remove(number_estr)
+                  k.append(0)
+                  if k == [0, 0, 0, 0, 0]:
+                      print('you win')
+                      break
 
 # you win if horizontal
 def horiz(card):
