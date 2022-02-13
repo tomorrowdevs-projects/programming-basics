@@ -1,15 +1,15 @@
 
-note = input('Che nota vorresti?')
-octave = int(input('che ottava di quella nota?'))
+note = input('Tell me one letter from A to G')
+octave = int(input('Tell me one number From 0 to 9'))
 
 frequenza_c = 261.63
-calc_frequenza_c = frequenza_c/(2**(4-octave))      #Calcolo della frequenza inserita dall'utente da 0 a 9 
+calc_frequenza_c = frequenza_c/(2**(4-octave))
 
 frequenza_d = 293.66
-calc_frequenza_d = frequenza_d/(2**(4-octave))      
+calc_frequenza_d = frequenza_d/(2**(4-octave))
 
 frequenza_e = 329.63
-calc_frequenza_e = frequenza_e/(2**(4-octave))      
+calc_frequenza_e = frequenza_e/(2**(4-octave))
 
 frequenza_f = 349.23
 calc_frequenza_f = frequenza_f/(2**(4-octave))
