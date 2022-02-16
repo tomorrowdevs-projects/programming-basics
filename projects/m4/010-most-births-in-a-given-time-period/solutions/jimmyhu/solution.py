@@ -33,10 +33,10 @@ def main():
     female = {}
     starting_year = int(input('Enter the start year for count names: '))
     ending_year = int(input('Enter the end year for count names: '))
-    names_path = os.path.realpath(os.path.join(os.path.dirname(__file__),'baby_names'))
+    names_path = os.path.realpath(os.path.join(os.path.dirname(__file__),'..','..','..','009-names-that-reachned-number-one\solutions\jimmyhu\\baby_names'))
     resul_dict = names_stat(names_path,male,female,starting_year,ending_year)
     pop_boy = popular(resul_dict[0])
     pop_girl = popular(resul_dict[1])
     print(f"The most popular name for boys are: {pop_boy} with {resul_dict[0][pop_boy]}\nThe most popular name for girls are: {pop_girl} with {resul_dict[1][pop_girl]}")
 if __name__ == '__main__':
-    main()
+    main() 
