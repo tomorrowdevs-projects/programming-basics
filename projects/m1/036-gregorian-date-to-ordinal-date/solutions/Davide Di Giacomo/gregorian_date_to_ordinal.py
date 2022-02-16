@@ -2,13 +2,10 @@ def ordinalDate (year, month, day):
     if month<= 12 and day <= 31:
         if year % 400 == 0:
             i=2
-        
         elif year % 100 == 0:
             i=3
-            
         elif year % 4 == 0:
             i=2
-            
         else:
             i=3
         if month <= 2:
