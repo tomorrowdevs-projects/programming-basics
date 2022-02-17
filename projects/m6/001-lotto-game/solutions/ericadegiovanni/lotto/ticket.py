@@ -25,7 +25,7 @@ class Ticket:
     def create_printable_ticket(self) -> str:
 
         # find bet and city line length
-        line1 = len(f'| {self.bill_type.capitalize()} on {self.city.capitalize()}')
+        line1 = len(f'| {self.bill_type} on {self.city}')
         
         # find the numbers line length
         numbers = ''
