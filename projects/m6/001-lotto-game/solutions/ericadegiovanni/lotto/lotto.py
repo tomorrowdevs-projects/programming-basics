@@ -2,6 +2,7 @@ from .ticket import Ticket
 from .bet import Bet
 from .generate_numbers import TicketNumbers
 from .cities import Cities
+import argparse
 
 '''
 parameter bill_numbers inserted by the user at the launch of the software.
@@ -43,5 +44,14 @@ class Lotto:
         for ticket in Lotto.all_tickets:
             print(ticket)
   
-
-    
+    @staticmethod
+    def arg_parser():
+        parser = argparse.ArgumentParser(description="Create Lotto bills")  
+        parser.add_argument('-n', type=int, help="Number of bills to generate.", default=0)
+        args = parser.parse_args()
+        total_bills = args.n
+        if total_bills and 0 < total_bills < 6:        
+            return Lotto(total_bills)
+        else:
+            raise ValueError('You inserted a wrong number of bills.')
+        

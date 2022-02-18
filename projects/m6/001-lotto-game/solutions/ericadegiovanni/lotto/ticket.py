@@ -44,7 +44,8 @@ class Ticket:
 
     def __str__(self) -> str:
         return self.create_printable_ticket()
-
+    
+    
     def ticket_info(self) -> dict:
         return {'bet': self.bill_type,
                 'numbers': self.nums, 
