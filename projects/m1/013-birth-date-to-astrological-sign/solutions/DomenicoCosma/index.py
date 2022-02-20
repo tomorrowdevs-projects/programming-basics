@@ -2,7 +2,7 @@
 months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec']
 def func():
 
-     date, month = input('Enter your birthday').split()
+     date, month = input('Enter your birthday... date and month(not number) separeted by white space').split()
 
 
      if int(date) > 31 or int(date) < 0:
@@ -21,23 +21,23 @@ def func():
       print('Your zodiac sign is Pisces')
      elif int(date) >= 21 and month[0:3].lower() == 'mar' or int(date) <= 19 and month[0:3].lower() == 'apr':
       print('Your zodiac sign is Aries')
-     elif int(date) >= 20 and month[0:3].lower() == 'apr' or int(date) <= 20 and month[0:3].lower() == 'may':
+     elif int(date) >= 20 and month[0:3].lower() == 'apr' and int(date) < 31 or int(date) <= 20 and month[0:3].lower() == 'may':
       print('Your zodiac sign is Taurus')
      elif int(date) >= 21 and month[0:3].lower() == 'may' or int(date) <= 20 and month[0:3].lower() == 'jun':
       print('Your zodiac sign is Gemini')
-     elif int(date) >= 21 and month[0:3].lower() == 'jun' or int(date) <= 22 and month[0:3].lower() == 'jul':
+     elif int(date) >= 21 and month[0:3].lower() == 'jun' and int(date) < 31 or int(date) <= 22 and month[0:3].lower() == 'jul':
       print('Your zodiac sign is Cancer')
      elif int(date) >= 23 and month[0:3].lower() == 'jul' or int(date) <= 22 and month[0:3].lower() == 'aug':
       print('Your zodiac sign is Leo')
      elif int(date) >= 23 and month[0:3].lower() == 'aug' or int(date) <= 22 and month[0:3].lower() == 'sep':
       print('Your zodiac sign is Virgo')
-     elif int(date) >= 23 and month[0:3].lower() == 'sep' or int(date) <= 22 and month[0:3].lower() == 'oct':
+     elif int(date) >= 23 and month[0:3].lower() == 'sep' and int(date) < 31 or int(date) <= 22 and month[0:3].lower() == 'oct':
       print('Your zodiac sign is Libra')
      elif int(date) >= 23 and month[0:3].lower() == 'oct' or int(date) <= 21 and month[0:3].lower() == 'nov':
       print('Your zodiac sign is Scorpio')
-     elif int(date) >= 22 and month[0:3].lower() == 'nov' or int(date) <= 21 and month[0:3].lower() == 'dec':
-      print('Your zodiac sign is Pisces')
+     elif int(date) >= 22 and month[0:3].lower() == 'nov' and int(date) < 31 or int(date) <= 21 and month[0:3].lower() == 'dec':
+      print('Your zodiac sign is Sagittarius')
      else:
-      print('Something is wrong with your birthday')
+      print('Something is wrong with your date birthday')
 
 func()
