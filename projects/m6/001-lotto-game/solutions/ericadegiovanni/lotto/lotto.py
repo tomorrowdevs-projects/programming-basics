@@ -5,9 +5,7 @@ from .cities import Cities
 import argparse
 
 '''
-parameter bill_numbers inserted by the user at the launch of the software.
-- Ask the user informations (type of bill, city, amount of numbers)
-- Create tickets and print them
+parameter bill_numbers inserted by the user at the launch of the software from main with Lotto.arg_parser().
 '''
 class Lotto:
 
@@ -28,30 +26,46 @@ class Lotto:
         
     @staticmethod
     def get_input():
+
+#       ask the user informations (type of bill, city, amount of numbers) and return them if are correct.
         bet = Bet.get_bet()
-        numbers = TicketNumbers.get_numbers_to_generate()
+        numbers = TicketNumbers.get_number()
         city = Cities.get_city()
         return bet, city, numbers
     
 
     @staticmethod
     def create_tickets(bet, numbers, city, n):
+
+#       Create a ticket object
         return Ticket(bet, numbers, city, n)
 
 
     @staticmethod
     def print_tickets():
+
+#       Print all the Ticket objects created
         for ticket in Lotto.all_tickets:
             print(ticket)
   
     @staticmethod
     def arg_parser():
+        '''
+         Handle the insertion of the number of tickets desired by the user.
+         Return a Lotto object and start the creation of the tickets.
+        '''
+
         parser = argparse.ArgumentParser(description="Create Lotto bills")  
-        parser.add_argument('-n', type=int, help="Number of bills to generate.", default=0)
+        parser.add_argument(
+            '-n',
+            type=int,
+            help="Number of bills to generate.",
+            default=0,
+            choices= range(1, 6))
+
         args = parser.parse_args()
-        total_bills = args.n
-        if total_bills and 0 < total_bills < 6:        
-            return Lotto(total_bills)
-        else:
-            raise ValueError('You inserted a wrong number of bills.')
+        total_bills = args.n       
+        return Lotto(total_bills)
+        
+            
         

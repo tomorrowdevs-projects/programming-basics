@@ -16,28 +16,28 @@ example:
 
 class Ticket:
     
-    def __init__(self, bill_type, nums, city, ticket_number):
-        self.bill_type = bill_type
+    def __init__(self, bet_type, nums, city, ticket_number):
+        self.bet_type = bet_type
         self.nums = nums
         self.city = city
         self.ticket_number = ticket_number
-
+        
     def create_printable_ticket(self) -> str:
 
-        # find bet and city line length
-        line1 = len(f'| {self.bill_type} on {self.city}')
-        
-        # find the numbers line length
         numbers = ''
-        for n in self.nums: numbers += f'{n} '   
+        # find bet and city line length
+        line1 = len(f'| {self.bet_type} on {self.city}')
+        # find the numbers line length
         line2 = len(f'| {numbers}')
+        
+        for n in self.nums: numbers += f'{n} '   
         
         #create printable ticket
         res = ''
         res += '+-------------------------------+----------+\n'\
             f'|             LOTTO             | Ticket {self.ticket_number} |\n'\
              '+-------------------------------+----------+\n| '\
-            f'{self.bill_type.capitalize()} on {self.city.capitalize()}{"|".rjust(44 - line1 )}\n| '\
+            f'{self.bet_type.capitalize()} on {self.city.capitalize()}{"|".rjust(44 - line1 )}\n| '\
             f'{numbers}{"|".rjust(44 - line2 )}\n'\
              '+------------------------------------------+'  
         return res               
@@ -47,7 +47,7 @@ class Ticket:
     
     
     def ticket_info(self) -> dict:
-        return {'bet': self.bill_type,
+        return {'bet': self.bet_type,
                 'numbers': self.nums, 
                 'city': self.city,
                 'ticket N': self.ticket_number}

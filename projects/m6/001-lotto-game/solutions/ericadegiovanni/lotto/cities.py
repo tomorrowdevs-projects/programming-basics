@@ -11,9 +11,9 @@ class Cities:
     def get_city() -> str:
         while True:
             try:
-                city_name = input('Select a city name between BARI, CAGLIARI, FIRENZE, GENOVA, MILANO, NAPOLI, PALERMO, ROMA, TORINO, VENEZIA and TUTTE:\n').lower()   
-                if city_name in Cities.total_cities:
-                    return city_name
+                city_name = input('Select a city name between BARI, CAGLIARI, FIRENZE, GENOVA, MILANO, NAPOLI, PALERMO, ROMA, TORINO, VENEZIA and TUTTE:\n')   
+                if city_name.lower() in Cities.total_cities:
+                    return city_name.lower()
                 else:
                     raise ValueError
             except ValueError:
