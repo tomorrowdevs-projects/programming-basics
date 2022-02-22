@@ -16,7 +16,7 @@ example:
 
 class Ticket:
     
-    def __init__(self, bet_type, nums, city, ticket_number):
+    def __init__(self, bet_type, nums: list, city, ticket_number):
         self.bet_type = bet_type
         self.nums = nums
         self.city = city
@@ -27,10 +27,10 @@ class Ticket:
         numbers = ''
         # find bet and city line length
         line1 = len(f'| {self.bet_type} on {self.city}')
-        # find the numbers line length
-        line2 = len(f'| {numbers}')
         
+        # find the numbers line length
         for n in self.nums: numbers += f'{n} '   
+        line2 = len(f'| {numbers}')
         
         #create printable ticket
         res = ''
