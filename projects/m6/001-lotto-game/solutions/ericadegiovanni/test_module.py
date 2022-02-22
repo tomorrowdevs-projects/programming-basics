@@ -4,7 +4,7 @@ from lotto.bet import Bet
 from lotto.cities import Cities
 from lotto.ticket import Ticket
 import argparse
-from random import choice
+from random import sample
 
 
 class TestLotto(TestCase):
@@ -37,7 +37,7 @@ class TestLotto(TestCase):
     def test_get_numbers(self):
         self.assertTrue('4'.isdigit())
         self.assertTrue( 0 < int('4') < 11 )
-        expected = [choice(range(1,91)) for _ in range(int('4'))]
+        expected = sample([n for n in range(1, 91)], int('4'))
         self.assertEqual(len(expected), 4)
 
     def test_get_city(self):
