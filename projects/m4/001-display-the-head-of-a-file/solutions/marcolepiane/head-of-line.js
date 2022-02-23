@@ -25,7 +25,7 @@ btn.addEventListener('click', function(){
                 h2.innerHTML = lines.join('\n');
             }
 
-            reader.readAsText(file);
+            reader.readAsText(file.slice(0, 40));
             
         }
             })
