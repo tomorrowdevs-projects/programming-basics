@@ -2,7 +2,7 @@
 total = 0
 
 while True:
-    age = input('How old are you?')
+    age = input('How old are you?(blank to quite')
     if age == '':
          break
     age = int(age)
