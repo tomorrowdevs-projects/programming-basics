@@ -24,8 +24,7 @@ class Cities:
         while True:
             try:
                 city = Cities.get_city_input()
-                if city.lower() in Cities.total_cities:
-                    return city.lower()
+                return city.lower()
             except ValueError: pass
             
     

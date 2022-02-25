@@ -56,10 +56,10 @@ class Lotto:
         return bet, city, numbers
 
     def tk_creation(bill_numbers):
-        print(f"\n--------- LOTTO GAME ---------\nYou want to generate {bill_numbers} ticket{'' if bill_numbers == 1 else 's'}.\n")   
+        print(f"\n--------- LOTTO GAME ---------\nYou want to generate {bill_numbers} ticket{'' if bill_numbers == 1 else 's'}.")   
         
         for n in range(1, bill_numbers + 1):
-            print(f'- TICKET {n} -')
+            print(f'\n- TICKET {n} -')
 
             bet, city, numbers = Lotto.get_input()
             ticket = Ticket(bet, numbers, city, n)                      

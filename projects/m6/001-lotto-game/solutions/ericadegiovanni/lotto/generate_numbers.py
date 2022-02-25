@@ -14,9 +14,9 @@ class TicketNumbers:
         if num.isdigit():
             if 0 < int(num) < 11:
                 return sample([n for n in range(1, 91)], int(num)) 
-            else:
-                print(f'{num} is not valid.')
-                raise ValueError
+        else:
+            print(f'{num} is not valid.')
+            raise ValueError
         
            
     @staticmethod
