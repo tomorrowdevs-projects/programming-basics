@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>replit</title>
+
+</head>
+
+<body>
+    <input type="file" id="fileinput">
+    <script>
+        // Task: Write a program that detects repeated words in a text file. 
+        // When a repeated word is found your program should display a message that contains the line number and the repeated word.
+        // Ensure that your program correctly handles the case where the same word appears at the end of one line and the beginning of the following line.
+        
+        // Promise that reads a file as text
+        function readFileAsText(file) {
+            return new Promise(function (resolve, reject) {
+                let reader = new FileReader();
+
+                reader.onload = function () {
+                    resolve(reader.result);
+                };
+
+                reader.onerror = function () {
+                    reject(reader);
+                };
+
+                reader.readAsText(file);
+            });
+        }
+
+        // Handle file upload (File to import: Prova7.txt)
+        document.getElementById("fileinput").addEventListener("change", function (e) {
+            
+            let file = e.currentTarget.files[0];
+
+            readFileAsText(file).then((fileContent) => {
+                
+                // Deletes punctuation marks from text and splits it in an array of lines
+                const lines = fileContent.toLowerCase().replace(/[.,\/#!$%\^&\*;:{}=\-_`~()\r]/g, "").split("\n");
+
+                // Creates a new array with a sub-array of words for each line and deletes the empty string
+                const wordsList = lines.map(line => line.split(" ").filter(item => item !== ""));
+
+                // Looks for a repeated word in a single line
+                let lineCounter = 0;
+                for (let line of wordsList) {
+                    lineCounter += 1;
+                    line.forEach((word, index) => {
+                        if (word === line[index + 1]) {
+                            console.log(`Repeated word: "${word}"`);
+                            console.log(`Line number: ${lineCounter}`);
+                        }
+                    }) // end forEach
+                } // end for..of
+
+                // Looks for a repeated word at the end of one line and at the beginning of the following line
+                lineCounter = 0;
+                for (let line of wordsList) {
+                    lineCounter += 1;
+                    if (line[line.length - 1] === wordsList[lineCounter][0]) {
+                        console.log(`Same word at the end of one line and at the beginning of the following line: "${line[line.length - 1]}"`);
+                        console.log(`Lines number: ${lineCounter} and ${lineCounter + 1}`);
+                    }
+                } // end for..of
+
+                // Uncaught (in promise) TypeError: Cannot read properties of undefined (reading '0') at script.js:50:55
+
+            }); // end then
+        }, false); // end event
+    
+    </script>
+</body>
+
+</html>
