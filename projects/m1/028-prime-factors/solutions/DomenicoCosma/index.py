@@ -4,7 +4,7 @@ factor = 2
 if num < factor:
     print('Your number have to be greater then 1')
 else:
-    print('The prime factors of 72 are:')
+    print(f'The prime factors of {num} are:')
 while factor <= num:
         if num % factor == 0:
             num /= factor
