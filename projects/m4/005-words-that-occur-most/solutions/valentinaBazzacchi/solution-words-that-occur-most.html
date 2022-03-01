@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Word that Occur Most</title>
+</head>
+
+<body>
+    <input type="file" onchange="readFile(this)">
+    <script>
+        // Task: Display the words that occur most frequently in a file
+        // File to import: "Prova3.txt"
+        function readFile(input) {
+
+            const file = input.files[0];
+
+            const reader = new FileReader();
+
+            // Reads the input file as a text
+            reader.readAsText(file);
+
+            reader.onload = function () {
+                // Regular Expression matches a single character not present in the range a-z
+                // g = global / all matches (don't return after first match)
+                // i = case insensitive
+                const regexp = /[^a-z]+/gi;
+
+                // Turns the string (this.result) to uppercase and splits it into an array
+                const list = this.result.toUpperCase().split(" ");
+
+                // Matches each elements of the array with a regular expression 
+                // to replace the punctuation marks with a white space
+                // --> the result is an array of words without punctuation marks
+                const noMarks = list.map((elem) => {
+                    return elem.replace(regexp, " ").split(" ");
+                })
+
+                // Flats the sub-arrays and deletes the empty strings 
+                const words = noMarks.flat().filter((elem) => {
+                    return elem != "";
+                })
+
+                // Create an object that maps all the words in the text and their frequency
+                const wordsFreq = {};
+
+                // Loops trougth the array of words...each word becomes a key of the object
+                words.forEach((key) => {
+                    // If obj[key] is undefined (false) it is assigned the value 1
+                    // otherwise if it already has a value it is increased by one
+                    // In this way, each key (word) is assigned its frequency value
+                    wordsFreq[key] = wordsFreq[key] ? wordsFreq[key] + 1 : 1;
+                })
+
+                // Displays the words that occur most frequently in a file (freq > 2)
+                for (let key in wordsFreq)
+                    if (wordsFreq[key] > 2) {
+                        console.log(`Word: ${key} - Frequency: ${wordsFreq[key]}`);
+                    }
+            }; // end function "reader.onload"
+        } // end function "readFile"
+
+    </script>
+</body>
+
+</html>
