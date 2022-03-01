@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Most Births in a given Time Period(Promise)</title>
+</head>
+
+<body>
+    <input type="file" id="fileinput" multiple>
+    
+    <script>
+        // Task: display the boy’s name and the girl’s name given 
+        // to the most children during the years indicated by user
+
+        // Promise that reads a file as text
+        function readFileAsText(file) {
+            return new Promise(function (resolve) {
+
+                const reader = new FileReader();
+
+                reader.onload = function () {
+                    resolve(reader.result);
+                };
+
+                reader.readAsText(file);
+            });
+        }
+
+        // Handle multiple file uploads (import from the folder "names")
+        document.getElementById("fileinput").addEventListener("change", function (e) {
+            
+            let files = Array.from(e.currentTarget.files);
+
+            // Asks user the first and last years of the range to analyze 
+            const firstYear = prompt("Enter the first year of the range to analyze");
+            const lastYear = prompt("Enter the last year of the range to analyze");
+
+            let startIndex, endIndex;
+
+            // Gets the index of the files whose name contains the year entered by the user
+            files.forEach((file, index) => {
+                if (file.name.includes(firstYear)) startIndex = index;
+                if (file.name.includes(lastYear)) endIndex = index;
+            }) // end forEach
+
+            // Slices the list of files from the start year to the last year 
+            const filesList = files.slice(startIndex, endIndex + 1);
+
+            let readers = [];
+
+            // Store promises in array
+            for (let i = 0; i < filesList.length; i++) {
+                readers.push(readFileAsText(filesList[i]));
+            }
+
+            // Trigger Promises
+            Promise.all(readers).then((values) => {
+                // Values will be an array that contains an item
+                // with the text of every selected file
+                // ["File1 Content", "File2 Content" ... "FileN Content"]
+
+                // From that array...
+                // Gets an array of lists, each containing: 
+                // 0: name, 1: gender, 2: freq
+
+                const regex = /\S+/g
+
+                const rows = values.join().split("\n").map((row) => {
+                    return row.split(",").filter(item => item.match(regex));
+                }); // filter the white space by matching regex
+
+                // Create two objects "female" and "male":
+                // key: name, value: freq (max value)
+                const female = {};
+                const male = {};
+
+                rows.forEach((row) => {
+
+                    const name = row[0];
+                    const gender = row[1];
+                    const freq = parseInt(row[2]); // Deletes "\r"
+
+                    // Conditions for "female"
+                    if (gender === "F") {
+                        // If the property doesn't exist...
+                        if (!female[name]) {
+                            // ...assigns the frequency value
+                            female[name] = freq;
+                        // If the property already exists...
+                        } else if (female[name] && female[name] < freq) {
+                            // ...assigns the highest value among the freq	
+                            female[name] = freq;
+                        }
+
+                    // Conditions for "male"
+                    } else if (gender === "M") {
+                        if (!male[name]) {
+                            male[name] = freq;
+                        } else if (male[name] && male[name] < freq) {
+                            male[name] = freq;
+                        }
+                    }
+                }) // end forEach
+
+                // For each object gets a list of its values ​​and finds the highest one
+                const maxFemaleFreq = Math.max(...Object.values(female));
+                const maxMaleFreq = Math.max(...Object.values(male));
+
+                // Displays the results
+                for (name in female) {
+                    if (maxFemaleFreq === female[name]) {
+                        alert(`The girl’s name given to the most children during the indicated years is ${name}.`)
+                    }
+                }
+
+                for (name in male) {
+                    if (maxMaleFreq === male[name]) {
+                        alert(`The boy’s name given to the most children during the indicated years is ${name}.`)
+                    }
+                }
+
+            }) // end Promise.all
+        }, false);
+    
+    </script>
+</body>
+
+</html>
