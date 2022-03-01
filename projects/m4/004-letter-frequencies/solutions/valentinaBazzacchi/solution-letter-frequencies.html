@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Letter Frequency</title>
+</head>
+
+<body>
+    <input type="file" onchange="readFile(this)">
+    <script>
+
+        // Task: Determine and display the frequencies of all of the letters in a file
+        // File to import: "Prova3.txt"
+        function readFile(input) {
+
+            const file = input.files[0];
+
+            const reader = new FileReader();
+
+            // Reads the input file as a text
+            reader.readAsText(file);
+
+            reader.onload = function () {
+                // Regular Expression that matches a single character in the range between A and Z 
+                // g = global / all matches (don't return after first match)
+                const regexp = /[A-Z]/g;
+                
+                // Turns the string (this.result) to uppercase and matches it with a regular expression
+                // --> the result is an array with only the letters of the text 
+                const letters = this.result.toUpperCase().match(regexp);
+                console.log(letters);
+                
+                // Initializes an object that maps all characters in the text and their frequency
+                const lettersFreq = {};
+                
+                // Loops trougth the array of letters...each letter becomes a key of the object
+                letters.forEach((key) => {
+                    // If obj[key] is undefined (false) it is assigned the value 1
+                    // otherwise if it already has a value it is increased by one
+                    // In this way, each key (letter) is assigned its frequency value
+                    lettersFreq[key] = lettersFreq[key] ? lettersFreq[key] + 1 : 1;
+                })
+
+                // Displays the frequencies of all of the letters in a file
+                for (let key in lettersFreq)
+                    console.log(`Letter: ${key} - Frequency: ${lettersFreq[key]}`);
+
+            }; // end function "reader.onload"
+        } // end function "readFile"
+
+    </script>
+
+</body>
+
+</html>
