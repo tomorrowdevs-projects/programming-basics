@@ -12,13 +12,23 @@ def message(text):
          if text[0] != '':
              text[0] = text_list[0].upper()
          if text[n] == 'i' and text[n + 1] == '?' and text[n - 1] == ' ':
-                text[n] = str(text_list[n]).upper()
-         elif text[n] == '?' or text[n] == '!' or text[n] == '.':
-                text[n + 2] = str(text[n + 2]).upper()
+                text[n] = text_list[n].upper()
+         elif text[n] == '?' and text[n + 1] == ' ':
+                text[n + 2] = text[n + 2].upper()
+         elif text[n] == '!' and text[n + 1] == ' ':
+                text[n + 2] = text[n + 2].upper()
+         elif text[n] == '.' and text[n + 1] == ' ':
+                text[n + 2] = text[n + 2].upper()
+         elif text[n] == '?' and text[n + 1] != '':
+                text[n + 1] = text[n + 1].upper()
+         elif text[n] == '!' and text[n + 1] != '':
+                text[n + 1] = text[n + 1].upper()
+         elif text[n] == '.' and text[n + 1] != '':
+                text[n + 1] = text[n + 1].upper()
          elif text[n] == 'i' and text[n - 1] == ' ' and text[n + 1] == ' ':
-                text[n] = str(text[n]).upper()
+                text[n] = text[n].upper()
          elif text[n] == 'i' and text[n + 1] == '\'':
-                text[n] = str(text[n]).upper()
+                text[n] = text[n].upper()
 
 message(text_list)
 
