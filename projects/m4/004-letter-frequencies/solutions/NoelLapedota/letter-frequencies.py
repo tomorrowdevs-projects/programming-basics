@@ -17,7 +17,7 @@ try:
                 list['letter'] = +1
                 count =+ 1
     for x , y in list.items():   
-     print(f'The Letter{x} is present in the file {y} , and Frequency is : {round((y/count)*100, 2)}%")\n The text has {count} words ')
+     print(f'The Letter{x} is present in the file {y} times , and Frequency is : {round((y/count)*100, 2)}%")\n The text has {count} words ')
 
 except FileNotFoundError:
         print('Error')
