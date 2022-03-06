@@ -10,11 +10,11 @@ try:
     for word in  f.red():
         for  letter in word:
             letter = letter.lower()
-            if letter not in list and letter.isalpha():
+           if letter not in list and letter.isalpha() == True:
                 list['letter'] = 1
                 count =+ 1
-            else:
-                list['letter'] = +1
+            elif letter in list:
+                list[letter] += 1
                 count =+ 1
     for x , y in list.items():   
      print(f'The Letter{x} is present in the file {y} times , and Frequency is : {round((y/count)*100, 2)}%")\n The text has {count} words ')
