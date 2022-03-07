@@ -1,6 +1,7 @@
 #   I used a file with many adjectives in English
 import sys
-import random 
+import random
+from tkinter import END 
 list=[]
 if len(sys.argv) < 1:
    print('The command line argument is omitted.')  
@@ -15,7 +16,12 @@ else:
         # password creation
       first = random.randint(1, len(list))
       second = random.randint(1, len(list))
-      print(f'Password is: {list[first]}{list[second]}')
+      password = list[first] + list[second]
+      while len(password) < 8 or len(password) > 10:
+        password = list[first]+list[second]
+   
+      print(password)
+     
     
     except FileNotFoundError:
         print('Error')
