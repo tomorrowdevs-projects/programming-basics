@@ -42,6 +42,9 @@ class Printer:
 
 
     def print_extraction(extraction):
+
+        # Create the extraction table
+
         extr = Lotto.extraction
         city_column_len = max([len(city) for city in extr.keys()])
 
@@ -58,10 +61,19 @@ class Printer:
         print(table)
         
 
-    def print_winner():
-        print('you win')
-        pass
+    def print_winning_tickets():
+        print('Results:')
+
+        if len(Lotto.winning_tickets) > 0:
+            
+            for tk in Lotto.winning_tickets:
+                print(f'\n- TICKET {tk.ticket_number} WINS - ')
+                print(Printer.print_ticket(tk))
+                for message in tk.winning_message:
+                    print(message)
+        else:
+            print('You Lost :(\n')
+        
+        
     
-    def print_loser():
-        print('you lose')
-        pass
+   

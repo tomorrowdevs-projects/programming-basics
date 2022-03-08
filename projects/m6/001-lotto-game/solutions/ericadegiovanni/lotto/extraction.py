@@ -14,7 +14,8 @@ class Extraction:
         extraction = {}
         
         for city in total_cities:
-            extraction[city] = sample(range(1,91), k=5)
+            if city != 'tutte':
+                extraction[city] = sample(range(1,91), k=5)
            
         #print(extraction)
         return extraction

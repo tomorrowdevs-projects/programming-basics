@@ -3,15 +3,18 @@ from lotto.printer import Printer
 
 def main():
 
-    # Starting point
+    # Part 1
     tot_bills = Lotto.arg_parser()
     Lotto.tk_creation(tot_bills)
     Printer.print_all_tickets()
 
     # Part 2 lotto extraction
     Lotto.make_extraction()
-    Printer.print_extraction(Lotto.extraction)    
-
+    Printer.print_extraction(Lotto.extraction)  
+    Lotto.check_winning_ticket()  
+    Printer.print_winning_tickets()
+    
+    
 
 
     
