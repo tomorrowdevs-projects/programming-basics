@@ -6,10 +6,11 @@ def main():
     # Starting point
     tot_bills = Lotto.arg_parser()
     Lotto.tk_creation(tot_bills)
-
     Printer.print_all_tickets()
 
-    
+    # Part 2 lotto extraction
+    Lotto.make_extraction()
+    Printer.print_extraction(Lotto.extraction)    
 
 
 

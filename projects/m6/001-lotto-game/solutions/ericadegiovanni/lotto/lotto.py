@@ -2,14 +2,15 @@ from .ticket import Ticket
 from .bet import Bet
 from .generate_numbers import TicketNumbers
 from .cities import Cities
+from .extraction import Extraction
+
 import argparse
 
-'''
-parameter bill_numbers inserted by the user at the launch of the software from main with Lotto.arg_parser().
-'''
+
 class Lotto:
 
     all_tickets = []
+    
 
     @staticmethod
     def arg_parser():
@@ -64,10 +65,15 @@ class Lotto:
             bet, city, numbers = Lotto.get_input()
             ticket = Ticket(bet, numbers, city, n)                      
             Lotto.all_tickets.append(ticket)
-            
+                  
+
+    def make_extraction():
+    
+        extraction = Extraction.lotto_extraction()
+        Lotto.extraction = extraction
         
 
-    
+
 
 
 

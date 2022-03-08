@@ -40,3 +40,28 @@ class Printer:
         for ticket in Lotto.all_tickets:
             print(Printer.print_ticket(ticket))
 
+
+    def print_extraction(extraction):
+        extr = Lotto.extraction
+        city_column_len = max([len(city) for city in extr.keys()])
+
+        table = '\nEXTRACTION:\n+------------------------------+\n'  
+        for city, n_extr in extr.items():
+            r_city = city.capitalize().rjust(city_column_len)
+            
+            table += f'| {r_city} '
+            for n in n_extr: table += f' {n:02d} '
+            table += '|\n'
+
+        table += '+------------------------------+\n'  
+        
+        print(table)
+        
+
+    def print_winner():
+        print('you win')
+        pass
+    
+    def print_loser():
+        print('you lose')
+        pass
