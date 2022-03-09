@@ -22,21 +22,21 @@ else:
     # let's see if they respect the rule
 for word in ie_word:
  index = word.index('ie')
-if index -1 != 'c':
+ if index -1 != 'c':
     violate_the_rule.append(word)
-else:
+ else:
     follow_the_rule.append(word)    
 
 for word in ei_word:
-     index = word.index('ie')
-if index -1 != 'c':
+  index = word.index('ie')
+  if index -1 != 'c':
     violate_the_rule.append(word)
-else:
+  else:
     follow_the_rule.append(word) 
 
 print(violate_the_rule)
 print(follow_the_rule)
-print(f'the first is {len(violate_the_rule)}''long and the secondis' {len(follow_the_rule)})
+print(f'The first is  {len(violate_the_rule)} long and the second is {len(follow_the_rule)} long')
 
 
 
