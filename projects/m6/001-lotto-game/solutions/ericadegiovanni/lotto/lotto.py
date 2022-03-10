@@ -56,6 +56,7 @@ class Lotto:
         city = Cities.check_city()
 
         return bet, city, numbers
+    
 
     def tk_creation(bill_numbers):
         print(f"\n--------- LOTTO GAME ---------\nYou want to generate {bill_numbers} ticket{'' if bill_numbers == 1 else 's'}.")   
@@ -67,36 +68,37 @@ class Lotto:
             ticket = Ticket(bet, numbers, city, n)                      
             Lotto.all_tickets.append(ticket)
                   
-
+    
     def make_extraction():
     
         extraction = Extraction.lotto_extraction()
         Lotto.extraction = extraction
     
-
-    def check_winning_numbers(tk):
+    
+    def check_winning_numbers(tk, extraction):
 
         '''
         Check the matching numbers between ticket numbers and extractions:
+        (extraction = Lotto.extraction)
+
         return int if bet is a city name
         return dict if bet == 'tutte'
         '''
             
         if tk.city != 'tutte':
             winning_numbers = 0
-            extracted = Lotto.extraction[tk.city]
             for n in tk.nums:
-                if n in extracted: winning_numbers += 1
+                if n in extraction[tk.city]: winning_numbers += 1
             
             return winning_numbers
         
         else:
             winning_numbers = {}
 
-            for city in Lotto.extraction:
+            for city in extraction:
                 
                 for n in tk.nums:
-                    if n in Lotto.extraction[city]:
+                    if n in extraction[city]:
                         if city not in winning_numbers:
                             winning_numbers[city] = 1
                         else:
@@ -115,7 +117,7 @@ class Lotto:
         for tk in Lotto.all_tickets:
 
             bet = Bet.bet_types.index(tk.bet_type) + 1 
-            winning_numbers = Lotto.check_winning_numbers(tk)
+            winning_numbers = Lotto.check_winning_numbers(tk, Lotto.extraction)
 
             if type(winning_numbers) is int:
 

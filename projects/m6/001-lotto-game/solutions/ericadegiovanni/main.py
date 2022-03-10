@@ -15,9 +15,6 @@ def main():
     Printer.print_winning_tickets()
     
     
-
-
-    
 if __name__ == '__main__':
     main()
 

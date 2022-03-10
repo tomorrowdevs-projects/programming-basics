@@ -17,6 +17,8 @@ def suite():
     suite.addTest(TestTicket('test_ticket'))
     suite.addTest(TestLotto('test_arg_parser_wrong'))
     suite.addTest(TestLotto('test_arg_parser_correct'))
+    suite.addTest(TestLotto('test_check_winning_numbers'))
+    suite.addTest(TestLotto('test_check_winning_ticket'))
     suite.addTest(TestExtraction('test_lotto_extraction'))
     return suite
 

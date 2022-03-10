@@ -6,7 +6,7 @@ class TestTicket(unittest.TestCase):
     def setUp(self):
 
         self.bet_type = 'ambo'
-        self.nums = [1, 66, 43, 9]
+        self.nums = [1, 66, 43, 9, 8]
         self.city = 'bari'
 
     def test_ticket(self):
