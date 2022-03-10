@@ -1,24 +1,33 @@
 import sys 
-list={}
+import re
+dict={}
+list=[]
 if len(sys.argv) < 1:
-   print('The command line argument is omitted.')   
+   print('The command word argument is omitted.')   
 else:
+      # open the file and delete punctuation
  try:
    with open(sys.argv[1],'r') as f:
-    for word in f.read():
-        for letter in word:
-            letter = letter.lower()
-            if letter not in list and letter.isalpha() == True:
-                list[letter] = 1
-            else:
-                list[letter] = +1
-   sortedDict = sorted(list.items(), key=lambda x: x[1], reverse=True)
-   #for x , y in sortedDict:   
-     #print(f'The Letter{x} is present in the file {y} times ')
-   #print(letter)
-   print(letter)
+    for line in f:
+       line = re.sub(r'[^\w\s]','',line)
+       list_word =line.lstrip().rstrip().split()
+       for a in list_word:
+          list.append(a)
+    # with list we create a single list, otherwise it will unpack the text line   
+       for word in list:
+        word = word.lower()
+        print(word)
+        if word not in dict and word.isalpha() == True :
+              dict[word] = 1
+        else:
+              dict[word] += 1
+    print(dict)         
+   sortedDict = sorted(dict.items(), key=lambda x: x[1], reverse=True)
+   for x , y in sortedDict:  
+     x = x.upper() 
+     print(f'The word {x} is present in the file {y} times ')
+
  except FileNotFoundError:
         print('Error')
         
-   
-
+                    
