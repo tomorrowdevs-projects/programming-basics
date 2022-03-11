@@ -1,7 +1,7 @@
-const Category = require("./budget");
-const createSpendChart = require("./budget");
+const Category = require("./category");
+const createSpendChart = require("./create-spend-chart");
 
-const food = new Category("Food");
+const food = new Category("Food")
 food.deposit(1000, "initial deposit");
 food.withdraw(10.15, "groceries");
 food.withdraw(15.89, "restaurant and more food for dessert");
@@ -22,5 +22,5 @@ console.log(clothing);
 
 console.log(createSpendChart([food, clothing, auto]));
 
-module.export = food;
+
 
