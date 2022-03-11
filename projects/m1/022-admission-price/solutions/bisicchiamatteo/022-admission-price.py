@@ -21,6 +21,3 @@ while True:
             print("il valore inserito non � valdo")
 
 print ("il costo totale � : " + str (tot_ticket)+"$")
-    
-
-
