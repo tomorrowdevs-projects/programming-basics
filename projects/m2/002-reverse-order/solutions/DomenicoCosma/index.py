@@ -10,7 +10,7 @@ try:
             break
         else:
             num_list.append(num_request)
-    sort_list = sorted(num_list, reverse=True)                         # function to reverse the sort of the list
+    sort_list = sorted(num_list, reverse=True)                         #function to reverse the sort of the list
     for n in sort_list:
         print(n)
 
