@@ -26,6 +26,7 @@ try:
 
 
 
+
  max_min_val(num_list)
 except:
     print('You have to enter a integer number')
