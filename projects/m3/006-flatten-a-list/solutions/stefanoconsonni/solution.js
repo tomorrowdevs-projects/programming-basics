@@ -17,29 +17,32 @@
 
 function flattenList(arr) {
 	let l1, l2;
+	// Base case
 	if (arr.length === 0) {
 		return arr;
 	}
+	// Recursive case 1
 	if (Array.isArray(arr[0])) {
 		l1 = flattenList(arr[0]);
-		l2 = flattenList(arr.splice(1));
+		l2 = flattenList(arr.slice(1));
 		return l1.concat(l2);
 	}
+	// Recursive case 2
 	if (!Array.isArray(arr[0])) {
 		l1 = [].concat(arr[0]);
-		l2 = flattenList(arr.splice(1));
+		l2 = flattenList(arr.slice(1));
 		return l1.concat(l2);
 	}
 }
-
+// test 1
 const inputArr1 = [1, [2, 3], [4, [5, [6, 7]]], [[[8], 9], [10]]];
 console.log(flattenList(inputArr1)); // [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
-
+// test 2
 const inputArr2 = ["a", ["b", "c"], ["d", ["e", ["f", "g"]]], [[["h"], "i"], ["l"]]];
 console.log(flattenList(inputArr2)); // [ "a", "b", "c", "d", "e", "f", "g", "h", "i", "l" ]
-
+// test 3
 const inputArr3 = ["Monday", ["Tuesday", ["Wednesday", "Thursday", "Friday"], "Saturday", "Sunday"]];
 console.log(flattenList(inputArr3)); // ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-
+// test 4
 const inputArr4 = [];
 console.log(flattenList(inputArr4)); // []
