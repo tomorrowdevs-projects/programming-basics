@@ -1,4 +1,4 @@
-#    Per testare ho usato i file 1900-1901 ridimensionati,perchè troppo lunghi.
+#    Per testare ho usato i files 1900-1901 ridimensionati,perchè troppo lunghi.
 #    Non sono riuscito a trovare un' alternativa al ciclo while per unire più files-ci proverò più avanti
 #    cosi funziona,ma consuma troppe risorse. 
 #     File: names
