@@ -7,8 +7,8 @@ import os, re
 box = []
 rep_words = []
 count = 0
-
-with open('prova.txt','r') as f:
+try:
+ with open('prova.txt','r') as f:
   for line in f:
     count += 1
     out = re.sub(r'[^\w\s]','',line)
@@ -21,5 +21,6 @@ with open('prova.txt','r') as f:
         elif a  == box[-1]:
              rep_words.append(a)
              print(f'You have repeatued the word : {a} in line {count}')
-              
+except FileNotFoundError as err:
+    print(err)              
 
