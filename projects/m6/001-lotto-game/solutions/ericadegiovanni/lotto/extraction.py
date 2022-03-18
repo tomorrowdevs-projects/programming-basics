@@ -17,7 +17,7 @@ class Extraction:
             if city != 'tutte':
                 extraction[city] = sample(range(1,91), k=5)
            
-        #print(extraction)
+        
         return extraction
 
 
