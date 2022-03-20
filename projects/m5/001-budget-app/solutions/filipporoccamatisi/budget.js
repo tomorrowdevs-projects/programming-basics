@@ -6,7 +6,7 @@ class Category {
         this.ledger = [];
     }
     // formats the object when it is printed
-    [util.inspect.custom](depth, opts) {
+    [util.inspect.custom]() {
         // title :
         // *************title*************
         let title = this.name;
