@@ -1,6 +1,10 @@
 # This is a comment of source code pattern
 
 def containsUpperCase(password):
+    '''
+        This function return True or False if argument contains a upper case character
+    '''
+
     res = False
     for ele in password:
         # checking for uppercase character and flagging
@@ -10,6 +14,10 @@ def containsUpperCase(password):
     return res
 
 def containsLowerCase(password):
+    '''
+        This function return True or False if argument contains a lower case character
+    '''
+
     res = False
     for ele in password:
         # checking for uppercase character and flagging
@@ -19,7 +27,10 @@ def containsLowerCase(password):
     return res
 
 def passwordValidation(password):
-    # Code of function
+    '''
+        This function return True or False if argument meets all three requirements.
+    '''
+
     atleast8char =  len(password) > 7
     atleastOneUpperCase = containsUpperCase(password)
     atleastOneLowerCase = containsLowerCase(password)
@@ -28,7 +39,7 @@ def passwordValidation(password):
 
 
 def main():
-    # Call function to execute
+    # Call function main to execute
     print('The password must be at least 8 characters long, contain at least one uppercase and at least one lowercase')
     password = input('Insert a password ')
 
