@@ -4,6 +4,7 @@ from test.test_cities import TestCities
 from test.test_generate_numbers import TestGenerateNumbers
 from test.test_ticket import TestTicket
 from test.test_lotto import TestLotto
+from test.test_extraction import TestExtraction
 
 def suite():
     suite = unittest.TestSuite()
@@ -16,6 +17,9 @@ def suite():
     suite.addTest(TestTicket('test_ticket'))
     suite.addTest(TestLotto('test_arg_parser_wrong'))
     suite.addTest(TestLotto('test_arg_parser_correct'))
+    suite.addTest(TestLotto('test_check_bet'))
+    suite.addTest(TestLotto('test_matching_numbers'))
+    suite.addTest(TestExtraction('test_lotto_extraction'))
     return suite
 
 if __name__ == '__main__':

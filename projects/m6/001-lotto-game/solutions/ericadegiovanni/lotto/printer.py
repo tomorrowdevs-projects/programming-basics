@@ -2,6 +2,7 @@ from .lotto import Lotto
 
 '''
 Print the ticket with nice ascii art table decoration.
+Pint the extraction table
 
 example:
 +-------------------------------+----------+
@@ -40,3 +41,49 @@ class Printer:
         for ticket in Lotto.all_tickets:
             print(Printer.print_ticket(ticket))
 
+
+    def print_extraction(extraction):
+
+        # Create the extraction table
+
+        extr = Lotto.extraction
+        city_column_len = max([len(city) for city in extr.keys()])
+
+        table = '\nEXTRACTION:\n+------------------------------+\n'  
+        for city, n_extr in extr.items():
+            r_city = city.capitalize().rjust(city_column_len)
+            
+            table += f'| {r_city} '
+            for n in n_extr: table += f' {n:02d} '
+            table += '|\n'
+
+        table += '+------------------------------+\n'  
+        
+        print(table)
+        
+
+    def print_winning_tickets():
+
+        """ Print the winning ticket and a message countaining the name of the city"""
+        
+        print('Results:')
+              
+        for tk in Lotto.all_tickets:
+
+
+            if tk.victory:
+
+                print(f'\n- TICKET {tk.ticket_number} WINS - ')
+                print(Printer.print_ticket(tk))
+
+                for city in tk.victory:
+                    print(f'You made {tk.bet_type} on {city.capitalize()}!')
+
+            else:
+                print(f'- Ticket {tk.ticket_number} lost :( -')
+
+              
+        
+        
+    
+   

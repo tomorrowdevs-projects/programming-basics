@@ -9,6 +9,7 @@ class Ticket:
         self.nums = nums
         self.city = city
         self.ticket_number = ticket_number
+        
 
 
 
