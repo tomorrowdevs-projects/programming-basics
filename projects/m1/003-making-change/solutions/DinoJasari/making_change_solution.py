@@ -11,7 +11,7 @@ cash = float(input("Insert your cash "))
 change = (cash) - (tot_purchase)
 counter = 0
 
-# creare the cycle to divide the coins based on the change, an apply it on the coins
+# create the cycle to divide the coins based on the change, an apply it on the coins
 while toonie <= change:
     change = change - toonie
     counter = counter +1
