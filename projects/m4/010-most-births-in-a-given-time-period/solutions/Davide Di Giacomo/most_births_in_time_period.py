@@ -49,10 +49,10 @@ def main():
     #two lists: one containing the most popular names for boys and for girls.
     boys_list=[]
     girls_list=[]
-    # iterate through all file
+    #input the period
     year1=int(input("Insert a year between 1900 and 2012 to start an interval: "))
     year2=int(input("Insert a year between 1900 and 2012 to end an interval: "))
-    # Check whether file is in text format or not
+    # Check through each year with a loop
     for x in range (year1, year2+1):
         file=path+"yob"+str(x)+".txt"
         #call read text file function
