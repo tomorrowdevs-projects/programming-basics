@@ -11,7 +11,7 @@ class TicketNumbers:
     @staticmethod
     def get_number_input():
         num = input('Insert the amount of numbers to generate (MAX 10):\n')  
-        if num.isdigit() and int(num) < 90:
+        if num.isdigit() and int(num) < 11:
             if 0 < int(num) < 11:
                 return sample([n for n in range(1, 91)], int(num)) 
         else:

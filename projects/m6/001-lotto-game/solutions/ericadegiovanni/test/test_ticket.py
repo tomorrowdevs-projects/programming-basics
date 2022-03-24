@@ -1,11 +1,12 @@
 import unittest
 from lotto.ticket import Ticket
+from lotto.bet import Bet
 
 class TestTicket(unittest.TestCase):
 
     def setUp(self):
 
-        self.bet_type = 'ambo'
+        self.bet_type = Bet('ambo', 2.00)
         self.nums = [1, 66, 43, 9, 8]
         self.city = 'bari'
 

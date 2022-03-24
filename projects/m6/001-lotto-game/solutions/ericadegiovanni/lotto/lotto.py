@@ -1,9 +1,10 @@
+import itertools
 from .ticket import Ticket
 from .bet import Bet
 from .generate_numbers import TicketNumbers
 from .cities import Cities
 from .extraction import Extraction
-
+from itertools import combinations
 import argparse
 
 
@@ -13,6 +14,7 @@ class Lotto:
     winning_tickets = []
     
 
+    #### TICKET CREATION ####
     @staticmethod
     def arg_parser():
         '''
@@ -39,18 +41,22 @@ class Lotto:
        return bet, city, numbers after checking if there is a correct relation with each other
         '''
 
-        #create bet an nubers values
-        bet = Bet.check_bet()
+        # ask bet and money to create a Bet object
+        bet_input = Bet.check_bet()
+        money_input = Bet.check_money()
+        bet = Bet(bet_input, money_input)
+
+        # ask n amount to create the list of n random numbers
         numbers = TicketNumbers.check_number()
         
-        # check the correct relation between bet and numbers
+        # check the correct relation between bet and numbers asked
         check = False
 
         while check == False:
-            if Bet.bet_types.index(bet) + 1 > len(numbers):
+            if Bet.bet_types.index(bet.bet_type) + 1 > len(numbers):
                 print(f"You can't bet {bet} and play only {len(numbers)} number{'' if len(numbers) == 1 else 's'}\nPlease insert a correct bet.")
 
-                bet = Bet.check_bet()
+                bet = Bet()
                 numbers = TicketNumbers.check_number()   
             else: 
                 check = True
@@ -76,8 +82,10 @@ class Lotto:
             bet, city, numbers = Lotto.get_input()
             ticket = Ticket(bet, numbers, city, n)                      
             Lotto.all_tickets.append(ticket)
-                  
-    
+
+
+
+    #### EXTRACTION ####
     def make_extraction():
         """ Create extraction attribute in Lotto class"""
         
@@ -85,6 +93,7 @@ class Lotto:
         Lotto.extraction = extraction
 
 
+    #### CHECK WINNING COMBINATIONS ####
     def matching_numbers(extraction, city, tk) -> list:
         
         #return a list of the common numbers between the ticket and the city wheel
@@ -95,7 +104,7 @@ class Lotto:
 
         """
         Check if the amount of winning numbers correspond to the bet.
-        return a dict with winning cities(key): list of winning numbers(value).
+        return a dict with winning cities(key): winning combinations(value).
             
         """
         bets = {"ambata": 1, "ambo": 2, "terno": 3, "quaterna": 4, "cinquina": 5}
@@ -109,11 +118,12 @@ class Lotto:
             numbers = Lotto.matching_numbers(extraction, city, tk)
             
             if bet <= len(numbers):
+
                 if tk.city == city:
-                    winning_wheel[city]  = numbers
+                    winning_wheel[city]  = len(list(combinations(numbers, bet))) #AGGIUNGE TUTTI I NUMERI IN COMUNE !!COMBINAZIONI
                 elif tk.city == 'tutte':
-                    winning_wheel[city]  = numbers
-            
+                    winning_wheel[city]  = len(list(combinations(numbers, bet)))
+        
         return winning_wheel
     
      

@@ -2,9 +2,12 @@ import unittest
 import argparse
 from lotto.ticket import Ticket
 from lotto.lotto import Lotto
+from lotto.bet import Bet
 
 
 class TestLotto(unittest.TestCase):
+
+    
 
     def setUp(self):
         self.parser=argparse.ArgumentParser()
@@ -21,20 +24,20 @@ class TestLotto(unittest.TestCase):
                            'milano':[1, 3, 6, 77, 65],
                            'napoli': [3, 67, 43, 9, 12],
                            'palermo': [2, 77, 59, 14, 9],
-                           'roma':[1, 78, 54, 9, 47],
+                           'roma':[1, 78, 54, 9, 12],
                            'torino': [23, 44, 9, 16, 5],
                            'venezia': [1, 37, 55, 5, 6]
 
                            }
         
-        self.bet_type = 'ambo'
+        self.bet_type = Bet('ambo', 2.00) 
         self.nums = [12, 78, 43, 9, 8]
         self.losing_nums = [71, 13, 17, 7, 10]
         self.tutte = 'tutte'
         self.city = 'bari'
 
         self.ticket_city = Ticket(self.bet_type, self.nums, self.city, 1) # ambo on bari
-        self.ticket_tutte = Ticket(self.bet_type, self.nums, self.tutte, 2) # ambo on bari, terno on napoli, ambo on roma
+        self.ticket_tutte = Ticket(self.bet_type, self.nums, self.tutte, 2) # ambo on bari(1 comb), terno on napoli, ambo on roma(3 comb)
         self.ticket_losing = Ticket(self.bet_type, self.losing_nums, self.city, 3) # losing ticket
 
     def test_arg_parser_wrong(self):
@@ -61,15 +64,15 @@ class TestLotto(unittest.TestCase):
         
 
     def test_check_bet(self):
-       res1 = Lotto.check_bet(self.ticket_city, self.extraction) #ambo on bari
+       res1 = Lotto.check_bet(self.ticket_city, self.extraction) #ambo on bari 1 combination
        res2 = Lotto.check_bet(self.ticket_tutte, self.extraction) # ambo on tutte (bari, napoli, roma)
        res3 = Lotto.check_bet(self.ticket_losing, self.extraction) # losing ticket
 
        self.assertTrue('bari' in res1)
        self.assertTrue(len(res1) == 1)
-       self.assertTrue(len(res2) == 3)
+       self.assertTrue(res1['bari'] == 1)
+       self.assertTrue(res2['roma'] == 3)
        self.assertFalse(res3)
-
 
 
 

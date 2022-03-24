@@ -10,15 +10,21 @@ def suite():
     suite = unittest.TestSuite()
     suite.addTest(TestBet('test_get_bet_correct_input'))
     suite.addTest(TestBet('test_get_bet_wrong_input'))
+    suite.addTest(TestBet('test_get_money_input'))
+
     suite.addTest(TestCities('test_get_city_correct_input'))
     suite.addTest(TestCities('test_get_city_wrong_input'))
+
     suite.addTest(TestGenerateNumbers('test_get_number_wrong_input'))
     suite.addTest(TestGenerateNumbers('test_get_number_correct_input'))
+
     suite.addTest(TestTicket('test_ticket'))
+
     suite.addTest(TestLotto('test_arg_parser_wrong'))
     suite.addTest(TestLotto('test_arg_parser_correct'))
     suite.addTest(TestLotto('test_check_bet'))
     suite.addTest(TestLotto('test_matching_numbers'))
+
     suite.addTest(TestExtraction('test_lotto_extraction'))
     return suite
 
