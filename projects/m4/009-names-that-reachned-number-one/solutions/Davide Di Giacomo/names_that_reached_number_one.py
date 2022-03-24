@@ -28,9 +28,8 @@ def main():
     #two lists: one containing the most popular names for boys and for girls.
     boys_list=[]
     girls_list=[]
-    # iterate through all file
     year=input("Insert a year between 1900 and 2012 to find who was the most popular name: ")
-    # Check whether file is in text format or not
+    #find file in text format
     file=path+"yob"+year+".txt"
     # call read text file function
     read_name(file, boys_list, girls_list)
