@@ -1,4 +1,3 @@
-import itertools
 from .ticket import Ticket
 from .bet import Bet
 from .generate_numbers import TicketNumbers
@@ -68,7 +67,7 @@ class Lotto:
                 continue
 
             check_money = True
-            return check_money
+            return money_input
         
         
 
@@ -118,16 +117,6 @@ class Lotto:
 
         bets_list = Lotto.ask_bets(numbers)
         
-        '''
-        bet_input = Lotto.is_correct_bet(s, numbers)
-        
-        # ask money for that bet
-        money_input = Lotto.is_correct_money(a)
-        
-        
-        bet = Bet(bet_input, money_input)
-        #--------------------------------
-        '''
 
         return bets_list, city, numbers
     
@@ -166,11 +155,11 @@ class Lotto:
         return list(set(extraction[city]) & set(tk.nums))
         
         
-    def check_bet(tk, extraction) -> dict:
+    def check_bet_combinations(tk, extraction) -> dict:
 
         """
         Check if the amount of winning numbers correspond to the bet.
-        return a dict with winning 'bet'cities(key): winning combinations(value).
+        return a dict with winning 'bet'(key): winning combinations(value).
             
         """
         winning_wheel = {}
@@ -211,11 +200,12 @@ class Lotto:
         for tk in Lotto.all_tickets:
             
             # Define the victory (empty dict if no victory)
-            victory = Lotto.check_bet(tk, extraction)
+            victory = Lotto.check_bet_combinations(tk, extraction)
 
             # add to Ticket object victory informations
             if victory:
                tk.victory = victory 
+               Lotto.winning_tickets.append(tk)
             
 
     ############### CALCULATE PRIZE #################
@@ -226,27 +216,28 @@ class Lotto:
 
         prize = 0
         num = len(tk.nums)  # numbers played
-
-        for b in tk.bets_list:
-            money = b.money  # money put on the bet
-            print(money)
-            bet = Lotto.bets[b.bet_type]  # bet number
-
-            for v in tk.victory:
-                comb = tk.victory[v] # possible combinations won for that bet
-                prize += money * comb * Prizes.prizes[num - 1][bet - 1]
         
-            if tk.city == 'tutte':
-                prize /= Prizes.prize_tutte
+
+        for victory in tk.victory:
+            for b in tk.bets_list:
+
+                if victory == b.bet_type:
+                    prize += b.money * tk.victory[victory] * Prizes.prizes[num - 1][Lotto.bets[victory] - 1]
+
+
+        if tk.city == 'tutte':
+            prize /= Prizes.prize_tutte
 
         return prize
 
     def calc_net_prize(prize):
-        taxes = prize * 0.8
+        taxes = prize * 0.08
     
         return prize - taxes
 
-
+    def add_prize():
+        for tk in Lotto.winning_tickets: 
+            tk.prize = Lotto.calc_prize(tk)   
                         
 
 

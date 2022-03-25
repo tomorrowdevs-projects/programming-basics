@@ -71,9 +71,9 @@ class TestLotto(unittest.TestCase):
 
 
     def test_check_bet(self):
-       res1 = Lotto.check_bet(self.ticket_city, self.extraction) #ambo on bari 1 combination 5 numbers
-       res2 = Lotto.check_bet(self.ticket_tutte, self.extraction) # ambo on tutte: bari(1 comb), napoli(3 comb), roma(3 comb)
-       res3 = Lotto.check_bet(self.ticket_losing, self.extraction) # losing ticket
+       res1 = Lotto.check_bet_combinations(self.ticket_city, self.extraction) #ambo on bari 1 combination 5 numbers
+       res2 = Lotto.check_bet_combinations(self.ticket_tutte, self.extraction) # ambo on tutte: bari(1 comb), napoli(3 comb), roma(3 comb)
+       res3 = Lotto.check_bet_combinations(self.ticket_losing, self.extraction) # losing ticket
        self.assertTrue('ambo' in res1)
        self.assertTrue(len(res1) == 1)
        self.assertTrue(res1['ambo'] == 1)

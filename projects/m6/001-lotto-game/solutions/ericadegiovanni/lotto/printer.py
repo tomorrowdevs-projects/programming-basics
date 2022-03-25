@@ -29,7 +29,7 @@ class Printer:
         #add bets
         line3 = ''
         for b in ticket.bets_list:
-            line = f'| {b.bet_type.capitalize()}: {b.money}'
+            line = f'| {b.bet_type.capitalize()}: {b.money:.2f}€'
             line_len = len(line)
             
             line3 += f'{line}{"|".rjust(44 - line_len )}\n'
@@ -81,14 +81,15 @@ class Printer:
         for tk in Lotto.all_tickets:
 
 
+            print(tk.victory)
             if tk.victory:
 
                 print(f'\n- TICKET {tk.ticket_number} WINS - ')
                 print(Printer.print_ticket(tk))
 
-                for city in tk.victory:
-                    print(f'You made {tk.prize} on {city.capitalize()}!')
-
+                for _ in tk.victory:
+                    print(f'Gross prize: {tk.prize:.2f}€')
+                    print(f'Net prize: {Lotto.calc_net_prize(tk.prize):.2f}€')
             else:
                 print(f'- Ticket {tk.ticket_number} lost :( -')
 
