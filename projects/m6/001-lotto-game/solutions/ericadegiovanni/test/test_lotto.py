@@ -30,15 +30,17 @@ class TestLotto(unittest.TestCase):
 
                            }
         
-        self.bet_type = Bet('ambo', 2.00) 
+        self.bet_type = [Bet('ambo', 2.00)]
         self.nums = [12, 78, 43, 9, 8]
         self.losing_nums = [71, 13, 17, 7, 10]
         self.tutte = 'tutte'
         self.city = 'bari'
 
-        self.ticket_city = Ticket(self.bet_type, self.nums, self.city, 1) # ambo on bari
-        self.ticket_tutte = Ticket(self.bet_type, self.nums, self.tutte, 2) # ambo on bari(1 comb), terno on napoli, ambo on roma(3 comb)
+        self.ticket_city = Ticket(self.bet_type, self.nums, self.city, 1, {'bari': 1}) # ambo on bari
+        self.ticket_tutte = Ticket(self.bet_type, self.nums, self.tutte, 2, {'bari': 1, 'napoli': 3, 'roma': 3}) # ambo on bari(1 comb), terno on napoli, ambo on roma(3 comb)
         self.ticket_losing = Ticket(self.bet_type, self.losing_nums, self.city, 3) # losing ticket
+
+        
 
     def test_arg_parser_wrong(self):
         args = ['-n', '111']
@@ -62,17 +64,29 @@ class TestLotto(unittest.TestCase):
         self.assertTrue(len(res2) == 1)
         self.assertTrue(type(res1) == list)
         
+    def test_is_correct_bet(self):
+        self.assertTrue(Lotto.is_correct_bet('ambo', self.nums))
+        self.assertFalse(Lotto.is_correct_bet('terno', [22, 4]))
+
+
 
     def test_check_bet(self):
-       res1 = Lotto.check_bet(self.ticket_city, self.extraction) #ambo on bari 1 combination
-       res2 = Lotto.check_bet(self.ticket_tutte, self.extraction) # ambo on tutte (bari, napoli, roma)
+       res1 = Lotto.check_bet(self.ticket_city, self.extraction) #ambo on bari 1 combination 5 numbers
+       res2 = Lotto.check_bet(self.ticket_tutte, self.extraction) # ambo on tutte: bari(1 comb), napoli(3 comb), roma(3 comb)
        res3 = Lotto.check_bet(self.ticket_losing, self.extraction) # losing ticket
-
-       self.assertTrue('bari' in res1)
+       self.assertTrue('ambo' in res1)
        self.assertTrue(len(res1) == 1)
-       self.assertTrue(res1['bari'] == 1)
-       self.assertTrue(res2['roma'] == 3)
+       self.assertTrue(res1['ambo'] == 1)
+       self.assertTrue(res2['ambo'] == 7)
        self.assertFalse(res3)
+
+    def test_calc_prize(self):
+        res1 = Lotto.calc_prize(self.ticket_city)
+        res2 = Lotto.calc_prize(self.ticket_tutte)
+        print(res1,res2)
+        self.assertEqual(res1, 50)
+        self.assertEqual(res2, 35)
+        
 
 
 

@@ -11,7 +11,12 @@ def main():
     # Part 2 lotto extraction
     Lotto.make_extraction()
     Printer.print_extraction(Lotto.extraction)  
-    Lotto.define_tk_victory(Lotto.extraction)  
+    Lotto.define_tk_victory(Lotto.extraction)
+
+    for tk in Lotto.all_tickets: 
+        if tk.victory: 
+            Lotto.calc_prize()
+            
     Printer.print_winning_tickets()
     
     

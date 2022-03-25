@@ -8,7 +8,7 @@ example:
 +-------------------------------+----------+
 |             LOTTO             | Ticket 5 |
 +-------------------------------+----------+
-| Cinquina on Milano                       |
+| Wheel: Milano                            |
 | 22 55 66 45 34 23 67 34 56 45            |
 | (Giocata: 12,50)                         |
 +-------------------------------+----------+
@@ -20,21 +20,31 @@ class Printer:
 
         numbers = ''
         # find bet and city line length
-        line1 = len(f'| {ticket.bet_type} on {ticket.city}')
+        line1 = len(f'| Wheel: {ticket.city}')
         
         # find the numbers line length
         for n in ticket.nums: numbers += f'{n} '   
         line2 = len(f'| {numbers}')
+
+        #add bets
+        line3 = ''
+        for b in ticket.bets_list:
+            line = f'| {b.bet_type.capitalize()}: {b.money}'
+            line_len = len(line)
+            
+            line3 += f'{line}{"|".rjust(44 - line_len )}\n'
+        
         
         #create printable ticket
         res = ''
         res += '+-------------------------------+----------+\n'\
             f'|             LOTTO             | Ticket {ticket.ticket_number} |\n'\
              '+-------------------------------+----------+\n| '\
-            f'{ticket.bet_type.capitalize()} on {ticket.city.capitalize()}{"|".rjust(44 - line1 )}\n| '\
-            f'{numbers}{"|".rjust(44 - line2 )}\n'\
+            f'Wheel: {ticket.city.capitalize()}{"|".rjust(44 - line1 )}\n| '\
+            f'{numbers}{"|".rjust(44 - line2 )}\n{line3}'\
              '+------------------------------------------+'  
         return res               
+            #f'{ticket.bet_type.capitalize()} on {ticket.city.capitalize()}{"|".rjust(44 - line1 )}\n| '\
 
     
     def print_all_tickets():   
@@ -77,7 +87,7 @@ class Printer:
                 print(Printer.print_ticket(tk))
 
                 for city in tk.victory:
-                    print(f'You made {tk.bet_type} on {city.capitalize()}!')
+                    print(f'You made {tk.prize} on {city.capitalize()}!')
 
             else:
                 print(f'- Ticket {tk.ticket_number} lost :( -')

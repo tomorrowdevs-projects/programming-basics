@@ -34,7 +34,7 @@ class Bet:
     @staticmethod
     def get_money_input():
         money = float(input('Insert the amount of money for that bet:\n'))
-        if money >= 1:
+        if 200 >= money >= 1:
             return money
         else:
             print(f'Amount not valid.')

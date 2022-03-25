@@ -4,12 +4,15 @@ A ticket object with all the informations inserted by the user (bill_type, nums,
 
 class Ticket:
     
-    def __init__(self, bet, nums: list, city, ticket_number):
-        self.bet_type = bet.bet_type
-        self.money = bet.money
+    def __init__(self, bets_list, nums: list, city, ticket_number, victory={}):
+        #self.bet_type = bet.bet_type
+        #self.money = bet.money
+        self.bets_list = bets_list
         self.nums = nums
         self.city = city
         self.ticket_number = ticket_number
+        self.victory = victory
+        self.prize = 0
         
 
 

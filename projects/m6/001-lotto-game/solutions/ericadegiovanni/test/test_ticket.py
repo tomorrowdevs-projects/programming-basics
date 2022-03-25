@@ -6,15 +6,14 @@ class TestTicket(unittest.TestCase):
 
     def setUp(self):
 
-        self.bet_type = Bet('ambo', 2.00)
+        self.bets_list = [Bet('ambo', 2.00)]
         self.nums = [1, 66, 43, 9, 8]
         self.city = 'bari'
 
     def test_ticket(self):
-        ticket = Ticket(self.bet_type, self.nums, self.city, 1)
-        self.assertEqual(ticket.bet_type, 'ambo')
+        ticket = Ticket(self.bets_list, self.nums, self.city, 1)
+        self.assertTrue(type(ticket.bets_list) is list)
         self.assertTrue(type(ticket.nums) is list )
-        self.assertEqual(ticket.city, 'bari')
         
 
        

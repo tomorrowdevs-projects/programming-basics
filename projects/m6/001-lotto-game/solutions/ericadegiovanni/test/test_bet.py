@@ -3,7 +3,8 @@ from unittest.mock import patch
 from lotto.bet import Bet
 
 class TestBet(unittest.TestCase):
-
+    def setUp(self):
+        self.bet = Bet('ambo', 4)
 
     def test_get_bet_wrong_input(self):
 
@@ -26,7 +27,7 @@ class TestBet(unittest.TestCase):
             with self.assertRaises(ValueError):
                 Bet.get_money_input() 
 
-        with patch('builtins.input', return_value= -1):
+        with patch('builtins.input', return_value= 300):
             with self.assertRaises(ValueError):
                 Bet.get_money_input() 
         
