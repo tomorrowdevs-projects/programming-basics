@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta>
+    </head charset= "utf-8">
+    <title>REVERSE ORDER</title>
+    <body>
+        
+    </body>
+</html>
+
+<script>
+    const numberList = [];
+    numberList [0] = prompt ("Give me a number");
+    let i = numberList.length;
+    for (numberList [i-1]; i++;) {
+        numberList [i] = prompt ("Give me another number")
+        if (numberList [i] == 0) {
+            numberList.pop();
+            numberList.sort (function(a,b){return b - a});
+            alert (numberList.join ('\r\n'));
+            break;
+        }
+        
+
+    }
+
+</script>
