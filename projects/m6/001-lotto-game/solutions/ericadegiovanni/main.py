@@ -10,10 +10,10 @@ def main():
 
     # Part 2 lotto extraction
     Lotto.make_extraction()
-    Printer.print_extraction(Lotto.extraction)  
+    Printer.print_extraction(Lotto.extraction)
+    Lotto.define_tk_victory()
     
     #part 3
-    Lotto.define_tk_victory(Lotto.extraction)
     Lotto.add_prize()
     Printer.print_winning_tickets()
     

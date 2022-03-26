@@ -32,10 +32,5 @@ class TestBet(unittest.TestCase):
                 Bet.get_money_input() 
         
 
-        
-        
-
-
-
 if __name__ == '__main__':
     unittest.main()

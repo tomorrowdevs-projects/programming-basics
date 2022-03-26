@@ -11,16 +11,15 @@ class TicketNumbers:
     @staticmethod
     def get_number_input():
         num = input('Insert the amount of numbers to generate (MAX 10):\n')  
-        if num.isdigit() and int(num) < 11:
-            if 0 < int(num) < 11:
-                return sample([n for n in range(1, 91)], int(num)) 
+        if num.isdigit() and 0 < int(num) < 11:
+            return sample([n for n in range(1, 91)], int(num)) 
         else:
             print(f'{num} is not valid.')
             raise ValueError
         
            
     @staticmethod
-    def check_number() -> list[int]:
+    def ask_numbers() -> list[int]:
         while True:
             try:
                 numbers_2play = TicketNumbers.get_number_input()

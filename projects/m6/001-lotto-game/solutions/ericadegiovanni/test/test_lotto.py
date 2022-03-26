@@ -1,5 +1,6 @@
 import unittest
 import argparse
+from lotto.extraction import Extraction
 from lotto.ticket import Ticket
 from lotto.lotto import Lotto
 from lotto.bet import Bet
@@ -30,15 +31,17 @@ class TestLotto(unittest.TestCase):
 
                            }
         
-        self.bet_type = [Bet('ambo', 2.00)]
+        self.bets_list = [Bet('ambo', 2.00)]
+        self.bets_list2 = [Bet('ambo', 2.00), Bet('terno', 2.00)]
         self.nums = [12, 78, 43, 9, 8]
         self.losing_nums = [71, 13, 17, 7, 10]
         self.tutte = 'tutte'
         self.city = 'bari'
 
-        self.ticket_city = Ticket(self.bet_type, self.nums, self.city, 1, {'bari': 1}) # ambo on bari
-        self.ticket_tutte = Ticket(self.bet_type, self.nums, self.tutte, 2, {'bari': 1, 'napoli': 3, 'roma': 3}) # ambo on bari(1 comb), terno on napoli, ambo on roma(3 comb)
-        self.ticket_losing = Ticket(self.bet_type, self.losing_nums, self.city, 3) # losing ticket
+        self.ticket_city = Ticket(self.bets_list, self.nums, self.city, 1, {'ambo': 1}) # ambo on bari
+        self.ticket_tutte = Ticket(self.bets_list, self.nums, self.tutte, 2, {'ambo': 7}) # ambo on bari(1 comb), terno on napoli, ambo on roma(3 comb)
+        self.ticket_tutte2 = Ticket(self.bets_list2, self.nums, self.tutte, 2, {'ambo': 7, 'terno': 1}) # ambo on bari(1 comb), terno on napoli, ambo on roma(3 comb)
+        self.ticket_losing = Ticket(self.bets_list, self.losing_nums, self.city, 3) # losing ticket
 
         
 
@@ -55,11 +58,11 @@ class TestLotto(unittest.TestCase):
         res = self.parser.parse_args(args)
         tot_bills = res.n
         self.assertEqual(tot_bills, 2)
-
+    """
     def test_matching_numbers(self):
 
-        res1 = Lotto.matching_numbers(self.extraction,'bari', self.ticket_city) # ambo on bari
-        res2 = Lotto.matching_numbers(self.extraction,'torino', self.ticket_tutte) # ambata on bari, napoli, roma
+        res1 = Extraction.matching_numbers('bari', self.ticket_city) # ambo on bari
+        res2 = Extraction.matching_numbers('torino', self.ticket_tutte) # ambata on bari, napoli, roma
         self.assertTrue(len(res1) == 2)
         self.assertTrue(len(res2) == 1)
         self.assertTrue(type(res1) == list)
@@ -71,24 +74,24 @@ class TestLotto(unittest.TestCase):
 
 
     def test_check_bet(self):
-       res1 = Lotto.check_bet_combinations(self.ticket_city, self.extraction) #ambo on bari 1 combination 5 numbers
-       res2 = Lotto.check_bet_combinations(self.ticket_tutte, self.extraction) # ambo on tutte: bari(1 comb), napoli(3 comb), roma(3 comb)
-       res3 = Lotto.check_bet_combinations(self.ticket_losing, self.extraction) # losing ticket
+       res1 = Extraction.check_bet_combinations(self.extraction, self.ticket_city) #ambo on bari 1 combination 5 numbers
+       res2 = Extraction.check_bet_combinations(self.extraction,self.ticket_tutte) # ambo on tutte: bari(1 comb), napoli(3 comb), roma(3 comb)
+       res3 = Extraction.check_bet_combinations(self.extraction,self.ticket_losing) # losing ticket
        self.assertTrue('ambo' in res1)
        self.assertTrue(len(res1) == 1)
        self.assertTrue(res1['ambo'] == 1)
        self.assertTrue(res2['ambo'] == 7)
        self.assertFalse(res3)
+    """   
 
     def test_calc_prize(self):
         res1 = Lotto.calc_prize(self.ticket_city)
         res2 = Lotto.calc_prize(self.ticket_tutte)
-        print(res1,res2)
+        res3 = Lotto.calc_prize(self.ticket_tutte2)
+        self.assertEqual(res3, 125)
         self.assertEqual(res1, 50)
         self.assertEqual(res2, 35)
         
-
-
 
         
 if __name__ == '__main__':

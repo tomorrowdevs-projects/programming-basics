@@ -22,13 +22,12 @@ def suite():
 
     suite.addTest(TestLotto('test_arg_parser_wrong'))
     suite.addTest(TestLotto('test_arg_parser_correct'))
-    suite.addTest(TestLotto('test_check_bet'))
-    suite.addTest(TestLotto('test_matching_numbers'))
+    #suite.addTest(TestLotto('test_check_bet'))
     suite.addTest(TestLotto('test_calc_prize'))
     #suite.addTest(TestLotto('test_is_correct_bet'))
 
 
-    suite.addTest(TestExtraction('test_lotto_extraction'))
+   # suite.addTest(TestExtraction('test_lotto_extraction'))
     return suite
 
 if __name__ == '__main__':

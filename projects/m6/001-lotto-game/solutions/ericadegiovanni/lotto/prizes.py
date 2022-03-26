@@ -17,6 +17,7 @@ Num. ambata	 ambo	terno	quaterna	cinquina
 
 class Prizes:
 
+    bets = {"ambata": 1, "ambo": 2, "terno": 3, "quaterna": 4, "cinquina": 5}
     tax = 0.8
     prize_tutte = 10 # if city == tutte the prize is divided by 10
 
@@ -31,3 +32,26 @@ class Prizes:
               [1.24, 6.94, 53.57, 952.38, 47619.04],
               [1.12, 5.55, 37.50, 571.42, 23809.52]]
 
+    
+    def calc_prize(tk):
+
+        """Calculate the gross prize for a ticket"""
+
+        prize = 0 # prize counter
+        num = len(tk.nums)  # amount of numbers played
+        
+        for victory in tk.victory:
+
+            for b in tk.bets_list:
+                if victory == b.bet_type:
+                    prize += b.money * tk.victory[victory] * Prizes.prizes[num - 1][Prizes.bets[victory] - 1] # prize = moneyPlayed * betWon * table[numbersPlayed][betType]
+
+        if tk.city == 'tutte':
+            prize /= Prizes.prize_tutte
+
+        return prize
+
+    def calc_net_prize(prize):
+        taxes = prize * 0.08
+    
+        return prize - taxes
