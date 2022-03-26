@@ -1,3 +1,4 @@
+from lotto.check_victory import CheckVictory
 from .ticket import Ticket
 from .bet import Bet
 from .generate_numbers import TicketNumbers
@@ -17,10 +18,10 @@ class Lotto:
     # Terminal input handling
     @staticmethod
     def arg_parser():
-        '''
+        """
          Handle the insertion of the number of tickets desired by the user and check if they are correct.
          Return that number of tickets.
-        '''
+        """
 
         parser = argparse.ArgumentParser(description="Create Lotto bills")  
         parser.add_argument(
@@ -36,10 +37,10 @@ class Lotto:
     
     # get user input for the creation of the tickets
     def get_input(): 
-        '''
+        """
         ask the user informations (city, amount of numbers, bet(type of bet and money))
         return the parameters that will be used to create the ticket (bet_list, city, numbers)
-        '''
+        """
         # ask the wheel
         city = Cities.ask_city()
 
@@ -69,10 +70,9 @@ class Lotto:
             Lotto.all_tickets.append(ticket)
 
 
-
     # EXTRACTION 
     def make_extraction():
-        """ Create an extraction  attribute in Lotto class"""
+        """ Create an extraction attribute in Lotto class"""
 
         extraction = Extraction()
         Lotto.extraction = extraction
@@ -80,17 +80,17 @@ class Lotto:
 
     # CHECK WINNING COMBINATIONS 
     def define_tk_victory():
-        '''
+        """
         Create the tk.victory attibute for the class Ticket.
         if is a winning ticket append the victoy informations to the attribute Ticket.victory,
         else append an empty dictionary.
-        '''        
+        """   
 
         #Loop trough all the tikets
         for tk in Lotto.all_tickets:
             
             # Define the victory (empty dict if no victory)
-            victory = Lotto.extraction.check_bet_combinations(tk)
+            victory = CheckVictory.check_bet_combinations(Lotto.extraction.extraction, tk)
 
             # add to Ticket object victory informations
             if victory:
@@ -101,10 +101,11 @@ class Lotto:
     # CALCULATE PRIZE
     def add_prize():
 
-        """Calculate the prize for each winning ticket"""
+        """Calculate gross and net prizse for each winning ticket"""
 
         for tk in Lotto.winning_tickets: 
-            tk.prize = Prizes.calc_prize(tk)   
+            tk.prize_gross = Prizes.calc_prize(tk)   
+            tk.prize_net = Prizes.calc_net_prize(tk.prize_gross)
                         
 
 

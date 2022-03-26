@@ -3,7 +3,7 @@ from .lotto import Lotto
 
 '''
 Print the ticket with nice ascii art table decoration.
-Pint the extraction table
+print the extraction table and the victory
 
 example:
 +-------------------------------+----------+
@@ -45,7 +45,6 @@ class Printer:
             f'{numbers}{"|".rjust(44 - line2 )}\n{line3}'\
              '+------------------------------------------+'  
         return res               
-            #f'{ticket.bet_type.capitalize()} on {ticket.city.capitalize()}{"|".rjust(44 - line1 )}\n| '\
 
     
     def print_all_tickets():   
@@ -55,7 +54,7 @@ class Printer:
 
     def print_extraction(extraction):
 
-        # Create the extraction table
+        """Print the extraction table"""
 
         extr = Lotto.extraction
         city_column_len = max([len(city) for city in extr.extraction.keys()])
@@ -75,7 +74,7 @@ class Printer:
 
     def print_winning_tickets():
 
-        """ Print the winning ticket and a message containing the name of the city"""
+        """ Print the winning ticket and a message containing the amount of the victory"""
         
         print('Results:')
               
@@ -89,8 +88,8 @@ class Printer:
                 print(Printer.print_ticket(tk))
 
                 for _ in tk.victory:
-                    print(f'Gross prize: {tk.prize:.2f}€')
-                    print(f'Net prize: {Prizes.calc_net_prize(tk.prize):.2f}€')
+                    print(f'Gross prize: {tk.prize_gross:.2f}€')
+                    print(f'Net prize: {tk.prize_net:.2f}€')
             else:
                 print(f'- Ticket {tk.ticket_number} lost :( -')
 

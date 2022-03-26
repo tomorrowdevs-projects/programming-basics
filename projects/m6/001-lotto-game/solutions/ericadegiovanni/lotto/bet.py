@@ -14,8 +14,6 @@ class Bet:
         self.money = money
 
     # Bet input handling
-    
-    @staticmethod
     def get_bet_input():
         bet = input('Select a type of bill between AMBATA AMBO TERNO QUATERNA and CINQUINA:\n').lower()   
         if bet in Bet.bet_types:
@@ -24,7 +22,6 @@ class Bet:
             print(f'{bet} is not valid.')
             raise ValueError
 
-    @staticmethod
     def get_bet() -> str:
         while True:
             try: 
@@ -32,7 +29,6 @@ class Bet:
                 return bet            
             except ValueError: pass
 
-    @staticmethod
     def get_money_input():
         money = float(input('Insert the amount of money for that bet:\n'))
         if 200 >= money >= 1:
@@ -41,7 +37,6 @@ class Bet:
             print(f'Amount not valid.')
             raise ValueError
 
-    @staticmethod
     def get_money() -> float:
         while True:
             try: 

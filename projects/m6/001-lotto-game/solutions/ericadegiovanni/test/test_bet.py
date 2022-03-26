@@ -5,6 +5,7 @@ from lotto.bet import Bet
 class TestBet(unittest.TestCase):
     def setUp(self):
         self.bet = Bet('ambo', 4)
+        
 
     def test_get_bet_wrong_input(self):
 
@@ -31,6 +32,7 @@ class TestBet(unittest.TestCase):
             with self.assertRaises(ValueError):
                 Bet.get_money_input() 
         
+    
 
 if __name__ == '__main__':
     unittest.main()

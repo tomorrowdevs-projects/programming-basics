@@ -1,7 +1,9 @@
 import unittest
 from test.test_bet import TestBet
+from test.test_check_victory import TestCheckVictory
 from test.test_cities import TestCities
 from test.test_generate_numbers import TestGenerateNumbers
+from test.test_prizes import TestPrizes
 from test.test_ticket import TestTicket
 from test.test_lotto import TestLotto
 from test.test_extraction import TestExtraction
@@ -22,12 +24,13 @@ def suite():
 
     suite.addTest(TestLotto('test_arg_parser_wrong'))
     suite.addTest(TestLotto('test_arg_parser_correct'))
-    #suite.addTest(TestLotto('test_check_bet'))
-    suite.addTest(TestLotto('test_calc_prize'))
-    #suite.addTest(TestLotto('test_is_correct_bet'))
 
+    suite.addTest(TestExtraction('test_lotto_extraction'))
 
-   # suite.addTest(TestExtraction('test_lotto_extraction'))
+    suite.addTest(TestCheckVictory('test_matching_numbers'))
+    suite.addTest(TestCheckVictory('test_check_bet_combinations'))
+
+    suite.addTest(TestPrizes('test_calc_prize'))
     return suite
 
 if __name__ == '__main__':
