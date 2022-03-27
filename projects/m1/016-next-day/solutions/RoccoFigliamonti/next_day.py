@@ -33,7 +33,7 @@ month = int(input("Please insert the month: "))
 day = int(input("Please insert the day: "))
 
 leapyear = False
-if year % 400 == 0 or year % 100 == 0 or year % 4 == 0:
+if (year % 400 == 0 and year % 100 == 0) or (year % 4 == 0 and year % 100 !=0):
     leapyear = True
 
 if (month in month_30days and day>30) or \

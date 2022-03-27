@@ -6,7 +6,7 @@ another file.
 #uppercase char 65-90
 #lowecase chr 97-122
 
-def password_good(password):
+def password_good(password=""):
     password = set(password)
     uppercase = {chr(i) for i in range(65,91)}
     #print(uppercase)

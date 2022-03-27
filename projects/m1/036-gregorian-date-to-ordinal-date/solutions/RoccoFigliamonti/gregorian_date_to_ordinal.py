@@ -20,7 +20,7 @@ def date_conversion(day,month,year):
     if month == 1:
         return day #se è gennaio il numero di giorni passati è uguale al giorno della data inserita
     else:
-        if year % 400 == 0 or year % 100 == 0 or year % 4 == 0: #se è bisestile
+        if (year % 400 == 0 and year % 100 == 0) or (year % 4 == 0 and year % 100 !=0): #se è bisestile
             for i in range(1,month):
                 days_before_date.append(leap_year[i])
             total_days_before_date = sum(days_before_date) #fai la somma dei giorni trascorsi fino al 1o del mese della data
