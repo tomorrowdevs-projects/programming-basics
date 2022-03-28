@@ -101,7 +101,7 @@ class Lotto:
     # CALCULATE PRIZE
     def add_prize():
 
-        """Calculate gross and net prizse for each winning ticket"""
+        """Calculate gross and net prize for each winning ticket"""
 
         for tk in Lotto.winning_tickets: 
             tk.prize_gross = Prizes.calc_prize(tk)   

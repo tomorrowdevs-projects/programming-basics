@@ -80,16 +80,15 @@ class Printer:
               
         for tk in Lotto.all_tickets:
 
-
             print(tk.victory)
             if tk.victory:
 
                 print(f'\n- TICKET {tk.ticket_number} WINS - ')
                 print(Printer.print_ticket(tk))
 
-                for _ in tk.victory:
-                    print(f'Gross prize: {tk.prize_gross:.2f}€')
-                    print(f'Net prize: {tk.prize_net:.2f}€')
+                print(f'Gross prize: {tk.prize_gross:.2f}€')
+                print(f'Net prize: {tk.prize_net:.2f}€')
+                
             else:
                 print(f'- Ticket {tk.ticket_number} lost :( -')
 

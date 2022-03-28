@@ -10,7 +10,7 @@ class Ticket:
         self.city = city
         self.ticket_number = ticket_number
         self.victory = victory
-        self.prize = 0
+        
         
 
 
