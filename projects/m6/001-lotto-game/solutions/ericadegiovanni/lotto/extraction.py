@@ -1,13 +1,15 @@
 
 from random import sample
-
 '''
 Create a lotto extraction table
 '''
 
 class Extraction:
 
-    
+    def __init__(self):
+        self.extraction = self.lotto_extraction()
+        
+    @staticmethod
     def lotto_extraction():
 
         total_cities = ['bari', 'cagliari', 'firenze', 'genova', 'milano', 'napoli', 'palermo','roma', 'torino', 'venezia', 'tutte']
@@ -16,10 +18,8 @@ class Extraction:
         for city in total_cities:
             if city != 'tutte':
                 extraction[city] = sample(range(1,91), k=5)
-           
         
         return extraction
-
 
 
 

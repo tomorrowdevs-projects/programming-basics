@@ -3,7 +3,9 @@ from unittest.mock import patch
 from lotto.bet import Bet
 
 class TestBet(unittest.TestCase):
-
+    def setUp(self):
+        self.bet = Bet('ambo', 4)
+        
 
     def test_get_bet_wrong_input(self):
 
@@ -20,6 +22,17 @@ class TestBet(unittest.TestCase):
         with patch('builtins.input', return_value='ambo'):
             self.assertEqual(Bet.get_bet_input(),'ambo')
                 
+
+    def test_get_money_input(self):
+        with patch('builtins.input', return_value='tom'):
+            with self.assertRaises(ValueError):
+                Bet.get_money_input() 
+
+        with patch('builtins.input', return_value= 300):
+            with self.assertRaises(ValueError):
+                Bet.get_money_input() 
         
+    
+
 if __name__ == '__main__':
     unittest.main()

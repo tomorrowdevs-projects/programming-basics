@@ -19,7 +19,7 @@ class Cities:
             raise ValueError
 
     @staticmethod
-    def check_city() -> str:
+    def ask_city() -> str:
 
         while True:
             try:
