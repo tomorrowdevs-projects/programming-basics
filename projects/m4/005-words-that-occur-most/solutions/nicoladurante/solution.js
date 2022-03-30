@@ -55,16 +55,15 @@ function getWordThatOccursMost(evt) {
         (key) => wordsOccurencies[key] === maxOccurencies
       );
 
+      let wordsParagraph = document.getElementsByTagName("p")[0];
+
       //print result
-      document.getElementsByTagName("p")[0].innerText =
-        wordsMostOccured.join(", ");
+      wordsParagraph.innerText = wordsMostOccured.join(", ");
 
       if (maxOccurencies > 0) {
-        document.getElementsByTagName(
-          "p"
-        )[0].innerText += `\n occurs ${maxOccurencies} times`;
+        wordsParagraph.innerText += `\n occurs ${maxOccurencies} times`;
       } else {
-        document.getElementsByTagName("p")[0].innerText = `File is empty!`;
+        wordsParagraph.innerText = `File is empty!`;
       }
     } catch (err) {
       console.log(`${err.name}: ${err.message}`);
