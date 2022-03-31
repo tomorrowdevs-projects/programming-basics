@@ -7,7 +7,7 @@ while(value != 0) {
 
 if (value == 0) {
   values.pop();
-  values.sort((a,b)=>b-a)}
+  values.sort((a,b)=>a-b)}
 
 for (key of values) {
     alert(key)}
