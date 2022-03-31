@@ -7,5 +7,4 @@ let totalArea = roomWidth * roomLenght
 
 //utilizzo "alert" per dare messaggio all'utente
 
-
 alert ( 'the area of the room is ${totalArea} m²')
