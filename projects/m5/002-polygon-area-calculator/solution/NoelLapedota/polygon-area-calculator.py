@@ -1,5 +1,3 @@
-#   important! the results of the example are different from main - see the width of the rectangle -
-
 class Rectangle :
     
     def __init__(self, width, heigth):
@@ -22,21 +20,21 @@ class Rectangle :
         return (2 * self.width) + (2 * self.heigth)
 
     def get_diagonal(self):
-        return  (self.width ** 2 + self.heigth ** 2) ** .5  # the calculation is not correct but the formula is True, I don't know!
+        return  ((self.width ** 2 + self.heigth ** 2) ** .5)
 
     def get_picture(self):
         if self.width > 50 or self.height > 50:
            print("Too big for the picture")
         n_simbol = '*' * self.width
         for count in range (self.height):
-            print(n_simbol)
+            return n_simbol
 
     def get_amount_inside(self, shape):
         res = (self.width // shape.width) * (self.height // shape.height)
         return res
 
     def __str__(self):
-        return f'Rectangle(width={self.width}, height={self.heigth})'
+        return f'width: {self.width}\nheigth: {self.heigth}'
 
 
 
@@ -47,7 +45,7 @@ class Square(Rectangle):
             self.heigth = width
 
     def set_side(self, width):
-         return f' Square(side={width})'
+         return f' Square(side={width}'
             
     def set_width(self, width):
         self.width = width
@@ -58,4 +56,4 @@ class Square(Rectangle):
          return height
         
     def __str__(self):
-        f' Square(side={self.width})'
+        return f'width: {self.width}\nheigth: {self.heigth}'
