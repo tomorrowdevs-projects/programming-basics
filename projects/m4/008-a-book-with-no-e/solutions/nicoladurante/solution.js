@@ -1,3 +1,5 @@
+/*ASCII codes */
+
 const a_ASCII_CODE = 97;
 const z_ASCII_CODE = 122;
 
@@ -10,6 +12,8 @@ let aBookWithNoE = (file) => {
   reader.readAsText(file);
 
   reader.onload = (evt) => {
+    /* Read text file and filter words ignoring empty words 
+    and punctuation marks */
     let result = evt.target.result;
 
     let rows = result.split("\r\n").filter((v) => v != "");
@@ -18,8 +22,12 @@ let aBookWithNoE = (file) => {
 
     words = words
       .map((word) => word.toLowerCase())
-      .filter((v) => new RegExp(/[a-z0-9]/gi).test(v));
+      .filter((data) => new RegExp(/[a-z0-9]/gi).test(data));
 
+    /* Declare a new Set and populate it with couples 
+       { Letter: number of words with 0 or more occurences of this letter }
+       for each letter
+    */
     let charSet = new Set();
 
     for (let i = a_ASCII_CODE; i <= z_ASCII_CODE; i++) {
@@ -32,6 +40,7 @@ let aBookWithNoE = (file) => {
       charSet.add(entry);
     }
 
+    /* Declare a new Set of couples { Letter: proportion of word with this letter }*/
     let setWithProportions = new Set();
     let proportionsArray = [];
 
@@ -45,7 +54,10 @@ let aBookWithNoE = (file) => {
       }
     });
 
+    //get min value
     let minValue = Math.min(...proportionsArray);
+
+    /*Push every letter with smallest value in minLetters array*/
     let minLetters = [];
 
     for (let entry of setWithProportions) {
