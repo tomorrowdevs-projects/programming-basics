@@ -17,4 +17,3 @@ let totalseconds = Days * secondsforday + Hours * secondforhours + Minutes * sec
 
 alert(`The total number of second is: ${totalseconds}`)
 
-
