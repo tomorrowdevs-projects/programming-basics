@@ -2,6 +2,7 @@ from lotto_game.lotto import Lotto
 
 
 def chose_bills():
+    """ The function that asks the user how many tickets to generate """
     while True:
         try:
             chose_client = int(input("Chose how many bills do you want ot generate(from 1 to 5, 0 to exit):\n"))

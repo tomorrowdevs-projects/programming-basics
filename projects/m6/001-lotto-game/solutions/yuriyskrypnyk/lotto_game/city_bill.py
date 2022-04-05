@@ -1,4 +1,6 @@
 class CityBill:
+    """ The class that ask user to choose the city between: Bari, Cagliari, Firenze, Genova, Milano, Napoli,
+                     Palermo, Roma, Torino, Venezia, Tutte """
     @staticmethod
     def choose_city():
         city_list = ''

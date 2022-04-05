@@ -6,7 +6,8 @@ from .print_bill import PrintBIll
 
 
 class Lotto:
-
+    """ The class of business logic. That ask at user to input the type of bill, choose a number to generate, choose
+    the city, generate a numbers and print a bill """
     def __init__(self, bill):
         self.bill = bill
         self.list_print = []
@@ -15,7 +16,7 @@ class Lotto:
             print(f"The bill {i+1}")
             type_bill = TypeBill.type_of_bill()
 
-            choose_number = ChooseNumber.chose_of_number(type_bill)
+            choose_number = ChooseNumber.choose_of_number(type_bill)
 
             choose_city = CityBill.choose_city()
 

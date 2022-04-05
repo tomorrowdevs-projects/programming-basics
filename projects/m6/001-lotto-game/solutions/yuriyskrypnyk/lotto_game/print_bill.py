@@ -1,4 +1,5 @@
 class PrintBIll:
+    """ The class that print a bill in ascii art table decoration"""
     def __init__(self, bills):
         self.bills = bills
         self.printer_ticker(self.bills)

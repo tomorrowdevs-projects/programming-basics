@@ -1,4 +1,5 @@
 class TypeBill:
+    """ The class that ask a user to choose type of bill between: ambata, ambo, terno, quaterna, cinquina """
     def __init__(self, bill):
         self.bill = bill
 

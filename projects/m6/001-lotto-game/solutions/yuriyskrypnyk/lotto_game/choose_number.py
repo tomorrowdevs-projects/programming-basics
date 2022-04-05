@@ -1,7 +1,7 @@
 class ChooseNumber:
-
+    """ The class that asks the user to choose the number of numbers to generate """
     @staticmethod
-    def chose_of_number(type_of_bill):
+    def choose_of_number(type_of_bill):
         choose_number = 0
         bill = {'ambata': 1, 'ambo': 2, 'terno': 3, 'quaterna': 4, 'cinquina': 5}
         while True:
