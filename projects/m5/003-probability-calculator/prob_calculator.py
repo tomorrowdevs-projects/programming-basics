@@ -1,35 +1,39 @@
-import copy
 import random
+import copy
 
 class Hat:
-    
-    def __init__(self, **kwargs):
-        self.contents = []
-        for key, value in kwargs.items():
-            for x in range(value):
-                self.contents.append(key)
 
-    def draw(self, num_of_balls):
-        if num_of_balls > len(self.contents):
-            return self.contents
-        balls_drawed = []
-        for x in range(num_of_balls):
-            choice = random.choice(self.contents)
-            balls_drawed.append(choice)
-            self.contents.remove(choice)
-        return balls_drawed
-
+ def __init__(self, **kwargs):
+     self.contents = []
+     for key  , value in kwargs.items():
+         for x in range(value):
+            self.contents.append(key)
+         
+     
+     
+ def draw(self, number_of_balls):
+     balls_removed = []
+     if number_of_balls > len(self.contents):
+        return self.contennts
+     while len(self.contents) != 1:
+         ball = random.choice(self.contents)
+         self.contents.remove(ball)
+         balls_removed.append(ball)
+     return balls_removed
+   
+         
 def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
-    successes = 0
-    for x in range(num_experiments):
-        hat_cpy = copy.deepcopy(hat)
-        picked_balls = hat_cpy.draw(num_balls_drawn)
-        success = True
-        for key, value in expected_balls.items():
-            if picked_balls.count(key) < value:
-                success = False
-                break
-        if success:
-            successes += 1
+     m = 0
+     contents = []
+    # list of strings
+     for key  , value in expected_balls.items():
+         for x in range(value):
+            contents.append(key)
+           
+     for n in range(num_experiments):
+         new_hat = copy.deepcopy(hat)
+         exrract_balls = new_hat.draw(num_balls_drawn)
+         if len(contents) == 0:
+             m += 1
 
-    return successes / num_experiments
+     return  m / num_experiments   
