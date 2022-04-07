@@ -60,13 +60,13 @@ def total_set():
             if not check(flips):
                 flips.append(random.choice(coin))
                 count += 1
-            if check(flips):
-                output = " ".join(str(e) for e in flips)
+            else:
+                output = " ".join(flips)
                 print(output + " ({} flips)".format(count))
                 break
         tries.append(count)
         turn += 1
-    print("On average, {} flips were needed".format(str(sum(tries)/len(tries))))
+    print("On average, {} flips were needed".format(sum(tries)/len(tries)))
 
 
 
