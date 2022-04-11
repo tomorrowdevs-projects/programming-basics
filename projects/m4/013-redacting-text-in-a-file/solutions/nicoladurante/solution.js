@@ -25,14 +25,13 @@ int.question("\n$ ", (answer) => {
         //parse words file removing special car
         values[1] = values[1].replace(/[^a-zA-Z0-9 ]/g, " ");
         let words = values[1].split(" ").filter((w) => w != "");
-        console.log(words);
+
         for (let word of words) {
           values[0] = values[0].replaceAll(
             new RegExp(word, "gi"),
             getAsterisks(word.length)
           );
         }
-        console.log(values[0]);
 
         fs.writeFile(parameters[2], values[0], () => {
           console.log("File is written");
