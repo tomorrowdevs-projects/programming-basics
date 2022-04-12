@@ -24,7 +24,8 @@ function validWord(word) {
 
   let previousIndex = -1;
 
-  //check if previousCarIndex < newCarIndex
+  //check if the current letter is in the word and
+  // if the order of characters is correct
   while (carIndex > -1 && previousIndex < carIndex) {
     let position = carIndex + 1;
     //search if there are other occurrences of the same letter
