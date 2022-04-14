@@ -13,6 +13,6 @@ fetch(url)
 
 function firstLines(text, nLines) {
   text = text.split("\n");
-  let lines = text.slice(0,10)
+  let lines = text.slice(0,nLines)
   alert(lines)
 }
