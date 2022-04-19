@@ -1,11 +1,15 @@
 export class Bill {
-  numbers = [];
+  amountOfNumbers;
+  bet;
+  wheel;
 
-  constructor(numbers) {
-    this.numbers = numbers;
+  constructor(amount, bet, wheel) {
+    this.amountOfNumbers = amount;
+    this.bet = bet;
+    this.wheel = wheel;
   }
 
-  getNumbers = () => {
-    return this.numbers;
+  static getAmountOfNumbers = (amount) => {
+    return amount >= 1 && amount <= 10 ? Number(amount) : null;
   };
 }
