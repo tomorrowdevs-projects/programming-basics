@@ -42,7 +42,7 @@ for x in val_lis:
 l = 0
 while l < len(percent_lis):
     percentage[l + 2] = percent_lis[l]
-    l +=1
+    l += 1
 
 print(percentage)
 
