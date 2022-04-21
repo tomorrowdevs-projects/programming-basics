@@ -39,17 +39,10 @@ for x in val_lis:
 
 #append all the values to the dictionary 'percentage'
 
-percentage[2] = percent_lis[0]
-percentage[3] = percent_lis[1]
-percentage[4] = percent_lis[2]
-percentage[5] = percent_lis[3]
-percentage[6] = percent_lis[4]
-percentage[7] = percent_lis[5]
-percentage[8] = percent_lis[6]
-percentage[9] = percent_lis[7]
-percentage[10] = percent_lis[8]
-percentage[11] = percent_lis[9]
-percentage[12] = percent_lis[10]
+l = 0
+while l < len(percent_lis):
+    percentage[l + 2] = percent_lis[l]
+    l +=1
 
 print(percentage)
 
