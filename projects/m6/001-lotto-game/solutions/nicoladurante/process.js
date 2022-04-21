@@ -4,46 +4,58 @@ import { Bill } from "./model/bill.js";
 import { Wheel } from "./model/wheel.js";
 import { Ticket } from "./model/ticket.js";
 
-let view;
+let view = new View();
 
 export class Process {
-  billsNumber = 0;
-  currentStep = 1;
-  bills = [];
   constructor() {
-    view = new View();
-    this.processOperation();
+    this.startGame();
   }
 
-  processOperation = () => {
-    view.renderView(this.getTemplate());
+  /**
+   * Start a new game by init properties
+   * and renders the starter view
+   */
+  startGame = () => {
+    this.billsNumber = 0;
+    this.currentStep = 1;
+    this.bills = [];
+    this.updateUI();
   };
 
+  /**
+   * Check if bills number is a number from 1 to 5.
+   * If it is, store in class member, increment step and updateUI,
+   * else render errors in template
+   */
   setBillsNumber = () => {
-    let value = document.getElementById("billsNumber").value;
+    let value = parseInt(document.getElementById("billsNumber").value);
+    let error;
+
+    if (!value || isNaN(value)) {
+      error = new Error("The value must be a number");
+    }
+
+    if (value && (value < 1 || value > 5)) {
+      error = new Error("Number must be in the range 1 - 5");
+    }
 
     if (value >= 1 && value <= 5) {
       this.billsNumber = value;
       this.currentStep++;
     }
 
-    if (this.currentStep == 2) {
-      this.goToNextStep();
-    } else {
-      view.renderView(
-        view.errorTemplate("Number must be in the range 1 - 5"),
-        false
-      );
-    }
+    this.updateUI(error);
   };
 
   /**
-   * Initialize step2 with new template
+   * Update UI by getting the correct template and
+   * calling view.renderView
+   * method
    */
-  goToNextStep() {
-    let template = this.getTemplate();
+  updateUI = (error) => {
+    let template = error ? this.getErrorTemplate(error) : this.getTemplate();
     view.renderView(template);
-  }
+  };
 
   createBill = (index) => {
     let amount = document.querySelector(`#bill-${index}-amount`).value;
@@ -68,7 +80,7 @@ export class Process {
     }
 
     this.currentStep++;
-    this.goToNextStep();
+    this.updateUI();
   };
 
   getNumbersFrom1To90 = () => {
@@ -100,7 +112,7 @@ export class Process {
 
   printTickets = () => {};
 
-  getTemplate = () => {
+  getTemplate = (errors) => {
     let template;
 
     if (this.currentStep == 1) {
@@ -121,6 +133,26 @@ export class Process {
       template = view.generatingTicketTemplate(
         this.generateTickets(this.bills)
       );
+    }
+
+    /* if (errors) {
+      if (!Array.isArray(errors)) {
+        errors = [errors];
+      }
+      template = view.errorTemplate(template, errors);
+    }*/
+
+    return template;
+  };
+
+  getErrorTemplate = (errors) => {
+    let template = this.getTemplate();
+
+    if (errors) {
+      if (!Array.isArray(errors)) {
+        errors = [errors];
+      }
+      template = view.errorTemplate(template, errors);
     }
 
     return template;

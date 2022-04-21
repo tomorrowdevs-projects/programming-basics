@@ -9,21 +9,28 @@ export class View {
       document.getElementsByTagName("body")[0];
   }
 
-  renderView = (template, clearContainer = true) => {
+  /**
+   * Renders the template in the browser
+   * to create the game UI. If clearContainer is true
+   * clean the current UI.
+   * @param {HTMLElement} template
+   * @param {boolean} clearContainer
+   */
+  renderView(template, clearContainer = true) {
     if (clearContainer) {
       this.container.innerHTML = "";
     }
     this.container.append(template);
-  };
+  }
 
-  lottoTemplate = (action) => {
+  lottoTemplate(action) {
     let element = document.createElement("form");
     let label = document.createElement("label");
     label.innerText = "How many bills do you want to generate? (min 1 - max 5)";
     element.append(label);
     let inputElement = document.createElement("input");
     inputElement.setAttribute("id", "billsNumber");
-    inputElement.setAttribute("type", "number");
+    inputElement.setAttribute("type", "text");
     element.append(inputElement);
     let btnElement = document.createElement("button");
     btnElement.setAttribute("type", "button");
@@ -35,9 +42,9 @@ export class View {
     element.append(btnElement);
 
     return element;
-  };
+  }
 
-  askBetTypeAndAmountTemplate = (numberOfBills, action) => {
+  askBetTypeAndAmountTemplate(numberOfBills, action) {
     let element = document.createElement("form");
 
     for (let i = 1; i <= numberOfBills; i++) {
@@ -94,15 +101,27 @@ export class View {
     element.append(btnElement);
 
     return element;
-  };
+  }
 
-  generatingTicketTemplate = (action) => {
+  generatingTicketTemplate(action) {
     let element = document.createElement("div");
     element.textContent = "Generating tickets....";
     setTimeout(() => action, 3000);
-  };
+  }
 
-  errorTemplate = (error) => {
-    return `<div class='error'>${error}</div>`;
-  };
+  errorTemplate(template, errors) {
+    let errorsAsArray = errors;
+    let errorsContainer = document.createElement("div");
+    errorsContainer.setAttribute("class", "errors");
+
+    errorsAsArray.forEach((err) => {
+      let element = document.createElement("div");
+      element.textContent = err.message;
+      errorsContainer.appendChild(element);
+    });
+
+    template.prepend(errorsContainer);
+
+    return template;
+  }
 }
