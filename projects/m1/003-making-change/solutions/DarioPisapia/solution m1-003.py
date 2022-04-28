@@ -1,5 +1,4 @@
 #Making change
-
 cents = int(input("How many cents?\n"))
 
 value_chart = {
