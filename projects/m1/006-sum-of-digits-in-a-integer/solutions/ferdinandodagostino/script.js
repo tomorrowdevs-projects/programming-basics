@@ -2,6 +2,7 @@
 
 const num = parseInt(prompt('Digita un numero di quattro cifre'));
 
+//converto in stringa
 const newString = num.toString();
 
 const firstDigit = newString.slice(0, 1);
@@ -9,4 +10,10 @@ const secondDigit = newString.slice(1, 2);
 const thirdDigit = newString.slice(2, 3);
 const fourthDigit = newString.slice(3, 4);
 
-alert(`${firstDigit}+${secondDigit}+${thirdDigit}+${fourthDigit}`);
+const result =
+  parseInt(firstDigit) +
+  parseInt(secondDigit) +
+  parseInt(thirdDigit) +
+  parseInt(fourthDigit);
+
+alert(`${firstDigit}+${secondDigit}+${thirdDigit}+${fourthDigit} = ${result}`);
