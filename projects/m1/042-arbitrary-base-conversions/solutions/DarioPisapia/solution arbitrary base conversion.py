@@ -17,6 +17,8 @@ def conversion(number, base, goal_base):
     if base != 10:      
         if goal_base == 10:
             return x
+        elif goal_base == 16:
+            return hex(x)
         else:
             return numberToBase(x, goal_base)
     elif goal_base == 16:
