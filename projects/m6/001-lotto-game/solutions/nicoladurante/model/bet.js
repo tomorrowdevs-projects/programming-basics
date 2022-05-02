@@ -7,7 +7,19 @@ export class Bet {
     this.type = type;
   }
 
-  static getValue(value) {
-    return possibleValues.find((val) => val === value.toLowerCase());
+  isValid() {
+    return possibleValues.find((val) => val === this.type.toLowerCase());
+  }
+
+  static validate(betType) {
+    let errors = [];
+
+    if (!possibleValues.find((val) => val === betType.toLowerCase())) {
+      errors.push(
+        "TypeOfBill should be one of (ambata, ambo, terno, quaterna, cinquina"
+      );
+    }
+
+    return errors;
   }
 }

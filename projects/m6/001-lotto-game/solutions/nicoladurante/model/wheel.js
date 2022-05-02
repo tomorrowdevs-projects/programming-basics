@@ -19,7 +19,13 @@ export class Wheel {
     this.city = city;
   }
 
-  static getWheel(value) {
-    return cities.find((val) => val === value);
+  static validate(wheelCity) {
+    let errors = [];
+
+    if (!cities.find((val) => val === wheelCity)) {
+      errors.push("Wheel is invalid");
+    }
+
+    return errors;
   }
 }
