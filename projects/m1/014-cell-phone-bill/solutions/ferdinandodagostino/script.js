@@ -8,7 +8,6 @@ let textsExceeding = 0;
 const standardMinuteFare = 0.25;
 const standardTextFare = 0.15;
 const emergencyCallFare = 0.44;
-let salesTax;
 
 const userMinutes = parseFloat(prompt('Quanti minuti di chiamate?'));
 const userTexts = parseInt(prompt('Quanti messaggi?'));
