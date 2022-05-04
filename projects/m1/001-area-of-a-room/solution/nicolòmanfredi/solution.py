@@ -1,16 +1,14 @@
-x = float(input("Enter width * m"))
+x = float(input("Enter width"))
 
-y = float(input("Enter length * m"))
+y = float(input("Enter length"))
 
 # units = [str(value) + "m" for value in x]
 
 # units = [str(value) + "m" for value in y]
 
-z = "area of a room"
+z = "area of a room" + str(x * y)
 
-z = x * y
-
-print(z)
+print(str(z) + "m")
 
 
 
