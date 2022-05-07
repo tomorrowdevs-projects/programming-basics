@@ -14,16 +14,6 @@ def bingo_card():
         n2 += 15
     return card
 
-    card = bingo_card()
-    keys = list(card.keys())
-    for key in card:
-            print(key, end= "   ") 
-    print()   
-    for n in range(5): 
-        for num in range(5): 
-            x = 4 - len(str(card[keys[num]][n]))         
-            print(card[keys[num]][n], end= (x*" "))
-        print()
 def checkingWin(card):
     win = False
     keys = list(card.keys())
@@ -91,11 +81,9 @@ def statistics():
     stats = []
     for n in range(1000):
         stats.append(play())
-
     mininum = min(stats)
     maximum = max(stats)
     average = sum(stats)/len(stats)
-
     print(f"The miminum amount of calls was: {mininum}\nThe maximum amount of calls was: {maximum}\nThe averege number of calls was: {average:.2f}")
 
 if __name__ == "__main__":
