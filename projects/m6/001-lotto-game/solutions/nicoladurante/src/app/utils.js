@@ -9,7 +9,10 @@
 export const getFieldsValues = (selectors) => {
   if (!Array.isArray(selectors)) return [];
 
-  return selectors.map((selector) => document.querySelector(selector).value);
+  return selectors.map((selector) => {
+    const field = document.querySelector(selector);
+    return !!field ? field.value : null;
+  });
 };
 
 /**
@@ -20,7 +23,7 @@ export const getFieldsValues = (selectors) => {
  * @returns an array of numbers from minValue to maxValue
  */
 export const getNumbers = (minValue, maxValue) => {
-  let numbers = [];
+  const numbers = [];
 
   if (!Number(minValue) || !Number(maxValue)) {
     throw new Error(
@@ -31,4 +34,17 @@ export const getNumbers = (minValue, maxValue) => {
     numbers.push(i);
   }
   return numbers;
+};
+
+/**
+ * Return a string of &nbsp; spaces
+ * @param {number} num
+ * @returns a string of &nbsp; entities
+ */
+export const printSpaces = (num) => {
+  let str = "";
+  for (let i = 1; i <= num; i++) {
+    str += "&nbsp;";
+  }
+  return str;
 };

@@ -5,14 +5,12 @@ export class Ticket {
   amountOfNumbers;
   bet;
   wheel;
-  timestamp;
   numbers;
 
   constructor(amount, betType, wheelCity) {
     this.amountOfNumbers = amount;
     this.bet = new Bet(betType);
     this.wheel = new Wheel(wheelCity);
-    this.timestamp = Date.now();
     this.numbers = [];
   }
 
@@ -20,6 +18,13 @@ export class Ticket {
     this.numbers.push(value);
   }
 
+  /** Returns a new ticket object. If there are
+   *  validation errors throw an error
+   * @param {any} amount
+   * @param {any} betType
+   * @param {any} wheelCity
+   * @returns - a new Ticket object
+   */
   static constructTicket(amount, betType, wheelCity) {
     let errors = [
       ...Ticket.validate(amount),
@@ -34,6 +39,11 @@ export class Ticket {
     return new Ticket(amount, betType, wheelCity);
   }
 
+  /**
+   *
+   * @param {any} amount
+   * @returns - an array of validation errors
+   */
   static validate(amount) {
     let errors = [];
     let convertedAmount = Number(amount);

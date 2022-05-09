@@ -1,9 +1,8 @@
-import { Lotto } from "./lotto.js";
-import { View } from "./view.js";
-import { Ticket } from "./model/ticket.js";
-import { Bet } from "./model/bet.js";
-import { Wheel } from "./model/wheel.js";
-import * as utils from "./utils";
+import { Lotto } from "../app/lotto";
+import { View } from "../app/view";
+import { Ticket } from "../app/model/ticket";
+import { Bet } from "../app/model/bet";
+import { Wheel } from "../app/model/wheel";
 
 let lotto, view;
 let updateUI, renderViewSpy, renderErrorsSpy, assignActionToButton;
@@ -11,9 +10,12 @@ let updateUI, renderViewSpy, renderErrorsSpy, assignActionToButton;
 describe("lotto tests", () => {
   beforeAll(() => {
     lotto = new Lotto();
+
+    //init spies
     renderViewSpy = jest
       .spyOn(View.prototype, "renderView")
       .mockImplementation(() => {});
+
     renderErrorsSpy = jest
       .spyOn(View.prototype, "renderErrors")
       .mockImplementation(() => {});
@@ -25,14 +27,11 @@ describe("lotto tests", () => {
     updateUI = jest.spyOn(lotto, "updateUI");
   });
 
-  test("loadGame() should be init variables and call handleStep method passing setTicketsNumber function", () => {
-    //ARRANGE
+  test("loadGame() should be init variables and call updateUI method passing setTicketsNumber function", () => {
     const setTicketsSpy = jest.spyOn(lotto, "setTicketsNumber");
 
-    //ACT
     lotto.loadGame();
 
-    //ASSERT
     expect(lotto.ticketsNumber).toBe(0);
     expect(lotto.currentStep).toBe(1);
     expect(lotto.tickets).toBeInstanceOf(Array);
@@ -99,10 +98,7 @@ describe("lotto tests", () => {
         .spyOn(lotto, "handleErrors")
         .mockImplementation(() => {});
     });
-    describe("After a click on OK button", () => {
-      let spy, errorSpy;
-      let renderViewSpy, renderErrorsSpy;
-
+    describe("After a click on 'Next Step' button", () => {
       beforeEach(() => {
         lotto.loadGame();
 
@@ -170,7 +166,7 @@ describe("lotto tests", () => {
   });
 
   describe("askBetTypeAndAmount", () => {
-    describe("after a click on 'Next step' button", () => {
+    describe("after a click on 'Next Step' button", () => {
       describe("assuming ticketsNumber is equal to 1", () => {
         let constructTicket, handleErrors;
         let generateNumbers;

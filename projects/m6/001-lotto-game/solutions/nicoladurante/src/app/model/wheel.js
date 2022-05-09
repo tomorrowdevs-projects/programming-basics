@@ -19,6 +19,11 @@ export class Wheel {
     this.city = city;
   }
 
+  /**
+   *
+   * @param {any} wheelCity
+   * @returns - an array of validation errors
+   */
   static validate(wheelCity) {
     let errors = [];
 

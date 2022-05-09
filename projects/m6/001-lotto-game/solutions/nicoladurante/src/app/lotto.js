@@ -2,17 +2,17 @@ import { View } from "./view.js";
 import { getFieldsValues, getNumbers } from "./utils.js";
 import { Ticket } from "./model/ticket.js";
 
-let lotto;
-let view = new View();
-
 document.addEventListener("DOMContentLoaded", start);
 
 export class Lotto {
+  view;
   ticketsNumber;
   currentStep;
   tickets;
 
-  constructor() {}
+  constructor() {
+    this.view = new View();
+  }
 
   /**
    * Init variables and display the first step
@@ -34,13 +34,13 @@ export class Lotto {
    * @param {data} data
    */
   updateUI(action, data = null, execAction = false) {
-    view.renderView(this.currentStep, data);
+    this.view.renderView(this.currentStep, data);
 
     //handle action
     if (execAction && action) {
       action();
     } else {
-      view.assignActionToButton("action-btn", action);
+      this.view.assignActionToButton("action-btn", action);
     }
   }
 
@@ -49,7 +49,7 @@ export class Lotto {
    * @param {any} errors
    */
   handleErrors(errors) {
-    view.renderErrors(errors);
+    this.view.renderErrors(errors);
   }
 
   /**
@@ -86,6 +86,7 @@ export class Lotto {
    */
   askBetTypeAndAmount = () => {
     let errors = [];
+    this.tickets = [];
     for (let index = 1; index <= this.ticketsNumber; index++) {
       let [amount, betValue, wheel] = getFieldsValues([
         `#bill-${index}-amount`,
@@ -97,7 +98,6 @@ export class Lotto {
         let ticket = Ticket.constructTicket(amount, betValue, wheel);
         this.tickets.push(ticket);
       } catch (err) {
-        this.tickets = [];
         errors = [...errors, err];
       }
     }
@@ -133,6 +133,6 @@ export class Lotto {
 }
 
 function start() {
-  lotto = new Lotto();
+  const lotto = new Lotto();
   lotto.loadGame();
 }
