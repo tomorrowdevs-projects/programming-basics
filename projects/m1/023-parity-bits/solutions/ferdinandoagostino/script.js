@@ -7,7 +7,7 @@ let ones = 0;
 let isBit = true;
 
 do {
-  userInput = String(prompt('Inserisci 8 bit').trim());
+  userInput = prompt('Inserisci 8 bit').trim();
   if (userInput.length < 8 || userInput.length > 8 || isNaN(userInput)) {
     alert(`Inserisci correttamente 8 bit`);
   } else {
