@@ -139,5 +139,4 @@ export class Lotto {
 function start() {
   const lotto = new Lotto();
   lotto.loadGame();
-  console.log(lotto);
 }
