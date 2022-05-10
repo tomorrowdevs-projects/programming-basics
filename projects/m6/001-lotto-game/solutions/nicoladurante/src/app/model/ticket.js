@@ -14,6 +14,10 @@ export class Ticket {
     this.numbers = [];
   }
 
+  /**
+   * Add a new number to ticket
+   * @param {number} value
+   */
   addNumber(value) {
     this.numbers.push(value);
   }
@@ -23,7 +27,7 @@ export class Ticket {
    * @param {any} amount
    * @param {any} betType
    * @param {any} wheelCity
-   * @returns - a new Ticket object
+   * @returns {Ticket} - a new Ticket object
    */
   static constructTicket(amount, betType, wheelCity) {
     let errors = [
@@ -40,9 +44,9 @@ export class Ticket {
   }
 
   /**
-   *
+   * Validate ticket checking amount
    * @param {any} amount
-   * @returns - an array of validation errors
+   * @returns {Array<string>} - an array of validation errors
    */
   static validate(amount) {
     let errors = [];

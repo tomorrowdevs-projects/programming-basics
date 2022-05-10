@@ -8,9 +8,9 @@ export class Bet {
   }
 
   /**
-   *
+   * Validate bet checking the type
    * @param {any} betType
-   * @returns - an array of validation errors
+   * @returns {Array<string>} - an array of validation errors
    */
   static validate(betType) {
     let errors = [];

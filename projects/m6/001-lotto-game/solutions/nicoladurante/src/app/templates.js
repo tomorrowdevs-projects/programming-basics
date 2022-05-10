@@ -19,7 +19,7 @@ export class Templates {
   /**
    * Returns a template representing the errors list
    * @param {Array<Error>} errors
-   * @returns {HtmlElement} - errorsContainer
+   * @returns {HtmlElement} - errorTemplate container element
    */
   errorTemplate(errors) {
     let template = document.getElementById("errors") ?? this.getErrorsWrapper();
@@ -57,8 +57,8 @@ export class Templates {
   }
 
   /**
-   * Template for step1
-   * @returns template
+   * Returns template for first step
+   * @returns {string} - template for first step
    */
   setTicketsNumberTemplate() {
     return `
@@ -73,9 +73,9 @@ export class Templates {
   }
 
   /**
-   * Template for step2
+   * Returns template for second step
    * @param {number} numberOfBills
-   * @returns
+   * @returns {string} - template for second step
    */
   askBetTypeAndAmountTemplate(numberOfBills) {
     let template = "<form>";
@@ -108,16 +108,16 @@ export class Templates {
 
   /**
    * Template for generation phase
-   * @returns
+   * @returns {string} - template for generation ticket
    */
   generatingTicketTemplate() {
     return "<div>Generating tickets....</div>";
   }
 
   /**
-   * Template for tickets
+   * Returns the final tickets template
    * @param {any} data
-   * @returns
+   * @returns {string} - template for tickets
    */
   ticketsTemplate(data) {
     let template = '<div class="tickets-container" style="display: flex">';

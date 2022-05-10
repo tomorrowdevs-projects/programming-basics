@@ -32,6 +32,7 @@ export class Lotto {
    * otherwise assign action to "Next Step" button.
    * @param {function} action
    * @param {data} data
+   * @param {boolean} execAction
    */
   updateUI(action, data = null, execAction = false) {
     this.view.renderView(this.currentStep, data);
@@ -54,7 +55,8 @@ export class Lotto {
 
   /**
    * Read number from input value and check if is a valid number
-   * If not valid call handleErrors, otherwise updates UI
+   * If the number is not valid call handleErrors, otherwise updates UI
+   * to handle the next step
    */
   setTicketsNumber = () => {
     let number = Number(document.getElementById("ticketsNumber").value);
@@ -82,7 +84,8 @@ export class Lotto {
 
   /**
    * Read field values from DOM and try to construct a ticket.
-   * If construction failed call handleErrors else updateUI
+   * If one or more ticket construction fails due to some validation errors,
+   * call handleErrors otherwise updatesUI to handle next step
    */
   askBetTypeAndAmount = () => {
     let errors = [];
@@ -111,7 +114,8 @@ export class Lotto {
   };
 
   /**
-   * Generate numbers for a ticket and updateUI after 3000 milliseconds
+   * Generate numbers foreach tickets.
+   * UpdateUI after 3000 milliseconds
    */
   generateNumbers = () => {
     this.tickets.forEach((ticket) => {
@@ -135,4 +139,5 @@ export class Lotto {
 function start() {
   const lotto = new Lotto();
   lotto.loadGame();
+  console.log(lotto);
 }

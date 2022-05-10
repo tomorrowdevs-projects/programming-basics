@@ -20,9 +20,9 @@ export class Wheel {
   }
 
   /**
-   *
+   * Validate wheel checking if city is valid
    * @param {any} wheelCity
-   * @returns - an array of validation errors
+   * @returns {Array<string>} - an array of validation errors
    */
   static validate(wheelCity) {
     let errors = [];

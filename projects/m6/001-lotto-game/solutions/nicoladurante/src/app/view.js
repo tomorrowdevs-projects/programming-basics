@@ -35,6 +35,7 @@ export class View {
   /**
    * Assign custom action to a button that has id equals to btnId parameter.
    * The action is executed on button click
+   * @param {string} btnId
    * @param {function} action
    */
   assignActionToButton(btnId, action) {
@@ -52,7 +53,7 @@ export class View {
    * If step is out of the range, should return errorTemplate
    * @param {number} step
    * @param {any} data
-   * @returns {string} template
+   * @returns {string} - the current step template
    */
   getTemplate(step, data) {
     let template;

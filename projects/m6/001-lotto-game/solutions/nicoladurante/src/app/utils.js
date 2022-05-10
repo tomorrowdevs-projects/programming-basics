@@ -3,8 +3,8 @@
  * array of values. Each value is taken by the DOM using
  * document.querySelector method. If selectors is not an array,
  * returns empty array
- * @param {string[]} selectors
- * @returns {string[]} arrayOfValues
+ * @param {Array<string>} selectors
+ * @returns {Array<string>} - an array containing a value for each field
  */
 export const getFieldsValues = (selectors) => {
   if (!Array.isArray(selectors)) return [];
@@ -20,7 +20,7 @@ export const getFieldsValues = (selectors) => {
  * between minValue and maxValue (inclusive)
  * @param {number} minValue
  * @param {number} maxValue
- * @returns an array of numbers from minValue to maxValue
+ * @returns {Array<number>} - an array of numbers from minValue to maxValue
  */
 export const getNumbers = (minValue, maxValue) => {
   const numbers = [];
@@ -39,7 +39,7 @@ export const getNumbers = (minValue, maxValue) => {
 /**
  * Return a string of &nbsp; spaces
  * @param {number} num
- * @returns a string of &nbsp; entities
+ * @returns {string} - a string of &nbsp; entities
  */
 export const printSpaces = (num) => {
   let str = "";
