@@ -90,7 +90,6 @@ void sortIntArray(int intArray[], int nElements) {
 
 
 //Function: printIntArray
-// 
 //Print a numbers of elements of an array of integers. 
 //The parameter nElements  specify the numbers of elements to display
 void printIntArray(int intArray[], int nElements) {
