@@ -31,7 +31,6 @@ for (var i = 32; i < 127; ++i) {
 //genero un numero random da 7 a 10 da usare per la lunghezza della password
 const randomNumber = Math.floor(Math.random() * (10 - 7 + 1) + 7);
 
-
 //pusho i caratteri ascii in un ulteriore array quanti sono i randomNumber
 for (let index = 0; index < randomNumber; index++) {
   const randomCharaGenerator =
@@ -39,6 +38,6 @@ for (let index = 0; index < randomNumber; index++) {
   randomCharacters.push(randomCharaGenerator);
 }
 
-/leggo la password generata
+//leggo la password generata
 const randomPassword = randomCharacters.join('');
 console.log(randomPassword);
