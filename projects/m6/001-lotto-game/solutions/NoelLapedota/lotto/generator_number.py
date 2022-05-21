@@ -1,11 +1,14 @@
+from lotto import choose_number
 import random
-from tokenize import Number
 
 '''
 random number generator from 1 to 90, excludes the number if it has been chosen.
 '''
 class Generator:
-    
+
+    def __init__(self):
+        self == self
+
     @staticmethod
     def generate_number(number):
         list_generate = []
@@ -14,7 +17,4 @@ class Generator:
             if number_random not in list_generate:
                list_generate.append(number_random)
         number = [n for n in list_generate]
-        return number 
-         
-    
-         
+        return number

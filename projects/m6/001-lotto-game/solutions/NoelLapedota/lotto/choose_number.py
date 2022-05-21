@@ -8,7 +8,10 @@ The class represents the quantity of numbers to be played.
 
 class Choose_number :
 
-   def __init__(self, state):
+   quantity_of_number = 0
+
+#if it is false it means that you have chosen to play a low number of numbers compared to the chosen bet
+   def __init__(self, state=None):
          self.state = state
          if self.state == False:
            Choose_number.number_of_game(self) 
@@ -16,7 +19,7 @@ class Choose_number :
    '''
 check that the amount of numbers chosen is suitable for the type of bet chosen
   '''        
-        
+     #check if the amount of numbers chosen is right   
    @staticmethod   
    def number(quantity_of_numbers, played):  # played is type of the game
         while True:
@@ -31,10 +34,12 @@ check that the amount of numbers chosen is suitable for the type of bet chosen
 
 # from here you receive input
    def number_of_game(self):
-          print('How many numbers do you play  for ticket ?\n- Min 1 Max 10 - ')
+          print('How many numbers do you play for ticket ?\n- Min 1 Max 10 - ')
           print()
           choice_n = int(input('Enter the number please?\n'))
-          return choice_n    
+          Choose_number.quantity_of_number = choice_n
+          return choice_n
+              
 
 
 
