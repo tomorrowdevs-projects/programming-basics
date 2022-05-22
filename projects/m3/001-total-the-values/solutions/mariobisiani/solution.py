@@ -2,13 +2,13 @@
 
 def getValue():
     #get int from user
-    value_from_user = int(input('Insert a number (leave blank to exit):'))
-    if value_from_user == 0:
+    value_from_user = input('Insert a number (leave blank to exit):')
+    if value_from_user == "":
     #base case
-        return value_from_user
+        return 0
     else:
     #recursive case
-        value_from_user = value_from_user + getValue()
+        value_from_user = int(value_from_user) + int(getValue())
         return value_from_user
 
 sum_of_values = getValue()
