@@ -1,15 +1,6 @@
 const input = prompt('Inserisci un espressione matematica');
 
-//regex per rimuovere i caratteri speciali e le lettere, e li sostituisco con lo spazio
-const str = input.replace(/[^0-9]/g, ' ');
-//splitto ciò che rimane usando lo spazio come delimitatore, avendo come risultato un array
-const splitInput = str.split(' ');
+//splitto tenendomi il delimitatore usando  i lookarounds (trovato risorsa su https://medium.com/@shemar.gordon32/how-to-split-and-keep-the-delimiter-s-d433fb697c65)
+const splitInput = input.split(/(?=[*+-/^()])|(?<=[*+-/^()])/g);
 
 console.log(splitInput);
-
-//uso la funzione filter per rimuovere gli elelemnti che sono costituitit da solo spazio, e ritorno un nuovo array coi valori filtrati
-const filtered = splitInput.filter(function (value, index, arr) {
-  return value !== '';
-});
-
-console.log(filtered);
