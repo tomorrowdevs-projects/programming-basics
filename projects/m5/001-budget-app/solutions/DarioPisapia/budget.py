@@ -81,14 +81,14 @@ def create_spend_chart(categories):
         o_aligned.append(align_str)
 
     #print the chart's upper part 
-    print("\nPercentage spent by category")
+    table = "Percentage spent by category\n"
     num = 100
     for n in range(11):
-        print(f"{num:>3}| {o_aligned[n]}")
+        table += f"{num:>3}| {o_aligned[n]}\n"
         num -= 10
 
-    print("    -" + len(totals) * "---")
-
+    table += "    -" + len(totals) * "---"
+    table += "\n"
     #transform Category to category names
     okeys = []
     for key in totals.keys():
@@ -113,4 +113,7 @@ def create_spend_chart(categories):
         for key in new_keys:
             nw = key[n]+"  "
             align_w += nw
-        print(align_w)
+        table += f"{align_w}"
+        if n != l_max-1:
+            table += "\n"
+    return table
