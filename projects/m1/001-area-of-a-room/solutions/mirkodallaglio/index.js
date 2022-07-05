@@ -30,7 +30,7 @@ do{
         roomArea =roomLenght * roomWidth;
         alert(`l'area della stanza è ${roomArea.toFixed(1)} metri quadrati`);
     }else{
-        alert('Qualcosa è andato storto, non hai inserito correttamente uno o più numeri4... riprova');
+        alert('Qualcosa è andato storto, non hai inserito correttamente uno o più numeri... riprova');
     };
 }
 while(roomArea === 0);
