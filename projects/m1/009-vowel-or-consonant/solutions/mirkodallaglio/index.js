@@ -10,8 +10,6 @@ function checkLetter (i){
     };
 };
 
-console.log(typeof(i));
-
 switch (true){
     case letter === false:
         alert('Something went wrong, you entered the letter incorrectly ... try again');
