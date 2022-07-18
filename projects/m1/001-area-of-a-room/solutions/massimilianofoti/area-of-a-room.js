@@ -3,7 +3,7 @@ let width = output ("meters");
 let length = output ("meters");
 let areaofaroom = width+length;
 
-alert (areaoftheroom);
+alert (areaofaroom);
 
 
 
