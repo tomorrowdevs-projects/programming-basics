@@ -11,6 +11,7 @@ function isNumber (i){
 
 if(year){
     if(year % 400 === 0) alert(`The year ${year} is leap`);
+    else if(year % 100 === 0) (`The year ${year} isn't leap`);
     else if(year % 4 === 0) alert(`The year ${year} is leap`);
     else alert(`The year ${year} isn't leap`);  
 }else alert('Something went wrong, you entered the year incorrectly ... try again');
