@@ -1,3 +1,4 @@
+# MAKING CHANGE
 # Software per il calcolo di resto dovuto da una cassa automatica
 
 # Monete disponibili:
