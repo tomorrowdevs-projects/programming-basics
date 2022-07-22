@@ -1,7 +1,8 @@
 # Calcola l'area di una stanza in metri.
 
-lenght =  5.5 # Inserisci la lunghezza
-width = 6 # Inserisci la larchezza
+
+lenght =  float (input) # Inserisci la lunghezza
+width = float (input) # Inserisci la larchezza
 
 area = lenght*width
 
