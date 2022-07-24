@@ -1,5 +1,5 @@
 let seconds = +prompt('How many seconds?');
-let minutes = (seconds - seconds % 60) / 60; // calcolo minuti arrotondati: (61 - 1)/60 = 1
+let minutes = (seconds - seconds % 60) / 60; // calcolo minuti arrotondati. Es. 61 sec: (61 - 1)/60 = 1
 let hours = (minutes - minutes % 60) / 60;
 let days = (hours - hours %24) / 24;
 let displaySec;
