@@ -1,6 +1,6 @@
 
-let width = input("meters");
-let length = input("meters");
+let width = input(meters);
+let length = input(meters);
 let areaofaroom = (width+lenght);
 
 alert=output(areaofaroom);
