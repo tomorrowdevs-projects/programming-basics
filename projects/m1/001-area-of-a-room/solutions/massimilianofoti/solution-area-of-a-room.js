@@ -1,9 +1,9 @@
 
 let width = input(meters);
-let length = input(meters);
-let areaofaroom = (width+lenght);
+let lenght = input(meters);
+let areaOfARoom = (width*lenght);
 
-alert=output(areaofaroom);
+alert=output(areaOfARoom);
 
 
 
