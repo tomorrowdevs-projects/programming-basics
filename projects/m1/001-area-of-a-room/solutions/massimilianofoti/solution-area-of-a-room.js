@@ -1,7 +1,7 @@
 
 let width = input(meters);
 let lenght = input(meters);
-let areaOfARoom = (width*lenght);
+let areaOfARoom = (width*length);
 
 alert=output(areaOfARoom);
 
