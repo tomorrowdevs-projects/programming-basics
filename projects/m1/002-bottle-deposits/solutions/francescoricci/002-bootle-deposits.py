@@ -1,5 +1,8 @@
 #DEPOSITO CONTENITORI / 002-bottle-deposits
 
+#debug mode with hard coded
+debug_mode = True
+
 #variabili di formattazione
 currency_current = "$"
 um_bottle = "PZ"
@@ -10,12 +13,12 @@ deposit_over_liter = 0.25
 
 
 #variabili per test
-bottle_under_liter = 10
-bottle_over_liter = 20
-'''
-bottle_under_liter = float(input("contenitori_sotto_litro: " ))
-bottle_over_liter = float(input("contenitori_sopra_litro: " ))
-'''
+if debug_mode:
+    bottle_under_liter = 10
+    bottle_over_liter = 20
+else:
+    bottle_under_liter = float(input("contenitori_sotto_litro: " ))
+    bottle_over_liter = float(input("contenitori_sopra_litro: " ))
 
 
 refund_bottle_under_liter = round(deposit_under_liter * bottle_under_liter,2)
