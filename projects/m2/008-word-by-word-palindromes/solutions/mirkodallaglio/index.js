@@ -1,7 +1,7 @@
 let string = prompt('Enter a string');
 
 function removePunctuation (string){
-    const mark = ['.',',','?','!','-','_',"'",':',';']
+    const mark = ['.',',','?','!','-','_',"'",':',';','"']
     const word = string.split(' ');
     word.forEach((element, index) => {
         let i = element.length;
@@ -15,7 +15,7 @@ function removePunctuation (string){
     });
     return word;
 };
-console.log(removePunctuation(string))
+
 function checkArrEqual (arr1, arr2) {
 	if (arr1.length !== arr2.length) return false;
 
