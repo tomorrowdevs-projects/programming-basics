@@ -11,10 +11,11 @@ function removePunctuation (string){
            else break;
         };
         word[index] = element.slice(0, element.length-cont);
+        if(word[index] === '') word.splice(index, 1);
     });
     return word;
 };
-
+console.log(removePunctuation(string))
 function checkArrEqual (arr1, arr2) {
 	if (arr1.length !== arr2.length) return false;
 
