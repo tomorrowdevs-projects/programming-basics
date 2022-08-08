@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+
+        <title>Area Calculator</title>
+
+    </head>
+
+    <body>
+
+        <h1>Area Calculator</h1>
+
+        <form>
+
+            <h3>Please, insert here the width in meters of your room:</h3>
+            <input type="number" id="one">
+
+            <h3>Please insert here the length in meters of your room:</h3>
+            <input type="number" id="two">
+
+        </form>
+
+        <br>
+
+        <button id="button">Calculate</button>
+        <p id="output"></p>
+
+        <script>
+            function calculate() {
+                width = document.getElementById("one").value;
+                length  = document.getElementById("two").value;
+                output.innerHTML = width * length;
+            }
+
+            var button = document.getElementById("button");
+            button.onclick = calculate;
+
+            
+        </script>
+
+    </body>
+
+
+
+</html>
