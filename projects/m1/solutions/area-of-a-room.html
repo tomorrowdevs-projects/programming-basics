@@ -1,0 +1,54 @@
+.<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     
+     <link rel = "stylesheet" href = "style.css">
+     <title>Area calculator</title>
+</head>
+
+<body>
+
+
+    <div id = "prove">
+
+        <button onclick="area()">Calculate area of a room</button>
+        
+        <p id = "aResult"></p>
+        <script>
+
+            function area(){
+
+                let width=prompt("Insert width as meters data");
+                let lenght=prompt("Insert lenght as meters data");
+
+                let Area= width * lenght;
+
+                document.getElementById("aResult").innerHTML ="Meters area= " + Area; 
+
+            }
+
+
+
+        </script>
+        
+        
+        
+        </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
