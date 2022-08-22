@@ -1,5 +1,5 @@
-minutes_air_time = int(input)
-text_messages = int(input)
+minutes_air_time = int(input('Enter the minutes used in a month: '))
+text_messages = int(input('Enter the text messagese used in a month: '))
 
 additional_minutes = minutes_air_time - 50
 additionald_text_messages = text_messages - 50
@@ -15,15 +15,20 @@ tax_2 = ((call_phone_plane + price_additional_minutes + price_additional_text_me
 total_bill = call_phone_plane + price_additional_minutes + price_additional_text_messages + fee_911 + tax_2
 total_bill_basic = call_phone_plane + fee_911 + tax
 
-if minutes_air_time > 50 and text_messages > 50:
-    print('Base charge: € 15.00')
+
+print('Base charge: € 15.00')
+
+if minutes_air_time > 50:
     print('Additional minutes charge: € %.2f' %(price_additional_minutes))
+    print('911 fee: € 0.44')
+    print('Tax: %.2f' %(tax_2))
+    print('Total bill: € %.2f' %(total_bill))
+elif text_messages > 50:
     print('Additional text messages charge: € %.2f' %(price_additional_text_messages))
     print('911 fee: € 0.44')
     print('Tax: %.2f' %(tax_2))
     print('Total bill: € %.2f' %(total_bill))
 else:
-    print('Base charge: € 15.00')
     print('911 fee: € 0.44')
-    print('Tax: %.2f' %(tax))
-    print('Total bill: € %.2f' %(total_bill_basic))
+    print('Tax: %.2f' %(tax_2))
+    print('Total bill: € %.2f' %(total_bill))
