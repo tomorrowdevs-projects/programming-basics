@@ -17,14 +17,14 @@ let result = '';
 // returns an array with the key of the object and the index of the location [key, index]
 function searchArrIndxInObj (obj, value){
     for (let prop in obj){
-        let index = obj[prop].indexOf(value);
+        const index = obj[prop].indexOf(value);
         if(index !== -1) return [prop, index];
     };
 };
 
 if(/^[a-zA-Z\s\W]+$/.test(userInput)) {
     for (let char of userInput){
-        let key = searchArrIndxInObj(numericKeypad, char);
+        const key = searchArrIndxInObj(numericKeypad, char);
         result += key[0].repeat(key[1]+1);
     };
     alert(`Key presses : ${result}`);
