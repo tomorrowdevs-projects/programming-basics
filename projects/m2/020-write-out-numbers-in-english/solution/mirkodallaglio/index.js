@@ -20,4 +20,5 @@ function numberToWord (number){
     else return `${word[number[0]]} hundred ${word[number[1]+0]} ${word[number[2]]}`; // else write the hundreds, the tens and the unit
 };
 
-alert(numberToWord(number));
+if(/^\d{1,3}$/.test(number)) alert(numberToWord(number));   //only number from 0 to 999
+else alert('Only numbers from 0 to 999');
