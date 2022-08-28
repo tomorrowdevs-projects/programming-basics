@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BINGO</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <h1>BINGO !</h1>
+    <h6>Win the first ROW , the first COLUMN , the first DIAGONAL and the BINGO</h6>
+    <hr>
+
+    <div id="container"></div>
+
+    <div id="generateCard">
+      <h4>Choose your favorite cards</h4>
+      <table id="table" class="table table-light"></table>
+      <div class="butContainer">
+        <button id="generate" class="btn blu">Generate Another Card</button>
+        <button id="choose" class="btn green">Choose This</button>
+      </div>
+    </div>
+    
+    <div id="containerExtraction">
+      <div id="extraction">
+        <div id="piecesTable"></div> 
+
+        <div id="piecesContainer">
+          <div id="pieces"></div>
+          <div class="btn--ext">
+            <button id="extract" class="btn blu">Extract a Number</button>
+            <button id="auto" class="btn green">Automatic</button> 
+          </div> 
+        </div>
+
+        <div id="finish">
+          <p>GAME OVER</p>
+          <button id="restart" class="btn blu">Restart Game !</button>
+        </div>
+
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+    <script src="./function.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
