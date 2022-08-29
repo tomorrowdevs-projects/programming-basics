@@ -1,4 +1,3 @@
-
 sopra1L = input("Enter total number of containers holding more than 1 liter: ")
 sottoUguale1L = input("Enter total number of containers holding 1 liter or less: ")
 
