@@ -23,8 +23,6 @@ const tableWin = {
     BINGO: false,
 };
 const bingoKeys = ['B','I','N','G','O'];
-let statNCallsFive = [];       //all line of five numbers draws
-let statNCallsBingo = [];       ////all line of bingo draws
 let nCycleStat = 1000;
 const numberForExt = [];    //number from min to max sorted
 let startExec = 0;
@@ -32,7 +30,7 @@ let endExec = 0;
 let blockAutoBut = false;
 //End global variables
 
-//
+//I generate the numbers to extract and mix them
 for(i= minNumber; i <= maxNumber; i++) numberForExt.push(i);
 numExtraction = shuffle(numberForExt);
 
@@ -128,11 +126,9 @@ buttonRestart.addEventListener('click', _ =>{
 //button Statistics
 
 document.getElementById('startStatistics').addEventListener('click', _ =>{
-    statNCallsBingo = [];
-    statNCallsFive = [];
-    autoPlay(nCycleStat);
-    const resultFive = minMaxAvrg(statNCallsFive);
-    const resultBingo = minMaxAvrg(statNCallsBingo);
+    const stat = autoPlay(nCycleStat);
+    const resultFive = minMaxAvrg(stat[0]);
+    const resultBingo = minMaxAvrg(stat[1]);
     document.getElementById('resultFive').innerHTML = `First Five: MIN: ${resultFive[0]} / Max: ${resultFive[1]} / Average: ${resultFive[2].toFixed(1)}`;
     document.getElementById('resultBingo').innerHTML = `Bingo: MIN: ${resultBingo[0]} / Max: ${resultBingo[1]} / Average: ${resultBingo[2].toFixed(1)}`;
     document.getElementById('execTime').innerHTML = `Execution time: ${(endExec - startExec).toFixed(1)} ms`;

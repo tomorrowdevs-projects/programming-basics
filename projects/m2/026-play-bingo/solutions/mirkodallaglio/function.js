@@ -116,61 +116,59 @@ function winnerSearch (originArr, arr){
     let diagonalOrigin2 = [];
     let diagonalArr2 = [];
     let result = [];
-    if(maxNumber - numExtraction.length >= 5)  {
-        for(i=0; i < numForRow; i++){
-            arr.forEach(el => {
-                bingoKeys.forEach(ele => orizzontalArr.push(el[ele][i]));
-            });
-            for(rw = 0; rw < numCard; rw++) {
-                if(orizzontalArr.splice(0,5).every(element => element === 0) && !tableWin.ROW) {
-                    const rowWin = []
-                    for(prop in originArr[rw]) {rowWin.push(originArr[rw][prop][i]);}
-                    result.push([rw,rowWin, '!! WIN !! Five- number ROW']);
-                };
+
+    if(maxNumber - numExtraction.length >= 5 && !tableWin.ROW) for(i=0; i < numForRow; i++){
+        arr.forEach((table, index) => {
+            orizzontalArr = bingoKeys.map(key => table[key][i])
+            if(orizzontalArr.every(element => element === 0)) {
+                const rowWin = [];
+                for(prop in originArr[index]) {rowWin.push(originArr[index][prop][i]);}
+                result.push([index,rowWin, '!! WIN !! Five- number ROW']);
             };
-        };
-        arr.forEach((el, index) => {
+        });
+    };
+
+    arr.forEach((table, index) => {
+        if(maxNumber - numExtraction.length >= 5 && (!tableWin.DIAGONAL || !tableWin.COLUMN)) {
             let [x, y] = [0,4];
-            bingoKeys.forEach(ele =>{
-                diagonalArr.push(el[ele][x]);
-                diagonalArr2.push(el[ele][y]);
-                diagonalOrigin.push(originArr[index][ele][x]);
-                diagonalOrigin2.push(originArr[index][ele][y]);
+            bingoKeys.forEach(key =>{
+                diagonalArr.push(table[key][x]);
+                diagonalArr2.push(table[key][y]);
+                diagonalOrigin.push(originArr[index][key][x]);
+                diagonalOrigin2.push(originArr[index][key][y]);
                 x++; y--;
-                if(el[ele].every((elem) => elem === 0) && !tableWin.COLUMN) {
-                    result.push([index, originArr[index][ele],  '!! WIN !! Five-number COLUMN']);
-                }
-                
+                if(table[key].every((elem) => elem === 0)) {
+                    result.push([index, originArr[index][key],  '!! WIN !! Five-number COLUMN']);
+                }  
             });
             const diagonalWin = diagonalOrigin.splice(0,5);
-            if(diagonalArr.splice(0,5).every(element => element === 0) && !tableWin.DIAGONAL) {
+            if(diagonalArr.splice(0,5).every(element => element === 0)) {
                 result.push([index,diagonalWin, '!! WIN !! Five- number DIAGONAL']);
             };
             const diagonalWin2 = diagonalOrigin2.splice(0,5);
-            if(diagonalArr2.splice(0,5).every(element => element === 0) && !tableWin.DIAGONAL) {
+            if(diagonalArr2.splice(0,5).every(element => element === 0)) {
                 result.push([index,diagonalWin2, '!! WIN !! Five- number DIAGONAL']);
             };
-            
-        });
-    };
-    if(maxNumber - numExtraction.length >= 25){
-        arr.forEach((el, index) => {
-            let cardSum = Object.values(el)
-            .reduce(function(a,b) { return a.concat(b) })
-            .reduce(function(a,b) { return a + b }); 
-            if(cardSum === 0) result.push([index,cardSum, '!! WIN !! BINGO']);
-        });
-    };
+        };
+        if(maxNumber - numExtraction.length >= 25){
+                let cardSum = Object.values(table)
+                .reduce(function(acc,b) { return acc.concat(b) })
+                .reduce(function(acc,b) { return acc + b }); 
+                if(cardSum === 0) result.push([index,cardSum, '!! WIN !! BINGO']);
+        };
+    });
+  
     return result;
 };
 
-//
-    
-
-
+//runs nGame times a full bingo game, output array [[number of draws to first five], [number of bingo draws]]
 function autoPlay(nGame){
     startExec = performance.now();
+    statNCallsBingo = [];
+    statNCallsFive = [];
+   
     for(play= 0; play < nGame; play++){
+        let bingo = false;
         for(prop in tableWin) tableWin[prop] = false;
         
         allCard = [];
@@ -178,10 +176,10 @@ function autoPlay(nGame){
         cardTmp = bingoCard(maxNumber,numForRow);
         allCard.push(cardTmp);
         allCardOriginal = JSON.parse(JSON.stringify(allCard));
-        numCard = 1;
         numExtraction = JSON.parse(JSON.stringify(shuffle(numberForExt)));
 
         for(game = 0; game < maxNumber; game++){
+            if(bingo) break;
             const number = numExtraction.splice(0,1);
             replaceValueInArrObj(allCard,number[0],0);
             const result = winnerSearch(allCardOriginal, allCard);
@@ -195,7 +193,7 @@ function autoPlay(nGame){
                         tableWin[prop] = true;
                         if(el[1] === 0) {
                             statNCallsBingo.push(maxNumber - numExtraction.length);
-                            break;
+                            bingo= true;
                         }    
                     };
                 };
@@ -203,6 +201,7 @@ function autoPlay(nGame){
         };
     };
     endExec = performance.now();
+    return [statNCallsFive, statNCallsBingo]
 };
 
 
