@@ -1,3 +1,5 @@
+
+
 # BOTTLE DEPOSITS
 
 In many jurisdictions a small deposit is added to drink containers to encourage people to recycle them. In one particular jurisdiction, drink containers holding one liter or less have a $0.10 deposit, and drink containers holding more than one liter have a
