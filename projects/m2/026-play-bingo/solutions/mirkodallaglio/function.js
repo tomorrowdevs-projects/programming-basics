@@ -1,7 +1,12 @@
-//creates n elements inside an html tag. input: containerId: string - the id of the container
+//export function for test
+module.exports = {bingoCard,minMaxAvrg, genNumberExtraction, randomNumInRange, shuffle, replaceValueInArrObj,winnerSearch, autoPlay};
+
+
+//creates n elements inside an html tag. input: 
+//containerId: string - the id of the container
 //numElem: number - the number of elements to create
 //typeElem: OPTIONAL - string - DEFAULT: div - the type of element (p, div, tr, etc ..), 
-//attribute: OPTIONAL - string - DEFAULT: id - the attribute of element (id, class), which will have a sequential number
+//attribute: OPTIONAL - string - DEFAULT: id - the attribute of element (id, class,etc..), which will have a sequential number
 //textAttr: OPTIONAL - string - DEFAULT: sequential number - the text for the attribute. 
 //textValue: OPTIONAL - string - the text inside element + sequential number. 
 function elementInHTMLContainer (containerId, numElem, typeElem, attribute, textAttr, textValue) {
@@ -10,7 +15,7 @@ function elementInHTMLContainer (containerId, numElem, typeElem, attribute, text
     for(i=1; i <= numElem; i++){
         const div = document.createElement(typeElem);
         if(textValue !== undefined) {
-            let txt = document.createTextNode(textValue + i);
+            const txt = document.createTextNode(textValue + i);
             div.appendChild(txt);
         };
         (textAttr === undefined) ?  div.setAttribute(attribute, i) : div.setAttribute(attribute, textAttr + i);
@@ -21,22 +26,30 @@ function elementInHTMLContainer (containerId, numElem, typeElem, attribute, text
 //shuffle element in arr
 function shuffle (arr){
     const arrLength = arr.length;
+    const result = [...arr];
     let out = '';
     let casualPos = 0;
 
     for(i=arrLength-1; i >= 0; i--){
         casualPos = Math.floor(Math.random() * (arrLength - i) + i);
-        out = arr.splice(i, 1)[0];
-        arr.splice(casualPos, 0,out);
+        out = result.splice(i, 1)[0];
+        result.splice(casualPos, 0,out);
     };
-    return arr;
+    return result;
 };
+
+//I generate the numbers to extract and mix them
+function genNumberExtraction (minNumber, maxNumber){
+    const numberForExtraction = [];
+    for(i= minNumber; i <= maxNumber; i++) numberForExtraction.push(i);
+    return shuffle(numberForExtraction);
+}
 
 //the function generates n random numbers (qta) that are all different in a range (min, max), return an array or undefined if qta > max
 function randomNumInRange (min, max, qta){
-    let result = [];
+    const result = [];
     if(qta <= max) {for(i=1; result.length < qta; i++){
-            let rndNum = Math.floor(Math.random() * (max - min +1) + min);
+            const rndNum = Math.floor(Math.random() * (max - min +1) + min);
             if(!result.includes(rndNum)) result.push(rndNum);
         };
     }else return undefined
@@ -45,9 +58,9 @@ function randomNumInRange (min, max, qta){
 
 
 //the function generates a bingo card,input: the maximum extractable number, number of table row - output: object
-function bingoCard (max, row){
+function bingoCard (max, row, keyArr){
     const numForLetter = max / 5;
-    let card = bingoKeys.reduce((acc, el) => ({ ...acc, [el]: []}), {}); 
+    const card = keyArr.reduce((acc, el) => ({ ...acc, [el]: []}), {}); 
     let acc = 0;
     for(value of Object.values(card)){
         value.push(acc+=1, acc+=numForLetter-1);
@@ -91,7 +104,7 @@ function createBingoCard (tableId, obj){
 //delete old table and regen a new
 function resetBingoCard(){
     table.innerHTML = "";
-    cardTmp = createBingoCard('table', bingoCard(maxNumber, numForRow));
+    cardTmp = createBingoCard('table', bingoCard(maxNumber, numForRow, bingoKeys));
 };
 
 //looks for a value in an array of objects and replaces it with another
@@ -109,20 +122,20 @@ function replaceValueInArrObj (arr, search, replace){
 //look for five verticals, horizontals and diagonals across all bingo tables input:
 //originArr: original array ,  arr: array modified with 0 in place of the extracted number
 //output: array [index od table, array of all win number or 0 if is bingo, message]
-function winnerSearch (originArr, arr){
-    let orizzontalArr = [];
-    let diagonalArr = [];
-    let diagonalOrigin = [];
-    let diagonalOrigin2 = [];
-    let diagonalArr2 = [];
-    let result = [];
+function winnerSearch (originArr, arr, keyArr){
+    const diagonalArr = [];
+    const diagonalOrigin = [];
+    const diagonalOrigin2 = [];
+    const diagonalArr2 = [];
+    const result = [];
 
     if(maxNumber - numExtraction.length >= 5 && !tableWin.ROW) for(i=0; i < numForRow; i++){
+        
         arr.forEach((table, index) => {
-            orizzontalArr = bingoKeys.map(key => table[key][i])
+            const orizzontalArr = keyArr.map(key => table[key][i])
             if(orizzontalArr.every(element => element === 0)) {
                 const rowWin = [];
-                for(prop in originArr[index]) {rowWin.push(originArr[index][prop][i]);}
+                for(prop in originArr[index]) rowWin.push(originArr[index][prop][i]);
                 result.push([index,rowWin, '!! WIN !! Five- number ROW']);
             };
         });
@@ -131,7 +144,7 @@ function winnerSearch (originArr, arr){
     arr.forEach((table, index) => {
         if(maxNumber - numExtraction.length >= 5 && (!tableWin.DIAGONAL || !tableWin.COLUMN)) {
             let [x, y] = [0,4];
-            bingoKeys.forEach(key =>{
+            keyArr.forEach(key =>{
                 diagonalArr.push(table[key][x]);
                 diagonalArr2.push(table[key][y]);
                 diagonalOrigin.push(originArr[index][key][x]);
@@ -141,19 +154,21 @@ function winnerSearch (originArr, arr){
                     result.push([index, originArr[index][key],  '!! WIN !! Five-number COLUMN']);
                 }  
             });
-            const diagonalWin = diagonalOrigin.splice(0,5);
-            if(diagonalArr.splice(0,5).every(element => element === 0)) {
-                result.push([index,diagonalWin, '!! WIN !! Five- number DIAGONAL']);
-            };
-            const diagonalWin2 = diagonalOrigin2.splice(0,5);
-            if(diagonalArr2.splice(0,5).every(element => element === 0)) {
-                result.push([index,diagonalWin2, '!! WIN !! Five- number DIAGONAL']);
-            };
+
+            function diagonalResult (arr, originArr){
+                const diagonalWin = originArr.splice(0,5);
+                if(arr.splice(0,5).every(element => element === 0)) {
+                    result.push([index,diagonalWin, '!! WIN !! Five- number DIAGONAL']);
+                };
+            }
+            diagonalResult(diagonalArr, diagonalOrigin);
+            diagonalResult(diagonalArr2, diagonalOrigin2);
+
         };
         if(maxNumber - numExtraction.length >= 25){
-                let cardSum = Object.values(table)
-                .reduce(function(acc,b) { return acc.concat(b) })
-                .reduce(function(acc,b) { return acc + b }); 
+                const cardSum = Object.values(table)
+                .reduce((acc,b) => acc.concat(b))
+                .reduce((acc,b) => acc + b); 
                 if(cardSum === 0) result.push([index,cardSum, '!! WIN !! BINGO']);
         };
     });
@@ -168,21 +183,20 @@ function autoPlay(nGame){
     statNCallsFive = [];
    
     for(play= 0; play < nGame; play++){
-        let bingo = false;
+        let bingo = true;
         for(prop in tableWin) tableWin[prop] = false;
         
         allCard = [];
         allCardOriginal = [];
-        cardTmp = bingoCard(maxNumber,numForRow);
+        cardTmp = bingoCard(maxNumber,numForRow, bingoKeys);
         allCard.push(cardTmp);
         allCardOriginal = JSON.parse(JSON.stringify(allCard));
-        numExtraction = JSON.parse(JSON.stringify(shuffle(numberForExt)));
+        numExtraction = genNumberExtraction(minNumber, maxNumber);
 
-        for(game = 0; game < maxNumber; game++){
-            if(bingo) break;
+        while(bingo){
             const number = numExtraction.splice(0,1);
             replaceValueInArrObj(allCard,number[0],0);
-            const result = winnerSearch(allCardOriginal, allCard);
+            const result = winnerSearch(allCardOriginal, allCard, bingoKeys);
 
             if(result.length > 0) result.forEach(el => {
                 if (!tableWin.ROW && !tableWin.COLUMN && !tableWin.DIAGONAL){
@@ -193,7 +207,7 @@ function autoPlay(nGame){
                         tableWin[prop] = true;
                         if(el[1] === 0) {
                             statNCallsBingo.push(maxNumber - numExtraction.length);
-                            bingo= true;
+                            bingo= false;
                         }    
                     };
                 };

@@ -7,13 +7,13 @@ const buttonRestart = document.getElementById('restart');
 const buttonAuto = document.getElementById('auto');
 const pieces = document.getElementById('pieces');
 const container = document.getElementById('container');
-let numExtraction = [];     //all number mixed
 let allCard = [];           //4 object for the 4 chosen cards
 let allCardOriginal = [];        
 const autoInterval = 1000;  //interval in ms for the button Auto
 let cardTmp = {};           // temporary card not yet chosen by the user
 let maxNumber = 75;         //the maximum extractable number
 const minNumber = 1;        //the minimum extractable number
+let numExtraction = genNumberExtraction(minNumber, maxNumber);     //all number mixed
 let numCard = 4;
 const numForRow = 5;        //number of row in the bingo table
 const tableWin = {
@@ -24,15 +24,10 @@ const tableWin = {
 };
 const bingoKeys = ['B','I','N','G','O'];
 let nCycleStat = 1000;
-const numberForExt = [];    //number from min to max sorted
 let startExec = 0;
 let endExec = 0;
 let blockAutoBut = false;
 //End global variables
-
-//I generate the numbers to extract and mix them
-for(i= minNumber; i <= maxNumber; i++) numberForExt.push(i);
-numExtraction = shuffle(numberForExt);
 
 //select to change the card number and the drawn numbers 
 document.getElementById('nCard').addEventListener('change', function() {
@@ -49,7 +44,7 @@ document.getElementById('nCycle').addEventListener('change', function() {
 });
 
 //I generate the first bingo card
-cardTmp = createBingoCard('table', bingoCard(maxNumber,numForRow));  
+cardTmp = createBingoCard('table', bingoCard(maxNumber,numForRow, bingoKeys));  
 
 //empties the table and generates a new one
 buttonGen.addEventListener('click', _ => resetBingoCard()); 
@@ -83,7 +78,7 @@ buttonExtract.addEventListener('click', _ => {
     for (const elem of tableNum) elem.classList.add('numExtract');
         pieces.innerHTML = number[0];
         replaceValueInArrObj(allCard,number[0],0);
-        const result = winnerSearch(allCardOriginal, allCard);
+        const result = winnerSearch(allCardOriginal, allCard, bingoKeys);
             if(result.length > 0) result.forEach(el => {
                 for(prop in tableWin){
                     if(!tableWin[prop] && el[2].endsWith(prop)) {
