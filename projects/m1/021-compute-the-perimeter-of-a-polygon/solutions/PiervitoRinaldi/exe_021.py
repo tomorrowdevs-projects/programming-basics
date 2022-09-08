@@ -10,14 +10,15 @@ perimeter = 0
 while True:
     next_x = input('Enter new x: ')
     if next_x == '':
+        side = math.sqrt((int(first_x) - int(prev_x))**2 + (int(first_y) - int(prev_y))**2)
+        perimeter = perimeter + side
         break
     next_y = input('Enter new y: ')
     side = math.sqrt((int(next_x) - int(prev_x))**2 + (int(next_y) - int(prev_y))**2)
-    perimeter =perimeter + side
+    perimeter = perimeter + side
 
     prev_x = next_x
     prev_y = next_y
 
-side = math.sqrt((int(first_x) - int(prev_x))**2 + (int(first_y) - int(prev_y))**2)
-perimeter = perimeter + side
+
 print(perimeter)
