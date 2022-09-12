@@ -11,7 +11,7 @@ def main():
     print(string("sbiriguda", 7))
     print(string("sbiriguda", 240))
     print(string("prematurata la supercazzola", 18))
-    print(string("prematurata la supercazzola", 179))
+    print(string("prematurata la supercazzola", 100))
     print(string("ugo", 4))
     print(string("ugo", 54))
 
