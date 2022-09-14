@@ -10,7 +10,7 @@ let hoursInput = parseFloat(prompt("Please enter the hours to be converted:", 0)
 let minutesInput = parseFloat(prompt("Please enter the minutes to be converted:", 0));
 let secondsInput = parseFloat(prompt("Please enter the seconds to be converted:", 0));
 
-let time = [daysInput,hoursInput,minutesInput,secondsInput];
+// let time = [daysInput,hoursInput,minutesInput,secondsInput];
 
 /*
 function convertNull(nullElement) {
@@ -30,7 +30,7 @@ time.forEach(function(element,index,array) {
 }});   
 */
 
-alert (time)
+// alert (time)
 
 let totalSeconds = secondsInput + (minutesInput*60) + (hoursInput*60*60) + (daysInput*24*60*60);
 
