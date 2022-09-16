@@ -12,7 +12,7 @@ while ((inputNumber.toString().length > 4) || (isNaN(inputNumber))){
 
 if (inputNumber.toString().length < 4) {
 
-     inputNumber =   inputNumber.toString().padStart(4,'0'); //padStart to add something at the beginning of a string with defined lenght
+     inputNumber =   inputNumber.toString().padStart(4,'0'); //padStart to add something at the beginning of a string with defined lengtt
      console.log(inputNumber)
 }
 
