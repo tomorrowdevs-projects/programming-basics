@@ -5,21 +5,21 @@ const coins = {
     name: ['quarter', 'dime', 'nickel', 'penny'],
 }; 
 
+
 function dollarCheckCoin (coins, dollar, numCoins) {
     let result = [];
-    
-    function permute(arr=[], sum=0, index=0) {
+
+    function checkAllPossibility(arr=[], sum=0, index=0) {
         if(sum > dollar) return;
         if(sum === dollar && arr.length === numCoins) result.push(arr);
 
         for(let i = index; i < coins.value.length; i++) {
-         permute([...arr, coins.value[i]], sum + coins.value[i], i);
+         checkAllPossibility([...arr, coins.value[i]], sum + coins.value[i], i);
         }
     };
-    permute();
+    checkAllPossibility();
 
-    if(result.length > 0) return result
-    else return false
+    return result.length > 0 ? result : false
 };
 
 const result = dollarCheckCoin(coins, dollar*100, numCoins);
@@ -41,7 +41,7 @@ if(result){
     tmp.forEach((res, labIndex) => {
         coins.name.forEach((coinName, coinIndex) => {
             if(tmp[labIndex][coinIndex] !== undefined)
-                label += `${coinName}: ${tmp[labIndex][coinIndex].length } `
+                label += `${coinName}: ${tmp[labIndex][coinIndex].length }  `
         })
         label += '\n'
     })
