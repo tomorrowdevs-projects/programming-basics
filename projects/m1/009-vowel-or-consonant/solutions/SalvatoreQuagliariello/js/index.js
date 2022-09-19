@@ -21,7 +21,7 @@ if  (letterInput.match(/^[a-zA-Z]/) && letterInput.length == 1) {
     
 } else {
 
-    alert("You can't enter a number or a symbol. And remeber you can enter only one letter at a time!");
+    alert("You can't enter a number or a symbol. And remember you can enter only one letter at a time!");
     location.reload();
 
     }
