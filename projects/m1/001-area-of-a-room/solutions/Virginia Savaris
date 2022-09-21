@@ -1,0 +1,13 @@
+import java.util.Scanner;
+public class Main{  
+    public static void  main(String args[]){   
+        Scanner scanner = new Scanner(System.in);
+        float area;
+        System.out.println( "inserisca la lunghezza delle stanza" ); 
+        float lunghezza = scanner.nextFloat();
+        System.out.println( "inserisca la larghezza delle stanza" );
+        float larghezza = scanner.nextFloat();
+        area=lunghezza*larghezza;
+        System.out.println("l'area della camera è di " + area +" m2");  
+    }
+}
