@@ -4,7 +4,7 @@
 let inputValue;
 let minInput = 0;
 const arrayValues = [];
-let arrayValuesRemain = []; //let perché cambia
+let arrayValuesRemain = [];
 let arrayValuesExreme = [];
 let n = 2;
 
