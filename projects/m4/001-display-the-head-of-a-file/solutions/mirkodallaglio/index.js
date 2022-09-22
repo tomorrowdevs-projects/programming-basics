@@ -1,10 +1,10 @@
 function readFiles(input) {
-
+ 
     const file = input.files[0];
     const typeFile = file.type;
     const error = document.getElementById('error');
     error.innerHTML = '';
-    
+
     if(typeFile === 'text/plain' || typeFile === 'text/markdown'){
         const reader = new FileReader();
 
