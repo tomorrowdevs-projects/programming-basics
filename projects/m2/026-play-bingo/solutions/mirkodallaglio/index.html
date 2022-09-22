@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BINGO</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <h1>BINGO !</h1>
+    <h6>Win the first ROW , the first COLUMN , the first DIAGONAL and the BINGO</h6>
+    <hr>
+
+    <div id="container"></div>
+
+    <div id="generateCard">
+      <div id="selectContainer">
+        <select class="form-select" id="nCard" aria-label="Default select example">
+          <option selected>How many cards do you want to play with? (DEFAULT 4)</option>
+          <option value="1">One</option>
+          <option value="2">Two</option>
+          <option value="3">Three</option>
+          <option value="4">Four</option>
+        </select>
+        <select class="form-select" id="nNum" aria-label="Default select example">
+          <option selected>With how many numbers? (DEFAULT 75)</option>
+          <option value="50">50</option>
+          <option value="75">75</option>
+          <option value="90">90</option>
+        </select>
+      </div>
+      <h4>Choose your favorite cards</h4>
+      <table id="table" class="table table-light"></table>
+      <div class="butContainer">
+        <button id="generate" class="btn blu">Generate Another Card</button>
+        <button id="choose" class="btn green">Choose This</button>
+        <button id="statistics" class="btn violet" data-bs-toggle="modal" data-bs-target="#statisticModal" >Statistics</button>
+      </div>
+      <!-- Modal statistics-->
+      <div class="modal fade" id="statisticModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">STATISTICS</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              The games will be simulated with one card, the minimum, maximum number and the mathematical average 
+              of draws that are used to make the first five and bingo will be reported.
+              <select class="form-select" id="nCycle" aria-label="Default select example">
+                <option selected>how many games do you want to simulate? (default 1000)</option>
+                <option value="100">100</option>
+                <option value="1000">1.000</option>
+                <option value="10000">10.000</option>
+                <option value="100000">100.000</option>
+                <option value="1000000">1.000.000</option>
+              </select>
+              <p id="resultFive" class="center"></p>
+              <p id="resultBingo" class="center"></p>
+              <p id="execTime" class="center"></p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" id="startStatistics" class="btn btn-primary">Start</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="containerExtraction">
+      <div id="extraction">
+        <div id="piecesTable"></div> 
+
+        <div id="piecesContainer">
+          <div id="pieces"></div>
+          <div class="btn--ext">
+            <button id="extract" class="btn blu">Extract a Number</button>
+            <button id="auto" class="btn green">Automatic</button> 
+          </div> 
+        </div>
+
+        <div id="finish">
+          <p>GAME OVER</p>
+          <button id="restart" class="btn blu">Restart Game !</button>
+        </div>
+
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+    <script src="./function.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
