@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ 
+    <style>
+      .all{
+        display: block;
+        margin: 50px auto;
+        text-align: center;
+      }
+      #error{
+        color: red;
+        font-weight: bolder;
+      }
+      #input{
+        transform: translateX(16%);
+      }
+    </style>
+</head>
+<body>
+
+  <h1 class="all">Displays the first 10 sentences and 10 lines of your text file</h1>
+  <input type="file" id="input" onchange="readFiles(this)" accept=".txt,.md" class="all">
+  <div id="error" class="all"></div>
+  <div id="content" class="all"></div>
+
+  <script src="./index.js"></script>  
+</body>
+</html>
