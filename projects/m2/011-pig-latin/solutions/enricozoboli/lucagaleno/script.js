@@ -21,7 +21,7 @@ words = words.split(' ');
 
 words.forEach((element, index) => {
     
-        if ((/\b[AEOIU]/i).test(element) === true) {
+        if ((/\b[aeoiu]/i).test(element) === true) {
 
             element = element + 'way';
             words[index] = element; //to update the array
@@ -29,7 +29,7 @@ words.forEach((element, index) => {
         }else {
             //check the position of the firse vowels
             let lengthElement = element.length;
-            let firstPositionVowel = element.match(/\w[AEOIUY]/i).index + 1
+            let firstPositionVowel = element.match(/\w[aeoiuy]/i).index + 1
             let extractedLetters = element.substr(0,firstPositionVowel);
 
             element = element.substr(firstPositionVowel, lengthElement);
