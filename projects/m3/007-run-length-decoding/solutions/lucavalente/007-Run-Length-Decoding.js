@@ -1,5 +1,4 @@
-
-let inputList = ["A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B","B","A","A","A","A","A","A","B"];
+let inputList = ["A",12,"B",4,"A",6,"B",1];
 let firstListElement,remainingList;
 
 function decodeList(inputList){
@@ -8,24 +7,13 @@ function decodeList(inputList){
         return [];
     }
 
-    firstListElement = [inputList[0],0];
-
-    if (inputList.length == 1){
-        firstListElement[1]++;
-        return firstListElement;
+    if (inputList[1] == 0){
+        return decodeList(inputList.slice(2,));
+    }else{
+        inputList[1]--;
+        return [inputList[0]].concat(decodeList(inputList));
     }
-
-    for (i = 0; i < inputList.length; i++){
-        if (firstListElement[0] == inputList[i]){
-            firstListElement[1]++;
-        }else{
-            remainingList = inputList.slice(i);
-            break;      
-        }
-    }
-
-    return firstListElement.concat(decodeList(remainingList));
-
+    
     }
 
 console.log(decodeList(inputList));
