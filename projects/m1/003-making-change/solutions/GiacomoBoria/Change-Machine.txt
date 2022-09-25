@@ -1,0 +1,14 @@
+In questo esercizio si doveva creare un programma che mostrasse all'utente 
+la quantità di resto 
+(in centesimi) diviso per il minor numero di monete a disposizione.
+
+- Unità monete a disposizione: 2,1,25 cent, 10 cent, 5 cent.
+- Input utente in centesimi
+
+Soluzione: 
+- Convertire tutte le unità in centesimi
+- Input centesimi da ridare all'utente
+- Condizione: Maggiore o minore dei centesimi a disposizione
+- Condizioni svolgere operazione per step più adatto
+- Fornire input utente diviso per unità centesimi
+
