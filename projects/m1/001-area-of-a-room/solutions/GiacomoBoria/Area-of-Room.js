@@ -19,4 +19,4 @@ const areaRoom = roomLength * roomWidth
 
 // Solution
 window.prompt("La tua stanza ha un area di", areaRoom);
- n
+ 
