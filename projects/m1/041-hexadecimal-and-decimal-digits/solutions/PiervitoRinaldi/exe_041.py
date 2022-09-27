@@ -1,6 +1,6 @@
 import string
 
-hex_n = input('Enter hexadecimal number: ')
+dec_n = int(input('Enter decimal number: '))
 
 def hex2int(hex_n):
     exponent = ((len(hex_n)) - 1)
@@ -62,6 +62,33 @@ def hex2int(hex_n):
         print('ERROR: Parameter’s value is outside of the expected range.')
     else:
         print(result)
+
+
+def int2hex(dec_n):
+    check = True
+    if dec_n <= 9:
+        result = dec_n
+    elif dec_n == 10 :
+        result = 'A'
+    elif dec_n == 11:
+        result = 'B'
+    elif dec_n == 12:
+        result = 'C'
+    elif dec_n == 13:
+        result = 'D'
+    elif dec_n == 14:
+        result = 'E'
+    elif dec_n == 15:
+        result = 'F'
+    else:
+        check = False
+                
+
+    if check == False:
+        print('ERROR: Parameter’s value is outside of the expected range.')
+    else:
+        print(result)
+
 
 
     
