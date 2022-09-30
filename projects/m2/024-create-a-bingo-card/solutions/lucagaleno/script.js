@@ -21,8 +21,8 @@ function randomBingoCard() {
 
             //funzione per avere un array con numeri univoci e in ordine crescente            
             function uniqueAndSort(bingoLine){
-                let uniqueNumber = Array.from(new Set(bingoLine)); //! verifico che i numeri casuali siano univoci
-                bingoLine = uniqueNumber; // assegno i numeri univoci all'array
+                let uniqueNumber = Array.from(new Set(bingoLine)); //creo nuovo array con numeri univoci
+                bingoLine = uniqueNumber; //assegno i numeri univoci all'array iniziale
                 return bingoLine.sort((a,b) => a-b ); //ordino i numeri
             }
             
