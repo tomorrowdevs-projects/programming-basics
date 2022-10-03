@@ -6,7 +6,7 @@ function randomBingoCard() {
     const rangeOfNumber = 15;
     let minNumber = 1;
     let maxNumber = 15;
-    // let element = 0 ;
+    let element = 0; //inizio indice
 
     const bingoCard = {
         'B': [],
@@ -14,7 +14,6 @@ function randomBingoCard() {
         'N': [],
         'G': [],
         'O': [],
-        
     };
 
     function getRndInteger(min, max) {
@@ -28,21 +27,18 @@ function randomBingoCard() {
         bingoLine = uniqueNumber; 
         return bingoLine.sort((a,b) => a-b ); 
     };
-    
-   for(element = 0 ; element <= NumberInLine-1; element++){
-        while (Object.values(bingoCard[Object.keys(bingoCard)[element]]).length != NumberInLine) {
 
-            let Line = Object.values(bingoCard[Object.keys(bingoCard)[element]]);
-            bingoCard[Object.keys(bingoCard)[element]] = uniqueAndSort(Line, minNumber, maxNumber);
-        
-            if ((Object.values(bingoCard[Object.keys(bingoCard)[element]]).length) === NumberInLine){ 
-
-                // element =  element + 1; //!!senza ciclo for con questa riga non funziona!
-                minNumber = minNumber + rangeOfNumber;
-                maxNumber = maxNumber + rangeOfNumber;
-            };
-        };
-    };
+    while ((element < NumberInLine)) {  
+            
+        let Line = Object.values(bingoCard[Object.keys(bingoCard)[element]]);
+        bingoCard[Object.keys(bingoCard)[element]] = uniqueAndSort(Line, minNumber, maxNumber);
+            
+        if ((Object.values(bingoCard[Object.keys(bingoCard)[element]]).length) === NumberInLine){
+            element++;
+            minNumber = minNumber + rangeOfNumber;
+            maxNumber = maxNumber + rangeOfNumber;
+        }
+    }
     return console.table(bingoCard)
 };
 randomBingoCard();
