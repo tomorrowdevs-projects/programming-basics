@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ 
+    <style>
+      .all{
+        display: block;
+        margin: 50px auto;
+        text-align: center;
+      }
+      #error{
+        color: red;
+        font-weight: bolder;
+      }
+      #input, #input2{
+        transform: translateX(16%);
+      }
+      button{
+        background-color: lightblue;
+        border-radius: 10px;
+        height: 46px;
+        font-size: 35px;
+      }
+    </style>
+</head>
+<body>
+
+  <h1 class="all">Letter frequencies</h1>
+
+  <input type="file" id="input" onchange="readFiles(this)" accept=".txt,.md" class="all">
+
+  <div id="error" class="all"></div>
+  <div id="content" class="all"></div>
+
+  <script src="./index.js"></script>  
+</body>
+</html>
