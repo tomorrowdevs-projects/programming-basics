@@ -2,58 +2,48 @@
 
 function randomBingoCard() {
 
+    const NumberInLine = 5;
+    const rangeOfNumber = 15;
+    let minNumber = 1;
+    let maxNumber = 15;
+    // let element = 0 ;
+
     const bingoCard = {
         'B': [],
         'I': [],
         'N': [],
         'G': [],
-        'O': []
+        'O': [],
+        
     };
 
-    Object.keys(bingoCard).forEach(element => {
+    function getRndInteger(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) ) + min;
+    };
+
+    function uniqueAndSort(bingoLine, min, max){
+        let randomNumber = getRndInteger(min, max);
+        bingoLine.push(randomNumber);
+        let uniqueNumber = Array.from(new Set(bingoLine));
+        bingoLine = uniqueNumber; 
+        return bingoLine.sort((a,b) => a-b ); 
+    };
+    
+   for(element = 0 ; element <= NumberInLine-1; element++){
+        while (Object.values(bingoCard[Object.keys(bingoCard)[element]]).length != NumberInLine) {
+
+            let Line = Object.values(bingoCard[Object.keys(bingoCard)[element]]);
+            bingoCard[Object.keys(bingoCard)[element]] = uniqueAndSort(Line, minNumber, maxNumber);
         
-          while (Object.values(bingoCard[element]).length != 5) {
+            if ((Object.values(bingoCard[Object.keys(bingoCard)[element]]).length) === NumberInLine){ 
 
-            //funzione per la creazione di un numero casuale intero
-            function getRndInteger(min, max) {
-                return Math.floor(Math.random() * (max - min + 1) ) + min;
+                // element =  element + 1; //!!senza ciclo for con questa riga non funziona!
+                minNumber = minNumber + rangeOfNumber;
+                maxNumber = maxNumber + rangeOfNumber;
             };
-
-            //funzione per avere un array con numeri univoci e in ordine crescente            
-            function uniqueAndSort(bingoLine){
-                let uniqueNumber = Array.from(new Set(bingoLine)); //creo nuovo array con numeri univoci
-                bingoLine = uniqueNumber; //assegno i numeri univoci all'array iniziale
-                return bingoLine.sort((a,b) => a-b ); //ordino i numeri
-            }
-            
-            if (element === 'B'){
-                let randomNumber = getRndInteger(1, 15);
-                bingoCard[element].push(randomNumber); //push del numero casuale
-                bingoCard[element] = uniqueAndSort(bingoCard[element]);
-            }
-            if (element === 'I'){
-                let randomNumber = getRndInteger(16, 30);
-                bingoCard[element].push(randomNumber);
-                bingoCard[element] = uniqueAndSort(bingoCard[element]);
-            }
-            if (element === 'N'){
-                let randomNumber = getRndInteger(31 ,45);
-                bingoCard[element].push(randomNumber);
-                bingoCard[element] = uniqueAndSort(bingoCard[element]);
-            }
-            if (element === 'G'){
-                let randomNumber = getRndInteger(46, 60);
-                bingoCard[element].push(randomNumber);
-                bingoCard[element] = uniqueAndSort(bingoCard[element]);
-            }
-            if (element === 'O'){
-                let randomNumber = getRndInteger(61, 75);
-                bingoCard[element].push(randomNumber);
-                bingoCard[element] = uniqueAndSort(bingoCard[element]);
-            }
-        }
-    });
-    console.table(bingoCard)
+        };
+    };
+    return console.table(bingoCard)
 };
 randomBingoCard();
 
