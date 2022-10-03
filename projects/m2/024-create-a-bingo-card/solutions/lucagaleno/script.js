@@ -2,19 +2,19 @@
 
 function randomBingoCard() {
 
-    const NumberInLine = 5;
-    const rangeOfNumber = 15;
-    let minNumber = 1;
-    let maxNumber = 15;
-    let element = 0; //inizio indice
-
     const bingoCard = {
         'B': [],
         'I': [],
         'N': [],
         'G': [],
-        'O': [],
+        'O': []
     };
+
+    const NumberInLine = Object.keys(bingoCard).length; //numero di keys
+    const rangeOfNumber = 15;
+    let minNumber = 1;
+    let maxNumber = 15;
+    let element = 0; //inizio indice
 
     function getRndInteger(min, max) {
         return Math.floor(Math.random() * (max - min + 1) ) + min;
