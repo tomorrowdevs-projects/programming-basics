@@ -7,7 +7,7 @@ function checkLeapYear(year) {
     let leapYear
     if (
         (year % 400 == 0) ||
-        (year % 4 == 0 & year % 100 != 0)
+        (year % 4 == 0 && year % 100 != 0)
     ) {
         leapYear = true;
     } else {
