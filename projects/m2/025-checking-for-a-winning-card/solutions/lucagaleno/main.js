@@ -39,9 +39,9 @@ const bingoCard4 = {
 function checkForWinningCard(bingoCard){
 
     const indexArry = Object.keys(bingoCard);
-    let tempBingoCardDiagonalDown = []; //array temporaneo per controllo
-    let tempBingoCardDiagonalUp = []; //array temporaneo per controllo
-    let tempBingoCardVertical = []; //array temporaneo per controllo
+    const tempBingoCardDiagonalDown = []; //array temporaneo per controllo
+    const tempBingoCardDiagonalUp = []; //array temporaneo per controllo
+    const tempBingoCardVertical = []; //array temporaneo per controllo
     let elementKey;
     let elementIndex;
    
