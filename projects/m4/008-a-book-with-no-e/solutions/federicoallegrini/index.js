@@ -162,3 +162,5 @@ function readFileContent(path) {
     return false;
   }
 }
+
+module.exports = { generateAlphabetLetters };
