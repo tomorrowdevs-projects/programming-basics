@@ -38,7 +38,7 @@ const bingoCard4 = {
 
 function checkForWinningCard(bingoCard){
 
-    const verticalArray = Object.keys(bingoCard); // [B,I,N,G,O]
+    //const verticalArray = Object.keys(bingoCard); // [B,I,N,G,O]
     const matrixArray = Object.values(bingoCard); // matrice di array [Array(5), Array(5), ...]
     const number = 0;
    
