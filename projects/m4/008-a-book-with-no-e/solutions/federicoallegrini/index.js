@@ -11,73 +11,97 @@ function lettersProportion(filePath = "") {
     const fileContent = readFileContent(filePath);
     if (fileContent) {
       const words = removeNewLine(fileContent).split(" ");
-      const alphabetLetters = Object.fromEntries(
-        [...Array(26).keys()].map((n) => [
-          String.fromCharCode(n + 97),
-          { totalTimes: 0, inWords: 0, alreadyInWord: false },
-        ])
-      );
-      words.forEach((word) =>
-        removePunctuation(word)
-          .toLowerCase()
-          .split("")
-          .forEach((letter, index, letterList) => {
-            alphabetLetters[letter].totalTimes++;
-            // Check if the letter is already present in the current word
-            if (!alphabetLetters[letter].alreadyInWord) {
-              // If not increment the word counter and set the already value to true
-              alphabetLetters[letter].inWords++;
-              alphabetLetters[letter].alreadyInWord = true;
-            }
-            // If this is the last letter of the word
-            if (index + 1 === letterList.length) {
-              // Reset the already value for all letters of the word
-              letterList.forEach(
-                (letterOfWord) =>
-                  (alphabetLetters[letterOfWord].alreadyInWord = false)
-              );
-            }
-          })
-      );
-
-      // Display proportion for each word
-      const alphabetLettersList = Object.entries(alphabetLetters);
-      const lettersProportion = alphabetLettersList
-        .map(
-          ([letter, { totalTimes, inWords }]) =>
-            `- Letter "${letter.toUpperCase()}" is present ${totalTimes} in ${inWords} words.\n`
-        )
-        .join("");
-      console.log(
-        `[Result] Proportion of the letters in current text:\n${lettersProportion}`
-      );
-
+      const alphabetLetters = alphabetLetterProportionInWordsList(words);
+      // Proportion of letters for each word
+      displayProportion(alphabetLetters);
       // Calculate percentage of presence of each letter in all words
-      // Display letter with less value
-      let calculatedPercentage = 0;
-      const lowProportionLetter = alphabetLettersList.reduce(
-        ({ lowLetter, percentrage }, [letter, { totalTimes }]) => {
-          calculatedPercentage = (totalTimes / words.length) * 100;
-          if (calculatedPercentage < percentrage) {
-            return {
-              lowLetter: letter,
-              percentrage: calculatedPercentage,
-            };
-          }
-          return { lowLetter, percentrage };
-        },
-        {
-          lowLetter: "",
-          percentrage: 100,
-        }
+      const lowProportionLetter = lowLetterPercentagePresence(
+        alphabetLetters,
+        words.length
       );
-      console.log(
-        `[Result] The letter "${lowProportionLetter.lowLetter.toUpperCase()}" is less present, only in ${lowProportionLetter.percentrage.toFixed(
-          2
-        )}% of words.`
-      );
+      // Letter with lower percentage presence in all text
+      displayLessPresentWord(lowProportionLetter);
     }
   }
+}
+
+function alphabetLetterProportionInWordsList(words = "") {
+  const alphabetLetters = generateAlphabetLetters();
+  words.forEach((word) =>
+    removePunctuation(word)
+      .toLowerCase()
+      .split("")
+      .forEach((letter, index, letterList) => {
+        alphabetLetters[letter].totalTimes++;
+        // Check if the letter is already present in the current word
+        if (!alphabetLetters[letter].alreadyInWord) {
+          // If not increment the word counter and set the already value to true
+          alphabetLetters[letter].inWords++;
+          alphabetLetters[letter].alreadyInWord = true;
+        }
+        // If this is the last letter of the word
+        if (index + 1 === letterList.length) {
+          // Reset the already value for all letters of the word
+          letterList.forEach(
+            (letterOfWord) =>
+              (alphabetLetters[letterOfWord].alreadyInWord = false)
+          );
+        }
+      })
+  );
+  return alphabetLetters;
+}
+
+function generateAlphabetLetters() {
+  return Object.fromEntries(
+    [...Array(26).keys()].map((n) => [
+      String.fromCharCode(n + 97),
+      { totalTimes: 0, inWords: 0, alreadyInWord: false },
+    ])
+  );
+}
+
+function displayProportion(alphabetLetters) {
+  const lettersProportion = Object.entries(alphabetLetters)
+    .map(
+      ([letter, { totalTimes, inWords }]) =>
+        `- Letter "${letter.toUpperCase()}" is present ${totalTimes} in ${inWords} words.\n`
+    )
+    .join("");
+  console.log(
+    `[Result] Proportion of the letters in current text:\n${lettersProportion}`
+  );
+}
+
+function lowLetterPercentagePresence(
+  alphabetLetters,
+  numberOfWords,
+  calculatedPercentage = 0
+) {
+  return Object.entries(alphabetLetters).reduce(
+    ({ lowLetter, percentrage }, [letter, { totalTimes }]) => {
+      calculatedPercentage = (totalTimes / numberOfWords) * 100;
+      if (calculatedPercentage < percentrage) {
+        return {
+          lowLetter: letter,
+          percentrage: calculatedPercentage,
+        };
+      }
+      return { lowLetter, percentrage };
+    },
+    {
+      lowLetter: "",
+      percentrage: 100,
+    }
+  );
+}
+
+function displayLessPresentWord(lowProportionLetter) {
+  console.log(
+    `[Result] The letter "${lowProportionLetter.lowLetter.toUpperCase()}" is less present, only in ${lowProportionLetter.percentrage.toFixed(
+      2
+    )}% of words.`
+  );
 }
 
 function removeNewLine(text = "") {
