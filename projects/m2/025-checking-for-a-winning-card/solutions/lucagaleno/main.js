@@ -55,7 +55,7 @@ function checkForWinningCard(bingoCard){
         return result;
     }; 
 
-    //ciclo da 0 a 4
+    //ciclo da 0 a 4 (vertivale sulla tabella)
     for (elementKey = 0 ; elementKey < indexArry.length ; elementKey++ ) {
 
          // controllo verticale 0
@@ -71,7 +71,7 @@ function checkForWinningCard(bingoCard){
             return true; 
         };
 
-        //ciclo da 0 a 4
+        //ciclo da 0 a 4 (orizzontale sulla tabella)
         for (elementIndex = 0; elementIndex < indexArry.length ; elementIndex++) {
 
             //controllo diagonale direzione verso il basso 0
