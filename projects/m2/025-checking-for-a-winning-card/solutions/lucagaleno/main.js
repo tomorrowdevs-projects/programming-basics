@@ -5,7 +5,7 @@
 import { randomBingoCard } from "./modules/randomBingoCard.js";
 
 const bingoCard1 = {
-    'B': [1, 2, 0, 5, 7],
+    'B': [1, 2, 0, 0, 0],
     'I': [15, 16, 0, 18, 19],
     'N': [31, 32, 0, 34, 35],
     'G': [45, 47, 0, 50, 54],
