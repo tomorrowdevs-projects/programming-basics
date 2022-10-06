@@ -2,13 +2,7 @@
 
 // INPUT
 
-import { randomBingoCard } from "./utils.js";
-import { allAreEqual } from "./utils.js";
-import { checkVertical } from "./utils.js";
-import { checkHorizontal } from "./utils.js";
-import { checkDiagonaldDown } from "./utils.js";
-import { checkDiagonalUp  } from "./utils.js";
-
+import { randomBingoCard,allAreEqual,checkVertical,checkHorizontal,checkDiagonaldDown,checkDiagonalUp } from "./utils.js";
 
 const bingoCard1 = {
     'B': [1, 2, 0, 0, 0],
