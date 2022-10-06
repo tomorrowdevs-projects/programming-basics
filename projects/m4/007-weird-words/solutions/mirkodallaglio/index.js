@@ -3,6 +3,9 @@ const content = get('content');
 const allWordDiv = get('allWords');
 const ruleOk = get('ruleOk');
 const exceptions = get('exceptions');
+const allH3 = get('all');
+const ruleH3 = get('rule');
+const exceptH3 = get('except');
 
 //function to write fewer characters :)
 function get (id) {
@@ -38,6 +41,9 @@ function readFiles (input) {
             //I enter the results on the page if the allWord contains word
             if (allWord.length) {
                 
+                allH3.insertAdjacentHTML('beforeend', `  n°: ${allWord.length}`);
+                ruleH3.insertAdjacentHTML('beforeend', `  n°: ${respectRule.length}`);
+                exceptH3.insertAdjacentHTML('beforeend', `  n°: ${exception.length}`);
                 allWordDiv.innerHTML = allWord.join(' - ');
                 ruleOk.innerHTML = respectRule.join(' - ');
                 exceptions.innerHTML = exception.join(' - ');
