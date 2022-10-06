@@ -35,15 +35,18 @@ function readFiles (input) {
             //filter the original array for exceptions
             const respectRule = allWord.filter(word => !(new RegExp(exception.join('|')).test(word)));
 
-            //I enter the results on the page
+            //I enter the results on the page if the allWord contains word
             if (allWord.length) {
-
+                
                 allWordDiv.innerHTML = allWord.join(' - ');
                 ruleOk.innerHTML = respectRule.join(' - ');
                 exceptions.innerHTML = exception.join(' - ');
                 content.classList.remove('hidden');
-            } else error.innerText = `I'm sorry but there are no words in your file that contain ie or ei`;
-            
+
+            } else {
+                content.classList.add('hidden');
+                error.innerText = `I'm sorry but there are no words in your file that contain ie or ei`;
+            }
             
         };
 
