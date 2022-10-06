@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ 
+    <style>
+      .all{
+        display: block;
+        margin: 50px auto;
+        text-align: center;
+      }
+      #error{
+        color: red;
+        font-weight: bolder;
+        font-size: 20px;
+      }
+      #input{
+        transform: translateX(16%);
+        font-size: 20px;
+      }
+      .text{
+        width: 70%;
+        margin: 10px auto;
+        font-size: 22px;
+      }
+      .title{
+        width: 30%;
+        background-color: aquamarine;
+        border-radius: 50%;
+      }
+      .hidden{
+        display: none;
+      }
+    </style>
+</head>
+<body>
+
+  <h1 class="all">Rule "I before E except after C"</h1>
+
+  <input type="file" id="input" onchange="readFiles(this)" accept=".txt,.md" class="all">
+
+  <div id="error" class="all"></div>
+
+  <div id="content" class="all hidden">
+
+    <h3 class="all title" id="all">ALL WORDS CONTAINING IE OR EI</h3>
+    <p class="all text" id="allWords"></p>
+
+    <h3 class="all title" id="rule">WORDS THAT RESPECT THE RULE</h3>
+    <p class="all text" id="ruleOk"></p>
+    
+    <h3 class="all title" id="except">RULE EXCEPTIONS</h3>
+    <p class="all text" id="exceptions"></p>
+
+  </div>
+
+  <script src="./index.js"></script>  
+</body>
+</html>
