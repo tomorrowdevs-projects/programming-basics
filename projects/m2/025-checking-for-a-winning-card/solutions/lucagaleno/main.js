@@ -2,7 +2,13 @@
 
 // INPUT
 
-import { randomBingoCard } from "./modules/randomBingoCard.js";
+import { randomBingoCard } from "./utils.js";
+import { allAreEqual } from "./utils.js";
+import { checkVertical } from "./utils.js";
+import { checkHorizontal } from "./utils.js";
+import { checkDiagonaldDown } from "./utils.js";
+import { checkDiagonalUp  } from "./utils.js";
+
 
 const bingoCard1 = {
     'B': [1, 2, 0, 0, 0],
@@ -11,6 +17,7 @@ const bingoCard1 = {
     'G': [45, 47, 0, 50, 54],
     'O': [63, 69, 0, 71, 72]
 };
+
 const bingoCard2 = {
     'B': [1,2,4,5,10],
     'I': [0, 0, 0, 0, 0],
@@ -34,70 +41,28 @@ const bingoCard4 = {
     'O': [0, 62, 66, 70, 89]
 };
 
-// -------------------------------------------------------------------------------------
 
 function checkForWinningCard(bingoCard){
+    const matrixArray = Object.values(bingoCard); // matrice di array [Array(5), Array(5), ...]
+    const number = 0;
 
-    const indexArry = Object.keys(bingoCard);
-    const tempBingoCardDiagonalDown = []; //array temporaneo per controllo
-    const tempBingoCardDiagonalUp = []; //array temporaneo per controllo
-    const tempBingoCardVertical = []; //array temporaneo per controllo
-    let elementKey;
-    let elementIndex;
-   
-    // funzione per determinare se tutti gli elementi nell'array sono uguali
-    function allAreEqual(array) {
-        const result = array.every(element => {
-        if (element === array[0]) {
-            return true;
-        }
-        });
-        return result;
-    }; 
-
-    //ciclo da 0 a 4 (vertivale sulla tabella)
-    for (elementKey = 0 ; elementKey < indexArry.length ; elementKey++ ) {
-
-         // controllo verticale 0
-        if(Object.values(bingoCard[Object.keys(bingoCard)[elementKey]]).indexOf(0) != -1) {
-            tempBingoCardVertical.push(Object.values(bingoCard[Object.keys(bingoCard)[elementKey]]).indexOf(0)); //creo un array di indici quando trovo uno 0 
-            if ((allAreEqual(tempBingoCardVertical) === true) && (tempBingoCardVertical.length === indexArry.length)){
-                return true;
-            };
-        };   
-       
-        if  //controllo orizzontale 0 con somma dei valori (se = 0 allora sono tutti 0)
-        ((Object.values(bingoCard[Object.keys(bingoCard)[elementKey]]).reduce((a, b) => {return a+b;}) === 0 ))   {
-            return true; 
-        };
-
-        //ciclo da 0 a 4 (orizzontale sulla tabella)
-        for (elementIndex = 0; elementIndex < indexArry.length ; elementIndex++) {
-
-            //controllo diagonale direzione verso il basso 0
-            if ((elementIndex === elementKey) && (Object.values(bingoCard[Object.keys(bingoCard)[elementKey]])[elementIndex] === 0 )){               
-                
-                tempBingoCardDiagonalDown.push(0);
-                if ((tempBingoCardDiagonalDown.length === indexArry.length)) {
-                    return true;         
-                };       
-            }; 
-            //controllo diagonale direzione verso alto 0
-            if (((indexArry.length) - elementIndex - 1 === elementKey) && ((Object.values(bingoCard[Object.keys(bingoCard)[elementKey]])[elementIndex]) === 0)){
-                
-                tempBingoCardDiagonalUp.push(0);                
-                if ((tempBingoCardDiagonalUp.length === indexArry.length )) {
-                    return true;         
-                };   
-            }; 
-        }; // fine secondo ciclo
-    }; // fine primo ciclo 
-     
-    return false;
-     
+    if (checkVertical(matrixArray, number) === true) {
+        console.log ('Bingo verticale ');
+        return true;
+    } else if (checkHorizontal(matrixArray, number) === true) {
+        console.log ('Bingo orizzontale ');
+        return true;
+    } else if (checkDiagonaldDown(matrixArray, number) === true){
+        console.log ('Bingo diagonale verso basso ');
+        return true;
+    } else if (checkDiagonalUp(matrixArray, number) === true) {
+        console.log ('Bingo diagonale verso alto ');
+        return true;
+    } else{
+        console.log('Nessun Bingo');
+        return false;
+    };     
 };
-
-// -------------------------------------------------------------------------------------
 
 // OUTPUT
 
@@ -107,7 +72,6 @@ console.log(checkForWinningCard(randomBingoCard()));
 console.table(bingoCard1);
 console.log(checkForWinningCard(bingoCard1));
 
-
 console.table(bingoCard2);
 console.log(checkForWinningCard(bingoCard2));
 
@@ -116,3 +80,4 @@ console.log(checkForWinningCard(bingoCard3));
 
 console.table(bingoCard4);
 console.log(checkForWinningCard(bingoCard4));
+

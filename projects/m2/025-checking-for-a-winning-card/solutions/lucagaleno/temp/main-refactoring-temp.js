@@ -2,7 +2,7 @@
 
 // INPUT
 
-import { randomBingoCard } from "./modules/randomBingoCard.js";
+import { randomBingoCard } from "./randomBingoCard.js";
 
 const bingoCard1 = {
     'B': [1, 2, 0, 0, 0],
@@ -138,14 +138,11 @@ console.log(checkForWinningCard(randomBingoCard()));
 console.table(bingoCard1);
 console.log(checkForWinningCard(bingoCard1));
 
-
 console.table(bingoCard2);
 console.log(checkForWinningCard(bingoCard2));
 
 console.table(bingoCard3);
 console.log(checkForWinningCard(bingoCard3));
-
-
 
 console.table(bingoCard4);
 console.log(checkForWinningCard(bingoCard4));

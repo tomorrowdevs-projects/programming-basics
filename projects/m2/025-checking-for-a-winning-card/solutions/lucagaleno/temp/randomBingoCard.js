@@ -41,9 +41,6 @@ function randomBingoCard() {
     }
     return bingoCard
 };
-
-//console.table  (randomBingoCard())
-
 export { randomBingoCard };
 
 
