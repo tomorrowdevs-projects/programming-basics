@@ -31,7 +31,7 @@ function readFiles (input) {
             const allWord = [...eiOrIeWord];
 
             //filter exceptions: all ei that DO NOT start with C and the ei at the beginning of the word
-            const exception = allWord.filter(except => /[^c]ei|^ei/g.test(except));
+            const exception = allWord.filter(except => /[^c]ei|^ei|cie/g.test(except));
 
             //filter the original array for exceptions
             const respectRule = allWord.filter(word => !(new RegExp(exception.join('|')).test(word)));
