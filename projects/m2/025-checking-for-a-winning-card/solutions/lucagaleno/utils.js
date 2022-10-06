@@ -1,22 +1,8 @@
-//Elenco di tutte le funzioni che userò
 
-function sum(a, b){
-    return a+b;
-}
-module.exports = sum;
 
-// funzione per determinare se tutti gli elementi nell'array sono uguali
-export function allAreEqual(array) {
-    const result = array.every(element => {
-    if (element === array[0]) {
-        return true;
-    }
-    });
-    return result;
-}; 
 
 // funzione per controllo vertivale di + array con dimensione uguale (quadrato)
-function checkVertical(matrix, numberToBeFound){
+export function checkVertical(matrix, numberToBeFound){
     let element;
     const tempIndexArray = [];
     for (element = 0 ; element < matrix.length ; element++){
@@ -28,7 +14,6 @@ function checkVertical(matrix, numberToBeFound){
         };
     };
 };
-module.exports = checkVertical;
 
 // funzione per controllo orizzontale di + array 
 export function checkHorizontal(matrix, totalSumNumber){
@@ -39,6 +24,7 @@ export function checkHorizontal(matrix, totalSumNumber){
         }; 
     };
 };
+
 
 // funzione per controllo diagonale bassa (quadrato)
 export function checkDiagonaldDown (matrix, numberToBeFind){
@@ -116,3 +102,15 @@ export function randomBingoCard() {
     }
     return bingoCard
 };
+
+// funzione per determinare se tutti gli elementi nell'array sono uguali
+export function allAreEqual(array) {
+    const result = array.every(element => {
+    if (element === array[0]) {
+        return true;
+    }
+    });
+    return result;
+}; 
+
+module.exports = { checkVertical, checkHorizontal, checkDiagonalUp, checkDiagonaldDown }

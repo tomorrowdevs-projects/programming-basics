@@ -1,15 +1,6 @@
+const {checkHorizontal}  = require('./utils');
 
-const sum = require('./utils');
-
-test('adds 1 + 2 to equal 3', () => {
-  expect(sum(1, 2)).toBe(3);
-});
-
-
-/*
-const checkVertical = require('.utils');
-
-test('vertical 0', () => {
+test('orizzontale ', () => {
 
     const bingoCard = [
         [1,2,4,5,10],
@@ -19,7 +10,5 @@ test('vertical 0', () => {
         [61,62,64,65,75]
     ]
 
-  expect(checkVertical(bingoCard, 0)).toBe(true);
-
+  expect(checkHorizontal(bingoCard, 0)).toBe(true);
 });
-*/
