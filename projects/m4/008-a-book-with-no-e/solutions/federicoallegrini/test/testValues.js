@@ -1,8 +1,8 @@
-const { generateAlphabetLetters } = require("./index.js");
-
-// Test generation of alphabet letters object
-test("Verify that the function generate an object with all 26 letters as key and object as value", () => {
-  expect(generateAlphabetLetters()).toStrictEqual({
+module.exports = {
+  testPath: "test\\test.txt",
+  invalidPath: "invalid|path",
+  emptyFilePath: "test\\empty.txt",
+  aphabetLettersObject: {
     a: {
       totalTimes: 0,
       inWords: 0,
@@ -133,5 +133,10 @@ test("Verify that the function generate an object with all 26 letters as key and
       inWords: 0,
       alreadyInWord: false,
     },
-  });
-});
+  },
+  newLineText: `Lorem ipsum dolor sit amet consectetur adipisicing elit.\r\nAperiam esse accusamus,\nullam est qui facilis possimus.\r`,
+  noNewLineText: `Lorem ipsum dolor sit amet consectetur adipisicing elit.  Aperiam esse accusamus, ullam est qui facilis possimus. `,
+  punctuationWord: "!Lo_rem,",
+  noPunctuationWord: "Lorem",
+  testText: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam esse accusamus, ullam est qui facilis possimus. Autem commodi similique sapiente soluta nisi qui illum nemo adipisci assumenda ratione, suscipit provident tempora excepturi impedit sint! Officiis maiores facilis ipsa earum quaerat neque sit quam. Reiciendis, atque? Possimus dolores, alias debitis dolorum velit quos hic nulla. Dolor ea facere dolore, rerum minus nobis voluptas. Amet repellendus impedit, suscipit dolor quaerat quam numquam praesentium odio exercitationem quisquam eveniet consequatur ad doloremque nisi officiis, in repellat delectus est rerum. Explicabo nulla at perferendis optio illo! Nobis iure ad, ducimus libero laborum nisi accusamus id.`,
+};

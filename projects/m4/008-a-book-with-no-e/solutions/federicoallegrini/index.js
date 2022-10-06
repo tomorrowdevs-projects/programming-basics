@@ -107,6 +107,7 @@ function displayLessPresentWord(lowProportionLetter) {
 function removeNewLine(text = "") {
   return text.replaceAll("\n", " ").replaceAll("\r", " ");
 }
+
 function removePunctuation(word) {
   return word
     .split("")
@@ -163,4 +164,12 @@ function readFileContent(path) {
   }
 }
 
-module.exports = { generateAlphabetLetters };
+module.exports = {
+  generateAlphabetLetters,
+  removeNewLine,
+  removePunctuation,
+  checkArgsLength,
+  isValidPath,
+  fileExists,
+  readFileContent,
+};
