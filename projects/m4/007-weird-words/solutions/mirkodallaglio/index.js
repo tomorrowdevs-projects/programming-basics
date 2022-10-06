@@ -3,9 +3,8 @@ const content = get('content');
 const allWordDiv = get('allWords');
 const ruleOk = get('ruleOk');
 const exceptions = get('exceptions');
-const input = get('input');
 
-//
+//function to write fewer characters :)
 function get (id) {
     return document.getElementById(id);
 }
@@ -37,10 +36,14 @@ function readFiles (input) {
             const respectRule = allWord.filter(word => !(new RegExp(exception.join('|')).test(word)));
 
             //I enter the results on the page
-            allWordDiv.innerHTML = allWord.join(' - ');
-            ruleOk.innerHTML = respectRule.join(' - ');
-            exceptions.innerHTML = exception.join(' - ');
-            content.classList.remove('hidden');
+            if (allWord.length) {
+
+                allWordDiv.innerHTML = allWord.join(' - ');
+                ruleOk.innerHTML = respectRule.join(' - ');
+                exceptions.innerHTML = exception.join(' - ');
+                content.classList.remove('hidden');
+            } else error.innerText = `I'm sorry but there are no words in your file that contain ie or ei`;
+            
             
         };
 
