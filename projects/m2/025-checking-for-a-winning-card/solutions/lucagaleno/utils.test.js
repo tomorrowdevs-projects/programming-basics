@@ -1,4 +1,4 @@
-const {checkHorizontal}  = require('./utils');
+const { checkVertical, checkHorizontal, checkDiagonalUp, checkDiagonaldDown, allAreEqual }  = require('./utils');
 
 test('orizzontale ', () => {
 
@@ -11,4 +11,8 @@ test('orizzontale ', () => {
     ]
 
   expect(checkHorizontal(bingoCard, 0)).toBe(true);
+  
 });
+
+
+// ecc...

@@ -1,8 +1,7 @@
-
-
+// Elenco funzioni e variabili
 
 // funzione per controllo vertivale di + array con dimensione uguale (quadrato)
-export function checkVertical(matrix, numberToBeFound){
+ function checkVertical(matrix, numberToBeFound){
     let element;
     const tempIndexArray = [];
     for (element = 0 ; element < matrix.length ; element++){
@@ -16,7 +15,7 @@ export function checkVertical(matrix, numberToBeFound){
 };
 
 // funzione per controllo orizzontale di + array 
-export function checkHorizontal(matrix, totalSumNumber){
+ function checkHorizontal(matrix, totalSumNumber){
     let element;
     for (element = 0 ; element < matrix.length ; element++){
         if (matrix[element].reduce((a, b) => {return a+b;}) === totalSumNumber ) {
@@ -25,9 +24,8 @@ export function checkHorizontal(matrix, totalSumNumber){
     };
 };
 
-
 // funzione per controllo diagonale bassa (quadrato)
-export function checkDiagonaldDown (matrix, numberToBeFind){
+ function checkDiagonaldDown (matrix, numberToBeFind){
     let indexVertical;
     let indexOrizontal;
     const tempArray = [];
@@ -44,7 +42,7 @@ export function checkDiagonaldDown (matrix, numberToBeFind){
 };
 
 // funzione per controllo diagonale alto (quadrato)
-export function checkDiagonalUp (matrix, numberToBeFind){
+ function checkDiagonalUp (matrix, numberToBeFind){
     let indexVertical;
     let indexOrizontal;
     const tempArray = [];
@@ -61,7 +59,7 @@ export function checkDiagonalUp (matrix, numberToBeFind){
 };
 
 //funzione per la creazione di una carta bingo casuale
-export function randomBingoCard() {
+ function randomBingoCard() {
 
     const bingoCard = {
         'B': [],
@@ -104,7 +102,7 @@ export function randomBingoCard() {
 };
 
 // funzione per determinare se tutti gli elementi nell'array sono uguali
-export function allAreEqual(array) {
+function allAreEqual(array) {
     const result = array.every(element => {
     if (element === array[0]) {
         return true;
@@ -113,4 +111,43 @@ export function allAreEqual(array) {
     return result;
 }; 
 
-module.exports = { checkVertical, checkHorizontal, checkDiagonalUp, checkDiagonaldDown }
+const bingoCardV = {
+    'B': [1, 2, 0, 0, 0],
+    'I': [15, 16, 0, 18, 19],
+    'N': [31, 32, 0, 34, 35],
+    'G': [45, 47, 0, 50, 54],
+    'O': [63, 69, 0, 71, 72]
+};
+
+const bingoCardH = {
+    'B': [1,2,4,5,10],
+    'I': [0, 0, 0, 0, 0],
+    'N': [31,35,38,41,42],
+    'G': [53,55,58,59,60],
+    'O': [61,62,64,65,75]
+};
+const bingoCardDD = {
+    'B': [0, 2, 5, 8, 9],
+    'I': [16, 0, 18, 19, 25],
+    'N': [31, 33, 0, 41, 42],
+    'G': [46, 0, 50, 0, 54],
+    'O': [0, 62, 66, 70, 0]
+};
+
+const bingoCardDU = {
+    'B': [1, 2, 5, 0, 0],
+    'I': [16, 17, 18, 0, 25],
+    'N': [31, 33, 0, 41, 42],
+    'G': [46, 0, 50, 51, 54],
+    'O': [0, 62, 66, 70, 89]
+};
+
+
+export { bingoCardV, bingoCardH, bingoCardDD, bingoCardDU }
+export { checkVertical, checkHorizontal, checkDiagonalUp, checkDiagonaldDown, randomBingoCard, allAreEqual };
+
+// Per test:
+//module.exports = { checkVertical, checkHorizontal, checkDiagonalUp, checkDiagonaldDown, allAreEqual};
+
+
+
