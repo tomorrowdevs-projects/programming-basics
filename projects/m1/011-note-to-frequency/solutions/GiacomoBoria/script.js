@@ -8,26 +8,39 @@ Hint: You will want to access the characters in the note entered by the user ind
 Begin by separating the letter from the octave. Then compute the frequency for that letter in the fourth octave using the data in the table above. 
 Once you have this frequency you should divide it by 24−x , where x is the octave number entered by the user. This will halve or double the frequency the correct number of times. */
 
-// ASSIGNMENT array at note and fequency
-const notes = ["c4", "d4", "e4", "f4", "g4", "a4", "b4"];
-const frequency = ["261.63", "293.66", "329.63", "349.23", "392.00", "440.00", "493.88"];
+// Declare variables with known frequencies
+const freqC4 = 261.63;
+const freqD4 = 293.66;
+const freqE4 = 329.63;
+const freqF4 = 349.23;
+const freqG4 = 392.00;
+const freqA4 = 440.00;
+const freqB4 = 493.88;
+
+// Declare variables for all frquency (for condition)
+let otherFreq;
 
 // User Input
 const userNote = prompt("Type in your favorite note", 0).toLowerCase();
 
-// Condition 2 digits
-if (userNote.length > 2) {
-    alert("You must type two digits");
-}
-// Condition case
-if (notes.includes(userNote)) {
-  const indexFrequency = notes.indexOf(userNote);
-  alert(`The frequancy the your favorite note is: ${frequency[indexFrequency]}`)
-} else {
-    alert("Your note does not match the list of \"half-octaves,\" maybe you were looking for the frequency of another note on the C scale.")
-}
+// Condition validaton: Input minor 2 and minor g and minor 8 
+if (userNote.length > 2 || userNote[0] > "g" || userNote[1] > 8) {
+   alert("You must type two digits witch letters included a-g and numebr 0-8");
 
-const userOctave = Number(prompt("Insert the scale number of the C note you were looking for"))
-
-const scaleFrequencyC = frequency[0] / (2**(4-userOctave));
-alert(`The frequancy the your note is: ${scaleFrequencyC}`);
+// calculate the frequency per single note
+} else if ( userNote[0] == "c") {
+  otherFreq = freqC4/ (2**(4 - userNote[1]));
+} else if ( userNote[0] == "d") {
+  otherFreq = freqD4/ (2**(4 - userNote[1]));
+} else if ( userNote[0] == "e") {
+  otherFreq = freqE4/ (2**(4 - userNote[1]));
+} else if ( userNote[0] == "f") {
+  otherFreq = freqF4/ (2**(4 - userNote[1]));
+} else if ( userNote[0] == "g") {
+  otherFreq = freqG4/ (2**(4 - userNote[1]));
+} else if ( userNote[0] == "a") {
+  otherFreq = freqA4/ (2**(4 - userNote[1]));
+} else if ( userNote[0] == "b") {
+  otherFreq = freqB4/ (2**(4 - userNote[1]));
+}
+alert(`The frequancy the your note is: ${otherFreq}`);
