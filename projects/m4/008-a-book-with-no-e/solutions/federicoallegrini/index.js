@@ -166,6 +166,8 @@ function readFileContent(path) {
 
 module.exports = {
   generateAlphabetLetters,
+  alphabetLetterProportionInWordsList,
+  lowLetterPercentagePresence,
   removeNewLine,
   removePunctuation,
   checkArgsLength,

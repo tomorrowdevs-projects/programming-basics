@@ -3,7 +3,10 @@ const {
   testPath,
   invalidPath,
   emptyFilePath,
-  aphabetLettersObject,
+  emptyAphabetLettersObject,
+  testAphabetLettersObject,
+  testLowLetterPercentagePresence,
+  testWordsList,
   newLineText,
   noNewLineText,
   testText,
@@ -17,6 +20,8 @@ process.argv = ["node", "index.js", testPath];
 // Import function to test
 const {
   generateAlphabetLetters,
+  alphabetLetterProportionInWordsList,
+  lowLetterPercentagePresence,
   removeNewLine,
   removePunctuation,
   checkArgsLength,
@@ -27,7 +32,22 @@ const {
 
 // Test generation of alphabet letters object function
 test("[generateAlphabetLetters] Verify that the function generate an object with all 26 letters as key and object as value", () =>
-  expect(generateAlphabetLetters()).toStrictEqual(aphabetLettersObject));
+  expect(generateAlphabetLetters()).toStrictEqual(emptyAphabetLettersObject));
+
+// Test alphabet the function that generate the letter proportion
+test(`[alphabetLetterProportionInWordsList] Verify that the function generates an object with the 26 letters as the key, but with the correctly filled in values`, () =>
+  expect(alphabetLetterProportionInWordsList(testWordsList)).toStrictEqual(
+    testAphabetLettersObject
+  ));
+
+// Test alphabet the function that calculate the low letter percentage presence
+test(`[lowLetterPercentagePresence] `, () => {
+  const testWords = testText.split(" ");
+  const testAlphabetLetters = alphabetLetterProportionInWordsList(testWords);
+  expect(
+    lowLetterPercentagePresence(testAlphabetLetters, testWords.length)
+  ).toStrictEqual(testLowLetterPercentagePresence);
+});
 
 // Test deletion of new line in a text function
 test("[removeNewLine] Verify that the fuction return a text without new line characters", () =>
