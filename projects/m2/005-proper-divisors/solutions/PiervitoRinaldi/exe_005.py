@@ -1,6 +1,6 @@
 def proper_divisors(n):
     results = []
-    divisor = n - 1
+    divisor = n 
 
     while divisor >= 1:
         if n % divisor == 0:
