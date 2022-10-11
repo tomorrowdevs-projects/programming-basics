@@ -5,10 +5,10 @@ def only_the_words(text):
     print(words_list)
     
     for i in range(len(words_list)):        # Restituisce l'indice di ogni elemento!
-        for letter in words_list[i]:        # perche mi cancella anche più segni di punteggiatura?
+        for letter in words_list[i]:        
             if letter in punctuation:
                 words_list[i]= words_list[i][:-1]
-                
+
     space = ''
     while space in words_list:
         words_list.remove(space)
