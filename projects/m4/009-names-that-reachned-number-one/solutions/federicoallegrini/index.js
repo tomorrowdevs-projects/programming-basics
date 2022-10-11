@@ -4,33 +4,41 @@ const path = require("path");
 namesThatReachedNumberOne("./names");
 
 function namesThatReachedNumberOne(folderName = "") {
-  const lists = {
-    F: [],
-    M: [],
-  };
   if (fileExists(folderName)) {
+    const lists = {
+      F: [],
+      M: [],
+    };
+    const info = {
+      genders: ["F", "M"],
+      year: 0,
+      name: "",
+      rows: [],
+      fileIndex: 0,
+    };
     fs.readdirSync(folderName).forEach((file) => {
       if (path.extname(file) === ".txt") {
-        const year = /\d+/g.exec(file)[0];
-        const fileContent = readFileContent(`${folderName}/${file}`);
-        const rows = fileContent.split("\n");
-        ["F", "M"].forEach((sex) => {
-          const index = rows.findIndex(
-            (row) => row.split(",")[1].toUpperCase() === sex
+        info.year = /\d+/g.exec(file)[0];
+        info.rows = readFileContent(`${folderName}/${file}`).split("\n");
+        info.genders.forEach((gender) => {
+          info.fileIndex = info.rows.findIndex(
+            (row) => row.split(",")[1].toUpperCase() === gender
           );
-          const name = rows[index].split(",")[0];
+          info.name = info.rows[info.fileIndex].split(",")[0];
           // Name already in list
-          const listIndex = lists[sex].map((el) => el.name).indexOf(name);
+          const listIndex = lists[gender]
+            .map((el) => el.name)
+            .indexOf(info.name);
           if (listIndex === -1) {
-            lists[sex].push({ name, years: [year] });
+            lists[gender].push({ name: info.name, years: [info.year] });
           } else {
-            lists[sex][listIndex].years.push(year);
+            lists[gender][listIndex].years.push(info.year);
           }
         });
       }
     });
+    displayLists(lists);
   }
-  displayLists(lists);
 }
 
 function displayLists(lists) {
