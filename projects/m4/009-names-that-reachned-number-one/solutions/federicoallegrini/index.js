@@ -34,18 +34,28 @@ function addInfoToGenderList(
   firstNameIndex = 0,
   name = ""
 ) {
-  firstNameIndex = rows.findIndex(
-    (row) => row.split(",")[1].toUpperCase() === gender
-  );
-  name = rows[firstNameIndex].split(",")[0];
-  const nameIndexInList = genderList.map(({ name }) => name).indexOf(name);
-  // Is name already in gender list
-  if (nameIndexInList === -1) {
-    genderList.push({ name, years: [year] });
-  } else {
-    genderList[nameIndexInList].years.push(year);
+  try {
+    firstNameIndex = rows.findIndex(
+      (row) => row.split(",")[1].toUpperCase() === gender
+    );
+    name = rows[firstNameIndex].split(",")[0];
+    const nameIndexInList = genderList.map(({ name }) => name).indexOf(name);
+    // Is name already in gender list
+    if (nameIndexInList === -1) {
+      genderList = [...genderList, { name, years: [year] }];
+    } else {
+      genderList = [...genderList];
+      genderList[nameIndexInList].years = [
+        ...genderList[nameIndexInList].years,
+        year,
+      ];
+    }
+    return genderList;
+  } catch (ex) {
+    console.error(ex.message);
+  } finally {
+    return genderList;
   }
-  return genderList;
 }
 
 function displayLists(lists) {
@@ -111,3 +121,5 @@ function isValidPath(path = "") {
   console.error(`[Error] Invalid path ${path}!`);
   return false;
 }
+
+module.exports = { addInfoToGenderList };
