@@ -1,11 +1,14 @@
-function totalTheValues(){
 
-    let value = parseFloat(prompt('Enter the value (empty to stop enetring values): '));
+//let value = parseFloat(prompt('Enter the value (empty to stop enetring values): '));
+
+function totalTheValues(value, times){
     
-    if ((isNaN(value))){
+    if (times === 0){
         return 0.0;
     } else {
-        return value += totalTheValues();
+        times--
+        return (value += totalTheValues(value, times));
     }; 
 };
 
+module.exports = {totalTheValues};

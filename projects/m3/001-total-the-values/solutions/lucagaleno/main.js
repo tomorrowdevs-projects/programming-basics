@@ -2,6 +2,7 @@
 
 const prompt = require('prompt-sync')();
 
+
 function totalTheValues(){
 
     let value = parseFloat(prompt('Enter the value (empty to stop enetring values): '));
