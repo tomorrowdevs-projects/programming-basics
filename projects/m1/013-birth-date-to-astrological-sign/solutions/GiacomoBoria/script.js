@@ -12,95 +12,98 @@ const dayBirthday = date.getDate();
 const monthBirthday = date.getMonth();
 
 // Check condition - considering the month (0-11)
-if (monthBirthday <= 11 && dayBirthday <= 31 && birthday <= 10) {
-
+if (monthBirthday <= 11 && dayBirthday <= 31 && birthday.length <=10) {
+  let zodiacSign;
 // Case condition 
   switch (monthBirthday) {
     case 0: 
       if (dayBirthday <= 19) {
-        alert("Your zodiac sign is Capricorns")
+        zodiacSign = "Capricorns";
       } else if (dayBirthday >= 20) {
-        alert("Your zodiac sign is Aquarius")
+        zodiacSign = "Aquarius";
       }
       break;
     case 1: 
       if (dayBirthday <= 18) {
-        alert("Your zodiac sign is Aquarius")
+        zodiacSign = "Aquarius";
       } else if (dayBirthday >= 19) {
-        alert("Your zodiac sign is Pisces")
+        zodiacSign = "Pisces";
       }
         break;
     case 2: 
       if (dayBirthday <= 20) {
-        alert("Your zodiac sign is Pisces")
+        zodiacSign = "Pisces";
       } else if (dayBirthday >=21) {
-        alert("Your zodiac sign is Aries")
+        zodiacSign = "Aries";
       }
         break;
     case 3: 
       if (dayBirthday <= 19) {
-        alert("Your zodiac sign is Aries")
+        zodiacSign = "Aries";
       } else if (dayBirthday >=20) {
-        alert("Your zodiac sign is Taurus")
+        zodiacSign = "Taurus";
       }
         break;
     case 4: 
       if (dayBirthday <= 20) {
-        alert("Your zodiac sign is Taurus")
+        zodiacSign = "Taurus";
       } else if (dayBirthday >=21) {
-        alert("Your zodiac sign is Gemini")
+        zodiacSign = "Gemini";
       }
         break;
     case 5: 
       if (dayBirthday <= 21) {
-        alert("Your zodiac sign is Gemini")
+        zodiacSign = "Gemini";
       } else if (dayBirthday >=22) {
-        alert("Your zodiac sign is Cancer")
+        zodiacSign = "Cancer";
       }
         break;
     case 6: 
       if (dayBirthday <= 22) {
-        alert("Your zodiac sign is Cancer")
+        zodiacSign = "Cancer";
       } else if (dayBirthday >=23) {
-        alert("Your zodiac sign is Leo")
+        zodiacSign = "Leo";
       }
         break;
     case 7: 
       if (dayBirthday <= 22) {
-        alert("Your zodiac sign is Leo")
+        zodiacSign = "Leo";
       } else if (dayBirthday >=23) {
-        alert("Your zodiac sign is Virgo")
+        zodiacSign = "Virgo";
       }
         break;
     case 8: 
       if (dayBirthday <= 22) {
-        alert("Your zodiac sign is Virgo")
+        zodiacSign = "Virgo";
       } else if (dayBirthday >=23) {
-        alert("Your zodiac sign is Libra")
+        zodiacSign = "Libra";
       }
         break;
     case 9: 
       if (dayBirthday <= 22) {
-        alert("Your zodiac sign is Libra")
+        zodiacSign = "Libra";
       } else if (dayBirthday >=23) {
-        alert("Your zodiac sign is Scorpio")
+        zodiacSign = "Scorpio";
       }
         break;
     case 10: 
       if (dayBirthday <= 21) {
-        alert("Your zodiac sign is Scorpio")
+        zodiacSign = "Scorpio";
       } else if (dayBirthday >=22) {
-        alert("Your zodiac sign is Sagittarius")
+        zodiacSign = "Sagittarius";
       }
         break;
     case 11: 
       if (dayBirthday <= 21) {
-        alert("Your zodiac sign is Sagittarius")
+        zodiacSign = "Sagittarius";
       } else if (dayBirthday >= 22) {
-        alert("Your zodiac sign is Capricorn")
+        zodiacSign = "Capricorn";
       }
         break;
   } 
+  // Output
+  alert(`Your zodiac sign is ${zodiacSign}`)
+  
 // Error output
 } else {
   alert("Sorry, the value you entered is wrong")
