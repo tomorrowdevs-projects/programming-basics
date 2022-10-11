@@ -1,17 +1,11 @@
-function OpenNodeServer (){
-    const http = require('http');
+function totalTheValues(){
+
+    let value = parseFloat(prompt('Enter the value (empty to stop enetring values): '));
     
-    const hostname = '127.0.0.1';
-    const port = 3000;
-    
-    const server = http.createServer((req, res) => {
-      res.statusCode = 200;
-      res.setHeader('Content-Type', 'text/plain');
-      res.end('what');
-    });
-    
-    server.listen(port, hostname, () => {
-      console.log(`Server running at http://${hostname}:${port}/`);
-    });
-    }
-    
+    if ((isNaN(value))){
+        return 0.0;
+    } else {
+        return value += totalTheValues();
+    }; 
+};
+
