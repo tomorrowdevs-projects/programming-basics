@@ -188,3 +188,8 @@ function checkArgsLength(argsFilePath = "", requiredLength = 1) {
   );
   return false;
 }
+
+module.exports = {
+  calculateBirthNumber,
+  getMostBirthsName,
+};
