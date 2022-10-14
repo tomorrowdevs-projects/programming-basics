@@ -16,11 +16,7 @@ function namesThatReachedNumberOne(folderName = "", inputYears = [0, 0]) {
     if (startYear <= endYear) {
       const files = fs
         .readdirSync(folderName)
-        .filter((file) => path.extname(file) === ".txt")
-        .sort(
-          (fileA, fileB) =>
-            extractNumberFromString(fileA) - extractNumberFromString(fileB)
-        );
+        .filter((file) => path.extname(file) === ".txt");
       const firstYear = getFileYear("first", files);
       const lastYear = getFileYear("last", files);
       const info = { rows: [], genders: ["F", "M"] };
@@ -40,7 +36,7 @@ function namesThatReachedNumberOne(folderName = "", inputYears = [0, 0]) {
                 genderObj[gender] = calculateBirthNumber(
                   gender,
                   genderObj[gender],
-                  info
+                  info.rows
                 );
               });
               return genderObj;
@@ -70,6 +66,10 @@ function namesThatReachedNumberOne(folderName = "", inputYears = [0, 0]) {
 }
 
 function getFileYear(type = "", files = ["0"]) {
+  files.sort(
+    (fileA, fileB) =>
+      extractNumberFromString(fileA) - extractNumberFromString(fileB)
+  );
   try {
     switch (type) {
       case "first":
@@ -92,7 +92,7 @@ function extractNumberFromString(text) {
 function calculateBirthNumber(
   gender,
   subGenderObj,
-  { rows },
+  rows,
   firstNameIndex = 0,
   name = "",
   births = 0
