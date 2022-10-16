@@ -8,43 +8,48 @@ if (checkArgsLength(argsFilePath)) {
 
 function repeatedWords(filePath = "") {
   if (isValidPath(filePath) && fileExists(filePath)) {
-    const fileContent = readFileContent(filePath)
-      .replaceAll("\r", "")
-      .replaceAll("\n", " \n ")
-      .trim();
+    const fileContent = cleanText(readFileContent(filePath));
     if (fileContent || fileContent === "") {
-      const _ = {
-        wordsIndex: -1,
-        previousWord: "",
-        lineCounter: 0,
-        lineIndex: 0,
-        mappedWord: {},
-      };
-      const words = fileContent.split(" ");
-      for (let word of words) {
-        _.wordsIndex++;
-        if (word === "\n") {
-          _.lineCounter++;
-          continue;
-        }
-        if (isEmpty(word)) continue;
-        word = cleanWord(word);
-        _.previousWord =
-          _.wordsIndex > 0 ? cleanWord(words[_.wordsIndex - 1]) : "";
-        if (word !== _.previousWord) continue;
-        _.lineIndex = `line${_.lineCounter}`;
-        if (_.mappedWord[word]?.hasOwnProperty(_.lineIndex)) {
-          _.mappedWord[word][_.lineIndex]++;
-        } else {
-          _.mappedWord[word] = {
-            ..._.mappedWord[word],
-            [_.lineIndex]: 2,
-          };
-        }
-      }
-      displayrepeatedWords(_.mappedWord, filePath);
+      const mappedWords = mapRepeatedWords(fileContent);
+      displayrepeatedWords(mappedWords, filePath);
     }
   }
+}
+
+function mapRepeatedWords(text = "") {
+  const words = text.split(" ");
+  const _ = {
+    wordsIndex: -1,
+    previousWord: "",
+    lineCounter: 0,
+    lineIndex: 0,
+    mappedWord: {},
+  };
+  for (let word of words) {
+    _.wordsIndex++;
+    if (word === "\n") {
+      _.lineCounter++;
+      continue;
+    }
+    if (isEmpty(word)) continue;
+    word = cleanWord(word);
+    _.previousWord = _.wordsIndex > 0 ? cleanWord(words[_.wordsIndex - 1]) : "";
+    if (word !== _.previousWord) continue;
+    _.lineIndex = `line${_.lineCounter}`;
+    if (_.mappedWord[word]?.hasOwnProperty(_.lineIndex)) {
+      _.mappedWord[word][_.lineIndex]++;
+    } else {
+      _.mappedWord[word] = {
+        ..._.mappedWord[word],
+        [_.lineIndex]: 2,
+      };
+    }
+  }
+  return _.mappedWord;
+}
+
+function cleanText(text) {
+  return text.replaceAll("\r", "").replaceAll("\n", " \n ").trim();
 }
 
 function cleanWord(word) {
@@ -129,3 +134,5 @@ function readFileContent(path) {
     return false;
   }
 }
+
+module.exports = { cleanText, mapRepeatedWords };
