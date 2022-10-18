@@ -9,7 +9,7 @@ const userInput = prompt("Enter the values for which you want to know the averag
 /*I initialize 2 variables:
 - Average for internal calculation of conditions
 - Sum = 0 to sum the values of the array*/
-let avarege;
+let averege;
 let sum = 0;
 
 // Loop to sum the values of the array
@@ -19,12 +19,12 @@ for (i = 0; i < userInput.length; ++i) {
 
  // Condition 0 like first value
   if (userInput.indexOf("0") == 0) {
-  avarege = sum / (userInput.length)
+  averege = sum / (userInput.length)
   alert("Sorry, the first value can't be equal to 0!")
  // Condition 0 like last value
 } else if (userInput.at(-1)  == "0") {
-  avarege = sum / (userInput.length - 1);
+  averege = sum / (userInput.length - 1);
 } else {
-  avarege = sum / (userInput.length);
+  averege = sum / (userInput.length);
 }
- alert(`The average is: ${avarege}`)
+ alert(`The average is: ${averege}`)
