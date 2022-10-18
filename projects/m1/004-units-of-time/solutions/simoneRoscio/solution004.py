@@ -17,9 +17,12 @@ hour = 3600
 minute = 60
 
 # compute the seconds 
-sDay = day * days
-sHour = hour * hours
-sMinute = minute * minutes
+if days >= 1:
+    sDay = day * days
+if hour >= 1:
+    sHour = hour * hours
+if minute >=1:
+    sMinute = minute * minutes
 
 totalSeconds = sDay + sHour + sMinute + seconds
 
