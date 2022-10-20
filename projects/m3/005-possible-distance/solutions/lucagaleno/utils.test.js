@@ -4,9 +4,7 @@ const checkInput = require('./utils');
 const coins = require('./utils')
 
 describe('Test Function Is Possible Change', () => {
-    
-        coins = [0.25, 0.10, 0.05, 0.01];
-    
+        
         it('One Coins', () => {
             expect(checkInput(0.01,1, 0)).toBe(true);    // (0.01)
             expect(checkInput(0.05,1, 0)).toBe(true);    // (0.05)

@@ -1,8 +1,10 @@
 //005-possible-distance
 
-coins = [0.25, 0.10, 0.05, 0.01]
+
 
 function checkInput(dollar, numberOfCoin, indexCoins){
+
+        coins = [0.25, 0.10, 0.05, 0.01]
 
         dollar = +dollar.toFixed(2);
  
@@ -32,5 +34,4 @@ function checkInput(dollar, numberOfCoin, indexCoins){
 }
 
 
-module.exports =  checkInput();
-module.exports = coins;
+module.exports =  checkInput;
