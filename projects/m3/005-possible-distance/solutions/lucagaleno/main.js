@@ -1,29 +1,38 @@
 //005-possible-distance
 
-function checkInput(dollar, numberOfCoin){
+coins = [0.25, 0.10, 0.05, 0.01]
 
-        coins = [0.25, 0.10, 0.05, 0.01]
+function checkInput(dollar, numberOfCoin, indexCoins){
 
-        dollar = dollar.toFixed(2);
+        dollar = +dollar.toFixed(2); //+ to keep it as number
+ 
+        //Base condition
+        if (dollar === 0 && numberOfCoin === 0 ) return true;
 
-        for(let i=0; i<=coins.length; i++){
-                if ((i * numberOfCoin).toFixed(2) === dollar) {
+        if ((dollar === 0 && numberOfCoin != 0) 
+        || (dollar != 0 && numberOfCoin === 0) 
+        || (dollar < 0) 
+        || (numberOfCoin < 0)
+        || (indexCoins > coins.length-1)) return false;
+      
 
-                        return true;
+        //Recursive condition
+        if (dollar >= coins[indexCoins] && numberOfCoin > 0){
+
+                let tempCoins = checkInput(dollar - coins[indexCoins], numberOfCoin-1, indexCoins)
+
+                if (tempCoins){
+                       return true 
+                } else  {
+                        return checkInput(dollar, numberOfCoin, indexCoins+=1)
                 }
-        }
-
-        if (numberOfCoin === 0 || dollar < 0 || numberOfCoin*Math.max(...coins) < dollar || numberOfCoin*Math.min(...coins) > dollar) {
-                return false;
-                
-        } else{ 
-                for (let x=0; x<=coins.length; x++){
-                        return checkInput(dollar-x, numberOfCoin-1)   
-                }            
+        }else {
+                return checkInput(dollar, numberOfCoin, indexCoins+=1)  
         }
 }
 
-
-console.log(checkInput(1, 4));
+console.log(checkInput(5, 1, 0));
+console.log(checkInput(0.05, 1, 0));
+console.log(checkInput(1.4, 10, 0));
 
 
