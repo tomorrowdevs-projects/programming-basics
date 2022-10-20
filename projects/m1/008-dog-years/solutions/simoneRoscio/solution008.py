@@ -20,4 +20,4 @@ elif human_years > 2:
     dog_first_age = 2 * dog_first_ratio
     dog_second_age = (human_years - 2) * dog_second_ratio 
     dog_age = dog_first_age + dog_second_age
-    print(f'{human_years} human years equals {dog_age} years')
+    print(f'{human_years} human years equals {dog_age} dog years')
