@@ -2,56 +2,48 @@
 
 const {promises: {readFile}} = require("fs");
 const fs = require("fs");
+const stringOfWords = require("./utils")
 const file_1 = process.argv[2];
 const file_2 = process.argv[3];
 
-let wordList_1 = [];
-let wordList_2 = [];
+/** list of words of a text 
+     * @type {Array<string>}
+    */
 let wordsToCheck = [];
-let text = " ";
 
-function newText(word){
-    text += word + " ";
-}
+/** text to write into a new file
+     * @type {string}
+    */
+let text = "";
 
 Promise.all([
   readFile(file_1),
   readFile(file_2),
 ]).then(([content_1, content_2]) => {
 
-    wordList_1 = content_1.toString().split("\n"); 
-    for(let i = 0; i < wordList_1.length; i++){
-        let line = wordList_1[i].split(" ");
-        for(let j = 0; j < line.length; j++){
-            let word = line[j].replace("\r", "");
-            wordsToCheck.push(word);
-        }
-    }
+    wordsToCheck = stringOfWords(content_1);
 
-    wordList_2 = content_2.toString().split("\n");  
-    for (let i = 0; i < wordList_2.length; i++){
-        let line = wordList_2[i].split(" ");      
-        for (let j = 0; j < line.length; j++){  
-            let word = line[j].replace("\r", "");      
+    /** looping on words into a text to create a new one substituting sensitive ones with '*' sequence */
+    let lineList_2 = content_2.toString().split("\n");  
+    lineList_2.forEach(line => {
+        line.split(" ").forEach(word => {
+            word = word.word.replaceAll(/[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/gim, "");
             if (wordsToCheck.includes(word)){
-                let newWord = "";
-                for (let char of word){
-                    newWord += "*";
-                }
-                newText(newWord);
+                let newWord = word.split("").map(x => "*").join("");
+                text += newWord + " ";
             }else{
-                newText(word);
+              text += word + " ";
             }
-        }
-        newText("\n");
+        });
+        text += "\n";
+        /** creating a new file with changed text */
         fs.writeFile("./result.txt", text, err => {
             if (err) {
               console.error(err);
             }
-            // file written successfully
+            /** file written successfully */
           });
-    }         
-
+    });           
     console.log(text);
 
 }).catch(error => {
