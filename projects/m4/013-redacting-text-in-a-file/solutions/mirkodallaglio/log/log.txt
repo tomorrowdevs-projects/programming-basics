@@ -1,0 +1,37 @@
+
+Fri Oct 21 2022 - 13:15:12 - READ - Original file read succefully
+Fri Oct 21 2022 - 13:15:12 - READ - Sensitive-word file read succefully
+Fri Oct 21 2022 - 13:15:12 - WRITE - Modified file write succefully
+Fri Oct 21 2022 - 13:15:21 - ERROR: Error: ENOENT: no such file or directory, open 'Helo.txt'
+Fri Oct 21 2022 - 13:15:39 - READ - Original file read succefully
+Fri Oct 21 2022 - 13:15:39 - ERROR: Error: ENOENT: no such file or directory, open 'sensitive-wor.txt'
+Fri Oct 21 2022 - 13:16:8 - READ - Original file read succefully
+Fri Oct 21 2022 - 13:16:8 - READ - Sensitive-word file read succefully
+Fri Oct 21 2022 - 13:16:8 - ERROR: Error: EACCES: permission denied, open '///Hello-modified.txt'
+Fri Oct 21 2022 - 13:16:25 - READ - Original file read succefully
+Fri Oct 21 2022 - 13:16:25 - READ - Sensitive-word file read succefully
+Fri Oct 21 2022 - 13:16:25 - WRITE - Modified file write succefully
+Fri Oct 21 2022 - 13:18:25 - READ - Original file read succefully
+Fri Oct 21 2022 - 13:18:25 - READ - Sensitive-word file read succefully
+Fri Oct 21 2022 - 13:18:25 - WRITE - Modified file write succefully
+Fri Oct 21 2022 - 13:19:21 - READ - Original file read succefully
+Fri Oct 21 2022 - 13:19:21 - READ - Sensitive-word file read succefully
+Fri Oct 21 2022 - 13:19:21 - WRITE - Modified file write succefully
+Fri Oct 21 2022 - 13:29:54 - READ - Original file read succefully
+Fri Oct 21 2022 - 13:29:54 - READ - Sensitive-word file read succefully
+Fri Oct 21 2022 - 13:29:54 - WRITE - Modified file write succefully
+Fri Oct 21 2022 - 13:31:59 - READ - Original file read succefully
+Fri Oct 21 2022 - 13:31:59 - READ - Sensitive-word file read succefully
+Fri Oct 21 2022 - 13:31:59 - WRITE - Modified file write succefully
+Fri Oct 21 2022 - 13:32:18 - READ - Original file read succefully
+Fri Oct 21 2022 - 13:32:18 - READ - Sensitive-word file read succefully
+Fri Oct 21 2022 - 13:32:18 - WRITE - Modified file write succefully
+Fri Oct 21 2022 - 15:17:48 - READ - Original file read succefully
+Fri Oct 21 2022 - 15:17:48 - READ - Sensitive-word file read succefully
+Fri Oct 21 2022 - 15:17:48 - WRITE - Modified file write succefully
+Fri Oct 21 2022 - 15:25:29 - READ - Original file read succefully
+Fri Oct 21 2022 - 15:25:29 - READ - Sensitive-word file read succefully
+Fri Oct 21 2022 - 15:25:29 - WRITE - Modified file write succefully
+Fri Oct 21 2022 - 15:29:39 - READ - Original file read succefully
+Fri Oct 21 2022 - 15:29:39 - READ - Sensitive-word file read succefully
+Fri Oct 21 2022 - 15:29:39 - WRITE - Modified file write succefully
