@@ -9,4 +9,4 @@ min = int(input(total_sec // 3600) % 60)
 
 # Inserire il risultato precedente nella forma D:HH:MM:SS
 
-print(f'{day}:{hour.zfill(2)}:{min.zfill(2)}:{sec.zfill(2)}')
+print(
