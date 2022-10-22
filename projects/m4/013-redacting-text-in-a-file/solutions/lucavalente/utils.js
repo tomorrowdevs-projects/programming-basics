@@ -1,3 +1,9 @@
+/**
+ * given a text, the function return the list of word contained
+ * @param {string} arg text; 
+ * @return {Array<string>} List of words into text; 
+ */ 
+
 function stringOfWords(text){
 
   /** words into the text
