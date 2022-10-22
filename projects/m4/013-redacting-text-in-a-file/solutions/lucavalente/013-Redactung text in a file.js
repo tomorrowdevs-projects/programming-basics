@@ -6,7 +6,7 @@ const stringOfWords = require("./utils")
 const file_1 = process.argv[2];
 const file_2 = process.argv[3];
 
-/** list of words of a text 
+/** list of sensitive words 
      * @type {Array<string>}
     */
 let wordsToCheck = [];
@@ -22,29 +22,34 @@ Promise.all([
 ]).then(([content_1, content_2]) => {
 
     wordsToCheck = stringOfWords(content_1);
-
+    
     /** looping on words into a text to create a new one substituting sensitive ones with '*' sequence */
     let lineList_2 = content_2.toString().split("\n");  
     lineList_2.forEach(line => {
         line.split(" ").forEach(word => {
-            word = word.word.replaceAll(/[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/gim, "");
-            if (wordsToCheck.includes(word)){
-                let newWord = word.split("").map(x => "*").join("");
-                text += newWord + " ";
+            let newWord = word.replaceAll(/[!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~]/gim, "").replace("\r", "");
+            if (wordsToCheck.includes(newWord)){ 
+              /** if a sensitive word is the last word of a sentence I have to add a period at the end */
+              if (word.split("").includes(".")){
+                text += newWord.split("").map(x => "*").join("") + "."; 
+              }else{
+                text += newWord.split("").map(x => "*").join("") + " "; 
+              }
+                                                                  
             }else{
-              text += word + " ";
+              text += word.replace("\r", "") + " ";
             }
-        });
-        text += "\n";
-        /** creating a new file with changed text */
-        fs.writeFile("./result.txt", text, err => {
-            if (err) {
-              console.error(err);
-            }
-            /** file written successfully */
-          });
-    });           
-    console.log(text);
+        });  
+        text += "\n";         
+    });
+
+    /** creating a new file with changed text */
+    fs.writeFile("./result.txt", text, err => {
+      if (err) {
+        console.error(err);
+      }
+      /** file written successfully */
+    });
 
 }).catch(error => {
   console.error(error.message);
