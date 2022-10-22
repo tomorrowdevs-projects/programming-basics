@@ -38,9 +38,9 @@ function dateHour () {
 //replace each word of a string with those in sensWord (array), return a string modified
 function replace (string, sensWord) {
   let modified = string;
-
   sensWord.forEach(word => {
-    modified = modified.replaceAll(word, '***')
+    const reg = new RegExp(word, 'ig')
+    modified = modified.replaceAll(reg, '***')
   })
   return modified;
 };

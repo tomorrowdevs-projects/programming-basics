@@ -35,3 +35,35 @@ Fri Oct 21 2022 - 15:25:29 - WRITE - Modified file write succefully
 Fri Oct 21 2022 - 15:29:39 - READ - Original file read succefully
 Fri Oct 21 2022 - 15:29:39 - READ - Sensitive-word file read succefully
 Fri Oct 21 2022 - 15:29:39 - WRITE - Modified file write succefully
+Sat Oct 22 2022 - 8:24:31 - READ - Original file read succefully
+Sat Oct 22 2022 - 8:24:31 - READ - Sensitive-word file read succefully
+
+Sat Oct 22 2022 - 8:24:31 - ERROR: TypeError: String.prototype.replaceAll called with a non-global RegExp argument
+Sat Oct 22 2022 - 8:24:46 - READ - Original file read succefully
+Sat Oct 22 2022 - 8:24:46 - READ - Sensitive-word file read succefully
+Sat Oct 22 2022 - 8:24:46 - WRITE - Modified file write succefully
+Sat Oct 22 2022 - 8:25:22 - READ - Original file read succefully
+Sat Oct 22 2022 - 8:25:22 - READ - Sensitive-word file read succefully
+Sat Oct 22 2022 - 8:25:22 - WRITE - Modified file write succefully
+Sat Oct 22 2022 - 8:26:38 - READ - Original file read succefully
+Sat Oct 22 2022 - 8:26:38 - READ - Sensitive-word file read succefully
+Sat Oct 22 2022 - 8:26:38 - WRITE - Modified file write succefully
+Sat Oct 22 2022 - 8:27:28 - READ - Original file read succefully
+Sat Oct 22 2022 - 8:27:28 - READ - Sensitive-word file read succefully
+
+Sat Oct 22 2022 - 8:27:28 - ERROR: ReferenceError: word is not defined
+Sat Oct 22 2022 - 8:27:48 - READ - Original file read succefully
+Sat Oct 22 2022 - 8:27:48 - READ - Sensitive-word file read succefully
+Sat Oct 22 2022 - 8:27:48 - WRITE - Modified file write succefully
+Sat Oct 22 2022 - 8:30:4 - READ - Original file read succefully
+Sat Oct 22 2022 - 8:30:4 - READ - Sensitive-word file read succefully
+Sat Oct 22 2022 - 8:30:4 - WRITE - Modified file write succefully
+Sat Oct 22 2022 - 8:30:43 - READ - Original file read succefully
+Sat Oct 22 2022 - 8:30:43 - READ - Sensitive-word file read succefully
+Sat Oct 22 2022 - 8:30:43 - WRITE - Modified file write succefully
+Sat Oct 22 2022 - 8:31:35 - READ - Original file read succefully
+Sat Oct 22 2022 - 8:31:35 - READ - Sensitive-word file read succefully
+Sat Oct 22 2022 - 8:31:35 - WRITE - Modified file write succefully
+Sat Oct 22 2022 - 8:32:52 - READ - Original file read succefully
+Sat Oct 22 2022 - 8:32:52 - READ - Sensitive-word file read succefully
+Sat Oct 22 2022 - 8:32:52 - WRITE - Modified file write succefully
