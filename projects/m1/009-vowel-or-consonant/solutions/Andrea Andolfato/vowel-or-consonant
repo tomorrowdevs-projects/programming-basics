@@ -1,11 +1,10 @@
 
-vocal = (a+b+c+d)
-letter_user = input (‘Insert a letter of the alphabet: ‘)
+vocal = ("a" + "e" + "i" + "o" + "u" + "y")
+letter_user = input("Insert a letter of the alphabet: ")
 
-if letter_user in vocal
-print (‘the letter is a vocal’)
-
-elif letter_user = y
-print (‘Sometimes y is a vocal, and sometimes y is  consonant’)
-
-else print (the letter is a consonant)
+if letter_user in vocal:
+    print("the letter is a vocal")
+if letter_user in vocal = "y":
+    print("y sometimes is a vocal and sometimes a consonant")
+if letter_user not in vocal:
+    print("the letter is a consonant")
