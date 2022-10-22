@@ -44,7 +44,7 @@ Promise.all([
     });
 
     /** creating a new file with changed text */
-    fs.writeFile("./result.txt", text, err => {
+    fs.writeFile("./textFiles/result.txt", text, err => {
       if (err) {
         console.error(err);
       }
