@@ -1,4 +1,5 @@
 const fs = require('fs').promises;
+const path = require('path');
 
 const original = 'Hello.txt';
 const sensitiveWord = 'sensitive-word.txt';
@@ -48,6 +49,6 @@ function replace (string, sensWord) {
 //when the uploads are finished and the file has been written, I write the path and name of the files to the console
 readReplaceWrite(original, sensitiveWord).then( content => {
   console.log('\nThe files are located in the following path:\n')
-  console.log(__dirname);
-  console.log(`\nOriginal File => ${original}\nSensitive Word File => ${sensitiveWord}\nModified file => ${modifiedFile}\n`)
+  console.log(path.resolve(path.dirname(original)));
+  console.log(`\nOriginal File => ${path.basename(original)}\nSensitive Word File => ${sensitiveWord}\nModified file => ${path.basename(modifiedFile)}\n`)
 });
