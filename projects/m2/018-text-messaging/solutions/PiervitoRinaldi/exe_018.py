@@ -19,6 +19,8 @@ for letter in text:
     for k in letters_keys:       
         if letter in letters_keys[k] :
             letter_index = letters_keys[k].index(letter)
-            result += k * (letter_index + 1)     # Moltiplico la chiave per il suo indice, togliendo lo 0 come indice.
+            # Moltiplico la chiave per il suo indice, trasformando il primo indice in 1.
+            result += k * (letter_index + 1)     
+            
 
 print(result)
