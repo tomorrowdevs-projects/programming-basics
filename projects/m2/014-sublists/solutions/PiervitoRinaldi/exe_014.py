@@ -1,3 +1,5 @@
+# This exercise determines whether or not one list is a sublist of another.
+
 def is_sublist(first_list, second_list):
     if len(second_list) > len(first_list):
         return False
@@ -13,8 +15,8 @@ def is_sublist(first_list, second_list):
             return True
 
     for i_one in range(len(first_list)):
-        for i_two in range(len(second_list)):
-            if first_list[i_one] == second_list[i_two]:
+        for i_two in range(len(second_list)):           # i_one and i_two are indeces
+            if first_list[i_one] == second_list[i_two]: # when the loop hit the same elemnt, the program compares the lists
                 if second_list == first_list[i_one : (i_one + len(second_list))]:
                     return True
                 else:
