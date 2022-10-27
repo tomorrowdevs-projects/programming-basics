@@ -13,5 +13,5 @@ SS = float(S - MM)
 
 # Inserire il risultato precedente nella forma D:HH:MM:SS
 
-final_count = (D) (HH) (MM) (SS)
+final_count = D : HH : MM : SS
 print(final_count)
