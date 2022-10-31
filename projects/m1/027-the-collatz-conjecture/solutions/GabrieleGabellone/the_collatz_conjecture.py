@@ -1,5 +1,5 @@
 # The Collatz Conjecture
-# this program reads an integer n from the user and from the Collatz Conjecture creates a sequence starting with n and ending with one.
+# this program reads an integer n from the user and through the Collatz Conjecture creates a sequence starting with n and ending with one.
 # It allows the user to continue entering new n values (continuing to display the sequences) until the user enters a value for n that is less than or equal to zero.
 while True:
     n = int(input("Enter a positive integer n to calculate the sequence (n <= 0 to exit): "))
