@@ -39,9 +39,6 @@ function getPresent(day) {
   return listPresent.join(" ");
 }
 
-/*function getVerse(verseNumber) {
-  alert(`On the ${getOrdinalNumber(verseNumber)} day of Christmas my true love sent to me: ${getPresent(verseNumber)}`)
-}*/
 
 const userVerse = Number(prompt(`Enter the number (1-12) of the verse you would like to hear from the song "The Twelve Days of Christmas"\n`))
 
