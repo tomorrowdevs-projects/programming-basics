@@ -15,5 +15,6 @@ while True:
         break
     
     num_list.append(number)
+    
 
 
