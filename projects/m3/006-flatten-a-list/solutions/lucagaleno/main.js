@@ -16,10 +16,10 @@ If the first element in data is not a list then
 
 //fastest method to flat an array
 
-testArray1 =  [1, [2, 3], [4, [5, [6, 7]]], [[[8], 9], [10]]]
-testArray2 = [1, 2, 3, 4, 5]
-testArray3 = ["a", ["b", "c"], ["d", ["e", ["f", "g"]]], [[["h"], "i"], ["l"]]]
-testArray4 = ["one", ["two", "three"], ["four", ["five", ["six", "seven"]]], [[["eight"], "nine"], ["ten"]]]
+const testArray1 =  [1, [2, 3], [4, [5, [6, 7]]], [[[8], 9], [10]]]
+const testArray2 = [1, 2, 3, 4, 5]
+const testArray3 = ["a", ["b", "c"], ["d", ["e", ["f", "g"]]], [[["h"], "i"], ["l"]]]
+const testArray4 = ["one", ["two", "three"], ["four", ["five", ["six", "seven"]]], [[["eight"], "nine"], ["ten"]]]
 
 //four methods to faltting a array with different arrays
 const flatArray1 = [].concat.apply([],testArray1)
