@@ -1,6 +1,6 @@
 import random
 
-def bingo_card():
+def random_bingo_card():
     bingo_card = {
         'B': [], 'I': [], 'N': [], 'G': [], 'O': []
     }
@@ -17,22 +17,20 @@ def bingo_card():
 
     return bingo_card
 
-def display_bingo_card():
-    card_values = bingo_card()
-
-    for key in card_values:     # Print the line 'BINGO'
+def display_bingo_card(bingo_card):
+    for key in bingo_card:     # Print the line 'BINGO'
         print('{key:>5}'.format(key = key), end= ' ')
     print('\n')
 
     i = 0
     for x in range(1, 6):       # Print each line of the bingo card
-        for k in card_values:
-            print('{number:>5}'.format(number = card_values[k][i]), end=' ')
+        for k in bingo_card:
+            print('{number:>5}'.format(number = bingo_card[k][i]), end=' ')
         print('\n')
         i += 1
 
 def main():
-    display_bingo_card()
+    display_bingo_card(random_bingo_card())
 
 if __name__ == '__main__':
     main()
