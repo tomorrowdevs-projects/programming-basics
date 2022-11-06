@@ -20,6 +20,7 @@ This project requires to be completed in a maximum of **2 hours** */
 const smallBottle = 0.10;
 const bigBottle = 0.25;
 
+
 let numberSmallBottle = prompt ("how many small containers do you have depositated?");
 let numberBigBottle = prompt ("how many small containers do you have depositated?");
 
