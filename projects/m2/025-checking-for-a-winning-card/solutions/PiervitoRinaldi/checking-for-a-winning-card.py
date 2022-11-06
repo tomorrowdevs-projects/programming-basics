@@ -23,13 +23,13 @@ def checking_for_a_winning_card(bingo_card):
             result = True
             break
         elif bingo_card[key][0] == 0:   # Check for a horizontal line
-            horizontal_line += 1        # Count if the numbers are in the right position to do a horizontal line    
+            horizontal_line += 1        # Count if the numbers are in the right position to have a horizontal line    
             if horizontal_line == 5:
                 result = True
                 break
         
         if bingo_card[key][i] == 0:     # Check for a diagonal line
-            diagonal_line += 1          # Count if the numbers are in the right position to do a diagonal line
+            diagonal_line += 1          # Count if the numbers are in the right position to have a diagonal line
             i += 1
             if diagonal_line == 5:     
                 result = True
