@@ -1,6 +1,7 @@
-//007-run-length-decoding & 008-run-length-encoding
+//007-run-length-decoding & second part 008-run-length-encoding
 
-const list = ["A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B","B","A","A","A","A","A","A","B"]; //[A,1,B,2]
+//const list = ['A','A','A','A','A','A','A','A','A','A','A','A','B','B','B','B','A','A','A','A','A','A','B']; //[A,1,B,2]
+const list = ['A','A','A','B','B','A','A','A','B']; //[A,1,B,2]
 
 function codingCompression(list, count) {
 
@@ -29,23 +30,25 @@ function codingCompression(list, count) {
     }
 }
 
-
+// 008-run-length-encoding
 
 function decoding(compressedList){
 
-let first2Elements = compressedList.slice(0,2)
+    let first2Elements = compressedList.slice(0,2)
 
-if (compressedList.length === 0) {
-    return compressedList;
-}
+        //base
+    if (compressedList.length === 0) {
+        return compressedList;
+    }
+
+    //recursion
     for (let i = 1; i < first2Elements[1]; i++) {       
         first2Elements.push(first2Elements[0]);
     }
-    first2Elements = first2Elements.filter(element => typeof element === 'string');
-    if (compressedList.splice(0,2).length != 0) { //splice alredy "cut" the array here
-        lastElements = decoding(compressedList);
-    } else { lastElements = [] }
-return first2Elements.concat(lastElements)
+
+    //concat first2Element array filtered with recursive function of the remaing array.
+    return (first2Elements.filter(element => typeof element === 'string')).concat(decoding(compressedList.splice(2)))
+    
 }
 
 console.log(`input: ${list}`)
