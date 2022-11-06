@@ -19,13 +19,13 @@ def random_bingo_card():
 
 def display_bingo_card(bingo_card):
     for key in bingo_card:     # Print the line 'BINGO'
-        print('{key:>5}'.format(key = key), end= ' ')
+        print('{key:>5}'.format(key = key), end= '  ')
     print('\n')
 
     i = 0
     for x in range(1, 6):       # Print each line of the bingo card
         for k in bingo_card:
-            print('{number:>5}'.format(number = bingo_card[k][i]), end=' ')
+            print('{number:>5}'.format(number = bingo_card[k][i]), end=' |')
         print('\n')
         i += 1
 
