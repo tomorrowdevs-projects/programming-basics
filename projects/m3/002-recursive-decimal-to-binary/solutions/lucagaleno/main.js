@@ -9,7 +9,7 @@ function decimalToBinary(number){
         return number.toString();
     }else { 
         binary = (decimalToBinary(parseInt(number/2)))
-        return  (binary += (number%2).toString() );
+        return  (binary + (number%2).toString());
     };
 };
 console.log(`The integer base 10 ${value} become in binary base 2: ${decimalToBinary(value)}`)
