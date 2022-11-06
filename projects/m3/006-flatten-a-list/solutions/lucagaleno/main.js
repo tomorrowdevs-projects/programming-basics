@@ -21,26 +21,24 @@ testArray2 = [1, 2, 3, 4, 5]
 testArray3 = ["a", ["b", "c"], ["d", ["e", ["f", "g"]]], [[["h"], "i"], ["l"]]]
 testArray4 = ["one", ["two", "three"], ["four", ["five", ["six", "seven"]]], [[["eight"], "nine"], ["ten"]]]
 
-let flatArray1 = [].concat.apply([],testArray1)
+//four methods to faltting a array with different arrays
+const flatArray1 = [].concat.apply([],testArray1)
+const flatArray2 = [].concat(...testArray2)
+const flatArray3 = [].concat.apply([],testArray3)
+const flatArray4 = [].concat(...testArray4)
 
-let flatArray2 = [].concat(...testArray2)
+console.log (`test1 ${flatArray1}`)
+console.log (`test2 ${flatArray2}`)
+console.log (`test3 ${flatArray3}`)
+console.log (`test4 ${flatArray4}`)
 
-let flatArray3 = [].concat.apply([],testArray3)
-
-let flatArray4 = [].concat(...testArray4)
 
 
-console.log (`test1 ${flatArray1[3]}`)
-console.log (`test2 ${flatArray2[3]}`)
-console.log (`test2 ${flatArray3[3]}`)
-console.log (`test2 ${flatArray4[3]}`)
-
+//recursive function to flat an array (with two funcitons in a "waterfall" methods)
 function flattenArray(data){
-
     let outputArray = [];
     recursion(0, data, outputArray);
     return outputArray;   
-    
 }
 
 function recursion(index, data, outputArray){
@@ -56,6 +54,30 @@ function recursion(index, data, outputArray){
     recursion(index + 1, data, outputArray);
 }
 
-console.log (`test4 ${flattenArray(testArray1)}`)
+console.log (`test5 ${flattenArray(testArray1)}`)
 
+//recursive function following the exe description
+
+function flatArray (data){
+
+    let L1 = [];
+    let L2 = [];
+
+    if (data.length === 0) {
+        return data;
+    }
+
+    if (Array.isArray(data[0])){
+        L1 = flatArray(data[0])
+        L2 = flatArray(data.splice(1))
+        return L1.concat(L2)
+    }
+    if (!(Array.isArray(data[0]))){
+        L1 = [data[0]]
+        L2 = flatArray(data.splice(1))
+        return L1.concat(L2)
+    }
+}
+
+console.log (`test6 ${flatArray(testArray1)}`)
 
