@@ -1,16 +1,17 @@
 
+number = 1
 sum = 0
+count = 0
 
-guests = int(input("Please insert how many guests: "))
-for i in range(guests):
-    age = int(input("Please insert the age of the guests: "))
-    if age <= 2:
-        price = 0
-    if age >= 3 <= 12:
-        price = 14
-    if age >= 13 <= 65:
-        price = 23
-    if  age > 66:
-        price = 18
-    sum += price
-    print("Total price is" "${:.2f}".format(sum))
+while number != 0:
+    number = int(input("Please insert a number: "))
+    if number != 0:
+        sum += number
+        count += 1
+        print("Total sum is:", sum)
+        print("Total count is: ", count)
+        media = sum/count
+        print("La media è: ", media)
+    elif number == 0:
+        print("La media è", media)
+        print("You quit")
