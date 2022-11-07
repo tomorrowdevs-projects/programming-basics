@@ -1,24 +1,22 @@
-numbers = {
+def number_2_english(number):
+    numbers = {
     '1': 'one', '2': 'two', '3': 'trhee', 
     '4': 'four', '5': 'five', '6': 'six',
     '7': 'seven', '8': 'eight', '9': 'nine'
-}
+    }
 
-tens_under_twenty = {
+    tens_under_twenty = {
     '10': 'ten', '11': 'eleven', '12': 'twelve', '13': 'thirteen',
     '14': 'fourteen', '15': 'fiveteen', '16': 'sixteen', 
     '17': 'seventeen', '18': 'eigtheen', '19': 'nineteen'
-}
+    }
 
-tens_over_twenty = {
+    tens_over_twenty = {
     '2': 'twenty', '3': 'therty', '4': 'fourty',
     '5': 'fifty', '6': 'sixty', '7': 'seventy',
     '8': 'eighty', '9': 'ninty'
-}
+    }
 
-number = input('Enter number: ')
-
-def number_2_english(number):
     result = ''
     for n in number:
         if len(number) == 3:
@@ -44,7 +42,15 @@ def number_2_english(number):
 
     return result
 
-print(number_2_english(number))
-        
+def main():
+    print(number_2_english('142'))
+    print(number_2_english('376'))
+    print(number_2_english('789'))
+    print(number_2_english('300'))
+    print(number_2_english('999'))
+
+if __name__ == '__main__':
+    main()
+            
             
 

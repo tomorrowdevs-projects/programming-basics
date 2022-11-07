@@ -16,29 +16,7 @@ def count_total():  # count how many times the dice's sum are 2,3,4...and 12
 
     for roll in range(1, 1001):
         dice_sum = rolling_dice()
-        if dice_sum == 2:
-            count_sum[2] += 1
-        elif dice_sum == 3:
-            count_sum[3] += 1
-        elif dice_sum == 4:
-            count_sum[4] += 1
-        elif dice_sum == 5:
-            count_sum[5] += 1
-        elif dice_sum == 6:
-            count_sum[6] += 1
-        elif dice_sum == 7:
-            count_sum[7] += 1
-        elif dice_sum == 8:
-            count_sum[8] += 1
-        elif dice_sum == 9:
-            count_sum[9] += 1
-        elif dice_sum == 10:
-            count_sum[10] += 1
-        elif dice_sum == 11:
-            count_sum[11] += 1
-        elif dice_sum == 12:
-            count_sum[12] += 1
-
+        count_sum[dice_sum] += 1
     return count_sum
 
 def percentage_expected():  # calculate the percentage expeted for every possible dice's sum(2,3,4...and 12)

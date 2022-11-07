@@ -22,5 +22,9 @@ def tokenizing_a_string(math_expression):
 
     return tokens
 
-math_expression = input('Enter math expression to tokenize it: ')
-print(tokenizing_a_string(math_expression))
+def main():
+    math_expression = input('Enter math expression to tokenize it: ')
+    print(tokenizing_a_string(math_expression))
+
+if __name__ == "__main__":
+    main()
