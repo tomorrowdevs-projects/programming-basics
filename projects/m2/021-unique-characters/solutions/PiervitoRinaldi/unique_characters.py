@@ -1,5 +1,3 @@
-text = input('Enter text to display the number of unique characters: ')
-
 # Create a dictionary where the characters are the keys, and the values correspond how many times a character appears.
 # At the end, the function return the number of unique characters in a text entered by the user. 
 def unique_characters(text):    
@@ -14,8 +12,12 @@ def unique_characters(text):
 
     return n_unique_character
 
-print(unique_characters(text))
+def main():
+    text = input('Enter text to display the number of unique characters: ')
+    print(unique_characters(text))
 
+if __name__ == '__main__':
+    main()
 
 
     
