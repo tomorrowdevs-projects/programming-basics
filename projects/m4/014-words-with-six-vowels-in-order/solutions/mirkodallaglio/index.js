@@ -1,27 +1,18 @@
-const fs = require('fs');
+const fs = require('fs').promises;
 const prompt = require('prompt-sync')({sigint: true});
 
 console.log('\nFind words that contain aeiouy only once in this order in it\n');
 console.log('Which file do you want to analyze? write the file with the full path:\n');
 const filePath = prompt('> ');
 
-//Read the file, create an array with the single words and show the filtered result
-fs.readFile(filePath, 'utf8', (err, data) => {
-    if (err) {
-      console.error(err);
-      return;
-    }
-    const result = data.replaceAll(',', ' ').split(/\s+/);
-    const filteredWords = searchAeiouy(result);
-
-    if (result[0] === '' && result.length === 1) console.log('\n! there are no words in your file !\n')
-    else {
-        console.log('\nWords found in the file : \n');
-        console.log('---------------------------------------------------------------');
-        console.log(filteredWords.length !== 0 ? filteredWords.join(' - ') : ` ! no words match !`);
-        console.log('---------------------------------------------------------------');
-    }
-});
+//Read the file
+const readText = async (filePath) => {
+    return fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err)
+            throw err;
+        return data;
+    });
+}
 
 //filter all words using a regex
 function searchAeiouy (arr) {
@@ -33,3 +24,23 @@ function searchAeiouy (arr) {
     })
     return wordOk
 };
+
+//filters all words in content, returns string with result
+function wordsFound (content) {
+    //create an array with the single words
+    const result = content.replaceAll(',', ' ').split(/\s+/);
+    
+    const filteredWords = searchAeiouy(result);
+
+    if (result[0] === '' && result.length === 1) return '\n! there are no words in your file !\n'
+    else {
+        const result = filteredWords.length !== 0 ? filteredWords.join(' - ') : ' ! no words match !'
+        const separator = '-'.padStart(result.length, '-');
+        return `\nWords found in the file :\n${separator}\n${result}\n${separator}`;
+    }
+};
+
+//when the file is read create an array with the single words
+readText(filePath).then(content => {
+    console.log(wordsFound(content));
+}).catch(err => console.log(err))
