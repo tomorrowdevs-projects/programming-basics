@@ -2,12 +2,12 @@
 const fs = require('fs').promises;
 
 //I read the contents of the file asynchronously
-const readText = async (file, cod='utf-8') => {
-    try {
-        const data = await fs.readFile(file, cod);
+async function readText (file, cod='utf-8') {
+    return fs.readFile(file, cod, (err,data) => {
+        if (err) throw err;  
         return data;
-    } catch(err) { console.log(err) }
-}
+    });
+};
 
 //searches for repeated words within a string by analyzing line by line
 //the output is an array [ [word, repeated number of times, line] , [etc ...] ]
@@ -50,7 +50,7 @@ function showResult (arr) {
 };
 
 //when the file is loaded it will be analyzed and shown the result
-readText('Hello.txt').then(content => {
+readText('Helo.txt').then(content => {
    const result = lookMultipleWord(content);
    console.log(showResult(result));
-})
+}).catch(error => console.log(error))

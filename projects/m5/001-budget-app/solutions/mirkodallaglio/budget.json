@@ -1,0 +1,58 @@
+[
+  {
+    "currency": "$ ",
+    "categoryName": [
+      "Food",
+      "Clothing",
+      "Entertainment",
+      "Home",
+      "Car"
+    ]
+  },
+  [
+    [
+      [],
+      0
+    ],
+    [
+      [
+        {
+          "date": "8/11/2022",
+          "amount": 100,
+          "description": "initial balance"
+        }
+      ],
+      100
+    ],
+    [
+      [
+        {
+          "date": "8/11/2022",
+          "amount": 100,
+          "description": "initial balance"
+        }
+      ],
+      100
+    ],
+    [
+      [
+        {
+          "date": "8/11/2022",
+          "amount": 100,
+          "description": "initial balance"
+        }
+      ],
+      100
+    ],
+    [
+      [
+        {
+          "date": "8/11/2022",
+          "amount": 100,
+          "description": "initial balance"
+        }
+      ],
+      100
+    ]
+  ]
+]
