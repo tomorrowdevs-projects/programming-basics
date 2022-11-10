@@ -9,6 +9,6 @@ var daysToSeconds = days * 24 * 60 * 60;
 var hoursToSeconds = hours * 60 * 60;
 var minutesToSeconds = minutes * 60;
 
-var totalSeconds = daysToSeconds + hoursToSeconds + minutesToSeconds;
+var totalSeconds = daysToSeconds + hoursToSeconds + minutesToSeconds + seconds;
 
 console.log("Total seconds is: " + totalSeconds);
