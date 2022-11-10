@@ -100,3 +100,16 @@ Sat Oct 22 2022 - 9:8:0 - WRITE - Modified file write succefully
 Sat Oct 22 2022 - 9:8:31 - READ - Original file read succefully
 Sat Oct 22 2022 - 9:8:31 - READ - Sensitive-word file read succefully
 Sat Oct 22 2022 - 9:8:31 - WRITE - Modified file write succefully
+Thu Nov 10 2022 - 10:13:23 - READ - Original file read succefully
+Thu Nov 10 2022 - 10:13:23 - READ - Sensitive-word file read succefully
+Thu Nov 10 2022 - 10:13:23 - WRITE - Modified file write succefully
+Thu Nov 10 2022 - 10:14:29 - READ - Original file read succefully
+Thu Nov 10 2022 - 10:14:29 - READ - Sensitive-word file read succefully
+Thu Nov 10 2022 - 10:14:29 - WRITE - Modified file write succefully
+Thu Nov 10 2022 - 10:23:44 - READ - Original file read succefully
+Thu Nov 10 2022 - 10:23:44 - READ - Sensitive-word file read succefully
+Thu Nov 10 2022 - 10:23:44 - WRITE - Modified file write succefully
+Thu Nov 10 2022 - 10:58:54 - WRITE - Modified file write succefully
+Thu Nov 10 2022 - 10:59:18 - WRITE - Modified file write succefully
+Thu Nov 10 2022 - 10:59:39 - WRITE - Modified file write succefully
+Thu Nov 10 2022 - 10:59:49 - WRITE - Modified file write succefully
