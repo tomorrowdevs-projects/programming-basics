@@ -14,15 +14,11 @@ Your program should also support negative shift values so that it can be used bo
 
 import string
 
-# to_encrypt = input('Insert the phrase to encrypt: ')
+to_encrypt = input('Insert the phrase to encrypt (or decrypt) with caesar cipher: ')
+shift_value = int(input('How much do you want to shift the original message? (use negative value to decrypt a message): '))
 
-test_encrypt = 'abcdefghijklmnopqrstuvwyz ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-test_shift = 1
-
-word_list = test_encrypt.split()
-
+word_list = to_encrypt.split()
 word = 0
-
 shifted_list = []
 
 # start a for loop for every word that the user want to encrypt
@@ -31,26 +27,26 @@ for element in word_list:
     
     # start a for loop for every letter in every word that convert the letters into aschii code, shift and convert again into letter
     for letters in word_list[word]:
-        ascii_code = int(ord(word_list[word][letter]))
+        ascii_code = ord(word_list[word][letter])
 
         # Shift A-Z 
         if 65 <= ascii_code <=90: 
-            shifted_ashii = ascii_code + test_shift
+            shifted_ashii = ascii_code + shift_value
     
             if shifted_ashii <= 90:
                 shifted_list.append(chr(shifted_ashii))
 
             if shifted_ashii > 90:
-                shifted_ashii = shifted_ashii - 26
+                shifted_ashii = shifted_ashii % 90
                 shifted_list.append(chr(shifted_ashii))
 
 
         # Shift a-z
         if  97 <= ascii_code <= 122:
-            shifted_ashii = ascii_code + test_shift
+            shifted_ashii = ascii_code + shift_value
 
             if shifted_ashii > 122:
-                shifted_ashii = shifted_ashii - 26
+                shifted_ashii = shifted_ashii % 122
 
             shifted_list.append(chr(shifted_ashii))
         
@@ -61,5 +57,7 @@ for element in word_list:
         letter += 1
 
     word += 1
+    shifted_list.append(' ')
 
-print(shifted_list)
+joined_list = ''.join(shifted_list)
+print(joined_list)
