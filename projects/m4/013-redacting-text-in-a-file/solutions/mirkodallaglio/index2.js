@@ -13,26 +13,28 @@ const readReplaceWrite = async (original, sensitiveWord, cod='utf-8') => {
     //Read original file, if ok write in log file
     const data = fs.readFile(original, cod, (err, data) => {
         if (err) throw err;
-        fs.appendFile(log, `${dateHour()} - READ - Original file read succefully\n`, (err) => {if(err) throw err});  
         return data;
     });
 
     //Read the sensitive word file, if ok write in log file
     const sensitive = fs.readFile(sensitiveWord, cod, (err, data) => {
         if (err) throw err;
-        fs.appendFile(log, `${dateHour()} - READ - Sensitive-word file read succefully\n`, (err) => {if(err) throw err});  
         return data;
     });
 
     //When the original file and the sensitive are read then
     Promise.all([data, sensitive]).then((values) => {
+        //If the reading of the files was successful I write it in the log file
+        if (values[0]) fs.appendFile(log, `${dateHour()} - READ - Original file read succefully\n`, (err) => {if(err) throw err});  
+        if (values[1]) fs.appendFile(log, `${dateHour()} - READ - Sensitive-word file read succefully\n`, (err) => {if(err) throw err});  
+
         //Replaced all sensitive word with ***
         const result = replace(values[0], values[1].split(','));
 
         //Write the modified file, if ok write in log file
         fs.writeFile(modifiedFile, result, (err) => {if(err) throw err});
         fs.appendFile(log, `${dateHour()} - WRITE - Modified file write succefully\n`, (err) => {if(err) throw err});
-      });
+    });
     
   } catch(err) { 
     console.log('Error: ', err);
