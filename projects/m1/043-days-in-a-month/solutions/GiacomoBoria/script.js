@@ -23,7 +23,7 @@ function getDayMonth(month, year) {
     }
 } 
   
-const dateUser = prompt("Type your date (in format DD MM").split(` `);
+const dateUser = prompt("Type your date (in format MM YYYY").split(` `);
   
 const month = dateUser[0]
 const year = dateUser[1]
