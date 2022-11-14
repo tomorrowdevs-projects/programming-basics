@@ -20,10 +20,10 @@ test("test_prob_experiment", ()=>{
     hat = new Hat({"blue" : 3, "red" : 2, "green" : 6});
     actual = experiment(hat, {"blue": 2, "green": 1}, 4, 1000)
     expected = 27;
-    expect(actual).toBe(expected, delta = 1, 'Expected experiment method to return a different probability.');
+    expect(actual).toBe(expected, 'Expected experiment method to return a different probability.'); // delta??
 
     hat = new Hat({"yellow" : 5, "red" : 1, "green" : 3, "blue": 9, "test": 1});
     actual = experiment(hat,{"yellow":2,"blue":3,"test":1}, 20, 100);
     expected = 100;
-    expect(actual).toBe(expected, delta = 1, "Expected experiment method to return a different probability.");
+    expect(actual).toBe(expected, "Expected experiment method to return a different probability."); // delta??
 })

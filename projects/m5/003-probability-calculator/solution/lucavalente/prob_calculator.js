@@ -36,7 +36,7 @@ class Hat {
     draw(number){
 
         // Error checking
-        if (!((typeof number).toString() == "number" && number >= 0)){
+        if (!(typeof number == "number" && number >= 0)){
             throw Error("You have to specify a quantity (int) greater than 0!")
         }
 
@@ -82,6 +82,17 @@ class Hat {
  */
 function experiment(hat, expected_balls, num_balls_drawn, num_experiments){
     
+    //Error Checking
+    if (!(hat instanceof Hat) || typeof expected_balls != "object" 
+     || (typeof num_balls_drawn != "number" || num_balls_drawn < 0)
+     || (typeof num_experiments != "number" || num_experiments < 0))
+     {
+        throw ("The args of the function have to be: \n" + 
+        "hat => type 'Hat'\n" + 
+        "expected_balls => type 'object' (e.g. {'red': 1, 'blue': 4})\n" +
+        "num_balls_drawn => type 'number'\n" + "num_experiments => type 'number'");
+     }
+
     //used to track number of times the result corresponds to expectations
     let count = 0;
 
@@ -115,11 +126,16 @@ function experiment(hat, expected_balls, num_balls_drawn, num_experiments){
 
 /**
  * Used to check if an object is contained into another
- * @param {object} contained 
- * @param {object} contain 
+ * @param {Array<string>} contained 
+ * @param {Array<string>} contain 
  * @returns {bool} 
  */
 function isContained(contained, contain){
+
+    //Error checking
+    if (!(contained instanceof Array) || !(contain instanceof Array)){
+        throw "You have to use two Arrays of strings (Array<string>) to check if the first one is contained into the second"
+    }
 
     let containedLength = 0;
     contained.forEach(ball => {
@@ -143,6 +159,9 @@ function isContained(contained, contain){
  * @returns {int} number of occurances
  */
 function getOccurrence(array, value) {
+    if (!(array instanceof Array)){
+        throw "The first argument must be an array!"
+    }
     return array.filter((v) => (v === value)).length;
 }
 
