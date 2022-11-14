@@ -1,8 +1,5 @@
 
-/**
- * A fancier event target that does cool things.
- * @implements {Iterable<string>}
- */
+/** A class to create cateogories and tracking monetary movements */
 
 class Category {
 
@@ -11,6 +8,11 @@ class Category {
    */
 
     constructor(category) {
+
+      if (typeof category != "string"){
+        throw "The cateogory attribute must be specified as string!"
+      }
+
       this.ladger = [];
       this.category = category;
       this.balance = 0;
@@ -37,6 +39,11 @@ class Category {
      */
 
     deposit(amount, description = ""){
+
+        if (typeof amount != "number" || amount < 0 || typeof description != "string"){
+            throw "Amount must be a number greater than 0 and description must be a string!"
+        }
+
         if (description == ""){
             description = "no description"
         }
@@ -52,6 +59,11 @@ class Category {
      */
 
     withdraw(amount, description = ""){
+
+        if (typeof amount != "number" || amount < 0 || typeof description != "string"){
+            throw "Amount must be a number greater than 0 and description must be a string!"
+        }
+
         if (description == ""){
             description = "no description"
         }
@@ -71,6 +83,11 @@ class Category {
      * @returns bool, to know if the transfer was successful
      */
     transfer(amount, category){
+
+        if (typeof amount != "number" || amount < 0 || !(category instanceof Category)){
+            throw "Amount must be a number greater than 0 and category must be an object of type 'Category' !"
+        }
+
         if (this.check_funds(amount)){
             category.deposit(amount, "Transfer from " + this.category);
             this.withdraw(amount, "Transfer to " + category.get_type());

@@ -1,3 +1,5 @@
+const Category = require("./budget")
+
 /**
  * Used to create the spend chart 
  * @param {List<Category>} categories List of categories
@@ -6,6 +8,11 @@
 
 function createSpendChart(categories){
 
+    //Error checking
+    if (!(categories instanceof Array)){
+        throw "The type of cateogries must be: Array<Category>!";
+    }
+
     /** List to store withdraws
      * @type {Array<int/float>}
      */
@@ -13,6 +20,12 @@ function createSpendChart(categories){
 
     categories.forEach(category => {
         let sum = 0;
+
+        //Error checking
+        if (!(category instanceof Category)){
+            throw "The type of cateogries must be: Category!";
+        }
+
         category.get_ladger().forEach(e => {
             if (e.amount < 0){
                 sum += Math.abs(e.amount);
