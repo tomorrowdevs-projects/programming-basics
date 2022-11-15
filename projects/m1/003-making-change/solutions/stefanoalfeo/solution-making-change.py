@@ -1,5 +1,5 @@
-read_penny = 2953
 import math
+read_penny = int(input("number of penny read\n"))
 
 # definizione valore monete
 penny = 1
@@ -11,10 +11,13 @@ toonie = 200
 
 print("total change:")
 # inizio con toonie
-coin = toonie
-change = read_penny / coin
-next_change = read_penny % coin
-print("toonies: " + str(math.trunc(change)))
+if read_penny > toonie:
+    coin = toonie
+    change = read_penny / coin
+    next_change = read_penny % coin
+    print("toonies: " + str(math.trunc(change)))
+else:
+    next_change = read_penny
 
 # passo a loonie
 coin = loonie
