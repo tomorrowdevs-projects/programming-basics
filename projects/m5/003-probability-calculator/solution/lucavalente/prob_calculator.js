@@ -11,6 +11,7 @@ class Hat {
             throw Error("You have to specify an object (e.g. {'red': 1, 'blue': 4})");
         }
 
+        // Used to convert the 'balls' parameter to a list of string:  {'red': 1, 'blue': 4} -> ["red", "blue", "blue", "blue", "blue"]
         this.contents = [];
 
         for (const [key, value] of Object.entries(balls)){
