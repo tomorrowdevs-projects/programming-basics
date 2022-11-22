@@ -1,5 +1,5 @@
 // generate alphabet
-const alpha = Array.from(Array(26)).map((e, i) => i + 65);
+const alpha = Array.from(Array(26)).map((e, i) => i +  65);
 const alphabet = alpha.map((x) => String.fromCharCode(x));
 // enter user message
 const userMessage = prompt("Enter the message to encode / decode:").toUpperCase();
@@ -11,17 +11,20 @@ let message = "";
 for (const character of splitMessage) {
   const positionCharacter = alphabet.indexOf(character);
   let calcNewPosition = positionCharacter + encodes;
+  const alphabetLength = alphabet.length - 1;
+  //console.log(positionCharacter, calcNewPosition)
   if (positionCharacter === -1) {
     message += character;
-  } else {
-    if (calcNewPosition > alphabet.length) {
-      while (calcNewPosition >= alphabet.length) {
-        calcNewPosition -= alphabet.length;
+  } else if(positionCharacter !== -1) {
+    if (calcNewPosition >= alphabetLength) {
+      while (calcNewPosition > alphabetLength) {
+        calcNewPosition -= alphabetLength;
       }
-    } else if (calcNewPosition < alphabet.length) {
-      while (calcNewPosition <= 0) {
-        calcNewPosition += alphabet.length;
+    } else if (calcNewPosition < 0) {
+      while (calcNewPosition < 0) {
+        calcNewPosition += alphabetLength;
       }
+        // console.log(calcNewPosition)
     }
     message += alphabet[calcNewPosition];
     // console.log(character, calcNewPosition, alphabet[calcNewPosition]);
