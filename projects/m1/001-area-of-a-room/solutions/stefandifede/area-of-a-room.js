@@ -5,7 +5,7 @@ const size1 = prompt("first size in meters");
 const size2 = prompt("second size in meters");
 
 //calculate the area
-const area = parseInt(size1 * size2);
+const area = (size1 * size2);
 
 //check if the input is correctly inserted and show the area if it is
 function calculateArea () {
