@@ -1,8 +1,8 @@
 //user insert first size
-const size1 = parseInt(prompt("first size in meters"));
+const size1 = prompt("first size in meters");
 
 //user insert second size
-const size2 = parseInt(prompt("second size in meters"));
+const size2 = prompt("second size in meters");
 
 //calculate the area
 const area = parseInt(size1 * size2);

@@ -1,7 +1,7 @@
-const days = parseInt(prompt("insert number of days"));
-const hours = parseInt(prompt("insert number of hours"));
-const minutes = parseInt(prompt("insert number of minutes"));
-const seconds = parseInt(prompt("insert number of seconds"));
+const days = prompt("insert number of days");
+const hours = prompt("insert number of hours");
+const minutes = prompt("insert number of minutes");
+const seconds = prompt("insert number of seconds");
 
 const oneMinute = 60;
 const oneHour = 60 * oneMinute;

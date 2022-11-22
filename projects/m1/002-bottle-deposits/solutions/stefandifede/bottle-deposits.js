@@ -3,9 +3,9 @@ const smallContainersCashback = 0.10;
 //cashback for more than one liter containers
 const largeContainersCashback = 0.25;
 //user submits how many small containers he recycle
-const smallContainersQuantity = parseInt(prompt("Numbers of drink containers holding one liter or less:"));
+const smallContainersQuantity = prompt("Numbers of drink containers holding one liter or less:");
 //user submits how many large containers he recycles
-const largeContainersQuantity = parseInt(prompt("Numbers of drink containers holding more than one liter:"))
+const largeContainersQuantity = prompt("Numbers of drink containers holding more than one liter:");
 //calculate and show the total
 const cashback = (smallContainersQuantity * smallContainersCashback) + (largeContainersQuantity * largeContainersCashback)
 
