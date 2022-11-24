@@ -48,8 +48,8 @@ function change() {
     alert(coinsName[0] + ": " + toonies)
     //check if the ramainder is 0, if so: loop trough the array to calculate the amount of each coin
         if (remainder > 0) {
-            for (i = 1; i<=coinsValue.length;) {
-                let nextCoin =  Math.floor(remainder / coinsValue[i]);
+            for (i = 1; i<=coinsValue.length-1;) {
+                const nextCoin =  Math.floor(remainder / coinsValue[i]);
                 remainder = remainder % coinsValue[i]; 
                 alert(coinsName[i] + ": " + nextCoin)
                 i++
