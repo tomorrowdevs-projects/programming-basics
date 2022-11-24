@@ -1,60 +1,69 @@
-# Conversion function
-def int_to_base_x (base_10, base):
-    converted_result = []
-    letter = ['A', 'B', 'C', 'D', 'E', 'F']
-    while base_10 != 0:
+def base_10_to_base_x(n, base_to_convert):
 
-        quotient = base_10 // base
-        reminder = base_10 % base
+    converted_digit = []
+    n = int(n)
+
+    while n != 0:
+        reminder = n % base_to_convert
 
         if reminder >= 10:
-            reminder = letter[reminder - 10]
+            ASCII_code = reminder + 55
+            reminder = chr(ASCII_code)
 
-        base_10 = quotient
-        converted_result.append(reminder)
+        reminder = str(reminder)
+        converted_digit.append(reminder)
 
-    reversed_result = converted_result[::-1]
+        n = n // base_to_convert
+
+    reversed_digit = converted_digit[::-1]
+    converted_string = ''.join(reversed_digit)
+    return(converted_string)
+
+def base_x_to_base_10(n, from_base):
+
+        converted_digit = []
+        exponent = len(str(n)) - 1
         
-    for num in reversed_result:
-        print(num, end = '')
+        for letter in n:
+            letter = ord(letter)
 
-def base_x_to_int (base_x, num):
-    letter = ['A', 'B', 'C', 'D', 'E', 'F']
-    converted_result = []
-    num = str(num)
-    num_len = len(str(num))
-    reverse_index = num_len - 1
-    index = 0
+            if 57 >= letter >= 48:
+                letter = int(chr(letter))
+            
+            elif 70 >= letter >= 65:
+                letter -= 55
 
-    while index < num_len:
+            decimal_calculation = letter * (from_base ** exponent)
+            exponent -= 1
+            converted_digit.append(decimal_calculation)
 
-        single_num = (num[reverse_index - index])
-        if single_num in letter:
-            single_num = (ord(single_num) - 55)
-
-        single_num = int(single_num)
-        converted_value = single_num * (base_x ** index)       
-        converted_result.append(converted_value)
-
-        index = index + 1
-        
-    return(sum(converted_result))
-
+        digit_sum = sum(converted_digit)
+        return(digit_sum)
 
 if __name__ == '__main__':
+    print('Hello user enter a digit between base 2 to 16 to convert it into another base')
+    n = str(input('Enter a number to convert: '))
+    starting_base = int(input("Enter the base of the number you want to convert: "))
 
-    print('Hello user this program converts an integer between bases 2 and 16')
+    for number in n:
+        number = int(number)
+        if number > starting_base:
+            print('Too high digit for this base')
 
-    starting_base = int(input('Enter the base of your integer: '))
-    starting_int = str(input('Enter the integer to convert: '))
-    converter_to = int(input('What basis do you want to convert it to? '))
+    if 2 <= starting_base <= 16:
+        to_base = int(input('Enter the base where you want to convert the number: '))
+        if 2 <= to_base <= 16:
+            if starting_base == 10:
+                print(base_10_to_base_x(n, to_base))
+            elif to_base == 10:
+                print(base_x_to_base_10(n, starting_base))
+            else:
+                conv_num = base_x_to_base_10(n, starting_base)
+                print(base_10_to_base_x(conv_num, to_base))
 
-if starting_base == 10:
-    int_to_base_x(starting_int, converter_to)
-else:
-    if converter_to == 10:
-        base_x_to_int(starting_base, starting_int)
     else:
-        base_x_to_int(starting_base, starting_int)
-        num = base_x_to_int(starting_base, starting_int)
-        int_to_base_x(num, converter_to)
+        print('Enter a base between 2 to 16')
+    
+    
+    
+        
