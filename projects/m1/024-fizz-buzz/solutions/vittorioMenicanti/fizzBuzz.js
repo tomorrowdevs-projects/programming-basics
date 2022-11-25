@@ -9,27 +9,21 @@ If the player’s number is divisible by 5 then the player says buzz instead of 
 A player must say both fizz and buzz for numbers that are divisible by both 3 and 5. Any player that fails to perform the correct substitution or hesitates before answering is eliminated from the game. The last player remaining is the winner. Write a program that displays the answers for the first 100 numbers in the Fizz- Buzz game. Each answer should be displayed on its own line. */
 
 
-for(let i=0; i<=100; i++){
+for (let i = 1; i < 101; i++) {
 
-  if(i %3===0  && i %5===0){
+  if (i % 15 == 0){// numbers that are divisible by 3 and 5 are also divided by 15
 
-    alert('Fizz and Buzz!');
+    console.log("FizzBuzz");
 
-    console.log(i);
+  }else if (i % 3 == 0){
 
-  }else if(i %3===0){
+    console.log("Fizz");
 
-    alert('Fizz!');
+  } else if(i % 5 == 0) {
 
-    console.log(i);
+      console.log("Buzz");
 
-  }else if(i %5===0){
-
-    alert('Buzz!');
-
-    console.log(i);
-
-  }
-
+  } 
+  else console.log(i);
 }
 
