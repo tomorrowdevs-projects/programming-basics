@@ -1,17 +1,12 @@
 
 
-from ctypes.wintypes import HHOOK
+time = float(input("Enter time in seconds: "))
+day = time // (24*3600)
+time = time % (24*3600)
+hour = time // 3600
+time %= 3600
 
-
-total_sec = int(input('Enter the number of seconds'))
-
-D = float(total_sec / 86400)
-HH = float(total_sec / 3600)
-MM = float(total_sec / 3600) / 60
-S = float[(total_sec - D) - HH]
-SS = float(S - MM)
-
-# Inserire il risultato precedente nella forma D:HH:MM:SS
-
-final_count = D : HH : MM : SS
-print(final_count)
+min = time // 60
+time %= 60
+seconds = time
+print("d:h:m:s-> %d:%d:%d:%d" %  (day , hour , min, seconds ,))
