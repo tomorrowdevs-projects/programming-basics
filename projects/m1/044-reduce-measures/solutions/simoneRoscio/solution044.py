@@ -2,6 +2,7 @@ def reduce_measures(unit_number, unit_of_measure):
     volume_value = ['cup', 'tablespoon', 'teaspoon']
     if unit_of_measure not in volume_value:
         print('You have to enter a valide unite of volume from cup, tablespoon or teaspoon')
+        print('test')
         return
 
     # imperial volume value in teaspoons
