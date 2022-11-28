@@ -6,6 +6,6 @@ if n==0:
 else:
     while n!=0:
         som=som+n
-        mid +=1
+        mid+=1
         n=float(input("insert a number:"))
     print ("Average is:", som/mid)
