@@ -13,42 +13,26 @@
     
     */
 
-    let totalCost = 0;
+    
     let people = 0;
     let cost = 0;
+    let ageGroup = prompt('Please Enter the age or enter blank to stop');
     
-    while(true){
-    
-        let ageGroup = parseFloat(prompt('Please Enter the age or enter blank to stop')).toFixed(2);
-    
-      
-        if( ageGroup <=2){
-    
-            
-           cost+= 0;
-    
-        }else if( ageGroup <= 12){
-            
+    while(ageGroup !== ''){
+        
+        ageGroup = parseInt(ageGroup);
+        
+        if (ageGroup >2 && ageGroup <= 12) { 
             cost+= 14;
-     
-    
-        }else if(ageGroup <65){
-            
-            cost+= 23;
-    
-      
-        }else if(ageGroup >65){
-            
+        } else if (ageGroup > 12 && ageGroup < 65) {
+            cost+= 23;//23
+        } else if (ageGroup > 65) {
             cost+= 18;
-    
-        }else{
-    
-            break;
-        }
-    
+        } 
+
         people+=1;
-        totalCost += cost;
+        ageGroup = prompt('Please Enter the age or enter blank to stop');
       
     }
-    
-        alert(`The number of group is ${people}  and total price is ${totalCost} $`);
+
+    alert(`The number of group is ${people}  and total price is ${cost} $`);
