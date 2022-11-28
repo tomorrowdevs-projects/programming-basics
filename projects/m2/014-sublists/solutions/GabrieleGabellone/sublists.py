@@ -3,7 +3,7 @@ def is_sublist(larger, smaller):
     if len(smaller) > len(larger): return (False)
     elif len(smaller) == 0: return(True)
     else:
-        if smaller[0] in larger:
+        if smaller[0] in larger and smaller[-1] in larger:
             first_element_index = larger.index(smaller[0])
             last_element_index = larger.index(smaller[-1])
             if smaller == larger [first_element_index:last_element_index+1]: 
