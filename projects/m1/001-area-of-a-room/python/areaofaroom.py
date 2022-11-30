@@ -1,0 +1,5 @@
+print('Calculate the area of a room')
+lenght = input('Lenght of the room in meters: ')
+width = input('Width of the room in meters: ')
+result = float(lenght) * float(width)
+print('The area of the room is {} square meters' .format (result))
