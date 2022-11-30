@@ -1,7 +1,0 @@
-base = input("please enter the four digit number: ")
-digit_a = int(base[0])
-digit_b = int(base[1])
-digit_c = int(base[2])
-digit_d = int(base[3])
-tot_digit = str(digit_a + digit_b + digit_c + digit_d)
-print(str(digit_a) + "+" + str(digit_b) + "+" + str(digit_c) + "+" + str(digit_d) + "=" + tot_digit)
