@@ -1,4 +1,5 @@
 
+
 let numberInput = parseInt(prompt('Please, enter an integer (2 or greater):'));
 let newNumber = numberInput;
 let factorStart = 2;
