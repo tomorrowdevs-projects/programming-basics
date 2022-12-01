@@ -34,9 +34,8 @@ jobs:
 
       - name: List all changed files
         run: |
+          - run: npm ci
+          - run: npm run build --if-present
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            echo "$file was changed"
+            - run: npm test $file
           done
-      - run: npm ci
-      - run: npm run build --if-present
-      - run: npm test
