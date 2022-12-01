@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "test": "jest --coverage $file"
+    "test": "jest --coverage"
   },
   "dependencies": {
     "@types/jest": "^29.2.3",

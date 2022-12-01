@@ -37,6 +37,6 @@ jobs:
           npm ci
           npm run build --if-present
           for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
-            echo
-            npm test
+            echo $file
+            npm test $file
           done
