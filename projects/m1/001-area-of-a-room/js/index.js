@@ -1,5 +1,6 @@
 
 const calculateAreaRoom = (widthRoom, lengthRoom) => {
+    // New comment
     return (widthRoom * lengthRoom);
 }
 
