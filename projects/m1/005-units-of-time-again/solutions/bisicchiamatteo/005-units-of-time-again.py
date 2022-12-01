@@ -1,5 +1,0 @@
-seconds= input("inserisci il valore in secondi :   ")
-minute=divmod (int(seconds),60)
-hours=divmod(minute[0],60)
-days=divmod(hours[0],24)
-print(" la conversione dei secondi da' come risultato \n giorni  : "+str(days[0]) +" \n ore  : "+ str(days[1]) + " \n minute : "+ str(hours[1]) +"\n secondi : " + str(minute[1]))
