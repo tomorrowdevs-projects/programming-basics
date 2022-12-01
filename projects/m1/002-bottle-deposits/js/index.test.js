@@ -1,8 +1,11 @@
-const { calculateAreaRoom } = require('./index.js');
+const fs = require('fs')
 
-describe('', () => {
-    it('Test', () => {
+const fileNotEmpty = fs.readFileSync('./projects/m1/002-bottle-deposits/js/index.js', 'utf8')
+
+const runTest = fileNotEmpty ? it : it.skip;
+
+describe('CalculateAreaRoom', () => {
+    runTest('Test', () => {
         expect(true).toBe(true);
-
     });
 });
