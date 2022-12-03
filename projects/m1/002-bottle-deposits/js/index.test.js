@@ -1,8 +1,7 @@
-const fs = require('fs')
-const fileNotEmpty = fs.readFileSync('./projects/m1/002-bottle-deposits/js/index.js', 'utf8')
-const runTest = fileNotEmpty ? it : it.skip;
+import {isEmptyFile} from "../../../__test__/utils";
+const runTest = isEmptyFile('./projects/m1/002-bottle-deposits/js/index.js')
 
-describe('', () => {
+describe('Test exe-002-bottle-deposits', () => {
     runTest('', () => {
         expect(true).toBe(true);
     });
