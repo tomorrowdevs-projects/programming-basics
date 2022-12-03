@@ -1,5 +1,4 @@
-
-import fs from "fs";
+const fs = require('fs');
 
 export function isEmptyFile(filePath) {
     const fileNotEmpty = fs.readFileSync(filePath, 'utf8');
