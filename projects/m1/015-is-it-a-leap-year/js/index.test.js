@@ -1,5 +1,5 @@
 import {isEmptyFile} from "../../../__test__/utils";
-const runTest = isEmptyFile('./projects/m1/015-is-it-a-leap-year/index.js')
+const runTest = isEmptyFile('./projects/m1/015-is-it-a-leap-year/js/index.js');
 
 describe('Test exe-015-is-it-a-leap-year', () => {
     runTest('', () => {
