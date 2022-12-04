@@ -1,6 +1,5 @@
 
 
-
 def problem(integer):
     if integer == 1:
         print("first")
