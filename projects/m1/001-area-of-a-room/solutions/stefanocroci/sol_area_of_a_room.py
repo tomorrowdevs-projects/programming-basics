@@ -1,6 +1,0 @@
-print("Hello! let's calculate the area of a room in square meters")
-w = input('insert the width of your room in meters: ')
-l = input('insert the length of your room in meters: ')
-w = float(w)
-l = float(l)
-print('the area of the room is ' + str(w*l) + ' square meters')
