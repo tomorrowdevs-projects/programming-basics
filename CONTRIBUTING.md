@@ -17,12 +17,9 @@ New projects must observe the following rules:
 Each solution must be submitted by opening a **pull request**. The pull request must observe the following rules:
 1. The branch name should be formatted as `solution/<ms>-<num>-<problem-name>` for example: `solution/m1-001-area-of-a-room`
 2. Write your solution in the file in the folder of the programming language you are using to solve the exercise (python/js)
-3. Every commit must adopt the conventional commits rules. Learn more [here](https://www.conventionalcommits.org/en/v1.0.0/)
-4. Open a Pull Request in this repository
+3. You can verify if your solution is correct by manually running the exercise test.
+4. Every commit must adopt the conventional commits rules. Learn more [here](https://www.conventionalcommits.org/en/v1.0.0/)
+5. Open a Pull Request in this repository.
+6. The tests will be automatically executed at each Pull Request, where you can see if your solution is correct.
 
 
-
-### Coming soon...
-Test scripts will be added for each exercise that will allow:
-- **Manual execution**, to make sure you have solved the exercise by meeting the requirement.
-- **Automatic execution**, they will be executed with each Pull Request.
