@@ -66,3 +66,4 @@ const start = parseInt(prompt("Please, enter a max value to find all the prime n
 const end = parseInt(prompt("Please, enter a max value to find all the prime numbers between 2 and that number: "));
 
 alert(getPrimeNumber(start, end))
+
