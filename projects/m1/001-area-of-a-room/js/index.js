@@ -1,5 +1,5 @@
-var larghezza = prompt("Qual è la alrghezza della stanza?");
-var profondita = prompt("Qual è la profondità della stanza? ");
+x = prompt("Qual è la alrghezza della stanza?");
+y = prompt("Qual è la profondità della stanza? ");
 
-z = larghezza + profondita;
+z = x * y;
 "La tua stanza è" + z + "mq";
