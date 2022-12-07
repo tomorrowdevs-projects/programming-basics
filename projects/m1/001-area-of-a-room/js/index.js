@@ -5,4 +5,4 @@ z = x * y;
 
 alert("La tua stanza è " + z + "mq");
 
-//test
+alert("La tua stanza è " + z + "mq");
