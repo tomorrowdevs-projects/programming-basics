@@ -4,6 +4,8 @@ ore = prompt("Inserisci le ore trascorsi");
 minuti = prompt("Inserisci i minuti trascorsi");
 secondi = prompt("Inserisci i secondi trascorsi");
 
+//verifica numeri
+
 let giorniUtente = isNaN(parseInt(giorni)) ? parseInt(0) : parseInt(giorni);
 let oreUtente = isNaN(parseInt(ore)) ? parseInt(0) : parseInt(ore);
 let minutiUtente = isNaN(parseInt(minuti)) ? parseInt(0) : parseInt(minuti);
