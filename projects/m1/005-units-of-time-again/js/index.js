@@ -23,6 +23,14 @@ residuoCalcoloMinuti = residuoCalcoloOre - conversioneRisultatoMinutiInSecondi;
 
 //controllo risultati
 
+if (risultatoGiorni =>10) {
+    quantitaGiorniInSecondiInseriti = quantitaGiorniInSecondiInseriti;
+  } else if (year <10) {
+    quantitaGiorniInSecondiInseriti = "0" + quantitaGiorniInSecondiInseriti;
+  } else {
+    quantitaGiorniInSecondiInseriti= "00";
+  }
+
 risultatoGiorni = isNaN(parseInt(quantitaGiorniInSecondiInseriti)) ? parseInt(0) : parseInt(quantitaGiorniInSecondiInseriti); 
 
 risultatoOre = isNaN(parseInt(quantitaOreInSecondiResidui)) ? parseInt(0) : parseInt(quantitaOreInSecondiResidui); 
@@ -32,5 +40,3 @@ risultatoMinuti = isNaN(parseInt(quantitaMinutiInSecondiResidui)) ? parseInt(0) 
 risultatoSecondi = isNaN(parseInt(residuoCalcoloMinuti)) ? parseInt(0) : parseInt(residuoCalcoloMinuti);
 
 alert(risultatoGiorni + ":" + risultatoOre + ":" + quantitaMinutiInSecondiResidui + ":" + residuoCalcoloMinuti);
-
-alert(quantitaGiorniInSecondiInseriti + ":" + quantitaOreInSecondiResidui + ":" + quantitaMinutiInSecondiResidui + ":" + residuoCalcoloMinuti);
