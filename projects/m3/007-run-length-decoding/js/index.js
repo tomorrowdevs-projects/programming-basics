@@ -1,5 +1,5 @@
 const list = ["A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B", "B", "A", "A", "A", "A", "A", "A", "B"];
-
+const list2 = [];
 const runLengthDec = (arr) =>{
 
    const newArr = [];
@@ -16,3 +16,4 @@ const runLengthDec = (arr) =>{
 }
 
 console.log(runLengthDec(list));
+console.log(runLengthDec(list2));
