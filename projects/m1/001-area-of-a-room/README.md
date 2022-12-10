@@ -31,5 +31,3 @@ Per la soluzione di questo progetto si possono utilizzare:
 # Scadenza
 
 Questo progetto deve essere completato in un massimo di **2 ore**.
-
-Tradotto con www.DeepL.com/Translator (versione gratuita)
