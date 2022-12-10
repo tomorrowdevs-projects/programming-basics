@@ -1,42 +1,38 @@
-ssINS = prompt("Inserisci i secondi da convertire");
+// valori di riferimento
+let ssINdd = 86400;
+let ssINhh = 3600;
+let ssINmm = 60;
 
-unDDinSS = 24 * 60 * 60
-unHHinSS = 60 * 60
-unMMinSS = 60
-
-//giorni in input
-quantitaGiorniInSecondiInseriti = (ssINS / unDDinSS).toFixed(0);
-conversioneRisultatoGiorniInSecondi = quantitaGiorniInSecondiInseriti * 60 * 60 * 24;
-residuoCalcoloGiorni = ssINS - conversioneRisultatoGiorniInSecondi;
-
-
-//ore in residuo
-quantitaOreInSecondiResidui = (residuoCalcoloGiorni / unHHinSS).toFixed(0);
-conversioneRisultatoOreInSecondi = quantitaOreInSecondiResidui * 60 * 60;
-residuoCalcoloOre = residuoCalcoloGiorni - conversioneRisultatoOreInSecondi;
-
-
-//minuti in residuo
-quantitaMinutiInSecondiResidui = (residuoCalcoloOre / unMMinSS).toFixed(0);
-conversioneRisultatoMinutiInSecondi = quantitaMinutiInSecondiResidui * 60;
-residuoCalcoloMinuti = residuoCalcoloOre - conversioneRisultatoMinutiInSecondi;
-
-//controllo risultati
-
-if (risultatoGiorni =>10) {
-    quantitaGiorniInSecondiInseriti = quantitaGiorniInSecondiInseriti;
-  } else if (year <10) {
-    quantitaGiorniInSecondiInseriti = "0" + quantitaGiorniInSecondiInseriti;
+// funzione per ripulire ore e minuti
+function validazioneOreMinSec(datoHhMmSs){
+  if (datoHhMmSs < 1) {
+    datoHhMmSs = "00";
+  } else if (datoHhMmSs >= 1 && datoHhMmSs < 10) {
+    datoHhMmSs = "0" + datoHhMmSs;
   } else {
-    quantitaGiorniInSecondiInseriti= "00";
+    datoHhMmSs = datoHhMmSs;
   }
+  return datoHhMmSs;
+}
 
-risultatoGiorni = isNaN(parseInt(quantitaGiorniInSecondiInseriti)) ? parseInt(0) : parseInt(quantitaGiorniInSecondiInseriti); 
+// richiesta dato all'utente
+let secondi = prompt("Inserisci i secondi da convertire");
 
-risultatoOre = isNaN(parseInt(quantitaOreInSecondiResidui)) ? parseInt(0) : parseInt(quantitaOreInSecondiResidui); 
+// CALCOLO GIORNI
+let ddINinput = Math.floor(secondi / ssINdd);
+if (ddINinput < 1) {
+  ddINinput = 0;
+} else {
+  ddINinput = ddINinput;
+}
+secondi = secondi - (ddINinput * ssINdd);
 
-risultatoMinuti = isNaN(parseInt(quantitaMinutiInSecondiResidui)) ? parseInt(0) : parseInt(quantitaMinutiInSecondiResidui); 
+// CALCOLO ORE -> 13600
+let hhINinput = validazioneOreMinSec(Math.floor(secondi / ssINhh));
+secondi = secondi - (hhINinput * ssINhh);
 
-risultatoSecondi = isNaN(parseInt(residuoCalcoloMinuti)) ? parseInt(0) : parseInt(residuoCalcoloMinuti);
+// CALCOLO MINUTI
+let mmINinput = validazioneOreMinSec(Math.floor(secondi / ssINmm));
+secondi = secondi - (mmINinput * ssINmm);
 
-alert(risultatoGiorni + ":" + risultatoOre + ":" + quantitaMinutiInSecondiResidui + ":" + residuoCalcoloMinuti);
+alert("I secondi indicati corrpisono a: " + ddINinput + ":" + hhINinput + ":" + mmINinput + ":" + secondi);
