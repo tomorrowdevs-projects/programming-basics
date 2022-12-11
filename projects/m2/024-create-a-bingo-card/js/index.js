@@ -11,7 +11,7 @@ function BingoCard () {
 
     function showCard (card) {
         
-        const outputString = "";
+        let outputString = "";
 
         for (i = 0; i < Object.keys(card).length; i++) {
             outputString += Object.keys(card)[i] + " => " + Object.values(card)[i] + "\n"; 
