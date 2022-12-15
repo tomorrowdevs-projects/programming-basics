@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Display the Tail of a File</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <input type="file" onchange="readFile(this)">
+    <script>
+        // Task: display the last 10 lines of a file
+
+        // File to import: "Prova.txt"
+        function readFile(input) {
+
+            const file = input.files[0];
+            console.log(typeof input.files[0]); // object
+
+            const reader = new FileReader();
+            console.log(typeof reader); // object
+
+            reader.readAsText(file);
+
+            reader.onload = function () {
+                console.log(typeof this.result); // string  
+
+                const lines = this.result.split("\n");
+                console.log(Array.isArray(lines)); // true
+
+                const tail = lines.filter((line, index) => {
+                    return index >= lines.length - 10;
+                })
+                console.log(tail);
+                console.log(tail.length);
+            }; // end function "reader.onload"
+        } // end function "readFile"
+    </script>
+</body>
+
+</html>
