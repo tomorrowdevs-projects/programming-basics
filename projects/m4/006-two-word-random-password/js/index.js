@@ -6,7 +6,7 @@ const fs = require('fs').promises;
 const file = 'input.txt'
 
 // function promise to open the file
-const pswConcatanation = file => {
+const pswConcatenation = file => {
     return data = fs.readFile(file, {encoding:'utf-8'})
         .then((data) => {
             data = data.split(/\W+/) //split everytime there is any non-word character
@@ -16,7 +16,7 @@ const pswConcatanation = file => {
         .catch (() => {console.error(`this file does not exixt`) & reject()});
 }
 
-const array = pswConcatanation(file)
+pswConcatenation(file)
     .then((result) => {console.log(result)})
     .catch(() => console.error(`an error occured`))
 
@@ -38,5 +38,7 @@ const randomWords = (arrayWords, numberOfWords) => {
     }
     return psw
 }
+
+
 
 
