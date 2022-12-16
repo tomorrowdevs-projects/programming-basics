@@ -9,20 +9,20 @@ def tokenizing(expression):
                 number_index = character_index
                 while expression[number_index].isnumeric() and number_index + 1 < len(expression):
                     number_index += 1
-                    if expression[number_index].isnumeric(): number += expression[number_index]
+                    if expression[number_index].isnumeric(): 
+                        number += expression[number_index]
                 tokens.append(number)
         elif character in symbols:
             tokens.append(character)
         elif character != " ": 
-            print ("Error! The character '{}' is not allowed.".format(character))
-            return (False)
+            return print("Error! The character '{}' is not allowed.".format(character))
         character_index += 1
-    return(tokens)
+    return tokens
 
 def main():
     exp = input("Enter an expression: (integers, parentheses and the operators * / + - ^ are allowed)\n")
-    if tokenizing(exp) != False:
-        print ("Tokens:", tokenizing(exp))
+    if tokenizing(exp):
+        print("Tokens:", tokenizing(exp))
 
 if __name__ == "__main__":
     main()
