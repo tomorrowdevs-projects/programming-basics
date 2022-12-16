@@ -2,9 +2,9 @@ def check_string(string):
     allowed_characters = "abcdefghijklmnopqrstuwxyz "
     for character in string:
         if character not in allowed_characters:
-            print ("Only strings with lowercase letters and spaces are allowed!")
-            return (False)
-    return (True)
+            print("Only strings with lowercase letters and spaces are allowed!")
+            return False
+    return True
 
 def translator(string):
     vowel = "aeiou"
@@ -24,11 +24,11 @@ def translator(string):
             translated_words.append(new_word)
     delimiter = " "
     translated_string = delimiter.join(translated_words)
-    return (translated_string)
+    return translated_string
 
 def main():
     user_phrase = input("Enter a phrase to translate into pig latin: ")
-    if check_string(user_phrase) != False:
+    if check_string(user_phrase):
         translated_phrase = translator(user_phrase)
         print(translated_phrase)
 
