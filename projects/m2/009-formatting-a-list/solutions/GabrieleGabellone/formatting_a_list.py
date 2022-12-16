@@ -3,18 +3,19 @@ def format_list(list_of_items):
         formatted_list = "Empty list."
     elif len(list_of_items) == 1:
         formatted_list = list_of_items[0]
+    elif len(list_of_items) == 2:
+        formatted_list = "{} and {}".format(list_of_items[0], list_of_items[1])
     else:
         formatted_list = ""
-        for items in list_of_items:
-            if list_of_items.index(items) != len(list_of_items) - 1:
-                formatted_list += items + ", "
-            else: formatted_list += "and " + items
-    return(formatted_list)
+        for items in list_of_items[:-2]:
+            formatted_list += items + ", "
+        formatted_list = "{}{} and {}".format(formatted_list, list_of_items[-2], list_of_items[-1])
+    return formatted_list
 
 def main():
     item = input("Insert an item in the list (blank to quit): ")
     inserted_items = []
-    while item != " ":
+    while item.strip() != "":
         inserted_items.append(item)
         item = input("Insert an item in the list (blank to quit): ")
     print(format_list(inserted_items))
