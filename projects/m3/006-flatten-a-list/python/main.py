@@ -4,7 +4,7 @@ def flatten_list(data):
     if type(data[0]) == list:
         l1 = flatten_list(data[0])
         l2 = flatten_list(data[1:])
-    if not type(data[0]) == list:
+    else:
         l1 = [data[0]]
         l2 = flatten_list(data[1:])
     return l1 + l2
