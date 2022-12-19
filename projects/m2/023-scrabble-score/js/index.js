@@ -1,8 +1,9 @@
-/*In the game of Scrabble, each letter has points associated with it. The total score of a word is the sum of the scores of its letters.
+/*In the game of Scrabble, each letter has points associated with it. 
+The total score of a word is the sum of the scores of its letters.
 
 Write a program that computes and displays the Scrabble score for a word.
-
-Create a dictionary that maps from letters to point values. Then use the dictionary to compute the score.*/
+Create a dictionary that maps from letters to point values. 
+Then use the dictionary to compute the score.*/
 
 function getPointScrabble(objPointLetter, word) {
     // set word for match each case
