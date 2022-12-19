@@ -36,4 +36,4 @@ function getPointScrabble(objPointLetter, word) {
     
     const userInput = prompt("Enter your word and I will tell you the points you have accomplished");
     
-    alert(`The points you made with the word "${userInput.toUpperCase()}" are: ${getPointScrabble(objPointScrabble, userInput)}`)
+    alert(`The points you made with the word "${userInput.toUpperCase()}" are: ${getPointScrabble(objPointScrabble, userInput)}`);
