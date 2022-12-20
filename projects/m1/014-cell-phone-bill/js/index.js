@@ -51,7 +51,7 @@ const messageBillTotal = billTotal.toFixed(2) + "€ of Total";
 const message911TaxesDividerAndTotal = messagePlan911Support + messageBillCalcTaxes + messageDivider + messageBillTotal;
 
 // alert for each case
-if(minutesCallsByUser > 0 && messagesSentByUser > 0){
+/*if(minutesCallsByUser > 0 && messagesSentByUser > 0){
   alert(messagePlanCost + 
         messageMinutesSurplusCost + 
         messageMessagesSurplusCost + 
@@ -67,4 +67,18 @@ if(minutesCallsByUser > 0 && messagesSentByUser > 0){
 } else{
   alert(messagePlanCost + 
         message911TaxesDividerAndTotal);
+}*/
+
+let finalMessage = messagePlanCost;
+
+if(minutesCallsByUser > 0){
+  finalMessage += messageMinutesSurplusCost;
 }
+
+if(messagesSurplusCost > 0){
+  finalMessage += messageMessagesSurplusCost;
+}
+
+finalMessage += message911TaxesDividerAndTotal;
+
+alert(finalMessage);
