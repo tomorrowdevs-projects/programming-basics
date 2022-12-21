@@ -1,4 +1,5 @@
 def translate_into_morse(entered_message):
+    entered_message = entered_message.upper()
     morse_code = {"A":".-", "B":"-...", "C":"-.-.", "D":"-..", "E":".", "F":"..-.", "G":"--.", "H":"....", "I":"..", 
     "J":".---", "K":"-.-", "L":".-..", "M":"--", "N":"-.", "O":"---", "P":".--.", "Q":"--.-", "R":".-.", "S":"...",
     "T":"-", "U":"..-", "V":"...-", "W":".--", "X":"-..-", "Y":"-.--", "Z":"--..", "1":".----", "2":"..---", "3":"...--",
@@ -6,13 +7,10 @@ def translate_into_morse(entered_message):
     "Ö":"---.", "Ä":".-.-", "Ñ":"--.--", "Ü":"..--"}
     translated_message = ""
     for character in entered_message:
-        if character.upper() in morse_code:
-            translated_message += morse_code[character.upper()] + " "
+        if character in morse_code:
+            translated_message += morse_code[character] + " "
     return translated_message
 
-def main():
-    user_message = input("Enter a message to translate: ")
-    print ("Translated message:", translate_into_morse(user_message))
-
 if __name__ == "__main__":
-    main()
+    user_message = input("Enter a message to translate: ")
+    print("Translated message:", translate_into_morse(user_message))
