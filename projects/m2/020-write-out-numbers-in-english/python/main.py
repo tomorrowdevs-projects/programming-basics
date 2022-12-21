@@ -17,14 +17,12 @@ def write_numbers(number):
                 number_in_words += units[number[-1]]
         elif 10 <= int(number[-2:]) <= 19:
             number_in_words += from_ten_to_nineteen[number[-2:]]
-    else: number_in_words = units[number]
+    else: 
+        number_in_words = units[number]
 
     return number_in_words
 
 
-def main():
-    user_number = input("Enter a number (from 0 to 999): ")
-    print (user_number, "=", write_numbers(user_number))
-
 if __name__ == "__main__":
-    main()
+    user_number = input("Enter a number (from 0 to 999): ")
+    print(user_number, "=", write_numbers(user_number))
