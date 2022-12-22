@@ -8,6 +8,6 @@ def dec_to_bin(n):
 
 if __name__ == "__main__":
     user_number = input("Enter a decimal number to convert to binary: ")
-    while user_number.isnumeric() != True:
+    while not user_number.isnumeric():
         user_number = input("Error! Enter a positive integer: ")
     print("Converted to {} base 2.".format(dec_to_bin(int(user_number))))
