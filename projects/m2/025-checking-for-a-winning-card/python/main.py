@@ -11,7 +11,6 @@ def checking_winning_card(card):
         return True
     if card["B"][4] == 0 and card["I"][3] == 0 and card["N"][2] == 0 and card["G"][1] == 0 and card["O"][0] == 0:
         return True
-    return False
 
 
 def main():
@@ -25,9 +24,10 @@ def main():
 
     for case in cases_to_prove:
         display_bingo_card(case)
-        if checking_winning_card(case) == True:
+        if checking_winning_card(case):
             print("Contains a winning line!\n\n")
-        else: print("Does not contain a winning line.\n\n")    
+        else: 
+            print("Does not contain a winning line.\n\n")    
 
 
 if __name__ == "__main__":
