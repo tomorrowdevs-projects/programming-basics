@@ -1,16 +1,16 @@
 def scrabble_score(string):
-    scrabble_points = {("A","E","I","L","N","O","R","S","T","U"):1, ("D","G"):2, ("B","C","M","P"):3, 
-    ("F","H","V","W","Y"):4, ("K",):5, ("J","X"):8, ("Q","Z"):10}
+    string = string.upper()
+    scrabble_points = {1: ("A","E","I","L","N","O","R","S","T","U"), 2: ("D","G"), 3: ("B","C","M","P"), 4: ("F","H","V","W","Y"), 5: ("K",), 8: ("J","X"), 10: ("Q","Z")} 
     score = 0
     for letter in string:
-        for k in scrabble_points:
-            if letter.upper() in k: 
-                score += scrabble_points[k]
+        for key in scrabble_points.keys():
+            if letter in scrabble_points[key]:
+                score += key
     return score
 
 def main():
     word = input("Enter a word to calculate the scrabble score: ")
-    print ("Scrabble score:", scrabble_score(word))
+    print("Scrabble score:", scrabble_score(word))
 
 if __name__ == "__main__":
     main()
