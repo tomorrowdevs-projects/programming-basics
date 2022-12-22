@@ -1,4 +1,5 @@
-from random import *
+from random import randint
+
 def create_bingo_card():
     bingo_card = {"B":[], "I":[], "N":[], "G":[], "O":[]}
     for i in range(5):
@@ -14,8 +15,5 @@ def display_bingo_card(card):
     for i in range(5):
         print("{:3} {:3} {:3} {:3} {:3}".format(card["B"][i], card["I"][i], card["N"][i], card["G"][i], card["O"][i]))
 
-def main():
-    display_bingo_card(create_bingo_card())
-
 if __name__ == "__main__":
-    main()
+    display_bingo_card(create_bingo_card())
