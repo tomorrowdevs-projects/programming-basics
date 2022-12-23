@@ -18,7 +18,7 @@ const readFile = file => {
 //function to check repeated words in a sentece, input is a array of sentences
 const checkRepeatedWords = sentences => {
 
-    output = []
+    const output = []
 
      for(let s=0; s < sentences.length; s++) {
 
@@ -28,8 +28,6 @@ const checkRepeatedWords = sentences => {
         if (s < sentences.length-1) {
             const sentenceFormatted2 = sentences[s+1].replaceAll(/[^a-zA-Z0-9 ]/g,'')
             const words2 = sentenceFormatted2.split(' ')
-
-            // Get the first and last words of each sentence
             const lastWord1 = words1[words1.length - 1];
             const firstWord2 = words2[0];
 
@@ -39,11 +37,9 @@ const checkRepeatedWords = sentences => {
         }
 
         for (let w = 0; w < words1.length; w++){
-
             if((words1[w] === words1[w-1])){
                 output.push(`"${words1[w]}" is repeated at line: ${s+1}`)
-            }
-                      
+            }       
         }   
     } 
     return output.join('\n')
