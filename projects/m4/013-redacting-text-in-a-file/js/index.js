@@ -4,7 +4,7 @@
 const fs = require('fs').promises;
 
 //files name
-const story = 'text.txt'
+const story = 'text.tx'
 const sensitive = 'sensitive words.txt'
 const redacted = 'redacted.txt'
 
