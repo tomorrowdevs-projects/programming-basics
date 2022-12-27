@@ -56,14 +56,18 @@ const redactText = textAndSensitive => {
 Promise.all([readStory(story), readSensitive(sensitive)])
   .then((data) => {
     const outputContent = redactText(data)
-    return fs.writeFile(redacted, outputContent)
+    return fs.writeFile(redacted, outputContent, { flag: 'r+' })
   })
   .then(() => {
     // file written successfully
     console.log(`${redacted} file updated successfully!`)
   })
   .catch((error) => {
-    console.error(`something went wrong:`, error)
+    if (error.code === 'ENOENT') {
+      console.error(`${redacted} file does not exist`)
+    } else {
+      console.error(`something went wrong:`, error)
+    }
   })
 
 
