@@ -4,7 +4,7 @@
 const fs = require('fs').promises;
 
 //files name
-const story = 'text.tx'
+const story = 'text.txt'
 const sensitive = 'sensitive words.txt'
 const redacted = 'redacted.txt'
 
@@ -44,7 +44,7 @@ const redactText = textAndSensitive => {
     text.forEach((sentence, index) => {
         sensitive.forEach(secret => {
             if (sentence.toLowerCase().replaceAll(/[^a-zA-Z0-9 ]/g,'').includes(secret)) {
-                sentence = sentence.toLowerCase().replace((/\b${secret}\b/gi),'****') // new RegExp(`\\b${secret}\\b`, 'gi') 
+                sentence = sentence.toLowerCase().replace(new RegExp(`\\b${secret}\\b`, 'gi'),'****') // new RegExp(`\\b${secret}\\b`, 'gi') 
             }
         })
         text[index] = sentence    
