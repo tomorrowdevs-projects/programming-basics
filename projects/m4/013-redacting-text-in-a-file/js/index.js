@@ -44,7 +44,7 @@ const redactText = textAndSensitive => {
     text.forEach((sentence, index) => {
         sensitive.forEach(secret => {
             if (sentence.toLowerCase().replaceAll(/[^a-zA-Z0-9 ]/g,'').includes(secret)) {
-                sentence = sentence.toLowerCase().replace(new RegExp(`\\b${secret}\\b`, 'gi'),'****') // new RegExp(`\\b${secret}\\b`, 'gi') 
+                sentence = sentence.replace(RegExp(`\\b${secret}\\b`, 'gi'), '****')// new RegExp(`\\b${secret}\\b`, 'gi') 
             }
         })
         text[index] = sentence    
