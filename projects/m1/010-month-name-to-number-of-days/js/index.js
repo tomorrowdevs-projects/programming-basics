@@ -1,23 +1,15 @@
-//Define months
+//ask user to insert name of the month
 
-const monthsOfTheYear = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
+let userInput = prompt("Digit the month name and discover how many days are in it.").toLowerCase();
 
-//asking input to user and convert it in lowercase
+//display the answer for each case
 
-let userInput = prompt("Enter a month and discover the number of days in it.");
-userInput = userInput.toLowerCase();
-
-//verify if the input is a month, if not a new alert appear
-
-while(!monthsOfTheYear.includes(userInput)){
-  userInput = prompt("Incorrect data inserted, please digit a month of the year.");
-}
-//if the input is a month, appear an alert displaing the number of days in the month
-
-if(userInput == "january" || userInput == "march" || userInput == "may" || userInput == "july" || userInput == "august" || userInput == "october" || userInput == "december"){
-  alert(userInput + " has 31 days")
-} else if(userInput == "february"){
-  alert(userInput + " has 28 or 29 days")
-} else{
-  alert(userInput + " has 30 days")
+if((userInput == "january") || (userInput == "march") || (userInput == "may") || (userInput == "july") || (userInput == "august") || (userInput == "october") || (userInput == "dicember")){
+  alert("There are 31 days in " + userInput + ".");
+}else if((userInput == "april") || (userInput == "june") || (userInput == "september") || (userInput == "november")){
+  alert("There are 30 days in " + userInput + ".");
+}else if((userInput == "february")){
+  alert("There are 28 or 29 days in " + userInput + ".");
+}else{
+  alert("Invalid entry, please reload the page and type in the name of a month to find out how many days it consists of.");
 }
