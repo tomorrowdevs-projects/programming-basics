@@ -16,7 +16,7 @@ const readStory = story => {
             return  dataArray})
 
         .catch ((error) => {
-            console.error(`this ${story} file does not exixt`), err
+            console.error(`this ${story} file does not exixt`), error
             return Promise.reject(error)
         });
 }
@@ -44,7 +44,7 @@ const redactText = textAndSensitive => {
     text.forEach((sentence, index) => {
         sensitive.forEach(secret => {
             if (sentence.toLowerCase().replaceAll(/[^a-zA-Z0-9 ]/g,'').includes(secret)) {
-                sentence = sentence.replace(RegExp(`\\b${secret}\\b`, 'gi'), '****')// new RegExp(`\\b${secret}\\b`, 'gi') 
+                sentence = sentence.replace(RegExp(`\\b${secret}\\b`, 'gi'), '****')
             }
         })
         text[index] = sentence    
