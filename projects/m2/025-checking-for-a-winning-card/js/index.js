@@ -4,7 +4,7 @@ If the card contains a line of five zeros (vertical, horizontal or diagonal) the
 Create a main program that demonstrates your function by creating several Bingo cards, displaying them, and indicating whether or not they contain a winning line.*/
 
 // Solution create bingo card (exe24)
-function getRandomExtraction(min, max, maxlenght) {
+function createBingoCard(min, max, maxlenght) {
     let arrayExtraction = "";
     const tmpArray = [];
     
@@ -16,11 +16,11 @@ function getRandomExtraction(min, max, maxlenght) {
   }
   
   const objBingoCard = {
-    B: getRandomExtraction(1, 75, 5),
-    I: getRandomExtraction(1, 75, 5),
-    N: getRandomExtraction(1, 75, 5),
-    G: getRandomExtraction(1, 75, 5),
-    O: getRandomExtraction(1, 75, 5),
+    B: createBingoCard(1, 15, 5),
+    I: createBingoCard(16, 30, 5),
+    N: createBingoCard(31, 45, 5),
+    G: createBingoCard(46, 60, 5),
+    O: createBingoCard(61, 75, 5),
   };
   //----NEW EXERCISE-----//
   // Draw and change the number in Bingo Card
