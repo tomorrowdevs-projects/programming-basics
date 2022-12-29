@@ -13,6 +13,11 @@ def only_words(string: "str")-> list:
                 if string[character_index + 1] == " ":
                     character_index += 1
                     continue
+            # Now also separates words when there is a period and new line when reading a file
+            elif character == ".":
+                    temp_string += " "
+                    character_index += 1
+                    continue
             else:
                 character_index += 1
                 continue
