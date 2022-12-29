@@ -37,4 +37,4 @@ else:
         except FileNotFoundError:
             print("\nError! File '{}' not found.".format(argument))
         except:
-            print("\nError! File '{}' cannot be displayed, make sure it is not a folder.".format(argument))
+            print("\nError! File '{}' could not be opened, make sure it is not a folder.".format(argument))
