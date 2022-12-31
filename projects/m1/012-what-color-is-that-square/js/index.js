@@ -1,26 +1,29 @@
 //asking user the cell position
-let inputUser = prompt("Insert cell position");
+let cellPos = prompt("Digit a cell position. Ex: A1.");
 
-//convert input in uppercase
-inputUser = inputUser.toUpperCase();
+//divide letter and number. And convert letter in uppercase to exclude case sensitiveness errors.
+const cellLetter = cellPos.slice(0, 1).toUpperCase();
+const cellNumber = cellPos.slice(1, 2);
 
-//divide letter and number
-const letterInput = inputUser.slice(0, 1);
-const numberInput = inputUser.slice(1, 2);
+//defining messages for each case
+alertWhite = "The cell's color is white";
+alertBlack = "The cell's color is black";
 
-//checking and display the result
-if(letterInput == "A" || letterInput == "C" || letterInput == "E" || letterInput == "G"){
-  if(numberInput % 2 == 0){
-    alert("The cell is white");
+//checking cell position and display the result for each case
+if(isNaN(cellNumber)){
+    alert("The value is not valid. Please reload page and digit a cell position. Ex: A1.");
+}else if(cellLetter == "A" || cellLetter == "C" || cellLetter == "E" || cellLetter == "G"){
+  if(cellNumber % 2 == 0){
+    alert(alertWhite);
   }else {
-    alert("The cell is black");
+    alert(alertBlack);
   }
-} else if (letterInput == "B" || letterInput == "D" || letterInput == "F" || letterInput == "H"){
-  if(numberInput % 2 == 0){
-    alert("The cell is black");
+}else if (cellLetter == "B" || cellLetter == "D" || cellLetter == "F" || cellLetter == "H"){
+  if(cellNumber % 2 == 0){
+    alert(alertBlack);
   }else {
-    alert("The cell is white");
+    alert(alertWhite);
   }
-} else {
-  alert("The value is not valid");
+}else {
+  alert("Value isn't valid. Please reload page and digit a cell position. Ex: A1.");
 }
