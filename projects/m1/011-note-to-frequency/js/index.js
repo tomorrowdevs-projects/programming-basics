@@ -9,16 +9,15 @@ const hzG4 = 392.00;
 
 //asking a note to user to convert in uppercase, split the letter and the number to be processed
 let userNote = prompt("Enter a Note to convert it in its Frequency.");
-//convert user note in uppercase to exclude case sensitiveness errors
-userNote = userNote.toUpperCase();
 //separate letter and number and convert number in Int
-let noteLetter = userNote.slice(0, 1);
+let noteLetter = userNote.slice(0, 1).toUpperCase();
 let noteNumber = parseInt(userNote.slice(1, 2));
+
 
 //check if the value is a note, if not ask the user to insert a note again
 while(!isNaN(noteLetter) || isNaN(noteNumber)){
   userNote = prompt("The value entered is not suitable, enter a note and find out its frequency, e.g. 'A5'.");
-  noteLetter = userNote.slice(0, 1);
+  noteLetter = userNote.slice(0, 1).toUpperCase();
   noteNumber = parseInt(userNote.slice(1, 2));
 }
 
