@@ -1,0 +1,11 @@
+Luca 110
+Leonardo 100
+Francesco 90
+Alessandro 80
+Lorenzo 70
+Mattia 60
+Tommaso 50
+Gabriele 40
+Andrea 30
+Riccardo 20
+Edoardo 10.
