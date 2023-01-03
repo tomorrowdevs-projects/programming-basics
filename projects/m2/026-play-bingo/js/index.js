@@ -1,10 +1,8 @@
-/*In this exercise you will write a program that simulates a game of Bingo for a single card.
-Then your program should consume calls out of the list and cross out numbers on the card until the card contains a winning line.
-Simulate 1,000 games and report the minimum, maximum and average number of calls that must be made before the card wins.
-You may find it helpful to import your solutions to Exercises "Create a Bingo Card" and "Checking for a winning Card" when completing this exercise. */
-
 // Import the functions of exercise 25 checking win bingo card
 const bingo = require('./utils');
+const prompt = require('prompt-sync')();
+const alert = require('alert');
+
 // Default node.js module to clone an object.
 //Useful below for the function
 const v8 = require('v8');
@@ -60,7 +58,7 @@ function getArrayWinCalls(obj, times) {
 }
 
 // main Program
-const time = prompt("How many games do you want to play?");
+const time = prompt("How many games do you want to play? ");
 
 const arrayNumberCalls = getArrayWinCalls(objBingoCard, time);
 const minNumberCalls = Math.min(...arrayNumberCalls);
