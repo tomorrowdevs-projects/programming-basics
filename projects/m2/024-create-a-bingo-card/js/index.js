@@ -15,11 +15,6 @@ const array61to75 = rangeOfNumbers (61, 76);
 
 
 
-function shuffleArray (numbers) {
-
-};
-
-
 // Used a constructor function to dinamically create the object.
 function BingoCard () {
     this.B = array1to15.sort(() => .5 - Math.random()).slice(0, 5);
@@ -45,7 +40,7 @@ function BingoCard () {
         console.log(outputString);
         
     };
-    
+
 
 showCard(card);
 
