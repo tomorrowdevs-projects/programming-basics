@@ -13,5 +13,5 @@ function int2hex(number) {
     alert("Invalid value");
   }
 }
-hex2int(prompt("Enter letter from A until F"));
+hex2int(prompt("Enter letter between A and F"));
 int2hex(parseInt(prompt("Enter number between 0 and 15")));
