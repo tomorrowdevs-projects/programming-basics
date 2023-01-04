@@ -36,9 +36,8 @@ alert(`
     To change Money ${moneyCashIn}
     Money covert  in the number integer is ${moneyCashInConv} \n
     Number of Toonies  200 --> ${toonies}
-    Number of Loonies  100 --> ${loonies}
-    Number of Quarters  25 --> ${quarters}
-    Number of Dimes     10 --> ${dimes}
-    Number of Nikels     5 --> ${nickels}
-    Number of Penny      1 --> ${penny} 
-    `);
+    Number of Loonies 100 --> ${loonies}
+    Number of Quarters 25 --> ${quarters}
+    Number of Dimes 10 --> ${dimes}
+    Number of Nikels 5 --> ${nickels}
+    Number of Penny 1 --> ${penny} `);
