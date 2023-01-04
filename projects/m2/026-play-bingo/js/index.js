@@ -10,7 +10,7 @@ const structuredClone = obj => {
   return v8.deserialize(v8.serialize(obj));
 };
 
-// I create obj bingo card
+// Create obj bingo card
 const objBingoCard = {
   B: bingo.createBingoCard(1, 15, 5),
   I: bingo.createBingoCard(16, 30, 5),
@@ -21,8 +21,13 @@ const objBingoCard = {
 
 // loop for check line win bingo card
 function objCardWin(obj) {
+/*
+* Create a loop until the folder contains a winning line
+* {Counter} number of calls to the winning line
+* Return {number}
+*/ 
 
-let counter = 0
+let counter = 0;
 let boolean = false;
 
   while (boolean === false) {
@@ -41,20 +46,28 @@ let boolean = false;
     } else {
       counter += 1;
     }
-  } return counter
+  } return counter;
+
 }
 
 // I create an array with all the calls of a winning folder
 function getArrayWinCalls(obj, times) {
+  /*
+  * Returns an array with the results of individual match calls
+  * @param {times} number of matches played
+  * {cloneObj} clones the original object (bingo card) so as not to modify it for new games 
+  */
   const arrayNumberCalls = [];
 
   for (let i = 0; i < times; i++ ) {
-    
+     
     const cloneObj = structuredClone(obj)
     arrayNumberCalls.push(objCardWin(cloneObj))
    
   }
-  return arrayNumberCalls
+
+  return arrayNumberCalls;
+
 }
 
 // main Program
