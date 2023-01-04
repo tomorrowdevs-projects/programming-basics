@@ -1,0 +1,22 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "Giacomo Boria",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.3.1"
+  },
+  "dependencies": {
+    "alert": "^5.1.4",
+    "in": "^0.19.0",
+    "prompt-sync": "^4.2.0",
+    "terminal": "^0.1.4",
+    "the": "^1.0.2"
+  }
+}
