@@ -16,7 +16,7 @@ if (yearHuman <= 0) {
     yearsDogAdult = yearDogPuppy * 2; // I have obtained the years of a dog that has reached maturity, that is, it is an adult  ---> 2 anni canini = 10.5 *2
     console.log("Year Dog Adult ", yearsDogAdult); //console.log for error checking
 
-    ageDog = yearHuman * 4 + yearsDogAdult; // I calculated each additional human year as 4 dog years. ---> 1 human year = 4 dog years + adult dog years
+    ageDog = (yearHuman * 4) + yearsDogAdult;    // I calculated each additional human year as 4 dog years. ---> 1 human year = 4 dog years + adult dog years
     console.log("Age Dog        ", ageDog); //console.log for error checking
 
     console.log(`The dog is ${ageDog} years old.`);
