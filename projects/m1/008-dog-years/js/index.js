@@ -28,17 +28,25 @@ if (yearHuman <= 0) {
 }
 
 /*
-I cani raggiungono l'età adulta in circa due anni.                 ---> 2 anni cane adulto
+# ANNI DEL CANE
 
-- contare ciascuno dei primi due anni umani come 10,5 anni canini, ---> 2 anni canini = 10.5 *2
-- dopo 2 anni canini contare ogni anno umano aggiuntivo come 4 anni canini  ---> 1 anno umano = 4 anni canini  + anni cane adulto
+- i cani raggiungono l'età adulta in circa 2 anni.
+- contare ciascuno dei primi 2 anni umani come 10,5 anni canini,
+- contare ogni anno umano come 4 cani
 
-Scrivete un programma che implementi la
-- conversione da anni umani ad anni canini
+Scrivere un programma che implementi la conversione da
+- anni umani in anni canini
 
-Testare il programma per 
-- per  inferiori a due anni umani
-- per due o più anni umani.
+Controllare il programma funzioni correttamente per:
+- conversioni inferiori a due anni umani
+- conversioni di due o più anni umani.
 
-Visualizzare un messaggio di errore appropriato se l'utente immette un numero negativo.
-*/
+Il programma visualizza un messaggio di errore appropriato se l'utente immette un numero negativo.
+
+# Documentazione
+Per questa soluzione di progetto è possibile utilizzare:
+- Variabili, espressioni, istruzioni
+- Stringhe
+# Scadenza
+Questo progetto deve essere completato in un massimo di **2 ore**
+  */
