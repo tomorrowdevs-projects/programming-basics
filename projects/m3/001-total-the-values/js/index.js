@@ -1,4 +1,5 @@
-/*Write a program that reads values from the user until a blank line is entered. 
+/*
+Write a program that reads values from the user until a blank line is entered. 
 Display the total of all of the values entered by the user (or 0.0 if the first 
 value entered is a blank line).
 Complete this task using recursion.
@@ -12,7 +13,7 @@ function getSum() {
   /*
   * The function sums the values entered by the user witch recursion
   * {n} input variable
-  * If 
+  * If stops the programme when the input is === to a blank/empty space
   * Ex: 
   I call n = 2 != "" => else
   II call n = 4 != "" => else
