@@ -187,10 +187,7 @@ const createSpendChart = (listOfCategory) => {
     }
 
     //write chart
-    console.log(`\nPercentage spent by category`)
-    console.log(`${stringO}`) //group3
-    console.log(`${stringLine}`) //group1
-    console.log(`${stringVerticalCategory}`) //group2
+    return console.log(`\nPercentage spent by category${stringO}\n${stringLine}\n${stringVerticalCategory}`) 
 }
 
 /*----------------------------------------------------------------------------
@@ -228,4 +225,4 @@ categoryFood.printResult()
 //categoryClothing.printResult()
 //categoryAuto.printResult()
 
-//createSpendChart([categoryBusiness,categoryFood,categoryEntertainment])
+createSpendChart([categoryBusiness,categoryFood,categoryEntertainment])
