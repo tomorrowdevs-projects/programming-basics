@@ -1,5 +1,6 @@
 //m5-001-budget-app
 
+
 // Class that create a budjet category with the desired name
 class Category {
     constructor(name) {
@@ -54,7 +55,7 @@ class Category {
             this.ledger.forEach(element => {
             balance += element['amount']
             })
-            return balance.toFixed(2)
+            return +(balance.toFixed(2))
         };
         /**
          * similar to withdraw, but the destination ledger is the one of the selected category
@@ -86,7 +87,7 @@ class Category {
         }
         //concatenation of string (* until where to start category name + category name + * other half)
         titleLine = titleLine.substring(0,halfTitle) + this.name + titleLine.substring(halfTitle)
-
+     
         //cicle in the ledger list
         this.ledger.forEach(element => {
             /* print the first 23 char of the description, add the quantity that is written starting after the 23 char
@@ -193,39 +194,6 @@ const createSpendChart = (listOfCategory) => {
     console.log(`${stringVerticalCategory}`) //group2
 }
 
-/*----------------------------------------------------------------------------
 
-/** Initialization of Objects with Category */
-const categoryFood =  new Category('Food');
-const categoryClothing =  new Category('Clothing');
-const categoryEntertainment =  new Category('Entertainment');
-const categoryAuto =  new Category('Auto');
-const categoryBusiness = new Category('Business')
+module.exports =  {Category, createSpendChart};
 
-/*
-// Tests 
-categoryFood.deposit(1000, 'initial deposit')
-categoryFood.withdraw(10.15, 'groceries')
-categoryFood.withdraw(15.89, 'restaurant and more food for dessert')
-categoryFood.transfer(50.00, categoryClothing)
-categoryClothing.withdraw(25.55)
-categoryClothing.withdraw(100)
-categoryAuto.deposit(1000, 'initial deposit')
-categoryAuto.withdraw(15)
-*/
-
-//test 2
-categoryFood.deposit(900,'deposit')
-categoryEntertainment.deposit(900,'deposit')
-categoryBusiness.deposit(900,'deposit')
-categoryFood.withdraw(105.55)
-categoryEntertainment.withdraw(33.40)
-categoryBusiness.withdraw(10.99)
-
-
-
-categoryFood.printResult()
-//categoryClothing.printResult()
-//categoryAuto.printResult()
-
-//createSpendChart([categoryBusiness,categoryFood,categoryEntertainment])
