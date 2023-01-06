@@ -10,12 +10,16 @@ function convertRomansInteger(romanNumber) {
   /*
   * the function converts a Roman numeral to an integer with recursion (base recursion romanNumber.length = 1)
   Ex MCD (1400)
-  I call romanNumber.length = 3 sum = M (1000) + romanNumber.slice(1) = CD
-  II call romanNumber.length = 2 (CD) sum = C (100) - romanNumber.slice(1) = D
-  III call romanNumber.length = 1 (D) sum = D (500) +
+  I call romanNumber.length = 3 sum = M (1000)  romanNumber.slice(1) = CD
+  II call romanNumber.length = 2 (CD) sum = C (100)  romanNumber.slice(1) = D
+  III call romanNumber.length = 1 (D) sum = D (500) 
+  I call 500
+  II call 500 - 100
+  III call 400 + 1000
   * @param {romanNumber} arg (string)
   * @object {objRomanNumerals} Key Roman Numeral value Integer number
-  * @param {sum} variable index first position romanNumber*/
+  * @param {sum} variable index for key object
+  */
   const objRomanNumerals = {
   M: 1000,
   D: 500,
