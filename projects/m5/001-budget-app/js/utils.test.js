@@ -90,8 +90,8 @@ describe('UnitTests', () => {
     food.withdraw(45.67,'milk, cereal, eggs, bacon, breag')
     food.transfer(20, entertainment)
     const actual = food.printResult()
-    const expected = `
-*************Food*************
+    const expected = 
+`*************Food*************
 deposit                 900.00
 milk, cereal, eggs, bac -45.67
 Transfer to Entertainme -20.00
