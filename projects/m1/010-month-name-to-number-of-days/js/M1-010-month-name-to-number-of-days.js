@@ -1,27 +1,6 @@
-const monthsYear = [
-  "january",
-  "february",
-  "march",
-  "april",
-  "may",
-  "june",
-  "july",
-  "august",
-  "september",
-  "october",
-  "november",
-  "december",
-];
+const monthsYear = ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"];
 const quantityDays_30 = ["april", "june", "september", "november"];
-const quantityDays_31 = [
-  "january",
-  "march",
-  "may",
-  "july",
-  "august",
-  "october",
-  "december",
-];
+const quantityDays_31 = ["january", "march", "may", "july", "august", "october", "december"];
 const quantityDays_28_29 = ["february"];
 let monthUser, daysMonth, i;
 
