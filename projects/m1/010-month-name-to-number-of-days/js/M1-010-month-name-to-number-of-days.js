@@ -13,7 +13,6 @@ const monthsYear = [
   "december",
 ];
 const quantityDays_30 = ["april", "june", "september", "november"];
-
 const quantityDays_31 = [
   "january",
   "march",
