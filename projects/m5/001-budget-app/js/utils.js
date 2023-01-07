@@ -96,7 +96,7 @@ class Category {
             ledgerString.push((element['description'].substring(0,23) + 
             (element['amount'].toFixed(2).toString().padStart((maxCharNumber-element['description'].slice(0,23).length)))))
         })
-        return console.log(`\n${titleLine}\n${ledgerString.join('\n')}\nTotal: ${this.getBalance()}`)
+        return (`${titleLine}\n${ledgerString.join('\n')}\nTotal: ${this.getBalance()}`)
     }
 }
 
@@ -188,7 +188,7 @@ const createSpendChart = (listOfCategory) => {
     }
 
     //write chart
-    return console.log(`\nPercentage spent by category${stringO}\n${stringLine}\n${stringVerticalCategory}`) 
+    return (`Percentage spent by category\n${stringO}\n${stringLine}\n${stringVerticalCategory}`) 
 }
 
 

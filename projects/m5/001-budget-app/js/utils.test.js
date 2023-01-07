@@ -94,10 +94,10 @@ describe('UnitTests', () => {
 *************Food*************
 deposit                 900.00
 milk, cereal, eggs, bac -45.67
-Transfer to entertainme -20.00
-Total: 834.33
-`
-    expect(actual).toBe(expected)
+Transfer to Entertainme -20.00
+Total: 834.33`
+
+    expect(actual).toEqual(expected)
   })
 
   test('test create spend chart', () => {
@@ -110,26 +110,32 @@ Total: 834.33
     const actual = createSpendChart([business, food, entertainment]);
     const expected = 
 `Percentage spent by category
-100|
- 90|
- 80|
- 70|    o
- 60|    o
- 50|    o
- 40|    o
- 30|    o
- 20|    o  o
- 10|    o  o
-  0| o  o  o
+100|         
+ 90|         
+ 80|         
+ 70|    o    
+ 60|    o    
+ 50|    o    
+ 40|    o    
+ 30|    o    
+ 20|    o  o 
+ 10|    o  o 
+  0| o  o  o 
     ----------
-     B  F  E
-     u  o  n
-     s  o  t
-     i  d  e
-     n     r
-     e     t
-     s     a
-     `
-    expect(actual).toBe(expected);
+     B  F  E 
+     u  o  n 
+     s  o  t 
+     i  d  e 
+     n     r 
+     e     t 
+     s     a 
+     s     i 
+           n 
+           m 
+           e 
+           n 
+           t `
+    
+    expect(actual).toEqual(expected);
   });
 });
