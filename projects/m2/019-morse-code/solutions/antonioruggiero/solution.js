@@ -42,18 +42,22 @@ const morseTable = {
   Ü: "..--",
 };
 
+const encodedWord = [];
 const copiedRegex = /^[A-Za-z0-9]/;
+const keys = Object.keys(morseTable);
 let wordFromUser = prompt("Insert word to translate in morse code");
 
 while (!wordFromUser.match(copiedRegex)) {
-    wordFromUser = prompt("Insert word to translate in morse code");
+  wordFromUser = prompt("Insert word to translate in morse code");
 }
 
-console.log(wordFromUser);
+wordFromUser = wordFromUser.split(" ").map((word) => {
+  word.split("").map((letter) => {
+    keys.includes(letter.toUpperCase())
+      ? encodedWord.push(morseTable[letter.toUpperCase()])
+      : "";
+  });
+});
 
-
-
-
-
-
-
+const result = encodedWord.join(" ");
+console.log(result);
