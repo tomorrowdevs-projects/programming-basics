@@ -1,34 +1,27 @@
-let numberIn,
-  splitNumberInteger,
-  firstNumber,
-  secondNumber,
-  thirdNumber,
-  quarterNumber,
-  sumNumber;
+let numberIn, splitNumberInteger, firstNumber, secondNumber, thirdNumber, quarterNumber, sumNumber;
 
 //numberIn = '3141';
-numberIn = prompt("Please enter the whole four-digit number");
-
-//Subdivision of an integer four digits
-splitNumberInteger = numberIn.split("");
-
+numberIn = prompt("Please insered the whole four digit number");
+//Subdivision of an integer four digit
+splitNumberInteger = numberIn.split('');
 //convert strings to integers
 firstNumber = parseInt(splitNumberInteger[0]);
 secondNumber = parseInt(splitNumberInteger[1]);
 thirdNumber = parseInt(splitNumberInteger[2]);
 quarterNumber = parseInt(splitNumberInteger[3]);
 
-sumNumber = firstNumber + secondNumber + thirdNumber + quarterNumber;
-
-console.log(splitNumberInteger);
-console.log(splitNumberInteger[0]);
-console.log(splitNumberInteger[1]);
-console.log(splitNumberInteger[2]);
-console.log(splitNumberInteger[3]);
-
-console.log(
-  `${firstNumber}+${secondNumber}+${thirdNumber}+${quarterNumber}=${sumNumber}`
-);
-alert(
-  `${firstNumber}+${secondNumber}+${thirdNumber}+${quarterNumber}=${sumNumber}`
-);
+if (splitNumberInteger.length == 4) {
+  sumNumber = firstNumber + secondNumber + thirdNumber + quarterNumber; // Sum of the entered integers.
+  alert(`The sum of the numbers insered is " ${firstNumber}+${secondNumber}+${thirdNumber}+${quarterNumber}=${sumNumber} "`);
+  //  console.log(sumNumber); // Error check line.
+}
+else
+  if (isNaN(sumNumber) == true) { // eppure la somma mi da NaN
+    // alert(`The data entered is incorrect`);
+    // console.log(sumNumber); 
+    console.log("The data entered is incorrect", isNaN(sumNumber)); // Error check line. // ho messo questo consol.log per verificare  che valore ha isNaN(sumNumber)
+  }
+  else {
+    // alert(`Error! You entered characters instead of whole numbers.`);
+    console.log("Error! You entered characters instead of whole numbers", isNaN(sumNumber)); // Error check line.  // ho messo questo consol.log per verificare  che valore ha isNaN(sumNumber)
+  }
