@@ -12,22 +12,10 @@ class Rectangle {
         }
     }        
         //methods
-        /**
-         * at the first initialisation check that the numbers are not negative
-         * @param {number} width 
-         * @param {number} height 
-         * @returns 
-         */
         #validateInputNegativeN(width, height){ //#private method
             if(width<0 || height<0){return false}
             return true
         }
-        /**
-         * private function to validate the possibiliti to getPicture()
-         * only with sides less the 50
-         * @param {number} num 
-         * @returns 
-         */
         #validateInputLess50(num){
             if (num>50){return false}
             return true
@@ -70,25 +58,4 @@ class Square extends Rectangle{
 }
 
 
-//personal tests
-const rectangle = new Rectangle(10,5)
-const square = new Square(9)
-
-console.log(rectangle.getArea())
-rectangle.setHeight(3)
-console.log(rectangle.getPerimeter())
-console.log(rectangle.toString());
-console.log(rectangle.getPicture())
-
-console.log(square.getArea())
-square.setSide(4)
-console.log(square.getDiagonal())
-console.log(square.toString())
-console.log(square.getPicture())
-
-rectangle.setHeight(8)
-rectangle.setWidth(16)
-console.log(rectangle.getAmountInside(square))
-
-
-
+module.exports = {Rectangle, Square}
