@@ -22,10 +22,10 @@ const bigBottle = 0.25;
 
 
 let numberSmallBottle = prompt ("how many small containers do you have depositated?");
-let numberBigBottle = prompt ("how many small containers do you have depositated?");
+let numberBigBottle = prompt ("how many big containers do you have depositated?");
 
- console.log(smallBottle * numberSmallBottle + " $");
- console.log(bigBottle * numberBigBottle + " $");
+ console.log("You will receive " + smallBottle * numberSmallBottle + " $");
+ console.log("You will receive " + bigBottle * numberBigBottle + " $");
 
 
 
