@@ -3,7 +3,6 @@ const Note = ["C4", "D4", "E4", "F4", "G4", "A4", "B4"];
 const FrequencyHz = [261.63, 293.66, 329.63, 349.23, 392.00, 392.00, 440.00, 493.88];
 
 let noteUser, i, frequenzyHzNote;
-
 noteUser = prompt("Please insert the name of the Note");
 noteUser=noteUser.toUpperCase();
 //alert(`The Note entered is " ${noteUser} "`);
