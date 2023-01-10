@@ -11,4 +11,4 @@ let calcDayFirstJanuary = (year + Math.floor((year - 1) / 4) - Math.floor((year 
 dayFirstJanuary = daysInWeek[calcDayFirstJanuary];
 
 //Display result
-alert("January 1st, " + year + " falls on a " + dayFirstJanuary);
+alert("January 1st, " + year + " falls on a " + dayFirstJanuary); 
