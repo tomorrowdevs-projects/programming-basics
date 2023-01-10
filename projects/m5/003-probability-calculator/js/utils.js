@@ -2,7 +2,7 @@
 class Hat {
     constructor(contents) {
         this.contents = contents
-        this.contentList = this.getColorsContentsList() //list of string with colors name
+        this.contentlist = this.getColorsContentsList() //list of string with colors name
     }
 
     getObjContents(){
@@ -34,7 +34,7 @@ class Hat {
                 const randomColor = list.splice(randomNumber,1)
                 drawList = drawList.concat(randomColor)
             }
-            this.contentList = list
+            this.contentlist = list
             return drawList
         } return list
     }
@@ -80,20 +80,4 @@ const experiment = (hat, expectedBalls, numBallsDraws, numExperiments) => {
     return probability
 }
 
-
-//personal test
-
-const hat = new Hat(['black=6', 'red=4', 'green=3'])
-console.log(experiment(hat, {"red":2,"green":1}, 5, 200))
-
-
-
-const hat1 = new Hat(['yellow=3', 'blue=2', 'green=6'])
-
-const hat2 = new Hat(['blue=3','red=2','green=6'])
-console.log(experiment(hat2, {"blue":2,"green":1}, 4, 1000))
-
-const hat3 = new Hat(['yellow=5','red=1','green=3','blue=9','test=1'])
-console.log(experiment(hat3, {"yellow":2,"blue":3,"test":1}, 20, 100))
-
-
+module.exports =  {Hat, HatObject, experiment};
