@@ -2,9 +2,10 @@
 class Hat {
     constructor(contents) {
         this.contents = contents
-        this.contentlist = this.getColorsContentsList() //list of string with colors name
+        this.contentList = this.getColorsContentsList() //list of string with colors name
     }
 
+    //transform the content in an object ex: {"red": 2, "blue": 1} -> return
     getObjContents(){
         const objContents = {}
         this.contents.forEach((element) => {
@@ -13,6 +14,7 @@ class Hat {
         return objContents
     }
 
+    //transform the obj created before in a list ex: ["red", "red", "blue"] -> return
     getColorsContentsList(){
         const listContents = []
         const objContents = this.getObjContents()
@@ -24,6 +26,11 @@ class Hat {
         return listContents
     }    
 
+    /**
+     * function to draw a numbers of balls out of the total list of balls
+     * @param {number} numbersOfBalls 
+     * @returns {list} total list or draw balls list
+     */
     draw(numbersOfBalls){
         let drawList = []
         const list = this.getColorsContentsList()
@@ -34,11 +41,14 @@ class Hat {
                 const randomColor = list.splice(randomNumber,1)
                 drawList = drawList.concat(randomColor)
             }
-            this.contentlist = list
+            this.contentList = list
             return drawList
         } return list
     }
 }
+/**
+ * sub class to use the method of the super class in case of receiving the contents in an objec format
+ */
 class HatObject extends Hat{
     constructor(object){
         let list = []
