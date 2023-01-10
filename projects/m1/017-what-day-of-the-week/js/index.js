@@ -1,5 +1,5 @@
 //asking user to eneter an year
-let year = prompt("Enter a year:");
+let year = parseInt(prompt("Enter a year:"));
 
 //defining the days in a week
 const daysInWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
@@ -11,4 +11,4 @@ let calcDayFirstJanuary = (year + Math.floor((year - 1) / 4) - Math.floor((year 
 dayFirstJanuary = daysInWeek[calcDayFirstJanuary];
 
 //Display result
-alert("January 1st, " + year + " falls on a " + dayFirstJanuary); 
+alert("January 1st, " + year + " falls on a " + dayFirstJanuary);
