@@ -60,7 +60,7 @@ const getNames = (list) => {
       values.forEach((value) => {
         const names = value.replaceAll(/[0-9]| /gm, "").split("\n");
 
-        names.forEach((name) => popularNames.add(name));
+        popularNames.add(names[0]);
       });
 
       resolve(popularNames);
