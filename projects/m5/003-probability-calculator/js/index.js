@@ -5,7 +5,10 @@ class Hat {
         this.contentList = this.getColorsContentsList() //list of string with colors name
     }
 
-    //transform the content in an object ex: {"red": 2, "blue": 1} -> return
+    /**
+     * transform the content in an object
+     * @returns {object} example {"red": 2, "blue": 1}
+     */
     getObjContents(){
         const objContents = {}
         this.contents.forEach((element) => {
@@ -14,7 +17,10 @@ class Hat {
         return objContents
     }
 
-    //transform the obj created before in a list ex: ["red", "red", "blue"] -> return
+    /**
+     * transform the obj created before in a list
+     * @returns {list of string} example ["red", "red", "blue"]
+     */
     getColorsContentsList(){
         const listContents = []
         const objContents = this.getObjContents()
@@ -29,7 +35,7 @@ class Hat {
     /**
      * function to draw a numbers of balls out of the total list of balls
      * @param {number} numbersOfBalls 
-     * @returns {list} total list or draw balls list
+     * @returns {list of string} total list or draw balls list
      */
     draw(numbersOfBalls){
         let drawList = []
@@ -62,7 +68,7 @@ class HatObject extends Hat{
 /**
  * function to calculate the probability
  * @param {object} hat A hat object containing balls that should be copied inside the function.
- * @param {object} expectedBalls An object indicating the exact group of balls to attempt to draw from the hat for the experiment. ex: set expected_balls to {"blue":2, "red":1}.
+ * @param {object} expectedBalls An object indicating the exact group of balls to attempt to draw from the hat for the experiment. ex: expectedBalls = {"blue":2, "red":1}.
  * @param {number} numBallsDraws The number of balls to draw out of the hat in each experiment.
  * @param {number} numExperiments  The number of experiments to perform. (The more experiments performed, the more accurate the approximate probability will be.)
  * @param {probability number} return
@@ -75,13 +81,16 @@ const experiment = (hat, expectedBalls, numBallsDraws, numExperiments) => {
     let probability = 0
     
     /**
-     * find if the array contains all the element of the other array
-     * @param {list of String} arr 
-     * @param {list of String} target 
+     * find if the array contains all the element of the target array
+     * @param {list of string} arr 
+     * @param {list of string} target 
      * @returns {boolean}
      */
     let checker = (arr,target) =>  target.every(color => arr.includes(color))
 
+    /**
+     * count the number of times the drawsBalls contains the expectedBallsList
+     */
     for (n=0;n<numExperiments;n++){
         drawBalls = hat.draw(numBallsDraws)
         if (checker(drawBalls,expectedBallsList)){countProbability += 1}
