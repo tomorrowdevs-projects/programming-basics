@@ -1,81 +1,75 @@
 //m5-001-budget-app
-
-
-// Class that create a budjet category with the desired name
 class Category {
     constructor(name) {
-
         //arguments
         this.name = name;
         this.ledger = [];
-        
-        //methods
-        /**
-         * deposit allows to add an obj to the ledger with the form of {'amount': quantity, 'description':description} 
-         * @param {number} quantity the max digit of the number is 7 
-         * @param {string} description it can also be omitted
-         * @returns add an obj to the ledger list
-         */
-        this.deposit = function(quantity, description){
-            if (quantity > 99999.99){
-                    throw new Error(`Deposit amount can not contain more than 7 digits.
-                    The following deposit has blocked the process: amount = ${quantity}, descritpion = ${description}`)
-            }else{
-                description = description || ''; // same as: if(description===undefined){description=''}
-                return this.ledger.push({'amount': quantity, 'description':description})
-            }
-        };
-        /**
-         * same concept as deposit but the obj is added only if the balance as enough quantity
-         * @param {number} quantity the max digit of the number is 7 and is added as a negative n. to ledger
-         * @param {string} description it can also be omitted
-         * @returns {boolean} true o false
-         */
-        this.withdraw = function(quantity, description) {
+    }
 
-            if (quantity > 99999.99){
-                console.error(`Withdraw amount can not contain more than 7 digits`)
-                console.error(`The following withdraw has not been proceed: amount = ${quantity}, descritpion = ${description}`)
-                return false
-            }else{
-                description = description || '';
-                quantity = -quantity
-                if (this.getBalance() >= -quantity){
-                    this.ledger.push({'amount': quantity, 'description':description})
-                    return true
-                } else return false
-            }
-        }; 
-        /**
-         * take all the obj of leger list and calculate the total quantity
-         * @returns {number} with 2 decimals
-         */
-        this.getBalance = function(){
-            let balance = 0.00
-            this.ledger.forEach(element => {
-            balance += element['amount']
-            })
-            return +(balance.toFixed(2))
-        };
-        /**
-         * similar to withdraw, but the destination ledger is the one of the selected category
-         * @param {number} quantity is widraw from origin and depoist to destination category with secific description
-         * @param {variable} category the category has to be initilized before the call of this function
-         * @returns {boolean} true or false
-         */
-        this.transfer = function(quantity, category){
-            if (this.getBalance() >= quantity){
-                this.withdraw(quantity, `Transfer to ${category.name}`)
-                category.deposit(quantity, `Transfer from ${this.name}`)
+    //methods
+    /**
+     * deposit allows to add an obj to the ledger with the form of {'amount': quantity, 'description':description} 
+     * @param {number} quantity the max digit of the number is 7 
+     * @param {string} description it can also be omitted
+     * @returns add an obj to the ledger list
+     */
+    deposit(quantity, description){
+        if (quantity > 99999.99){
+                throw new Error(`Deposit amount can not contain more than 7 digits.
+                The following deposit has blocked the process: amount = ${quantity}, descritpion = ${description}`)
+        }else{
+            description = description || ''; // same as: if(description===undefined){description=''}
+            return this.ledger.push({'amount': quantity, 'description':description})
+        }
+    };
+    /**
+     * same concept as deposit but the obj is added only if the balance as enough quantity
+     * @param {number} quantity the max digit of the number is 7 and is added as a negative n. to ledger
+     * @param {string} description it can also be omitted
+     * @returns {boolean} true o false
+     */
+    withdraw(quantity, description) {
+        if (quantity > 99999.99){
+            console.error(`Withdraw amount can not contain more than 7 digits`)
+            console.error(`The following withdraw has not been proceed: amount = ${quantity}, descritpion = ${description}`)
+            return false
+        }else{
+            description = description || '';
+            quantity = -quantity
+            if (this.getBalance() >= -quantity){
+                this.ledger.push({'amount': quantity, 'description':description})
                 return true
             } else return false
-        };
-    }
+        }
+    }; 
+    /**
+     * take all the obj of leger list and calculate the total quantity
+     * @returns {number} with 2 decimals
+     */
+    getBalance(){
+        let balance = 0.00
+        this.ledger.forEach(element => {
+        balance += element['amount']
+        })
+        return +balance.toFixed(2)
+    };
+    /**
+     * similar to withdraw, but the destination ledger is the one of the selected category
+     * @param {number} quantity is widraw from origin and depoist to destination category with secific description
+     * @param {variable} category the category has to be initilized before the call of this function
+     * @returns {boolean} true or false
+     */
+    transfer(quantity, category){
+        if (this.getBalance() >= quantity){
+            this.withdraw(quantity, `Transfer to ${category.name}`)
+            category.deposit(quantity, `Transfer from ${this.name}`)
+            return true
+        } else return false
+    };
     /**
      * this is a method that print the results in the desired formatted view
      */
     printResult() {        
-   
         const maxCharNumber = 30 //max number of char in a printed line
         const halfTitle = Math.floor((maxCharNumber-(this.name.length))/2) //number of where to start write the category name on the first line
         let titleLine =  '' //****category name*****/
@@ -87,7 +81,7 @@ class Category {
         }
         //concatenation of string (* until where to start category name + category name + * other half)
         titleLine = titleLine.substring(0,halfTitle) + this.name + titleLine.substring(halfTitle)
-     
+
         //cicle in the ledger list
         this.ledger.forEach(element => {
             /* print the first 23 char of the description, add the quantity that is written starting after the 23 char
@@ -190,7 +184,6 @@ const createSpendChart = (listOfCategory) => {
     //write chart
     return (`Percentage spent by category\n${stringO}\n${stringLine}\n${stringVerticalCategory}`) 
 }
-
 
 module.exports =  {Category, createSpendChart};
 
