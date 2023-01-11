@@ -1,29 +1,26 @@
 def capitalize_string(s): 
-    #Capitalize first non-space character   
-    first = 0  
-    while s[first] == " ":
-        first += 1
-    s1 = s[:first] + s[first].upper() + s[first+1:]
+    #Capitalize first non-space character 
+    for i in range(0,len(s)):
+        if s[i] != " ":
+            s = s[:i] + s[i].upper() + s[i+1:]
+            break
 
-    #Capitalize the first non-space character after a period, exclamation mark or question mark
-    i = 0
-    while i < len(s1):
-        if s1[i] == "." or s1[i] == "!" or s1[i] == "?":
-            i += 1
-            while i < len(s) and s1[i] == " ":
-                i += 1
-            if i < len(s1):
-                s1 = s1[:i] + s1[i].upper() + s1[i+1:]
-        i += 1
+    for i in range(0,len(s)):
+
+        #Capitalize the first non-space character after a period, exclamation mark or question mark
+        capitalize_after = [".", "!", "?"]
+        capitalize_i = [" ", ".", "!", "?", "'", "`"]
+        if s[i] in capitalize_after:   
+            for i in range(i+1,len(s)):                
+                if s[i] != " ":
+                    s = s[:i] + s[i].upper() + s[i+1:]
+                    break
+
+        #Capitalize a lowercase “i”
+        if s[i-1] == " " and s[i] == "i" and s[i+1] in capitalize_i:
+            s = s[:i] + s[i].upper() + s[i+1:]
     
-    #Capitalize a lowercase “i”
-    i = 1
-    while i < len(s1):
-        if s1[i-1] == " " and s1[i] == "i" and (s1[i+ 1] == " " or s1[i+1] == "." or s1[i+1] == "!" or s1[i+1] == "?" or s1[i+1] == "'"):
-            s1 = s1[:i] + s1[i].upper() + s1[i+1:]
-        i += 1
-
-    return(s1)
+    return(s)
 
 def main():
     user_s = input("Enter a string: ")
