@@ -139,7 +139,7 @@ How many numbers do you want to play? ( form 1 to 10 )
 
 > 
 ```
-Once generated, they will all be printed on the monitor, an example below <a name="print"></a>
+Once generated, they will all be printed on the monitor, the ticket.txt file will also be created to facilitate printing, an example below <a name="print"></a>
 ```
 +==========================================================+
 |                   LOTTO GAME TICKET #1 **€ 6**           |

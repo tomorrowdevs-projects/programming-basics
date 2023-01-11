@@ -59,7 +59,6 @@ function fillTickets (ticketNumber) {
         allWin.push(utils.checkWin(ticket.generateNumber, ticket.city, ticket.type).concat(index+1));
         totalInvested += ticket.prices.reduce((acc, el) => acc + el);
     });
-    fs.writeFileSync('ticket.txt', ticketString);
     console.log(ticketString);
     console.log(utils.printFakeExtraction(allWin));
     console.log('Total winnings already detaxed by 8%:\n');
@@ -69,7 +68,9 @@ function fillTickets (ticketNumber) {
         console.log(`TICKET #${index+1} WIN € ${money[0]}${money[1] ? ' - Paid for : '+ money[1]+ 'on ' + money[2]: ''}`);
     });
     console.log(`\nTotal winnings: € ${totalMoneyWon.reduce((acc, el) => acc + el[0], 0)}`);
-    console.log(`Total invested: € ${totalInvested}`);
+    const invested = `Total invested: € ${totalInvested}`;
+    console.log(invested);
+    fs.writeFileSync('ticket.txt', ticketString + invested);
 };
 
 //ask for user input from 1 to 10
