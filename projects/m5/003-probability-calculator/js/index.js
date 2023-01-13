@@ -1,29 +1,29 @@
 //m5-003-probability-calculator
 class Hat {
-    constructor(contents) {
-        this.contents = contents
-        this.contentList = this.getColorsContentsList() //list of string with colors name
+    constructor(...contents) {
+        this.contents = contents //contens is a list of parameters converted in array list
+        this.contentList = this.#getColorsContentsList() //list of string with colors name
+        //this.contentObj
     }
 
     /**
      * transform the content in an object
      * @returns {object} example {"red": 2, "blue": 1}
      */
-    getObjContents(){
+    #getObjContents(){
         const objContents = {}
         this.contents.forEach((element) => {
-            objContents[element.match(/^\w+/g)] = +element.match(/\d+/g)[0];
+            objContents[element.match(/^\w+/)] = +element.match(/\d+/)[0];
         });
         return objContents
     }
-
     /**
      * transform the obj created before in a list
      * @returns {list of string} example ["red", "red", "blue"]
      */
-    getColorsContentsList(){
+    #getColorsContentsList(){
         const listContents = []
-        const objContents = this.getObjContents()
+        const objContents = this.#getObjContents()
         Object.keys(objContents).forEach(color => {
             for (let i=0;i<objContents[color];i++){
                 listContents.push(color)
@@ -39,29 +39,18 @@ class Hat {
      */
     draw(numbersOfBalls){
         let drawList = []
-        const list = this.getColorsContentsList()
+        const list = Array.from(this.contentList)
 
         if (numbersOfBalls<=list.length){
             for(let r=0; r<numbersOfBalls; r++){
                 const randomNumber = Math.floor(Math.random() * list.length)
                 const randomColor = list.splice(randomNumber,1)
-                drawList = drawList.concat(randomColor)
+                drawList.push(randomColor)
             }
-            this.contentList = list
-            return drawList
-        } return list
-    }
-}
-/**
- * sub class to use the method of the super class in case of receiving the contents in an objec format
- */
-class HatObject extends Hat{
-    constructor(object){
-        let list = []
-        for(const color in object){
-            list.push(`${color}=${object[color]}`)
-        }
-        super (list)
+            
+            this.contentList = Array.from(list)
+            return drawList.flat()
+        } return this.contentList
     }
 }
 
@@ -75,25 +64,62 @@ class HatObject extends Hat{
  */
 const experiment = (hat, expectedBalls, numBallsDraws, numExperiments) => {
 
-    const expectedBallsList = (new HatObject(expectedBalls)).getColorsContentsList()
+    //const expectedBallsList = (new HatObject(expectedBalls)).contentList
     let drawBalls = []
     let countProbability = 0
     let probability = 0
     
     /**
-     * find if the array contains all the element of the target array
-     * @param {list of string} arr 
-     * @param {list of string} target 
-     * @returns {boolean}
+     * function to transform an array to an object and counting its iteration items
+     * @param {list of string} arr it will be a list of colors 
+     * @returns {object} ex: {"blue":2, "red":1}
      */
-    let checker = (arr,target) =>  target.every(color => arr.includes(color))
+    const getArrayToObject = arr => {
+        return arr.reduce((obj, item) => {
+            if (!obj[item]) {
+                obj[item] = 0;
+            }
+            obj[item]++;
+            return obj;
+        }, {});
+    }
 
     /**
+     * find if the obj1 is contained in obj2
+     * @param {object} obj1 = expected
+     * @param {object} obj2 = draw
+     * @returns {boolean}
+     */
+    let checker = (obj1,obj2) =>  {
+        let result = Object.keys(obj1).every((key) => obj1[key] <= obj2[key]) 
+        return result
+    }
+    
+    /**
+     * "for cicle" to repeat the draw n times
      * count the number of times the drawsBalls contains the expectedBallsList
      */
     for (n=0;n<numExperiments;n++){
-        drawBalls = hat.draw(numBallsDraws)
-        if (checker(drawBalls,expectedBallsList)){countProbability += 1}
+        /**
+         * drawBalls will be = to hat.contentList or drawsList depending on the quantity of ball inside the hat
+         * and the quantiy drwed
+         * @returns {list of string}
+         */
+        drawBalls = Array.from(hat.draw(numBallsDraws))
+        drawObj = getArrayToObject(drawBalls)
+
+        /**
+         * This "if" check if drawBalls is returned by draws or hat.contentList
+         * if it draws I the length are different and I need to put back in the hat
+         * the draws balls
+         */        
+        if(drawBalls.length != hat.contentList.length){
+            //when the balls are checked we need to put them back in the hat for the new draw
+            hatContentListComplete = hat.contentList.concat(drawBalls)
+            hat.contentList = Array.from(hatContentListComplete) 
+        }   
+        if (checker(expectedBalls,drawObj)){countProbability ++} //check the two obj
+      
     }
     probability = countProbability/numExperiments
     return probability
@@ -102,17 +128,13 @@ const experiment = (hat, expectedBalls, numBallsDraws, numExperiments) => {
 
 //personal test
 
-const hat = new Hat(['black=6', 'red=4', 'green=3'])
-console.log(experiment(hat, {"red":2,"green":1}, 5, 200))
+const hat = new Hat('black=6', 'red=4', 'green=3')
+console.log(experiment(hat, {"red":2,"green":1}, 5, 20))
 
-
-
-const hat1 = new Hat(['yellow=3', 'blue=2', 'green=6'])
-
-const hat2 = new Hat(['blue=3','red=2','green=6'])
+const hat2 = new Hat('blue=3','red=2','green=6')
 console.log(experiment(hat2, {"blue":2,"green":1}, 4, 1000))
 
-const hat3 = new Hat(['yellow=5','red=1','green=3','blue=9','test=1'])
+const hat3 = new Hat('yellow=5','red=1','green=3','blue=9','test=1')
 console.log(experiment(hat3, {"yellow":2,"blue":3,"test":1}, 20, 100))
 
 
