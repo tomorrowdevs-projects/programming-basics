@@ -1,17 +1,33 @@
-let numberIn = 0, splitNumberInteger, firstNumber, secondNumber, thirdNumber, quarterNumber, sumNumber;
+let numberIn=array_split_numberIn=firstNumber=secondNumber=thirdNumber=quarterNumber=sumNumber=0;
 
-//numberIn = '3141';
-numberIn = prompt("Please insered the whole four digit number");
+numberIn = prompt(`Please insered the whole four digit number`);
 
-if ((numberIn.length < 4) || (numberIn.length > 4)) { // I check whether entered numbers are less than or greater than 4.
-  console.log("The data entered is incorrect");
-} else if (numberIn.length == 4) {// I check whether entered numbers are 4.
-  splitNumberInteger = numberIn.split(''); //Subdivision of an integer four digit
-  //convert strings to integers
-  firstNumber = parseInt(splitNumberInteger[0]);
-  secondNumber = parseInt(splitNumberInteger[1]);
-  thirdNumber = parseInt(splitNumberInteger[2]);
-  quarterNumber = parseInt(splitNumberInteger[3]);
-  sumNumber = firstNumber + secondNumber + thirdNumber + quarterNumber; // Sum of the entered integers.
-  alert(`The sum of the numbers insered is  ${firstNumber}+${secondNumber}+${thirdNumber}+${quarterNumber}=${sumNumber} "`);
+if (numberIn.length < 4 || numberIn.length > 4) {
+  // Condition for the case entered numbers greater or less than 4.
+  console.log(numberIn);
+  alert(
+    `Error! --> The data insered does not respect the required formatting.`
+  );
+} else if (numberIn.length == 4) {
+  // Condition for the case entered numbers equal to 4.
+
+  // I separate the insered number into 4 numbers.
+  array_split_numberIn = numberIn.split("");
+  firstNumber = parseInt(array_split_numberIn[0]);
+  secondNumber = parseInt(array_split_numberIn[1]);
+  thirdNumber = parseInt(array_split_numberIn[2]);
+  quarterNumber = parseInt(array_split_numberIn[3]);
+  // Sum of the separating numbers.
+  sumNumber = firstNumber + secondNumber + thirdNumber + quarterNumber;
+
+  if (isNaN(sumNumber)) {
+    // Condition in case both normal and special characters are entered.
+    // console.log(array_split_numberIn);
+    alert(`Error! --> You have insered numbers and characters.`);
+  } else {
+    // console.log(array_split_numberIn);
+    alert(
+      `The sum of the numbers insered is  ${firstNumber}+${secondNumber}+${thirdNumber}+${quarterNumber}=${sumNumber}`
+    );
+  }
 }
