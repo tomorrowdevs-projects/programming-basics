@@ -19,7 +19,7 @@ def shuffle(card_list):
     for i in range(52):
         random_card = random.choices(deck)
         shuffled_deck.append(random_card)
-        deck.remove(random_card)
+        deck.remove(random_card[0])
 
     return shuffled_deck
 
