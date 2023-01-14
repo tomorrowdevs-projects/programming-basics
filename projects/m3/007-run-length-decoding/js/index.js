@@ -1,33 +1,30 @@
 
 
-const list = ["A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B","B","A","A","A","A","A","A","B"];
+const list = ["A",12,"B",4,"A",6,"B",1];
+// result = ["A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B","B","A","A","A","A","A","A","B"];
+
+function decodeList (list, newList = []) {
 
 
-function decodeList (list, counter = 0) {
+// When the second element in an encoded list is a number, push the first element of the array in a new array, and decrease the number by 1. Then return the function with the decreased number,  to simulate the decoding.
+    if (!isNaN(list[1]) && list[1] > 0){
+        const l1 = [list[0], list[1] - 1];
+        newList.push(list[0]);
+        return decodeList(l1.concat(list.slice(2)), newList);
+    };
+ 
     
-// Setting up base case, when function is on last item on list, we push counter to  the list and return it.
-    if ((list.length === 1)) {
-        list.push(counter);
-        return list;
+// When the second element in an array is a number and it's equal to 0, the recursion slices from the array the first two  elements, simulating the end of the decoding fot that specific item.
+    if (list[1] === 0) {
+        return decodeList(list.slice(2), newList)
+    }
+
+
+// If there are no more element in the list, we return the new decoded list.
+    if (list.length === 0) {
+        return newList;
     };
 
-
-// If two consecutive elements are equal, we slice the second from the list and add 1 to the counter.
-    if (list[0] === list[1]) {
-        return decodeList(list.slice(1), counter += 1);
-    };
-
-
-//  When two near elements in the list are different we push the counter in the list and recursively recall it on the next item.
-    if (list[0] !== list[1]){
-        let l1 = decodeList([list[0]], counter += 1);
-        let l2 = decodeList(list.slice(1));
-        return l1.concat(l2);
-    };
-    
-
-    return list;
-    
 };
 
 console.log(decodeList(list));
