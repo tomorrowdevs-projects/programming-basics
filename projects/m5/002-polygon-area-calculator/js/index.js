@@ -3,13 +3,14 @@
 class Rectangle {
     constructor(width, height){
 
+          if (this.#validateInputNegativeN(width,height) === false) {
+            throw new Error(`the input number cannot be negative`)
+        }
+
         //arguments
         this.width = +width 
         this.height = +height 
-        
-        if (this.#validateInputNegativeN(this.width,this.height) === false) {
-            throw new Error(`the input number cannot be negative`)
-        }
+
     }        
         //methods
         /**

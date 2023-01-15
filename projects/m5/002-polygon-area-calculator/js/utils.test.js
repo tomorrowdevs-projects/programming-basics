@@ -12,6 +12,12 @@ describe('UnitTests', () => {
         square = new Square(5)
     })
 
+    test('test negative numbers as input', () => {
+        expect(() => {
+            new Rectangle(-3,6)
+        }).toThrowError(Error, 'the input number cannot be negative')
+    })
+    
     test('check if Square is a subclass/instance of Rectangle', () => {
         const actual = square instanceof Rectangle
         const expected = true
