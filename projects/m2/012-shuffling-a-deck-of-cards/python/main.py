@@ -23,4 +23,7 @@ def shuffle(card_list):
 
     return shuffled_deck
 
-print(shuffle(create_deck()))
+if __name__ == '__main__':
+
+    print(create_deck())
+    print(shuffle(create_deck()))
