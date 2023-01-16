@@ -1,0 +1,19 @@
+********* information is **ten removed, or redacted, from ********* before they are released to the public.
+
+when the ********* are released it is common for the redacted text to be replaced with black bars.
+
+in this exercise you will write a ******* that redacts all occurrences ** ********* words in a text file by replacing them with asterisks.
+
+your ******* should redact ********* words wherever they occur, even if they occur in the middle ** another word.
+
+the list ** ********* words will be provided in a separate text file.
+
+save the redacted version ** the ******** text in a new file. the ***** ** the ******** text file, ********* words file, and redacted file will all be provided by the user.
+
+you may find the replace method for strings helpful when completing this exercise.
+
+information about the replace method can be found on the internet.
+
+for an added challenge, extend your ******* so that it redacts words in a case in********* manner.
+
+for ****ple, if **** appears in the list ** ********* words then redact ****, ****, **** and ****, among other possible capitalizations.
