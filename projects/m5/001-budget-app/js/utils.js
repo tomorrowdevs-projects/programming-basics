@@ -1,4 +1,4 @@
-//m5-001-budget-app
+// Class that create a budjet category with the desired name
 class Category {
     constructor(name) {
         //arguments
@@ -19,7 +19,7 @@ class Category {
                 The following deposit has blocked the process: amount = ${quantity}, descritpion = ${description}`)
         }else{
             description = description || ''; // same as: if(description===undefined){description=''}
-            return this.ledger.push({'amount': quantity, 'description':description})
+            this.ledger.push({'amount': quantity, 'description':description})
         }
     };
     /**
@@ -35,9 +35,8 @@ class Category {
             return false
         }else{
             description = description || '';
-            quantity = -quantity
-            if (this.getBalance() >= -quantity){
-                this.ledger.push({'amount': quantity, 'description':description})
+            if (this.getBalance() >= quantity){
+                this.ledger.push({'amount': -quantity, 'description':description})
                 return true
             } else return false
         }
@@ -73,7 +72,7 @@ class Category {
         const maxCharNumber = 30 //max number of char in a printed line
         const halfTitle = Math.floor((maxCharNumber-(this.name.length))/2) //number of where to start write the category name on the first line
         let titleLine =  '' //****category name*****/
-        let ledgerString = []
+        const ledgerString = []
 
         //wirte the first line of "*"
         for (let i = 1; i <= (maxCharNumber-this.name.length);i++){
@@ -90,7 +89,7 @@ class Category {
             ledgerString.push((element['description'].substring(0,23) + 
             (element['amount'].toFixed(2).toString().padStart((maxCharNumber-element['description'].slice(0,23).length)))))
         })
-        return (`${titleLine}\n${ledgerString.join('\n')}\nTotal: ${this.getBalance()}`)
+        return(`${titleLine}\n${ledgerString.join('\n')}\nTotal: ${this.getBalance()}`)
     }
 }
 
@@ -101,9 +100,8 @@ class Category {
 const createSpendChart = (listOfCategory) => {
     
     listOfCategory.length = 4 // initilized the max number of the argument that the function can accept in the list
-    let categoryNames = [] //list of the argument .name of the choosen category
-    let elementPercentage = [] // list of total withdraws for every category {number}
-    let totalElementPercentage = [] // list of withdraw for every category transformed in % {number}
+    const categoryNames = [] //list of the argument .name of the choosen category
+    const elementPercentage = [] // list of total withdraws for every category {number}
     let totalCategoryWithdraw = 0 // total ammount of withdraw for every category (change everytime the category change in the loop)
     let totalWithdraw = 0 // total amount of all widhdraw of all category together
 
@@ -128,7 +126,7 @@ const createSpendChart = (listOfCategory) => {
     })
     
     totalWithdraw = Math.abs(totalWithdraw)
-    totalElementPercentage = elementPercentage.map(x => parseInt(((x/totalWithdraw)*100)/10,10)*10) //list rounded at the 10 smaller
+    const totalElementPercentage = elementPercentage.map(x => parseInt(((x/totalWithdraw)*100)/10,10)*10) //list rounded at the 10 smaller
 
     /**variable for chart, printed as groups of Strings*/
     /** group1: line ---- before the category names at the end */
@@ -140,7 +138,7 @@ const createSpendChart = (listOfCategory) => {
 
     /** group2: categories names at the end of the print */
     let stringVerticalCategory = '    '//7 space to have the desired print result
-    let letters = [] //a list of every letters of every categories choosen
+    const letters = [] //a list of every letters of every categories choosen
     let longestCategoryLength = 0 // number to have the longest name of the choosen categories
      
     categoryNames.forEach(category=> {
