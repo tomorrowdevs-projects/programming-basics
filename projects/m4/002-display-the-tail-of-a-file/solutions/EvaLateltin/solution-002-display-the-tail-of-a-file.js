@@ -1,38 +1,26 @@
-const fs = require("fs");
+const fsPromises = require("fs").promises;
 
-const readLines = function (path) {
-  return new Promise((resolve, reject) => {
-    fs.readFile(path, "utf8", function (err, data) {
-      if (err) {
-        reject("The file does not exists");
-      } else {
-        resolve(data);
+const tailOfFile = (path, number) => {
+  fsPromises
+    .readFile(path, "utf8")
+    .then((data) => {
+      const lines = data.split("\n");
+      let result = "";
+
+      if (lines.length < number) {
+        number = lines.length;
+        result += `The file only has ${lines.length} lines.\n`;
       }
-    });
-  });
-};
 
-const tailOfFile = function (path, number) {
-  return new Promise((resolve, reject) => {
-    readLines(path)
-      .then((data) => {
-        const lines = data.split("\n");
-        const result = [];
-        if (number === 0 || number === undefined) {
-          reject("Enter a number greater than zero.");
-        } else if (lines.length < number) {
-          number = lines.length;
-          result.push(`The file only has ${lines.length} lines.`);
-        } else {
-          result.push(`Displaying the last ${number} lines of the file.`);
-        }
-        result.push(...lines.slice(number * -1));
-        resolve(result.join("\n"));
-      })
-      .catch((err) => console.log(err));
-  })
+      result += `Displaying the last ${number} lines of the file.`;
+
+      for (let i = lines.length - number; i < lines.length; i++) {
+        result += `\n${lines[i]}`;
+      }
+      return result;
+    })
     .then((result) => console.log(result))
-    .catch((err) => console.log(err));
+    .catch((err) => console.log(`Cannot find the entered file: ${err.path}`));
 };
 
-tailOfFile("text.txt", 5);
+tailOfFile("text.txt", 10);
