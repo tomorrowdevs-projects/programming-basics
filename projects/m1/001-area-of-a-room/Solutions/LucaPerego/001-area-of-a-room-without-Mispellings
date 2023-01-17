@@ -10,4 +10,4 @@ area_room = float(width_room * lenght_room)
 
 print(f"Tha area of a room - with a width of {width_room} m and with a lenght of {lenght_room} m - is {area_room} m")
 
-#Mispellings removed
+#Mispellings removed ---> OK
