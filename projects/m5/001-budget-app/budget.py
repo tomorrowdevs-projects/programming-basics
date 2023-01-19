@@ -4,13 +4,18 @@ class Category:
         self.ledger = []
     
     def deposit(self, amount, description=""):
-        self.ledger.append({"amount": amount, "description": description})
+        if isinstance(amount, (int, float)):
+            self.ledger.append({"amount": amount, "description": description})
+        else:
+            raise TypeError("The amount parameter can be an int or a float.")
 
     def withdraw(self, amount, description=""):
-        if self.check_funds(amount):
-            self.ledger.append({"amount": -amount, "description": description})
-            return True
-        return False
+        if isinstance(amount, (int, float)):
+            if self.check_funds(amount):
+                self.ledger.append({"amount": -amount, "description": description})
+                return True
+            return False
+        raise TypeError("The amount parameter can be an int or a float.")
 
     def get_balance(self):
         current_balance = 0
@@ -19,17 +24,21 @@ class Category:
         return current_balance
     
     def transfer(self, amount, another_category):
-        if self.check_funds(amount):
-            self.withdraw(amount, "Transfer to {}".format(another_category.category_name))
-            another_category.deposit(amount, "Transfer from {}".format(self.category_name))
-            return True
-        return False
+        if isinstance(amount, (int, float)):
+            if self.check_funds(amount):
+                self.withdraw(amount, "Transfer to {}".format(another_category.category_name))
+                another_category.deposit(amount, "Transfer from {}".format(self.category_name))
+                return True
+            return False
+        raise TypeError("The amount parameter can be an int or a float.")
 
     def check_funds(self, amount):
-        current_balance = self.get_balance()
-        if amount > current_balance:
-            return False
-        return True
+        if isinstance(amount, (int, float)):
+            current_balance = self.get_balance()
+            if amount > current_balance:
+                return False
+            return True
+        raise TypeError("The amount parameter can be an int or a float.")
 
     def __str__(self):
         printed_object = "{:*^30}\n".format(self.category_name)
