@@ -4,11 +4,11 @@ const note_D4_Hz = 293.66;
 const note_E4_Hz = 329.63;
 const note_F4_Hz = 349.23;
 const note_G4_Hz = 392.00;
-const note_A4_Hz = 400.00;
+const note_A4_Hz = 440.00;
 const note_B4_Hz = 493.88;
 
 // Declarations with values of local variables.
-let noteIn_User, note_Octave_check, note_Octave_Letter, note_Octave_Number, note_Octave_Number_FreuencyHz;
+let noteIn_User, note_Octave_check, note_Octave_Exponent, note_Octave_Letter, note_Octave_Number, note_Octave_Number_FreuencyHz;
 
 // Reading Notes
 noteIn_User = prompt('Please, insered the note:').toUpperCase();
@@ -24,32 +24,35 @@ if (note_Octave_check) {
   alert(`\nError! --> The data entered are not musical notes.\n`);
 }
 
+// Calculate exponent frequencies of musical notes.
+note_Octave_Exponent = (Math.pow(2, 4 - note_Octave_Number));
+
 // Calculating additional frequencies from the given value (freq. 4th octave) and varying the exponent according to the input received
 if (note_Octave_Letter == "C") {
-  note_Octave_Number_FreuencyHz = (note_C4_Hz / (Math.pow(2, 4 - note_Octave_Number))).toFixed(2);
+  note_Octave_Number_FreuencyHz = (note_C4_Hz / note_Octave_Exponent).toFixed(2);
   alert(`\nTo The note "${note_Octave_Letter}${note_Octave_Number}" corresponds to the frequency --> ${note_Octave_Number_FreuencyHz} Hz\n`);
 }
 else if (note_Octave_Letter == "D") {
-  note_Octave_Number_FreuencyHz = (note_D4_Hz / (Math.pow(2, 4 - note_Octave_Number))).toFixed(2);
+  note_Octave_Number_FreuencyHz = (note_D4_Hz / note_Octave_Exponent).toFixed(2);
   alert(`\nTo The note "${note_Octave_Letter}${note_Octave_Number}" corresponds to the frequency --> ${note_Octave_Number_FreuencyHz} Hz\n`);
 }
 else if (note_Octave_Letter == "E") {
-  note_Octave_Number_FreuencyHz = (note_E4_Hz / (Math.pow(2, 4 - note_Octave_Number))).toFixed(2);
+  note_Octave_Number_FreuencyHz = (note_E4_Hz / note_Octave_Exponent).toFixed(2);
   alert(`\nTo The note "${note_Octave_Letter}${note_Octave_Number}" corresponds to the frequency --> ${note_Octave_Number_FreuencyHz} Hz\n`);
 }
 else if (note_Octave_Letter == "F") {
-  note_Octave_Number_FreuencyHz = (note_F4_Hz / (Math.pow(2, 4 - note_Octave_Number))).toFixed(2);
+  note_Octave_Number_FreuencyHz = (note_F4_Hz / note_Octave_Exponent).toFixed(2);
   alert(`\nTo The note "${note_Octave_Letter}${note_Octave_Number}" corresponds to the frequency --> ${note_Octave_Number_FreuencyHz} Hz\n`);
 }
 else if (note_Octave_Letter == "G") {
-  note_Octave_Number_FreuencyHz = (note_G4_Hz / (Math.pow(2, 4 - note_Octave_Number))).toFixed(2);
+  note_Octave_Number_FreuencyHz = (note_G4_Hz / note_Octave_Exponent).toFixed(2);
   alert(`\nTo The note "${note_Octave_Letter}${note_Octave_Number}" corresponds to the frequency --> ${note_Octave_Number_FreuencyHz} Hz\n`);
 }
 else if (note_Octave_Letter == "A") {
-  note_Octave_Number_FreuencyHz = (note_A4_Hz / (Math.pow(2, 4 - note_Octave_Number))).toFixed(2);
+  note_Octave_Number_FreuencyHz = (note_A4_Hz / note_Octave_Exponent).toFixed(2);
   alert(`\nTo The note "${note_Octave_Letter}${note_Octave_Number}" corresponds to the frequency --> ${note_Octave_Number_FreuencyHz} Hz\n`);
 }
 else if (note_Octave_Letter == "B") {
-  note_Octave_Number_FreuencyHz = (note_B4_Hz / (Math.pow(2, 4 - note_Octave_Number))).toFixed(2);
+  note_Octave_Number_FreuencyHz = (note_B4_Hz / note_Octave_Exponent).toFixed(2);
   alert(`\nTo The note "${note_Octave_Letter}${note_Octave_Number}" corresponds to the frequency --> ${note_Octave_Number_FreuencyHz} Hz\n`);
 }
