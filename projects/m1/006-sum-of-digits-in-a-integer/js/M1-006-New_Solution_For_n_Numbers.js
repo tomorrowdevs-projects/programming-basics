@@ -8,7 +8,6 @@ for (i = 0; i < array_split_numberIn.length; i++) {
   // number = parseInt(array_split_numberIn[i]);
   sumNumber += parseInt(array_split_numberIn[i]);
 }
-
 if (isNaN(sumNumber)) {
   // Condition in case characters are insered.
   //  alert("\nArray --> ", array_split_numberIn);
