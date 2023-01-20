@@ -32,4 +32,4 @@ function getProportion(data){
 
 }
 
-module.exports.getProportion = getProportion;
+module.exports = getProportion;
