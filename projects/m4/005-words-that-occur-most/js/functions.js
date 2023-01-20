@@ -12,5 +12,4 @@ function getMostOccur(arr){
     return sorteWords
 }
 
-module.exports.getArrWords = getArrWords;
-module.exports.getMostOccur = getMostOccur;
+module.exports = {getArrWords, getMostOccur};
