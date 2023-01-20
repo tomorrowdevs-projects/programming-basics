@@ -16,4 +16,4 @@ function getLists(data){
     return {rulesList , exceptionList}
 }
 
-module.exports.getLists = getLists;
+module.exports = getLists;
