@@ -1,4 +1,3 @@
-
 function getLines(str){
     return str.toLowerCase().split("\n")
         .map(line=> line.replace(/[^a-zA-Z0-9 ]/g, ""));
@@ -20,12 +19,12 @@ function getRepeatdWord(arr){
             }   
         }     
     }
-        for (const word in counts) {
-            if (counts[word].count > 1)  
-            str +=  `The word: "${word}" is repeated ${counts[word].count} times in line ${counts[word].line}\n`   
-        }
+    for (const word in counts) {
+        if (counts[word].count > 1)  
+        str +=  `The word: "${word}" is repeated ${counts[word].count} times in line ${counts[word].line}\n`   
+    }
    return str;
 }
 
-module.exports.getLines = getLines;
-module.exports.getRepeatdWord = getRepeatdWord;
+
+module.exports = {getLines , getRepeatdWord};
