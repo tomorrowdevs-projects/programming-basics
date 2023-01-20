@@ -1,36 +1,17 @@
 const fs = require('fs').promises;
-const prompt = require('prompt-sync')();
+const populateDataset = require('./functions');
 const output = 'output.txt'
-let arrDataset = [];
 
-const populateDataset = () =>{
-  
-  const fileName = prompt('Enter file name or press enter to finish: ');
 
-   if(fileName == ''){
-      return arrDataset;
-   }else{
-      arrDataset.push(fileName);
-      return populateDataset();
-   }
+const cat = async ()=>{
+  try{
+     const arrDataset = populateDataset();
+     for (let i = 0; i < arrDataset.length; i++) {
+       const data = await fs.readFile(arrDataset[i], "utf-8");
+       await fs.appendFile(output, data);
+     }
+  }catch(err){
+    console.log(err);
+  }
 }
-
-const cat = () =>{
-    arrDataset = populateDataset();
-
-    if(arrDataset.length){
-      const readFile = arrDataset.map((file)=>{
-      return fs.readFile(file,'utf-8').catch((err) => console.log(`\nError reading file ${file}:\n\n ${err}`))
-    }) ;
-  
-    Promise.all(readFile)
-      .then((result) =>{
-          fs.writeFile(output,result)
-          console.log(result.join(' - '))
-      }).catch((err) => console.log(err))
-    
-    }else{
-      console.log('no files entered')
-    }
-}
-cat()
+cat();
