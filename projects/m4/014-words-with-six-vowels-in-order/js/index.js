@@ -1,6 +1,5 @@
 const fs = require('fs').promises;
-const getWords = require('./function').getWords;
-const printWord = require('./function').printWord;
+const {getWords, printWord} = require('./function');
 const dataset = 'dataset.txt';
 
 

@@ -12,5 +12,4 @@ function printWord(arr){
     }
 }
 
-module.exports.getWords = getWords;
-module.exports.printWord = printWord;
+module.exports = {getWords, printWord};
