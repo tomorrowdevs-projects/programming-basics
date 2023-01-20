@@ -12,4 +12,4 @@ function randomPass(data){
     return psw
 }
 
-module.exports.randomPass = randomPass;
+module.exports = randomPass;
