@@ -1,7 +1,9 @@
 const prompt = require('prompt-sync')({sigint: true});
 const fs = require('fs');
-const Bill = require('./Bill');
-const utils = require('./utils');
+const Bill = require('./lotto-game/model/Bill');
+const utils = require('./lotto-game/controller/utils');
+const menage = require('./lotto-game/controller/menageChoice');
+const print = require('./lotto-game/print/print');
 
 const tickets = [];       //array with all Bill instances created
 howManyTicket();
@@ -12,7 +14,7 @@ howManyTicket();
 // - inputString = string that is displayed in the prompt
 // # return = correctly input
 function inputAndCheck (possibleInput, inputString) {
-    const input = utils.check(possibleInput, prompt(inputString));
+    const input = print.check(possibleInput, prompt(inputString));
 
     if (input || input === 0) return input;
     else {
@@ -41,8 +43,8 @@ function howManyTicket () {
 function fillTickets (ticketNumber) {
     for (let i=0; i < ticketNumber; i++) {
         console.clear();
-        console.log(utils.showCompletedTicket(tickets));
-        console.log(utils.ticketTitle(i+1));
+        console.log(print.showCompletedTicket(tickets));
+        console.log(print.ticketTitle(i+1));
         const number = chooseNumber();
         const wheel = choose(number, 'whell', i+1);
         const type = choose(number, 'type', i+1);
@@ -60,14 +62,14 @@ function fillTickets (ticketNumber) {
         totalInvested += ticket.prices.reduce((acc, el) => acc + el);
     });
     console.log(ticketString);
-    console.log(utils.printFakeExtraction(allWin));
+    console.log(print.printFakeExtraction(allWin));
     console.log('Total winnings already detaxed by 8%:\n');
     const totalMoneyWon = utils.moneyWon(allWin, tickets);
 
     totalMoneyWon.forEach((money, index) => {
         console.log(`TICKET #${index+1} WIN € ${money[0]}${money[1] ? ' - Paid for : '+ money[1]+ 'on ' + money[2]: ''}`);
     });
-    console.log(`\nTotal winnings: € ${totalMoneyWon.reduce((acc, el) => acc + el[0], 0)}`);
+    console.log(`\nTotal winnings: € ${totalMoneyWon.reduce((acc, el) => acc + el[0], 0).toFixed(2)}`);
     const invested = `Total invested: € ${totalInvested}`;
     console.log(invested);
     fs.writeFileSync('ticket.txt', ticketString + invested);
@@ -94,34 +96,34 @@ function chooseNumber () {
 // # return = array selected
 function choose (numbersPlayed, whellOrType, num, selected = [], cities = [...Bill.cities], type = [...Bill.types]) {
     console.clear();
-    console.log(utils.ticketTitle(num));
-    console.log(utils.printInline(selected));
+    console.log(print.ticketTitle(num));
+    console.log(print.printInline(selected));
     let [accepted, list] = [[],''];
 
     if (whellOrType === 'whell') {
         console.log('Which wheel do you want to play?\n');
-        [accepted, list] = utils.printList(cities);
+        [accepted, list] = print.printList(cities);
         
     } else if (whellOrType === 'type') {
         if (numbersPlayed === 1) return ['Estratto'];
         console.log('What type of bet do you want to place?\n');
         if (numbersPlayed > 1 && numbersPlayed < 5 && selected.length === 0) type.length = numbersPlayed;
-        [accepted, list] = utils.printList(type);
+        [accepted, list] = print.printList(type);
     };
 
     accepted.push('n');
     console.log(list, '\nn) Next\n\n');
     const input = inputAndCheck(accepted, '> ');
 
-    if (whellOrType === 'whell') return utils.menageWheel(input, numbersPlayed, whellOrType, num, selected, cities, choose);
-    else if (whellOrType === 'type') return utils.menageType(input, numbersPlayed, whellOrType, num, selected, cities, type, choose);
+    if (whellOrType === 'whell') return menage.menageWheel(input, numbersPlayed, whellOrType, num, selected, cities, choose);
+    else if (whellOrType === 'type') return menage.menageType(input, numbersPlayed, whellOrType, num, selected, cities, type, choose);
 };
 
 //
 function prices (type, num) {
     console.clear();
-    console.log(utils.ticketTitle(num));
-    console.log(utils.printInline(type));
+    console.log(print.ticketTitle(num));
+    console.log(print.printInline(type));
     console.log('Indicates the amount for each type of bet\n');
     const result = [];
 

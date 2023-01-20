@@ -1,13 +1,33 @@
 
 # **LOTTO GAME**
 
-This program generates up to 5 lottery tickets.
+This program generates up to 5 Lotto tickets.
 
-You will be able to choose the numbers played for each ticket, the wheel or wheels and the type of play you want to make.
+You will be able to choose how many numbers to play for each card, the wheel or wheels, the type of bet you want to make and the amount you want to play.
 
-The program will generate the numbers to play.
+The program will generate the coupons with the numbers to play, easily printable from a txt file.
+
+We immediately put the numbers to the test by generating a extraction and calculating the possible winnings of your tickets and the amount won
+
+The rules are the official lotto rules which you can find here https://www.sisal.it/lotto/come-si-gioca
+
+Tables with multipliers for calculating winnings can be found here https://www.lotto-italia.it/lotto/come-dove-giocare/il-gioco/premi-del-lotto
 
 But... let's start!
+
+## How to install
+
+To work the program needs Node JS, if you don't already have it, to install it go to the link https://nodejs.org/en/download/current/.
+
+Node JS is cross-platform and can be installed on MS Windows, Linux and MacOS
+
+Once installed, download the program from Github by clicking on the green button "Clone" and on "Download ZIP".
+
+Unpack it in the directory of your choice, open the terminal and go to the same folder
+
+At this point we install the necessary dependencies and we're done: write "npm install" to the terminal.
+
+At the end the program is ready to run by typing "node index", have fun!
 
 ## Index
 1. [How many ticket](#nTicket)
