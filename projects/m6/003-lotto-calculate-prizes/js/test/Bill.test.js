@@ -1,4 +1,4 @@
-const Bill = require('../Bill')
+const Bill = require('../lotto-game/model/Bill');
 
 describe('Bill Class', () => {
 
