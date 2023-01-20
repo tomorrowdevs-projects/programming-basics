@@ -5,7 +5,7 @@ function getArrGender(arr,arrF,arrM){
 }
 
 function getObj(arr){
-  let obj = {}
+  const obj = {};
   arr.forEach((item) =>{
     (obj[item[0]]) ?  obj[item[0]] = obj[item[0]] + +item[2] :  obj[item[0]] = +item[2]; 
   })
@@ -21,6 +21,5 @@ function getMostName(obj,int){
  return mostName
 }
 
-module.exports.getArrGender = getArrGender;
-module.exports.getObj = getObj;
-module.exports.getMostName = getMostName;
+
+module.exports = {getArrGender, getObj, getMostName};

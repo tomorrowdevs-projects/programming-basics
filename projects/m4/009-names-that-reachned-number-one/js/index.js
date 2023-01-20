@@ -1,27 +1,26 @@
 const fs = require('fs').promises;
 const directory = './names-1880-2021/';
-const getArrGender = require('./functions').getArrGender;
-const getObj = require('./functions').getObj;
-const getMostName = require('./functions').getMostName;
+const {getArrGender, getObj, getMostName} = require('./functions');
 
 const prompt = require('prompt-sync')();
 const userNum = prompt('Enter the number of the most used names you want to know: ');
 
+
 const main = async()=>{
   try{
     const file = await fs.readdir(directory);
+   
     const male = [];
     const female = [];
-    let objM = {}
-    let objF = {}
     for(const fileName of file){
         let data = await fs.readFile(directory + fileName, 'utf-8');
         data = data.split("\n")
         .map((str) => [str.replace(/\r/g, "")].join(",").split(","));
+    
         getArrGender(data,female,male);
     }
-    objF = getObj(female);
-    objM = getObj(male);
+    const objF = getObj(female);
+    const objM = getObj(male);
 
     const mostF = getMostName(objF,userNum);
     const mostM = getMostName(objM,userNum);  
