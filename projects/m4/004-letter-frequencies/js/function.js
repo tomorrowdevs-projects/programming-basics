@@ -12,5 +12,4 @@ function getLetterFreq(arr){
     return lettFreq;
 }
 
-module.exports.getArrLett = getArrLett;
-module.exports.getLetterFreq = getLetterFreq
+module.exports = {getArrLett, getLetterFreq};
