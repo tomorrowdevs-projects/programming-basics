@@ -10,19 +10,23 @@ const note_B4_Hz = 493.88;
 // Declarations with values of local variables.
 let noteIn_User, note_Octave_check, note_Octave_Exponent, note_Octave_Letter, note_Octave_Number, note_Octave_Number_FreuencyHz;
 
-// Reading Notes
-noteIn_User = prompt('Please, insered the note:').toUpperCase();
+// Control loop that the data entered must have 2 characters, the first between A and G and the second between 0 and 8, otherwise it prints an error message on the screen and then requests to enter the data again
+do {
+  // Reading Notes
+  noteIn_User = prompt('Please, insered the note:').toUpperCase();
 
-// The note inserted must have 2 characters, the first between A and G and the second between 0 and 8
-note_Octave_check = /^[A-G][0-8]$/.test(noteIn_User);
+  // The note inserted must have 2 characters, the first between A and G and the second between 0 and 8
+  note_Octave_check = /^[A-G][0-8]$/.test(noteIn_User);
 
-// Check the note inserted must have 2 characters, the first between A and G and the second between 0 and 8
-if (note_Octave_check) {
-  note_Octave_Letter = noteIn_User.slice(0, 1);
-  note_Octave_Number = parseInt(noteIn_User.slice(1, 2));
-} else {
-  alert(`\nError! --> The data entered are not musical notes.\n`);
-}
+  // Check the note inserted must have 2 characters, the first between A and G and the second between 0 and 8
+  if (note_Octave_check) {
+    note_Octave_Letter = noteIn_User.slice(0, 1);
+    note_Octave_Number = parseInt(noteIn_User.slice(1, 2));
+  } else {
+    alert(`\nError! --> The data entered are not musical notes.\n`);
+  }
+
+} while (!note_Octave_check)
 
 // Calculate exponent frequencies of musical notes.
 note_Octave_Exponent = (Math.pow(2, 4 - note_Octave_Number));
