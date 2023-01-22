@@ -18,3 +18,5 @@ print(f"Refund for the bottles of 1 Liter: {refund_for_number_bottles_of_1_L_or_
 full_refund =  format((float(refund_for_number_bottles_greater_than_1L) + float(refund_for_number_bottles_of_1_L_or_littler)), '.2f')
 
 print(f"For all the delivered bottles - Full Refund: {full_refund} $")
+
+#end
