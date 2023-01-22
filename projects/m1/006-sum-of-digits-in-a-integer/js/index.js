@@ -8,7 +8,7 @@ do {
   // I use the test() function to detect whether the numbers entered contain lowercase or uppercase characters
   checkCharactersLowercase = /[a-z]/.test(numberIn);
   checkCharactersUppercase = /[A-Z]/.test(numberIn);
-  checkCharactersSpecial = /[`,¬,¦,!,",£,$,%,^,&,(,),_,{,},;,:,',@,#,~,.,?,+,-,*]/.test(numberIn);
+  checkCharactersSpecial = /[`¬¦!"£$€%^&*)(=+;:@'#><?}{,/,\,|]/.test(numberIn);
 
   // if characters are present, I return an 'Error' message.
   if (checkCharactersLowercase || checkCharactersUppercase || checkCharactersSpecial) {
@@ -25,6 +25,10 @@ for (i = 0; i < array_split_numberIn.length; i++) {
   number = parseInt(array_split_numberIn[i]);
   sumNumber += number;
 }
+
+if(isNaN(sumNumber)){
+   alert("\nError! --> You have insered numbers and characters. \u{1F648}\n");
+} else {
 // print arrey
 console.log("\nNormal array -->", array_split_numberIn, "\n");
 
@@ -39,3 +43,4 @@ console.log("String separator ',' replaced by '+' with join('+') -->", array_spl
 //print the required result on the screen
 alert(`Sum of the input numbers inserted --> ${array_split_numberIn_Conv}=${sumNumber}  \u{1F973}`);
 console.log(`Sum of the input numbers inserted --> ${array_split_numberIn_Conv}=${sumNumber}  \u{1F973}`);
+}
