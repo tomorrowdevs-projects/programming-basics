@@ -5,36 +5,32 @@ function countLetters(inputFile) {
   fsPromises
     .readFile(inputFile, "utf8")
     .then((data) => {
-      new Promise((resolve, reject) => {
-        const dataArray = getArray(data);
-        const letterObject = createObject("abcdefghijklmnopqrstuvwxyz");
+      const dataArray = getArray(data);
+      const letterObject = createObject("abcdefghijklmnopqrstuvwxyz");
 
-        // POPULATE THE OBJECT OF LETTERS WITH THE NUMBER OF EACH LETTER THAT APPEARS IN THE TEXT
-        Object.keys(letterObject).forEach((letter) => {
-          dataArray.forEach((word) => {
-            if (word.includes(letter)) {
-              letterObject[letter]++;
-            }
-          });
+      // POPULATE THE OBJECT OF LETTERS WITH THE NUMBER OF EACH LETTER THAT APPEARS IN THE TEXT
+      Object.keys(letterObject).forEach((letter) => {
+        dataArray.forEach((word) => {
+          if (word.includes(letter)) {
+            letterObject[letter]++;
+          }
         });
-
-        const result = {};
-        result.object = letterObject;
-        result.minValue = Math.min(...Object.values(result.object));
-        result.lessFrequentLetters = getKeyByValue(
-          result.object,
-          result.minValue
-        );
-
-        // RESOLVE
-        resolve(result);
-      }).then((result) => {
-        console.log("The percentages of each letter are:", result.object);
-        console.log(
-          "The less frequent letters are:",
-          result.lessFrequentLetters
-        );
       });
+
+      const result = {};
+      result.object = letterObject;
+      result.minValue = Math.min(...Object.values(result.object));
+      result.lessFrequentLetters = getKeyByValue(
+        result.object,
+        result.minValue
+      );
+
+      // RESOLVE
+      return result;
+    })
+    .then((result) => {
+      console.log("The percentages of each letter are:", result.object);
+      console.log("The less frequent letters are:", result.lessFrequentLetters);
     })
     .catch((err) => console.log("The file you entered does not exists."));
 }
