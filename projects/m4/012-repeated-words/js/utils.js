@@ -1,21 +1,3 @@
-//012
-
-//packages
-const fs = require('fs').promises;
-
-const file = 'input.txt'
-
-//function to read the content of the file
-const readFileFunction = file => {
-    return data = fs.readFile(file, {encoding:'utf-8'})
-    .then((data) => {
-        rowData = data.split('\n')
-        return  rowData
-    })
-    .catch (() => {console.error(`this file does not exixt`) /*& reject()*/});
-}
-
-//function to check repeated words in a sentece, input is a array of sentences
 const checkRepeatedWords = sentences => {
 
     const output = []
@@ -29,7 +11,7 @@ const checkRepeatedWords = sentences => {
             if((words1[w] === words1[w-1])){
                 output.push(`"${words1[w]}" is repeated at line: ${s+1}`)
             }       
-        }   
+        }
 
         if (s < sentences.length-1) {
             const sentenceFormatted2 = sentences[s+1].replaceAll(/[^a-zA-Z0-9 ]/g,'')
@@ -38,12 +20,11 @@ const checkRepeatedWords = sentences => {
             const firstWord2 = words2[0];
 
             if(lastWord1 === firstWord2) {
-                output.push(`"${lastWord1}" is repeated on end of line ${s} and beginning of line ${s+1}`)
+                output.push(`"${lastWord1}" is repeated on end of line ${s+1} and beginning of line ${s+2}`)
             }
-        }
+        } 
     } 
     return output.join('\n')
 }
 
-readFileFunction(file).then(data => console.log(checkRepeatedWords(data)));
-
+module.exports = {checkRepeatedWords}
