@@ -6,6 +6,6 @@ Alice 70
 Ginevra 60
 Emma 50
 Giorgia 40
-Greta 30 
+Greta 30
 Beatrice 20
 Anna 10
