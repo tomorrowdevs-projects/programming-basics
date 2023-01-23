@@ -8,30 +8,29 @@ const story = 'text.txt'
 const sensitive = 'sensitive words.txt'
 const redacted = 'redacted.txt'
 
-//function to read the content of the story 
-const readStory = story => {
-    return fs.readFile(story, {encoding:'utf-8'})
-        .then((data) => {
-            const dataArray = data.replaceAll(/[\r]/g, '').split('\n')
-            return  dataArray})
+//function to read the content of the story and sensitive
+const readFileFunction = fileName => {
+    return fs.readFile(fileName, {encoding:'utf-8'})
+      .then((data) => {
+          const dataArray = data.replaceAll(/[\r]/g, '').split('\n')
+          return  dataArray})
 
-        .catch ((error) => {
-            console.error(`this ${story} file does not exixt`), error
-            return Promise.reject(error)
-        });
+      .catch ((error) => {
+          console.error(`this ${fileName} file does not exixt`), error
+          return Promise.reject(error)
+      });
 }
 
-// function to read the content of sesitive words
-const readSensitive = sensitive => {
-    return fs.readFile(sensitive, {encoding:'utf-8'})
-        .then((data) => {
-            const dataArray = data.replaceAll(/[\r]/g, '').split('\n')
-            return  dataArray})
+// function to read redacted 
+const readRedacted = fileName => {
+  return fs.readFile(fileName, {encoding:'utf-8'})
+      .then(() => {
+        return  Promise.resolve()})
 
-        .catch ((error) => {
-            console.error(`this ${sensitive} file does not exixt`), error
-            return Promise.reject(error)
-        });
+      .catch ((error) => {
+        console.error(`this ${fileName} file does not exixt`), error
+        return Promise.reject(error)
+      });
 }
 
 //function to elaborate the story
@@ -53,21 +52,15 @@ const redactText = textAndSensitive => {
     return text
 }
 
-Promise.all([readStory(story), readSensitive(sensitive)])
+Promise.all([readFileFunction(story), readFileFunction(sensitive), readRedacted(redacted)] )
   .then((data) => {
     const outputContent = redactText(data)
     return fs.writeFile(redacted, outputContent, { flag: 'r+' })
   })
-  .then(() => {
-    // file written successfully
-    console.log(`${redacted} file updated successfully!`)
-  })
-  .catch((error) => {
-    if (error.code === 'ENOENT') {
-      console.error(`${redacted} file does not exist`)
-    } else {
-      console.error(`something went wrong:`, error)
-    }
-  })
+    .then(() => {
+      // file written successfully
+      console.log(`${redacted} file updated successfully!`)
+    })
+    .catch((error) => {console.error(`this is the first error code detected: ${error.code}`)})
 
 
