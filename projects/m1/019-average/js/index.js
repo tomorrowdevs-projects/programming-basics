@@ -1,5 +1,3 @@
-const prompt = require("prompt-sync")({ sigint: true});
-
 function askValues( valuesCollection = [] ){
     const sentinel = 0;
     const valuesCollectionLength = valuesCollection.length;
