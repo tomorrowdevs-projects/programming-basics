@@ -19,4 +19,6 @@ console.log(numberDays * secondsForAfullDay + numberHours * secondsForAhour + nu
 
 /* Ho inserito il parseInt in quanto senza di esso, quando il prompt mi domanda il numero di giorni o ore o minuti o secondi, se in uno di essi l'utente dovesse rispondere 0,
 questo numero verrebbe inteso come una stringa, perchè il numero è racchiuso sul prompt (stringa). Per cui, il parseInt "annulla" questa stringa e anzi, trasforma questo zero in numero.
-Quindi moltiplicando e quindi alla fine sommando, lo zero verrò contato come numero, come deve essere*/
+Quindi moltiplicando e quindi alla fine sommando, lo zero verrò contato come numero, come deve essere. esempio a parte, ma per far capire come
+opera il parseInt: se ho "13,5" e metto il parse.Int sulla variabile, avrò
+solo il 13, perchè il parseInt fa leggere solo il numero intero, per cui con la virgola non lo è*/
