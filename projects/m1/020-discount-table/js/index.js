@@ -1,5 +1,5 @@
 function generatePricesList( prices, discount ){
-    let pricesList = [];
+    const pricesList = [];
 
     for( i = 0; i < prices.length; i++){
         const originalPrice = prices[i];
