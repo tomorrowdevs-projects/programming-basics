@@ -1,7 +1,5 @@
 function generateRouletteElements( specialValues, lowestValue, highestValue ){
-    let elementsList = [];
-
-    elementsList = elementsList.concat( specialValues );
+    const elementsList = [ ...specialValues ]
 
     for( i = lowestValue; i < highestValue; i++ ){
             elementsList.push( i );
@@ -54,14 +52,14 @@ function analyzeBet( bet ){
 
     const [ extractedValueNumber, extractedValueColor, extractedValueParity, extractedValueRange ] = bet;
 
-    let message = 'The spin resulted in ' + extractedValueNumber + '\n';
-    message += 'Pay ' + extractedValueNumber;
+    let message = `The spin resulted in ${extractedValueNumber} \n` +
+                  `Pay ${extractedValueNumber}`;
 
     if( extractedValueColor !== 'Green' ){
-        message += '\n';
-        message += 'Pay ' + extractedValueColor + '\n';
-        message += 'Pay ' + extractedValueParity + '\n';
-        message += 'Pay ' + extractedValueRange;
+        message += `\n` +
+                   `Pay ${extractedValueColor} \n` +
+                   `Pay ${extractedValueParity} \n` +
+                   `Pay ${extractedValueRange}`;
     }
 
     return message;
