@@ -39,6 +39,7 @@ At the end the program is ready to run by typing "node index", have fun!
 7. [Print tickets](#print)
 8. [Fake Extraction](#fake)
 9. [Total Win!](#money)
+10. [Play again](#repeat)
 ---
 
 Choose how many ticket to play from 1 to 5 <a name="nTicket"></a>
@@ -223,5 +224,13 @@ TICKET #1 WIN € 4.1 - Paid for : 2 Estratto 1 Ambo  on Firenze
 
 Total winnings: € 4.1
 Total invested: € 12
+```
+At the end you can decide whether to start playing again or exit the program, 
+
+press 'y' to start again <a name="repeat"></a>
+```
+Do you want to play again?
+
+y or n > n
 ```
 Good fun ! 😃

@@ -1,3 +1,6 @@
+const BillUtils = require('../controller/BillUtils');
+const BillPrint = require('../view/BillPrint');
+
 //All wheels
 const cities = ['Bari', 'Cagliari', 'Firenze', 'Genova', 'Milano', 'Napoli', 'Palermo', 'Roma', 'Torino', 'Venezia', 'Tutte'];
 //All type of bet
@@ -5,6 +8,7 @@ const types = ['Estratto', 'Ambo', 'Terno', 'Quaterna', 'Cinquina'];
 
 //Bill Class
 class Bill {
+    static counter = 100;   //ticket id
     _numbers;
     _city;
     _type;
@@ -12,6 +16,8 @@ class Bill {
     _generateNumber;
 
     constructor (numbers, city, type, prices) {
+        Bill.counter += 1;
+        this.id = Bill.counter;
         this.numbers = numbers;
         this.city = city;
         this.type = type;
@@ -20,7 +26,7 @@ class Bill {
         this._generateNumber = this.#genNumber();
     };
 
-    //
+    //getter for generateNumber
     get generateNumber () { return this._generateNumber };
 
     //getter and setter for numbers
@@ -37,11 +43,11 @@ class Bill {
     get city () { return this._city };
     set city (arr) {
         
-        if (this.#checkInputArray(arr)) this._city = arr.filter(city => cities.includes(city));
+        if (BillUtils.checkInputArray(arr)) this._city = arr.filter(city => cities.includes(city));
 
-        if (!this.#compareArray(this._city, arr)) throw new Error (`${arr} is a invalid city, Bill instance not created\nAccepted parameters : ${cities.join('-')}`)
+        if (!BillUtils.compareArray(this._city, arr)) throw new Error (`${arr} is a invalid city, Bill instance not created\nAccepted parameters : ${cities.join('-')}`)
         
-        if (this.#compareArray(cities.slice(0,-1), arr)) this._city = ['Tutte'];
+        if (BillUtils.compareArray(cities.slice(0,-1), arr)) this._city = ['Tutte'];
     };
 
     //getter and setter fot type
@@ -58,41 +64,28 @@ class Bill {
 
         if (this._numbers < 5) { removed = typesCopy.splice(this._numbers) };
 
-        if (this.#checkInputArray(arr)) this._type = arr.filter(type => {
+        if (BillUtils.checkInputArray(arr)) this._type = arr.filter(type => {
             if (removed.includes(type)) message = `: you cannot choose ${removed} because you are playing only ${this._numbers} numbers`;
             if (typesCopy.includes(type)) return true
         });
 
-        if (!this.#compareArray(this._type, arr)) throw new Error (`${arr} is a invalid type${message}, Bill instance not created\nAccepted parameters : ${typesCopy.join('-')}`)
+        if (!BillUtils.compareArray(this._type, arr)) throw new Error (`${arr} is a invalid type${message}, Bill instance not created\nAccepted parameters : ${typesCopy.join('-')}`)
 
     };
 
-    //
+    //getter and setter for prices
+    //check if there are bets from 1 to 200 euros and if the number of elements of prices are equal to those of types
     get prices () { return this._prices };
     set prices (price) {
         const [ priceMin, priceMax ] = [ 1, 200 ];
 
-        if (this.#checkInputArray(price) && price.length === this._type.length) {
+        if (BillUtils.checkInputArray(price) && price.length === this._type.length) {
 
             if(price.every(el => typeof el === 'number' && el >= priceMin && el <= priceMax)) this._prices = price.map(el => Math.round(el));
             else throw new Error (`${price} is a invalid price, Bill instance not created\nAccepted parameters : from €${priceMin} to €${priceMax}`)
 
         } else throw new Error (`${price} is a invalid price, Bill instance not created\nInput doesn't contain the right number of elements`)
     }
-
-    //private function that checks if the input is an array and if it contains at least one element
-    // # return = true or an exception is raised
-    #checkInputArray (input) {
-        if (Array.isArray(input) && input.length > 0) return true;
-        else throw new Error (`Input "${input}" isn't an array or it is empty, Bill instance not created`);
-    };
-
-    //private function compare 2 arrays
-    // - arr1, arr2 = the 2 arrays to compare
-    // # return = true or false
-    #compareArray (arr1, arr2) {
-        return JSON.stringify(arr1) === JSON.stringify(arr2);
-    };
 
     //private function to generate random numbers between 1 and 90 that are never the same
     // - number = number, how many numbers you want to generate
@@ -107,41 +100,11 @@ class Bill {
         return result;
     };
 
-    //private function to generates a horizontal line for the table
-    // - lineWidth = number, how many characters the line should be long
-    // - symbol = string, the character to use to form the line
-    // # return = string
-    #lineGenerator (lineWidth, symbol) {
-        return `+${symbol.padStart(lineWidth-2, symbol)}+`
+    //Invokes BillPrint.print passing it the ticket data to print it
+    print () {
+        return BillPrint.print(this.id, this._prices, this._type, this._city, this._generateNumber.join(' - '))
     };
 
-    //private function to center a word in a space by adding spaces before and after
-    // - lineWidth = number, how many characters is the space
-    // - word = string, the word to write
-    // # return = string
-    #centerWord (lineWidth, word) {
-        const wordLength = word.length;
-        const space = (lineWidth - wordLength) /2;
-        return word.padStart(wordLength+space, ' ').padEnd(lineWidth, ' ');
-    };
-
-    //print a ticket table with the numbers, wheels and type of bet
-    // @ use #genNumber, #lineGenerator, #centerWord function
-    // - ticketNumber = number, the ticket number to show in the title
-    // # return = string
-    print (ticketNumber) {
-        const title = `LOTTO GAME TICKET #${ticketNumber} **€ ${this._prices.reduce((acc, el) => acc + el)}**`;
-        const wheel = this._city.join('  ');
-        const type = this._type.join('  ');
-        const price = this._prices.reduce((string, el, index) => string + this.#centerWord(this._type[index].length+2, `€${el}`), '');
-        const rndNumber = this._generateNumber.join(' - ');
-        const lineWidth = 60;
-
-        return [title, wheel,type, price, rndNumber].map(el => {
-            return `${this.#lineGenerator(lineWidth,'=')}\n|${this.#centerWord(lineWidth-2, el)}|`;
-
-        }).join('\n') + '\n' + this.#lineGenerator(lineWidth,'=') + '\n\n'
-    };
 };
  
 module.exports = { Bill, cities, types }
