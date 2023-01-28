@@ -1,24 +1,32 @@
-const fs = require("fs");
-const fsPromises = fs.promises;
+const fsPromises = require("fs").promises;
 const path = require("path");
 
 // TEXT FILE
-const input = path.join(__dirname, "input.txt");
+const inputText = path.join(__dirname, "input.txt");
 
 // MAIN FUNCTION
 
-readFile(input)
-  .then((list) => {
-    const words = getArray(list).filter(Boolean);
-    const filteredWords = [];
-    for (const word of words) {
-      if (word.replace(/[^a, e, i, o, u, y]/gi, "") === "aeiouy") {
-        filteredWords.push(word);
+function getWordsSixWovels(input) {
+  return fsPromises
+    .readFile(input, "utf8")
+    .then((list) => {
+      const words = getArray(list).filter(Boolean);
+      const filteredWords = [];
+      for (const word of words) {
+        if (word.replace(/[^a, e, i, o, u, y]/gi, "") === "aeiouy") {
+          filteredWords.push(word);
+        }
       }
-    }
-    console.log(filteredWords);
-  })
-  .catch((err) => logErr(err));
+      return filteredWords;
+    })
+    .catch((err) => {
+      return catchErr(err);
+    });
+}
+
+getWordsSixWovels(inputText)
+  .then((result) => console.log(result))
+  .catch((err) => console.log(err));
 
 // HELPER FUNCTIONS
 // Transform a sentence into an array of words, and remove the punctuation marks at the beginning and at the end of the sentence.
@@ -35,14 +43,8 @@ function getArray(input) {
   return array;
 }
 
-function readFile(file) {
-  return fsPromises.readFile(file, "utf8", (err) => {
-    throw new Error();
-  });
-}
-
-function logErr(err) {
+function catchErr(err) {
   const errorPath = err.path.split("/");
   const notFoundFile = errorPath[errorPath.length - 1];
-  console.log(`Cannot find the file "${notFoundFile}"`);
+  return `Cannot find the file "${notFoundFile}"`;
 }
