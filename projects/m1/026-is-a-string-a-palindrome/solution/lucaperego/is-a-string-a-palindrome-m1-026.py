@@ -10,7 +10,7 @@ palindrome = True # I will not write: while(True), because using this trick I ca
 while(palindrome):
     
     if i < len(line):
-        line[i] != line[len(line) - i -1]
+        line[i] != line[len(line)/2 - i -1]
         i += 1
         break
     print(f"{line}: Not a Palindrome")
