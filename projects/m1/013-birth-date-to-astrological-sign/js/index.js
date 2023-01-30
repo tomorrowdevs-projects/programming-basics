@@ -39,5 +39,6 @@ month_BirthUser = date_BirthUser[3] + date_BirthUser[4] + date_BirthUser[5]
 } else if (dey_BirthUser >= 22 && month_BirthUser == 'nov' || dey_BirthUser <= 21 && month_BirthUser == 'dec') {
   alert(`\nSagittarius \u{2650}\n`)
 } else {
+    //if there is invalid data inserted, it returns an error message
    alert(`\nError! --> Hai inserito dati non validi!" \u{1F47F}\n`) 
 }
