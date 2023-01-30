@@ -4,15 +4,13 @@ if argv[1:] == []:    #appropriate error message if program is started without a
     print("No command line argument entered.")
 else:
     for file in argv[1:]:    #argv[0] is the script name, starting from argv[1] are the command line arguments/files names.
-                             #in this case is argv[1:] because we have to concatenate the files if there is more than one provided as command line arguments.
+                             #in this case is a loop of argv[1:] because we have to concatenate the files if there is more than one provided as command line arguments.
         try:                 
-            if argv[1:] == []:
-                print("No command line argument entered.")
             with open(file, 'r') as file:
                 lines = file.readlines()
                 for line in lines:
                     print(line)
-                print(" ")
+                print(" ")    #empty line between files.
         except FileNotFoundError:
             print(("File '{}' does not exist.") .format(file))
         except IndexError:
