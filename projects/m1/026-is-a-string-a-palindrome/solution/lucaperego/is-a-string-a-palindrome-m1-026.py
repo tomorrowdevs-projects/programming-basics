@@ -1,6 +1,6 @@
-### 
+###
 
-line = input("Insert a String: ")
+line = input("insert a String: ")
 
 i = 0
 
@@ -9,14 +9,14 @@ palindrome = True # I will not write: while(True), because using this trick I ca
 
 while(palindrome):
     
-    if i < len(line)/2: 
+    if i < len(line):
         line[i] != line[len(line) - i -1]
-        i += 1 # here I missed '='
+        i += 1
         break
-    print(f"{line}: is - Not - a Palindrome")
+    print(f"{line}: Not a Palindrome")
 
 if palindrome: # in this position to cut off the break: it means easily - if palindrome is True: 
     
-    print(f"{line}: is a Palindrome")
+    print(f"{line}: a Palindrome")
     
-###
+     
