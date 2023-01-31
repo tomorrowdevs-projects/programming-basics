@@ -1,0 +1,5 @@
+Example file that will be used as argument.
+I will write random words here.
+Words that might follow the rule like: friend, believe, chief, fierce and friend.
+Or like ceiling and receipt.
+There are some exceptions such as weird.
