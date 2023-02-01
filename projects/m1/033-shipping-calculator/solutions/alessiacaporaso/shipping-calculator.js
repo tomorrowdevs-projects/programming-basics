@@ -9,10 +9,10 @@ function calcShippingCare(item){
     // } else {
     const shippingCharge = (2.99 * (item - 1) + 10.99).toFixed(2)
     // }
-    alert(`Shipping costs for ${numberElement} items are €${shippingCharge}`)
+    return shippingCharge
 }
 
-calcShippingCare(numberElement)
+console.log(`Shipping costs for ${numberElement} items are €${calcShippingCare(numberElement)}`)
 // calcShippingCare(1)
 // calcShippingCare(3)
 // calcShippingCare(20)
