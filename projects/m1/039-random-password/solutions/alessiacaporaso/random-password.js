@@ -4,7 +4,7 @@ function generatePassword(){
     let password = ""
     for(let i = 1; i <= passwordLength; i++){
         // Each character should be randomly selected from positions 33 to 126 in the ASCII table
-        let randomValue = Math.floor(Math.random() * (126 - 33 +1) + 33)
+        const randomValue = Math.floor(Math.random() * (126 - 33 +1) + 33)
         password += String.fromCharCode(randomValue)
     }
     return password
