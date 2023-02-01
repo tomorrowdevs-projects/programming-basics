@@ -5,4 +5,4 @@ print(number)
 
 
 #I didn't know how to perform correctly this step so I studied the map function that allowd to perform action in list ecc
-# str trasform number in string, so I can take it separately, then int transform again all in number to perform a sum of all
+# str trasform number in string, so I can take it separately, then int transform again all in number to perform a sum of all.
