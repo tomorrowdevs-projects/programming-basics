@@ -7,6 +7,36 @@ const terminal = require('./terminal');
 //////////////// Menage choices ///////////////////
 ///////////////////////////////////////////////////
 
+//input request to define how many tickets want to play
+// @ uses fllTickets function to which it passes the result of the choice
+// @ utils.arrayNumber to generate an array with possible accepted inputs
+function howManyTicket () {
+    terminal.show('clear', 'howMany');
+    return check.inputAndCheck(check.arrayNumber(1,5), '> ');
+};
+
+//prompts the user for all data to fill out all tickets and create instances and finally prints them
+// @ usa chooseNumber function for the request of how many numbers to play each card, 
+// @ choose requesting the type of bet and the wheels, 
+// @ prices requesting the amount for each type of bet,
+// @ show show the result
+// - ticketNumber = the number of tickets to create
+function fillTickets (ticketNumber) {
+    const tickets = [];   //array with all Bill instances created
+
+    for (let i=0; i < ticketNumber; i++) {
+
+        terminal.show('clear', print.showCompletedTicket(tickets));
+        terminal.show('', print.ticketTitle(i+1));
+
+        const number = chooseNumber();
+        const wheel = choose(number, 'whell', i+1);
+        const type = choose(number, 'type', i+1);
+        const price = prices(type, i+1);
+        tickets.push(new Bill.Bill(number, wheel, type, price));
+    };
+    return tickets
+};
 
 //ask for user input from 1 to 10
 // # return number
@@ -120,15 +150,12 @@ function prices (type, num) {
 
 //when the game is finished and the tickets and extractions are displayed, 
 //it asks the user if he wants to start playing again by restarting the cycle, or he exits the program
-function repeat (cb, tickets) {
+function repeat (cb) {
     terminal.show('', 'repeat');
     const input = check.inputAndCheck(['y', 'n'], 'y or n > ');
 
-    if(input === 'y') {
-        tickets.length = 0; //reset variable
-        return cb()
-
-    } else return
+    if(input === 'y') return cb()
+    else return
 };
 
 module.exports = {  menageWheel,
@@ -136,5 +163,7 @@ module.exports = {  menageWheel,
                     choose,
                     prices,
                     chooseNumber,
-                    repeat
+                    repeat,
+                    howManyTicket,
+                    fillTickets
                 }

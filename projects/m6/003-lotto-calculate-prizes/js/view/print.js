@@ -134,6 +134,27 @@ function createTicketFile (ticketString) {
     totalInvested = 0;
 };
 
+//Check the winnings and show the tickets, the extraction and any winnings to the console
+// @ terminal.show show the result on the console
+// @ checkAllWin  check if the tickets are winners
+// @ printTicket print the ticket
+// @ printFakeExtraction print the extraction
+// @ cashWin print all the amounts of any winnings
+// @ createTicketFile Create the txt file with the tickets
+function show (tickets) {
+    const [ allWin, fakeExtractNumber ] = checkWins.checkAllWin(tickets);
+
+    const ticketString = printTicket(tickets);
+    terminal.show('clear', ticketString);
+
+    terminal.show('', printFakeExtraction(fakeExtractNumber, allWin));
+
+    cashWin(allWin, tickets);
+
+    createTicketFile(ticketString);
+};
+
+
 module.exports = {  printList,
                     printInline,
                     ticketTitle,
@@ -145,4 +166,5 @@ module.exports = {  printList,
                     cashWin,
                     createTicketFile,
                     printTicket,
+                    show
  }
