@@ -1,4 +1,4 @@
-function add_time(start, duration, day = "") {
+function addTime(start, duration, day = "") {
   console.log(start, duration, day);
   // split parameters in hh, mm, PM or AM
   // start
@@ -54,7 +54,7 @@ function add_time(start, duration, day = "") {
   }
 
   let message = formatTime + " " + format + " " + formatDay + " " + formatNextDay;
-  return console.log("Result: " + message);
+  return message
 }
 
 function formatMinute(minute) {
@@ -75,9 +75,8 @@ function dayOfWeek(day, sumDay) {
   return newDay;
 }
 
-add_time("3:00 PM", "3:10");
-add_time("11:30 AM", "2:32", "Monday");
-add_time("11:43 AM", "00:20");
-add_time("10:10 PM", "3:30");
-add_time("11:43 PM", "24:20", "tueSday");
-add_time("6:30 PM", "205:12");
+console.log(`Result: ${addTime("3:00 PM", "3:10")}`);
+console.log(`Result: ${addTime("11:30 AM", "2:32", "Monday")}`);
+console.log(`Result: ${addTime("10:10 PM", "3:30")}`);
+console.log(`Result: ${addTime("11:43 PM", "24:20", "tueSday")}`);
+console.log(`Result: ${addTime("6:30 PM", "205:12")}`);
