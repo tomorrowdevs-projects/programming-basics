@@ -1,15 +1,14 @@
-let flipSimulation;
-let flips;
+let flips = 0;
 let averageFlips = 0;
 
 // program is run it should perform the simulation 10 times
 for (let i = 0; i <= 10; i++) {
-  let coin = [];
+  const coin = [];
   let j = 0;
   let control = true;
   //  simulated coins until either 3 consecutive heads of 3 consecutive tails occur
   while (control) {
-    flipSimulation = Math.floor(Math.random() * 10 + 1);
+    const flipSimulation = Math.floor(Math.random() * 10 + 1);
     if (flipSimulation % 2 === 0) {
       coin.push("H");
     } else {
