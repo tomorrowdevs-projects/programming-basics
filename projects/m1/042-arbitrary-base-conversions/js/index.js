@@ -14,26 +14,22 @@ if(!convertNumberUserBase10 || !convertNumberUserBaseArbitrary){
 }
 
 
-function convertNumberBase10(number, base){
-
-  number = parseInt(number, base).toString(10).toUpperCase();
+function convertNumberBase10(number, base){ 
 
   if(base < 2 || base > 16){
     return false;
   }
 
-  return number;
+  return parseInt(number, base).toString(10).toUpperCase();;
 
 }
 
 function convertNumberBaseArbitrary(number, base, baseConvertNumber){
 
-  number = parseInt(number, base).toString(baseConvertNumber).toUpperCase();
-
   if((base < 2 || base > 16) || ((baseConvertNumber < 2 || baseConvertNumber > 16))){
     return false;
   }
 
-  return number;
+  return numbeparseInt(number, base).toString(baseConvertNumber).toUpperCase();
 
 }
