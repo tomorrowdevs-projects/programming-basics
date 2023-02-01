@@ -8,7 +8,7 @@ function calcTotalFare(kilometers){
   } else {
     totalFare = (((kilometers / 140) * 0.25)+ baseFare).toFixed(2)
   }
-  return alert(`The cost is €${totalFare}`)
+  return totalFare
 }
 //take taliKilometers like attribute
-calcTotalFare(taxiKilometers)
+console.log(`The cost is €${calcTotalFare(taxiKilometers)}`)
