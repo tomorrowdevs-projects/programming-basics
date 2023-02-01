@@ -9,13 +9,13 @@ function convertNumber(number){
     if(number >= 1 && number <= 12){
         const positionNumber = ordinalNumber[number -1]
         // console.log(number, positionNumber)
-        alert(`The number entered is: ${number}. The ordinal number  is: ${positionNumber}`)
+        return positionNumber
     } else {
         alert("Error! Can't enter an empty string or a number outside of the range between 1 and 12")
     }
 }
 
-convertNumber(userNumeber)
+console.log(`The number entered is: ${userNumeber}. The ordinal number  is: ${convertNumber(userNumeber)}`)
 
 // function convertNumber(number) {
 //   let ordinalNumber = "";
