@@ -70,7 +70,7 @@ const experiment = (hat, expectedBalls, numBallsDraws, numExperiments) => {
     let probability = 0
     
     /**
-     * function to transform an array to an object and counting its iteration items
+     * function to transform an array to an object and counting its iteration
      * @param {list of string} arr it will be a list of colors 
      * @returns {object} ex: {"blue":2, "red":1}
      */
@@ -125,16 +125,4 @@ const experiment = (hat, expectedBalls, numBallsDraws, numExperiments) => {
     return probability
 }
 
-
-//personal test
-
-const hat = new Hat('black=6', 'red=4', 'green=3')
-console.log(experiment(hat, {"red":2,"green":1}, 5, 20))
-
-const hat2 = new Hat('blue=3','red=2','green=6')
-console.log(experiment(hat2, {"blue":2,"green":1}, 4, 1000))
-
-const hat3 = new Hat('yellow=5','red=1','green=3','blue=9','test=1')
-console.log(experiment(hat3, {"yellow":2,"blue":3,"test":1}, 20, 100))
-
-
+module.exports =  {Hat, experiment};
