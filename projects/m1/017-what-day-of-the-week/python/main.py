@@ -2,8 +2,6 @@ year = int(input("Insert a year "))
 
 day_of_the_week = (year + ((year-1)//4) - ((year-1)//100) + ((year -1)//400)) % 7
 
-print(day_of_the_week)
-
 if day_of_the_week == 0:
     name_of_the_day="Sunday"
 elif day_of_the_week == 1:
