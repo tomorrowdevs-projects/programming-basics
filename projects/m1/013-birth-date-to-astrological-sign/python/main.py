@@ -1,29 +1,37 @@
 #ask to user a day and a month
 day = int(input('type a day: '))
 month = input('type a month: ').lower()
+if type(month) is not str:
+    print('error')
+    quit()
+if day > 31:
+    print('error')
+    quit()
 
 # if else statements that returns the zodiacal sign by comparing the day typed by user with a range of numbers and the month typed with a string
-if day in range(22,32) and month == 'december' or day in range(1,20) and month == 'january':
-    print('your sign is capricorn')
-elif day in range(20,32) and month == 'january' or day in range(1,19) and month == 'febraury':
-    print('your sign is Acquarius')
-elif day in range(19,30) and month == 'febraury' or day in range(1,21) and month == 'march':
-     print('your sign is Pisces')
-elif day in range(21,32) and month == 'march' or day in range(1,22) and month == 'april':
-    print('your sign is Aries')
-elif day in range(20,31) and month == 'april' or day in range(1,20) and month == 'may':
-    print('your sign is Taurus')
-elif day in range(21,32) and month == 'may' or day in range(1,20) and month == 'june':
-     print('your sign is Gemini')
-elif day in range(20,31) and month == 'june' or day in range(0,22) and month == 'july':
-    print('your sign is Cancer')
-elif day in range(23,32) and month == 'july' or day in range(1,23) and month == 'august':
-     print('your sign is Leo')    
-elif day in range(23,32) and month == 'august' or day in range(1,23) and month == 'september':
-     print('your sign is Virgo')
-elif day in range(23,31) and month == 'september' or day in range(1,23) and month == 'october':
-     print('your sign is Libra')     
-elif day in range(23,32) and month == 'october' or day in range(1,23) and month == 'november':
-    print('your sign is Scorpio')
-elif day in range(23,31) and month == 'november' or day in range(1,22) and month == 'december':
-    print('your sign is Sagittarius')
+if 22 <= day <= 31 and month == 'december' or 1 <= day <= 19 and month == 'january':
+    sign = 'your sign is capricorn'
+elif 20 <= day <= 31 and month == 'january' or 1 <= day <= 18 and month == 'febraury':
+    sign = 'your sign is Acquarius'
+elif 19 <= day <= 29 and month == 'febraury' or 1 <= day <= 20 and month == 'march':
+     sign = 'your sign is Pisces'
+elif 21 <= day <= 31 and month == 'march' or 1 <= day <= 19 and month == 'april':
+    sign = 'your sign is Aries'
+elif 20 <= day <= 30 and month == 'april' or 1 <= day <= 20 and month == 'may':
+    sign = 'your sign is Taurus'
+elif 21 <= day <= 31 and month == 'may' or 1 <= day <= 20 and month == 'june':
+     sign = 'your sign is Gemini'
+elif 21 <= day >= 30 and month == 'june' or 1 <= day <= 22 and month == 'july':
+    sign = 'your sign is Cancer'
+elif 23 <= day <= 31 and month == 'july' or 1 <= day <= 22 and month == 'august':
+     sign = 'your sign is Leo'    
+elif 23 <= day <= 31 and month == 'august' or 1 <= day <= 22 and month == 'september':
+     sign = 'your sign is Virgo'
+elif 23 <= day <= 30 and month == 'september' or 1 <= day <= 22 and month == 'october':
+     sign = 'your sign is Libra'     
+elif 23 <= day <= 31 and month == 'october' or 1 <= day <= 22 and month == 'november':
+    sign = 'your sign is Scorpio'
+elif 23 <= day <= 30 and month == 'november' or 1 <= day <= 21 and month == 'december':
+    sign = 'your sign is Sagittarius'
+
+print(sign)
