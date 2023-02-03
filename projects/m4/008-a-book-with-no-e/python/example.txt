@@ -1,0 +1,4 @@
+Example text file.
+Write a program that reads a list of words from a file and determines what proportion of the words use each letter of the alphabet.
+Display the result for all 26 lettes and include an additional message that identifies the letter that is used in the smallest proportion of the words.
+Your program should ignore any punctuation marks that are present in the file and it should treat uppercase and lowercase letters as equivalent.
