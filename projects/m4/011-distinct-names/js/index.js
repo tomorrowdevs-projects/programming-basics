@@ -1,62 +1,49 @@
-const fs = require("fs");
-const fsPromises = fs.promises;
+const fsPromises = require("fs").promises;
 const path = require("path");
 const data = path.join(__dirname, "data");
 
-// MAIN FUNCTION
-// Read all the files from a directory and print all the unique popular names (female and male)
-fs.readdir(data, (err, files) => {
-  createObjectNames(files).then((object) => {
-    getNames(object.femaleNames).then((names) =>
-      console.log("Popular female names", names)
+/**
+ * Reads all the files from a directory,
+ * extracts the names from each file,
+ * and returns all the uniques names diveded by genre.
+ *
+ * @param {string} directoryPath - The path to the directory that contains the files to be read
+ * @returns {Promise} - Object containing sets of unique female and male names
+ */
+async function getDistinctNames(directoryPath) {
+  const fileList = await fsPromises.readdir(directoryPath);
+
+  const [femaleNames, maleNames] = await Promise.all([
+    getNamesFromLists(fileList, "F"),
+    getNamesFromLists(fileList, "M"),
+  ]);
+
+  return {
+    femaleUniqueNames: new Set(femaleNames),
+    maleUniqueNames: new Set(maleNames),
+  };
+}
+
+/**
+ * Extracts all the names from the lists that are filtered by genre
+ *
+ * @param {array} arrayOfLists - Array containing each a list of names
+ * @param {string} genre - The genre, 'M' for male and 'F' for female
+ * @returns {Promise} - Array of names cleaned from any number or special character
+ */
+
+function getNamesFromLists(arrayOfLists, genre) {
+  const arrayOfPromises = arrayOfLists
+    .filter((file) => file.includes(genre))
+    .map((file) =>
+      fsPromises.readFile(path.join(data, file), { encoding: "utf8" })
     );
-    getNames(object.maleNames).then((names) =>
-      console.log("Popular male names", names)
-    );
-  });
-});
 
-// HELPER FUNCTIONS
+  return Promise.all(arrayOfPromises).then((values) =>
+    values.flatMap((x) => x.replaceAll(/[^a-zA-Z\n]/g, "").split("\n"))
+  );
+}
 
-// Create an object that divides the lists of male and female names
-const createObjectNames = (files) => {
-  return new Promise((resolve, reject) => {
-    const names = {
-      femaleNames: [],
-      maleNames: [],
-    };
-
-    files.forEach((file) => {
-      if (file.split(/_|\./gm)[1] === "F") {
-        names.femaleNames.push(file);
-      } else {
-        names.maleNames.push(file);
-      }
-    });
-
-    resolve(names);
-  });
-};
-
-// Get a unique list of many from multiples lists, removing duplicates
-const getNames = (list) => {
-  return new Promise((resolve, reject) => {
-    const popularNames = new Set();
-
-    list.forEach((file, index) => {
-      list[index] = fsPromises.readFile(path.join(data, file), {
-        encoding: "utf8",
-      });
-    });
-
-    Promise.all(list).then((values) => {
-      values.forEach((value) => {
-        const names = value.replaceAll(/[0-9]| /gm, "").split("\n");
-
-        names.forEach((name) => popularNames.add(name));
-      });
-
-      resolve(popularNames);
-    });
-  });
-};
+getDistinctNames(data)
+  .then((object) => console.log(object))
+  .catch((error) => console.log(error));
