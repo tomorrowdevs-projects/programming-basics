@@ -1,0 +1,4 @@
+Sensitive information is often removed, or redacted, from documents before they are released to the public.
+In this exercise you will write a program that redacts all occurrences of sensitive words in a text file by replacing them with asterisks.
+Your program should redact sensitive words wherever they occur, even if they occur in the middle of another word.
+The list of sensitive words will be provided in a separate file.
