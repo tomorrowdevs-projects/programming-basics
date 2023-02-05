@@ -62,7 +62,8 @@ stream.on('close', () => {
     });
 
     // Prepare statement for least used letter
-    const outputString = `The letter used with the smallest proportion ${letterWithSmallestProportion[0].length === 1 ? 'is' : 'are'} ${letterWithSmallestProportion[0]} (${letterWithSmallestProportion[1]} %)`;
+    const onlyOneSmallest = letterWithSmallestProportion[0].length === 1;
+    const outputString = `The letter${onlyOneSmallest ? '' : 's'} used with the smallest proportion ${onlyOneSmallest ? 'is' : 'are'} ${letterWithSmallestProportion[0]} (${letterWithSmallestProportion[1]} %)`;
 
     // Prints results
     console.table(lettersProportions);
