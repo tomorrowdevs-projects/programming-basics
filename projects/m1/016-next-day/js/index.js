@@ -128,7 +128,7 @@ if (((deyUserIn >= 01 && deyUserIn <= 28) && monthUserIn === 2) || (deyUserIn >=
             deyOneMonthNextTeYearCurrent(deyUserIn, monthUserIn, yearUserIn);
             printDateNextDay(deyUserIn, monthUserIn, yearUserIn);
             yearLeap(yearUserIn)
-            console.log("\n4 - Month monthFebruary day 28 --Day -->", deyUserIn, "Month -->", monthUserIn, " Year -->", yearUserIn, "\n");*/
+          /*  console.log("\n4 - Month monthFebruary day 28 --Day -->", deyUserIn, "Month -->", monthUserIn, " Year -->", yearUserIn, "\n");*/
         }
         else if ((deyUserIn >= 01 && deyUserIn <= 30) || (deyUserIn >= 01 && deyUserIn <= 31) || ((deyUserIn >= 01 && deyUserIn <= 28) && monthUserIn === 2)) {
 
