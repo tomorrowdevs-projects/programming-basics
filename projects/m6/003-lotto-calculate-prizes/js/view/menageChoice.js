@@ -1,4 +1,4 @@
-const Bill = require('../model/Bill');
+const { Bill } = require('../model/Bill');
 const print = require('./print');
 const check = require('./check');
 const terminal = require('./terminal');
@@ -33,7 +33,7 @@ function fillTickets (ticketNumber) {
         const wheel = choose(number, 'whell', i+1);
         const type = choose(number, 'type', i+1);
         const price = prices(type, i+1);
-        tickets.push(new Bill.Bill(number, wheel, type, price));
+        tickets.push(new Bill(number, wheel, type, price));
     };
     return tickets
 };
@@ -60,6 +60,7 @@ function chooseNumber () {
 function choose (numbersPlayed, whellOrType, num, selected = [], cities = [...Bill.cities], type = [...Bill.types]) {
     terminal.show('clear', print.ticketTitle(num));
     terminal.show('', print.printInline(selected));
+
     let [accepted, list] = [[],''];
 
     if (whellOrType === 'whell') {
@@ -155,7 +156,7 @@ function repeat (cb) {
     const input = check.inputAndCheck(['y', 'n'], 'y or n > ');
 
     if(input === 'y') return cb()
-    else return
+    else { terminal.show('clear'); return }
 };
 
 module.exports = {  menageWheel,

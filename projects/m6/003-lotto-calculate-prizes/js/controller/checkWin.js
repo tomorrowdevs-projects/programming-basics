@@ -1,5 +1,4 @@
-const extraction = require('../controller/extraction');
-const Bill = require('../model/Bill');
+const { Bill } = require('../model/Bill');
 
 ///////////////////////////////////////////////////
 ////////////////// Check the win //////////////////
@@ -27,10 +26,11 @@ function combinations (numberWin, type) {
 };
 
 //check if a ticket has won compared to fake extraction
-// @ calculates all possible combinations for each type of play, es.:in a quaterna there are 4 terni, 6 ambi and 4 estratti
+// @ combination - all possible combinations for each type of play, es.:in a quaterna there are 4 terni, 6 ambi and 4 estratti
 // - wheelNumber = array, the played numbers of the ticket
-// - wheels = array, the played reels of the ticket
+// - wheels = array, the played wheels of the ticket
 // - type = array, the type of play of the ticket
+// - fakeExtractNumber = array, number of extractions
 // # return = array of array, if there are wins, it returns an array of 2 elements:
 // the type and the index of the wheel, example: [ ['Estratto', 4], ['Ambo', 6] ]
 function checkWin (wheelNumber, wheels, type, fakeExtractNumber) {
@@ -70,14 +70,18 @@ function checkWin (wheelNumber, wheels, type, fakeExtractNumber) {
 // @ extraction.numberExtraction -> Generate draw numbers to match tickets
 // @ checkWin -> check the winnings for each single ticket
 // # return = result is the result of the match and fakeExtractNumber are the numbers of the extraction fake
-function checkAllWin (tickets) {
+function checkAllWin (tickets, extraction) {
     const result = [];
-    const fakeExtractNumber = extraction.numberExtraction();
+    const fakeExtractNumber = [];
+    
+    for (const prop in extraction.getAll) {
+        fakeExtractNumber.push(extraction.getAll[prop])
+    }
 
-    tickets.forEach((ticket, index) => {
+    tickets.forEach(ticket => {
         result.push(checkWin(ticket.generateNumber, ticket.city, ticket.type, fakeExtractNumber).concat(ticket.id));
     })
-    return [ result, fakeExtractNumber ];
+    return result;
 };
 
 //Calculates the total won for each ticket played
@@ -122,8 +126,29 @@ function moneyWon (allWin, tickets) {
     return result;
 };
 
+//shows the amount won for each ticket also specifying which wheel and type of win , the total won among all and the total spent
+// @ checkWins.moneyWon -> calculates the winnings of all tickets
+function cashWin (allWin, tickets) {
+
+    const totalMoneyWon = moneyWon(allWin, tickets);
+
+    let moneyWonString = '';
+    let totalInvested = 0;
+    let totalWon = 0;
+
+    totalMoneyWon.forEach((money, index) => {
+        moneyWonString += `TICKET #${tickets[index].id} WIN € ${money[0]}${money[1] ? ' - Paid for : ' + money[1] + 'on ' + money[2]: ''}\n`;
+        totalInvested += tickets[index].total;
+        totalWon += money[0];
+        tickets[index].winning = money;
+    });
+
+    return [ moneyWonString, totalInvested, totalWon.toFixed(2) ]
+};
+
 module.exports = {  combinations,
                     checkWin,
                     checkAllWin,
                     moneyWon,
+                    cashWin
                  }

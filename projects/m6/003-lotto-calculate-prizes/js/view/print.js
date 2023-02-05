@@ -1,9 +1,5 @@
 const fs = require('fs');
-const Bill = require('../model/Bill');
 const terminal = require('./terminal');
-const checkWins = require('../controller/checkWin');
-
-let totalInvested = 0; //Total cost of all coupons
 
 ///////////////////////////////////////////////////
 ///////////////////// Print ///////////////////////
@@ -23,10 +19,13 @@ function printList (arr) {
     return [num, string]
 };
 
-//generates a line of the desired length formed by -
-// - num = number, the length of the line
+//Generates a horizontal line for the table
+// - lineWidth = number, how many characters the line should be long
+// - symbol = string, the character to use to form the line
 // # return = string
-const separator = (num) => ''.padStart(num, '=');
+function separator (lineWidth, symbol) {
+    return `${symbol.padStart(lineWidth, symbol)}`
+};
 
 //generates the title for tickets with numbering
 // - ticketNumber = number, the number to show
@@ -39,7 +38,7 @@ const ticketTitle = ticketNumber => `\n                      TICKET ${ticketNumb
 // # return = string
 function printInline (arr) {
     const listCategory = arr.join(' <> ');
-    return `${separator(listCategory.length)}\n${listCategory}\n${separator(listCategory.length)}\n`
+    return `${separator(listCategory.length, '=')}\n${listCategory}\n${separator(listCategory.length, '=')}\n`
 };
 
 //creates a formatted string with all tickets created
@@ -62,96 +61,79 @@ function centerWord (lineWidth, word) {
     return word.padStart(wordLength+space, ' ').padEnd(lineWidth, ' ');
 };
 
+//print the extraction table for each wheel
+// @ use the centerWord() and separator() to center the words in the cell and make the rows of the table
+// - allWin = array of array with all winnings (Example: [ [ 'Ambo', 'Genova' ], [ 'Ambo', 'Napoli' ] ])
+// # return = string
+function printFakeExtraction (extraction) {
+    let result = `\n${centerWord(39, `FAKE EXTRACTIONS n° ${extraction.numExtraction} del ${extraction.date}`)}\n`;
 
-//transforms the result of the winnings of all tickets into an array of 10 strings where each is the
-//result of each wheel to be printed in the fake extraction table
-// - allWin = array, all wins from all tables
-// # return = array, examble ['','','','#2 1 Estratto','','','','','#1 1 Estratto #2 2 Estratto-1 Ambo','']
-function allWinToString (allWin) {
-    let result = [...Array(10)].fill('');
+    for (const prop in extraction.getAll) {
+        result += `+${separator(10, '=')}+${separator(26, '=')}+\n`;
+        result += `| ${centerWord(8, prop)} | ${centerWord(24, extraction.getAll[prop].join(' - '))} |\n`
+    }
+    result += `+${separator(10, '=')}+${separator(26, '=')}+\n`; 
 
-    allWin.forEach(wheel => {
-       if (wheel.length !== 1) {
-            let tmp = '';
-            wheel.forEach(el => {
-                if (Array.isArray(el)) {
-                    result[el[2]] += `${(tmp !== el[2]) ? ' #' + wheel.at(-1) : ''}${(tmp === el[2]) ? '-' + el[0] + ' ' +el[1] : ' '+ el[0] + ' ' + el[1]}`
-                    tmp = el[2];
-                }
-            })
-        }
-    })
     return result
 };
 
-//print the extraction table for each wheel
-// @ use the centerWord(), separator() and allWinToString() to center the words in the cell, make the rows of the table and print the winnings
-// - allWin = array of array with all winnings (Example: [ [ 'Ambo', 'Genova' ], [ 'Ambo', 'Napoli' ] ])
+//print a ticket table with the numbers, wheels and type of bet
+// @ use #genNumber, #lineGenerator, #centerWord function
+// - ticketNumber = number, the ticket number to show in the title
 // # return = string
-function printFakeExtraction (fakeExtractNumber, allWin) {
-    let result = `\n            ${centerWord(26, 'FAKE EXTRACTIONS')} ${centerWord(50, 'TICKET WIN')}\n`;
+function printTicket (ticket) {
+    const title = `LOTTO GAME TICKET #${ticket.id} **€ ${ticket.total}**`;
+    const wheel = ticket.city.join('  ');
+    const types = ticket.type.join('  ');
+    const prices = ticket.prices.reduce((string, el, index) => string + centerWord(ticket.type[index].length+2, `€${el}`), '');
+    const lineWidth = 58;
+    const win = ticket.winning ? 'Winning : ' + ticket.winning : 'Winning : NO !';
 
-    for (let i=0; i<Bill.cities.length-1; i++) {
-        result += `+${separator(10)}+${separator(26)}+${separator(50)}+\n`;
-        result += `| ${centerWord(8, Bill.cities[i])} | ${centerWord(24, fakeExtractNumber[i].join(' - '))} | ${centerWord(48, allWinToString(allWin)[i])} |\n`
-    }
-    result += `+${separator(10)}+${separator(26)}+${separator(50)}+\n`; 
+    return [title, wheel,types, prices, ticket.generateNumber.join(' - '), win].map(el => {
+        return `+${separator(lineWidth,'=')}+\n|${centerWord(lineWidth, el)}|`;
 
-    return result
+    }).join('\n') + '\n+' + separator(lineWidth,'=') + '+\n\n'
 };
 
 //print all ticket, during the cycle it also calculates the total spent across all tickets
 // # return = string of all ticket
-function printTicket (tickets) {
+function printAllTicket (tickets) {
     let ticketString = '';
-    tickets.forEach(ticket => {
-        ticketString += ticket.print();
-        totalInvested += ticket.prices.reduce((acc, el) => acc + el);
-    });
+    tickets.forEach(ticket => ticketString += printTicket(ticket));
     return ticketString
 };
 
 //shows the amount won for each ticket also specifying which wheel and type of win , the total won among all and the total spent
 // @ checkWins.moneyWon -> calculates the winnings of all tickets
-function cashWin (allWin, tickets) {
+function printCashWin (cashWin) {
     terminal.show('', 'tax');
-
-    const totalMoneyWon = checkWins.moneyWon(allWin, tickets);
-    let moneyWonString = '';
-
-    totalMoneyWon.forEach((money, index) => {
-        moneyWonString += `TICKET #${tickets[index].id} WIN € ${money[0]}${money[1] ? ' - Paid for : '+ money[1]+ 'on ' + money[2]: ''}\n`;
-    });
-
-    terminal.show('', moneyWonString);
-    terminal.show('', `\nTotal winnings: € ${totalMoneyWon.reduce((acc, el) => acc + el[0], 0).toFixed(2)}`);
-    terminal.show('', `Total invested: € ${totalInvested}`);
+    terminal.show('', cashWin[0]);
+    terminal.show('', `\nTotal winnings: € ${cashWin[2]}`);
+    terminal.show('', `Total invested: € ${cashWin[1]}`);
 };
 
 //create the txt file with the tickets
-function createTicketFile (ticketString) {
-    fs.writeFileSync('ticket.txt', ticketString + 'The total spent on all tickets is € ' + totalInvested);
-    totalInvested = 0;
+function createTicketFile (ticketString, cashWin) {
+    fs.writeFileSync('ticket.txt', ticketString + 'The total spent on all tickets is € ' + cashWin[1]);
 };
 
 //Check the winnings and show the tickets, the extraction and any winnings to the console
 // @ terminal.show show the result on the console
 // @ checkAllWin  check if the tickets are winners
-// @ printTicket print the ticket
+// @ printAllTicket print the ticket
 // @ printFakeExtraction print the extraction
 // @ cashWin print all the amounts of any winnings
 // @ createTicketFile Create the txt file with the tickets
-function show (tickets) {
-    const [ allWin, fakeExtractNumber ] = checkWins.checkAllWin(tickets);
+function showAll (tickets, extraction, cashWin) {
 
-    const ticketString = printTicket(tickets);
-    terminal.show('clear', ticketString);
+    terminal.show('clear', printFakeExtraction(extraction));
 
-    terminal.show('', printFakeExtraction(fakeExtractNumber, allWin));
+    const ticketString = printAllTicket(tickets);
+    terminal.show('', ticketString);
 
-    cashWin(allWin, tickets);
+    printCashWin(cashWin);
 
-    createTicketFile(ticketString);
+    createTicketFile(ticketString, cashWin);
 };
 
 
@@ -159,12 +141,11 @@ module.exports = {  printList,
                     printInline,
                     ticketTitle,
                     separator,
-                    allWinToString,
                     showCompletedTicket,
                     printFakeExtraction,
                     centerWord,
-                    cashWin,
+                    printCashWin,
                     createTicketFile,
-                    printTicket,
-                    show
+                    printAllTicket,
+                    showAll
  }

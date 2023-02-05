@@ -1,30 +1,37 @@
-const BillUtils = require('../controller/BillUtils');
-const BillPrint = require('../view/BillPrint');
-
-//All wheels
-const cities = ['Bari', 'Cagliari', 'Firenze', 'Genova', 'Milano', 'Napoli', 'Palermo', 'Roma', 'Torino', 'Venezia', 'Tutte'];
-//All type of bet
-const types = ['Estratto', 'Ambo', 'Terno', 'Quaterna', 'Cinquina'];
+const ClassUtils = require('../controller/ClassUtils');
 
 //Bill Class
 class Bill {
     static counter = 100;   //ticket id
+    //All wheels
+    static cities = ['Bari', 'Cagliari', 'Firenze', 'Genova', 'Milano', 'Napoli', 'Palermo', 'Roma', 'Torino', 'Venezia', 'Tutte'];
+    //All type of bet
+    static types = ['Estratto', 'Ambo', 'Terno', 'Quaterna', 'Cinquina'];
+    _id;
     _numbers;
     _city;
     _type;
     _prices;
     _generateNumber;
+    _total;
+    _winning;
 
     constructor (numbers, city, type, prices) {
         Bill.counter += 1;
-        this.id = Bill.counter;
-        this.numbers = numbers;
-        this.city = city;
-        this.type = type;
-        this.prices = prices;
+        this._id = Bill.counter; //ticket id
+        this.numbers = numbers; //numbers to generate
+        this.city = city;       //Array - wheels played
+        this.type = type;       //Array - type of play, e.g. Ambo or Terno
+        this.prices = prices;   //Array - amount played
 
-        this._generateNumber = this.#genNumber();
+        this._generateNumber = ClassUtils.genNumber(this._numbers); //generated numbers
     };
+
+    //getter for id
+    get id () { return this._id }
+
+    //getter for total
+    get total () { return this._total }
 
     //getter for generateNumber
     get generateNumber () { return this._generateNumber };
@@ -43,11 +50,11 @@ class Bill {
     get city () { return this._city };
     set city (arr) {
         
-        if (BillUtils.checkInputArray(arr)) this._city = arr.filter(city => cities.includes(city));
+        if (ClassUtils.checkInputArray(arr)) this._city = arr.filter(city => Bill.cities.includes(city));
 
-        if (!BillUtils.compareArray(this._city, arr)) throw new Error (`${arr} is a invalid city, Bill instance not created\nAccepted parameters : ${cities.join('-')}`)
+        if (!ClassUtils.compareArray(this._city, arr)) throw new Error (`${arr} is a invalid city, Bill instance not created\nAccepted parameters : ${Bill.cities.join('-')}`)
         
-        if (BillUtils.compareArray(cities.slice(0,-1), arr)) this._city = ['Tutte'];
+        if (ClassUtils.compareArray(Bill.cities.slice(0,-1), arr)) this._city = ['Tutte'];
     };
 
     //getter and setter fot type
@@ -60,16 +67,16 @@ class Bill {
 
         let removed = [];
         let message = '';
-        const typesCopy = [...types];
+        const typesCopy = [...Bill.types];
 
         if (this._numbers < 5) { removed = typesCopy.splice(this._numbers) };
 
-        if (BillUtils.checkInputArray(arr)) this._type = arr.filter(type => {
+        if (ClassUtils.checkInputArray(arr)) this._type = arr.filter(type => {
             if (removed.includes(type)) message = `: you cannot choose ${removed} because you are playing only ${this._numbers} numbers`;
             if (typesCopy.includes(type)) return true
         });
 
-        if (!BillUtils.compareArray(this._type, arr)) throw new Error (`${arr} is a invalid type${message}, Bill instance not created\nAccepted parameters : ${typesCopy.join('-')}`)
+        if (!ClassUtils.compareArray(this._type, arr)) throw new Error (`${arr} is a invalid type${message}, Bill instance not created\nAccepted parameters : ${typesCopy.join('-')}`)
 
     };
 
@@ -79,32 +86,24 @@ class Bill {
     set prices (price) {
         const [ priceMin, priceMax ] = [ 1, 200 ];
 
-        if (BillUtils.checkInputArray(price) && price.length === this._type.length) {
+        if (ClassUtils.checkInputArray(price) && price.length === this._type.length) {
 
-            if(price.every(el => typeof el === 'number' && el >= priceMin && el <= priceMax)) this._prices = price.map(el => Math.round(el));
-            else throw new Error (`${price} is a invalid price, Bill instance not created\nAccepted parameters : from €${priceMin} to €${priceMax}`)
+            if(price.every(el => typeof el === 'number' && el >= priceMin && el <= priceMax)) {
+                this._prices = price.map(el => Math.round(el));
+                const total = this._prices.reduce((acc, el) => acc + el);
+
+                if(total >= 1 && total <= 200) this._total = total
+                else throw new Error (`Invalid price sum, Bill instance not created\nThe total Ticket amount is ${total}, accepted from 1 to 200`)
+
+            } else throw new Error (`${price} is a invalid price, Bill instance not created\nAccepted parameters : from €${priceMin} to €${priceMax}`)
 
         } else throw new Error (`${price} is a invalid price, Bill instance not created\nInput doesn't contain the right number of elements`)
     }
 
-    //private function to generate random numbers between 1 and 90 that are never the same
-    // - number = number, how many numbers you want to generate
-    // # return = an array of numbers
-    #genNumber () {
-        const result = [];
-
-        while (result.length < this._numbers) {
-            const rndNum = Math.floor(Math.random() * 90) + 1;
-            if (!result.includes(rndNum)) result.push(rndNum)
-        };
-        return result;
-    };
-
-    //Invokes BillPrint.print passing it the ticket data to print it
-    print () {
-        return BillPrint.print(this.id, this._prices, this._type, this._city, this._generateNumber.join(' - '))
-    };
+    //getter and setter for winning
+    get winning () { return  this._winning !== false ? `${this._winning[1]} on ${this._winning[2]} € ${this._winning[0]}` : false}
+    set winning (arr) { console.log(arr[0] === 0 ? false : arr); this._winning = arr[0] === 0 ? false : arr }
 
 };
  
-module.exports = { Bill, cities, types }
+module.exports = { Bill }
