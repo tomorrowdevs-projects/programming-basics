@@ -2,7 +2,7 @@
 const prompt = require("prompt-sync")();//*****/
 // *********************************************/
 
-let deyUserIn, monthUserIn;
+let deyUserIn, monthUserIn,yearUserIn;
 
 deyUserIn = parseInt(prompt("Insert the Day   --> "));
 monthUserIn = parseInt(prompt("Insert the Month --> "));
@@ -16,8 +16,8 @@ function deyManthYearNew(deyOneNew, monthOneNew, yearNew) {
     monthOneNew = parseInt(1);
     yearNew = yearNew + 1;
 
-    printDateNextDay(deyUserIn, monthUserIn, yearUserIn);
-    yearLeap(yearUserIn);
+  /*  printDateNextDay(deyUserIn, monthUserIn, yearUserIn);
+    yearLeap(yearUserIn);*/
 
     return deyManthYearNew;
 }
@@ -29,8 +29,8 @@ function deyNextMonthYearCurrent(deyNext, monthCurrent, yearCurrent) {
     monthCurrent = monthCurrent;
     yearCurrent = yearCurrent;
 
-    printDateNextDay(deyUserIn, monthUserIn, yearUserIn);
-    yearLeap(yearUserIn);
+  /*  printDateNextDay(deyUserIn, monthUserIn, yearUserIn);
+    yearLeap(yearUserIn);*/
 
     return deyNextMonthYearCurrent;
 }
@@ -42,8 +42,8 @@ function deyOneMonthNextTeYearCurrent(deyOne, monthNext, theYearCurrent) {
     monthNext = monthNext + 1;
     theYearCurrent = theYearCurrent;
 
-    printDateNextDay(deyUserIn, monthUserIn, yearUserIn);
-    yearLeap(yearUserIn);
+  /*  printDateNextDay(deyUserIn, monthUserIn, yearUserIn);
+    yearLeap(yearUserIn);*/
 
     return deyOneMonthNextTeYearCurrent;
 }
@@ -92,9 +92,9 @@ if (((deyUserIn >= 01 && deyUserIn <= 28) && monthUserIn === 2) || (deyUserIn >=
         yearUserIn = yearUserIn;
 
         deyOneMonthNextTeYearCurrent(deyUserIn, monthUserIn, yearUserIn);
-        /* printDateNextDay(deyUserIn, monthUserIn, yearUserIn);
+         printDateNextDay(deyUserIn, monthUserIn, yearUserIn);
          yearLeap(yearUserIn)
-         console.log("\n1 - Day  -->", deyUserIn, "Month whit day 30 -->", monthUserIn, " Year -->", yearUserIn, "\n"); */
+        /* console.log("\n1 - Day  -->", deyUserIn, "Month whit day 30 -->", monthUserIn, " Year -->", yearUserIn, "\n"); */
     }
     else
         if (((monthUserIn === 1 && deyUserIn === 31) || (monthUserIn === 3 && deyUserIn === 31) || (monthUserIn === 5 && deyUserIn === 31) || ((monthUserIn === 7 && deyUserIn === 31) && (deyUserIn >= 01 && deyUserIn <= 31)) && (monthUserIn === 10 && deyUserIn === 31)) && monthUserIn <= 12) {
@@ -104,9 +104,9 @@ if (((deyUserIn >= 01 && deyUserIn <= 28) && monthUserIn === 2) || (deyUserIn >=
             yearUserIn = yearUserIn;
 
             deyOneMonthNextTeYearCurrent(deyUserIn, monthUserIn, yearUserIn);
-            /* printDateNextDay(deyUserIn, monthUserIn, yearUserIn);
+             printDateNextDay(deyUserIn, monthUserIn, yearUserIn);
             yearLeap(yearUserIn)
-            console.log("\n2 - Day -->", deyUserIn, "Month whit day 31 -->", monthUserIn, " Year -->", yearUserIn, "\n");*/
+         /*   console.log("\n2 - Day -->", deyUserIn, "Month whit day 31 -->", monthUserIn, " Year -->", yearUserIn, "\n");*/
         }
         else if (monthUserIn === 12 && deyUserIn === 31) {
 
@@ -115,9 +115,9 @@ if (((deyUserIn >= 01 && deyUserIn <= 28) && monthUserIn === 2) || (deyUserIn >=
             yearUserIn = yearUserIn + 1;
 
             deyManthYearNew(deyUserIn, monthUserIn, yearUserIn);
-            /* printDateNextDay(deyUserIn, monthUserIn, yearUserIn);
-             yearLeap(yearUserIn)
-            console.log("\n3 - Month December 31 -- New Year -- Day -->", deyUserIn, "Month ", monthUserIn, " Year -->", yearUserIn, "\n");*/
+            printDateNextDay(deyUserIn, monthUserIn, yearUserIn);
+            yearLeap(yearUserIn)
+           /* console.log("\n3 - Month December 31 -- New Year -- Day -->", deyUserIn, "Month ", monthUserIn, " Year -->", yearUserIn, "\n");*/
         }
         else if ((monthUserIn === 2 && deyUserIn <= 28) /*&& deyUserIn <= 28*/) {
 
@@ -126,8 +126,8 @@ if (((deyUserIn >= 01 && deyUserIn <= 28) && monthUserIn === 2) || (deyUserIn >=
             yearUserIn = yearUserIn;
 
             deyOneMonthNextTeYearCurrent(deyUserIn, monthUserIn, yearUserIn);
-            /*  printDateNextDay(deyUserIn, monthUserIn, yearUserIn);
-             yearLeap(yearUserIn)
+            printDateNextDay(deyUserIn, monthUserIn, yearUserIn);
+            yearLeap(yearUserIn)
             console.log("\n4 - Month monthFebruary day 28 --Day -->", deyUserIn, "Month -->", monthUserIn, " Year -->", yearUserIn, "\n");*/
         }
         else if ((deyUserIn >= 01 && deyUserIn <= 30) || (deyUserIn >= 01 && deyUserIn <= 31) || ((deyUserIn >= 01 && deyUserIn <= 28) && monthUserIn === 2)) {
@@ -137,9 +137,9 @@ if (((deyUserIn >= 01 && deyUserIn <= 28) && monthUserIn === 2) || (deyUserIn >=
             yearUserIn = yearUserIn;
 
             deyNextMonthYearCurrent(deyUserIn, monthUserIn, yearUserIn);
-            /* printDateNextDay(deyUserIn, monthUserIn, yearUserIn);
-             yearLeap(yearUserIn)
-            console.log("\n5 - Days current month -- Day -->", deyUserIn, "Month  -->",  monthUserIn, " Year -->", yearUserIn, "\n");*/
+            printDateNextDay(deyUserIn, monthUserIn, yearUserIn);
+            yearLeap(yearUserIn)
+            /*  console.log("\n5 - Days current month -- Day -->", deyUserIn, "Month  -->",  monthUserIn, " Year -->", yearUserIn, "\n");*/
         } else {
             errorMessage();
             //console.log("1");
