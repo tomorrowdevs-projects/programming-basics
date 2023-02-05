@@ -11,7 +11,6 @@ const fs = require('fs');
 // File path from args
 const filePath = process.argv[2];
 
-
 // Global object that contains the word counters for each letter of alphabet
 const lettersCounter = {};
 'abcdefghijklmnopqrstuvwxyz'.split('').forEach( l => lettersCounter[l] = 0 );
@@ -31,6 +30,7 @@ stream.on('error', () => {
 
 // Stream eventEmitter
 stream.on('line', line => {
+    // Counts for each word in input file how many times are used each letter
     line.toLowerCase().split(' ').forEach( w => {
         wordsCounter++;
 
@@ -43,18 +43,28 @@ stream.on('line', line => {
 
 // Stream end event
 stream.on('close', () => {
+    // Calculate letters proportions
     const lettersProportions = {};
     Object.keys(lettersCounter).forEach( l => {
         lettersProportions[l] = Math.round((lettersCounter[l] / wordsCounter) * 10000) / 100;
     });
 
+    // Find the least used letter
     let letterWithSmallestProportion = [];
     Object.entries(lettersProportions).forEach( keyValuePairs => {
+        if(letterWithSmallestProportion[1] === keyValuePairs[1]) {
+            letterWithSmallestProportion[0] += `, ${keyValuePairs[0]}`;
+        }
+
         if(letterWithSmallestProportion.length == 0 || letterWithSmallestProportion[1] > keyValuePairs[1]) {
             letterWithSmallestProportion = keyValuePairs;
         }
     });
 
+    // Prepare statement for least used letter
+    const outputString = `The letter used with the smallest proportion ${letterWithSmallestProportion[0].length === 1 ? 'is' : 'are'} ${letterWithSmallestProportion[0]} (${letterWithSmallestProportion[1]} %)`;
+
+    // Prints results
     console.table(lettersProportions);
-    console.log('The letter used with the smallest proportion is', letterWithSmallestProportion[0], `(${letterWithSmallestProportion[1]} %)`);
+    console.log(outputString);
 });
