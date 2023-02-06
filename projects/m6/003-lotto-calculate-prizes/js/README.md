@@ -36,8 +36,8 @@ At the end the program is ready to run by typing "node index", have fun!
 4. [Type of bet](#type)
 5. [price amount played](#prices)
 6. [More Tickets](#more)
-7. [Print tickets](#print)
-8. [Fake Extraction](#fake)
+7. [Fake Extraction](#fake)
+8. [Print tickets](#print)
 9. [Total Win!](#money)
 10. [Play again](#repeat)
 ---

@@ -63,7 +63,7 @@ function centerWord (lineWidth, word) {
 
 //print the extraction table for each wheel
 // @ use the centerWord() and separator() to center the words in the cell and make the rows of the table
-// - allWin = array of array with all winnings (Example: [ [ 'Ambo', 'Genova' ], [ 'Ambo', 'Napoli' ] ])
+// - extraction = the extraction instances object
 // # return = string
 function printFakeExtraction (extraction) {
     let result = `\n${centerWord(39, `FAKE EXTRACTIONS n° ${extraction.numExtraction} del ${extraction.date}`)}\n`;
@@ -77,9 +77,9 @@ function printFakeExtraction (extraction) {
     return result
 };
 
-//print a ticket table with the numbers, wheels and type of bet
-// @ use #genNumber, #lineGenerator, #centerWord function
-// - ticketNumber = number, the ticket number to show in the title
+//print a ticket table with the numbers, wheels, type of bet, prices and if the ticket won
+// @ use separator and centerWord function
+// - ticket = single ticket instances object
 // # return = string
 function printTicket (ticket) {
     const title = `LOTTO GAME TICKET #${ticket.id} **€ ${ticket.total}**`;
@@ -96,7 +96,7 @@ function printTicket (ticket) {
     }).join('\n') + '\n+' + separator(lineWidth,'=') + '+\n\n'
 };
 
-//print all ticket, during the cycle it also calculates the total spent across all tickets
+//print all ticket
 // # return = string of all ticket
 function printAllTicket (tickets) {
     let ticketString = '';
@@ -104,25 +104,22 @@ function printAllTicket (tickets) {
     return ticketString
 };
 
-//shows the amount won for each ticket also specifying which wheel and type of win , the total won among all and the total spent
-// @ checkWins.moneyWon -> calculates the winnings of all tickets
+//shows the total won among all and the total spent
 function printCashWin (cashWin) {
     terminal.show('', 'tax');
-    terminal.show('', `Total winnings: € ${cashWin[1]}`);
-    terminal.show('', `Total invested: € ${cashWin[0]}`);
+    terminal.show('', `Total winnings: € ${cashWin[1]}\nTotal invested: € ${cashWin[0]}`);
 };
 
 //create the txt file with the tickets
 function createTicketFile (ticketString, cashWin) {
-    fs.writeFileSync('ticket.txt', ticketString + 'The total spent on all tickets is € ' + cashWin[0]);
+    fs.writeFileSync('tickets.txt', ticketString + 'The total spent on all tickets is € ' + cashWin[0]);
 };
 
-//Check the winnings and show the tickets, the extraction and any winnings to the console
+//Show the tickets, the extraction, the amount winning to the console and save the file tickets.txt
 // @ terminal.show show the result on the console
-// @ checkAllWin  check if the tickets are winners
 // @ printAllTicket print the ticket
 // @ printFakeExtraction print the extraction
-// @ cashWin print all the amounts of any winnings
+// @ printCashWin print all the amounts of any winnings and the total spent
 // @ createTicketFile Create the txt file with the tickets
 function showAll (tickets, extraction, cashWin) {
 
