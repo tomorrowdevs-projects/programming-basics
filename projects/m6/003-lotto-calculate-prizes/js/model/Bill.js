@@ -101,8 +101,8 @@ class Bill {
     }
 
     //getter and setter for winning
-    get winning () { return  this._winning !== false ? `${this._winning[1]} on ${this._winning[2]} € ${this._winning[0]}` : false}
-    set winning (arr) { console.log(arr[0] === 0 ? false : arr); this._winning = arr[0] === 0 ? false : arr }
+    get winning () { return  this._winning !== false ? `(${this._winning[4]}) ${this._winning[1]} on ${this._winning[2]} € ${this._winning[0]}` : false}
+    set winning (arr) { this._winning = arr[0] === 0 ? false : arr }
 
 };
  

@@ -86,11 +86,11 @@ function printTicket (ticket) {
     const wheel = ticket.city.join('  ');
     const types = ticket.type.join('  ');
     const prices = ticket.prices.reduce((string, el, index) => string + centerWord(ticket.type[index].length+2, `€${el}`), '');
-    const lineWidth = 58;
-    const win = ticket.winning ? 'Winning : ' + ticket.winning : 'Winning : NO !';
+    const lineWidth = 64;
+    const win = ticket.winning ? 'Winning:' + ticket.winning : 'Winning : NO !';
 
-    return [title, wheel,types, prices, ticket.generateNumber.join(' - '), win].map(el => {
-        return `+${separator(lineWidth,'=')}+\n|${centerWord(lineWidth, el)}|`;
+    return '+' + separator(lineWidth,'=') + [title, wheel,types, prices, ticket.generateNumber.join(' - '), win].map(el => {
+        return `+${separator(lineWidth,' ')}+\n|${centerWord(lineWidth, el)}|`;
 
     }).join('\n') + '\n+' + separator(lineWidth,'=') + '+\n\n'
 };
@@ -107,9 +107,8 @@ function printAllTicket (tickets) {
 // @ checkWins.moneyWon -> calculates the winnings of all tickets
 function printCashWin (cashWin) {
     terminal.show('', 'tax');
-    terminal.show('', cashWin[0]);
-    terminal.show('', `\nTotal winnings: € ${cashWin[2]}`);
-    terminal.show('', `Total invested: € ${cashWin[1]}`);
+    terminal.show('', `Total winnings: € ${cashWin[1]}`);
+    terminal.show('', `Total invested: € ${cashWin[0]}`);
 };
 
 //create the txt file with the tickets

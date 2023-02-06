@@ -27,78 +27,67 @@ function combinations (numberWin, type) {
 
 //check if a ticket has won compared to fake extraction
 // @ combination - all possible combinations for each type of play, es.:in a quaterna there are 4 terni, 6 ambi and 4 estratti
-// - wheelNumber = array, the played numbers of the ticket
-// - wheels = array, the played wheels of the ticket
-// - type = array, the type of play of the ticket
-// - fakeExtractNumber = array, number of extractions
-// # return = array of array, if there are wins, it returns an array of 2 elements:
-// the type and the index of the wheel, example: [ ['Estratto', 4], ['Ambo', 6] ]
-function checkWin (wheelNumber, wheels, type, fakeExtractNumber) {
-    let result = [];
-    const indexType = type.map(el => Bill.types.indexOf(el));
+// - ticket = object, single instances of ticket
+// - extraction = object, single instances of extraction
+// # return = array of array, if there are wins, it returns an array of 4 elements:
+// the type, the wheel, thi ticket id and the winning number, example: [ ['Estratto', 'Milano', 101, [45]], ['Ambo', 'Torino', 101, [37, 56]] ]
+function checkWin (ticket, extraction) {
+    const result = [];
+    
+    const indexType = ticket.type.map(el => Bill.types.indexOf(el));
 
-    if (wheels[0] !== 'Tutte') {
-        const indexWheel = wheels.map(el => Bill.cities.indexOf(el));
+    if (ticket.city[0] !== 'Tutte') {
+        ticket.city.forEach(wheel => {
+            const numberWin = ticket.generateNumber.filter(num => extraction[wheel].includes(num));
 
-        indexWheel.forEach(el => {
-            const numberWin = wheelNumber
-                                .map(num => fakeExtractNumber[el].includes(num))
-                                .reduce((acc, elem) => (elem) ? ++acc : acc, 0);
-
-            indexType.forEach(ele => {
-                if (numberWin >= ele+1)
-                    result.push([combinations(numberWin, ele+1), Bill.types[ele], el])
+            indexType.forEach(el => {
+                if (numberWin.length >= el+1) result.push([combinations(numberWin.length, el+1), ticket.type[el], wheel, ticket.id, numberWin])
             })
         })
 
     } else {
-        fakeExtractNumber.forEach((wheel, indx) => {
-            const numberWin = wheelNumber
-                                .map(num => wheel.includes(num))
-                                .reduce((acc, elem) => (elem) ? ++acc : acc, 0);
+        for (const prop in extraction) {
+            const numberWin = ticket.generateNumber.filter(num => extraction[prop].includes(num));
 
-            indexType.forEach(ele => {
-                if (numberWin >= ele+1) result.push([combinations(numberWin, ele+1), Bill.types[ele], indx])
+            indexType.forEach(el => {
+                if (numberWin.length >= el+1) result.push([combinations(numberWin.length, el+1), ticket.type[el], prop, ticket.id, numberWin])
             })
-        })
-    };
+        }
+    }
 
     return result
 };
 
 //check the winnings for each ticket played
-// @ extraction.numberExtraction -> Generate draw numbers to match tickets
 // @ checkWin -> check the winnings for each single ticket
-// # return = result is the result of the match and fakeExtractNumber are the numbers of the extraction fake
+// - tickets = array, All ticket instance object
+// - extraction = the extraction instances object
+// # return = result is the result of the match
 function checkAllWin (tickets, extraction) {
     const result = [];
-    const fakeExtractNumber = [];
-    
-    for (const prop in extraction.getAll) {
-        fakeExtractNumber.push(extraction.getAll[prop])
-    }
 
     tickets.forEach(ticket => {
-        result.push(checkWin(ticket.generateNumber, ticket.city, ticket.type, fakeExtractNumber).concat(ticket.id));
+        result.push( checkWin(ticket, extraction.getAll) );
     })
+
     return result;
 };
 
 //Calculates the total won for each ticket played
 // @ combination to calculate the dividend and establish the amount won
-// - allWin = array of all matches between tickets and fake extractions
+// - winnerTicket = array of all matches between tickets and fake extractions
 // - tickets = array of all ticket instances
 // # return = an array of array with all the total win amounts for each ticket
-function moneyWon (allWin, tickets) {
+function moneyWon (winnerTickets, tickets) {
     const moltiplier = [11.23, 250, 4500, 120000, 6000000];
     const result = [];
 
-    allWin.forEach((ticket, index) => {
+    winnerTickets.forEach((ticket, index) => {
         let totalTicket = 0;
         const numberPlayed = tickets[index].numbers;
         const numberWheel = tickets[index].city[0] === 'Tutte' ? 10 : tickets[index].city.length;
         const typePrice = tickets[index].prices.reverse();
-        let win =[];
+        let win = [];
 
         for (const type of tickets[index].type.reverse()) {
             for (const matched of ticket) {
@@ -119,31 +108,32 @@ function moneyWon (allWin, tickets) {
             totalTicket += Number((Math.floor(wheelWon[0] * moltiplier[indexType] * priceValue / divider *100) /100).toFixed(2));
         });
         const price = totalTicket/numberWheel;
-        const cityWin = stringWin === '' ? '' : Bill.cities[win[0][2]];
-        result.push([ Number((price - price * 8 / 100).toFixed(2)), stringWin, cityWin ]);
+        const cityWin = stringWin === '' ? '' : win[0][2];
+        const numWin = stringWin === '' ? '' : win[0][4];
+        result.push([ Number((price - price * 8 / 100).toFixed(2)), stringWin, cityWin, win[0][3], numWin]);
     });
 
     return result;
 };
 
 //shows the amount won for each ticket also specifying which wheel and type of win , the total won among all and the total spent
-// @ checkWins.moneyWon -> calculates the winnings of all tickets
-function cashWin (allWin, tickets) {
+//insertion of any winnings in the ticket applications
+// @ moneyWon -> calculates the winnings of all tickets
+// - winnerTicket = array of all matches between tickets and fake extractions
+// - tickets = array of all ticket instances
+// # return = the total invested on all tickets and the total win
+function cashWin (winnerTickets, tickets) {
 
-    const totalMoneyWon = moneyWon(allWin, tickets);
-
-    let moneyWonString = '';
     let totalInvested = 0;
     let totalWon = 0;
-
-    totalMoneyWon.forEach((money, index) => {
-        moneyWonString += `TICKET #${tickets[index].id} WIN € ${money[0]}${money[1] ? ' - Paid for : ' + money[1] + 'on ' + money[2]: ''}\n`;
+    
+    moneyWon(winnerTickets, tickets).forEach((money, index) => {
         totalInvested += tickets[index].total;
         totalWon += money[0];
         tickets[index].winning = money;
     });
 
-    return [ moneyWonString, totalInvested, totalWon.toFixed(2) ]
+    return [ totalInvested, totalWon.toFixed(2) ]
 };
 
 module.exports = {  combinations,
