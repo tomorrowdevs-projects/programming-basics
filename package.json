@@ -1,0 +1,23 @@
+{
+  "name": "programming-basics",
+  "version": "1.0.0",
+  "description": "This is a repository containing all the projects for **TomorrowDevs** students to learn Programming Basics. <br />\r This repo aims to give students a way to discover, study, and implement basic data structures, algorithms, patterns, user interfaces, etc.",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valbazz/programming-basics.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/valbazz/programming-basics/issues"
+  },
+  "homepage": "https://github.com/valbazz/programming-basics#readme",
+  "devDependencies": {
+    "jest": "^27.5.1"
+  }
+}
