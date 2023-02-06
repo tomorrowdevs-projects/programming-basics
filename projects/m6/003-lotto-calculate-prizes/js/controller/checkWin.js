@@ -107,10 +107,11 @@ function moneyWon (winnerTickets, tickets) {
             const divider = combinations(numberPlayed, indexType+1);
             totalTicket += Number((Math.floor(wheelWon[0] * moltiplier[indexType] * priceValue / divider *100) /100).toFixed(2));
         });
+
         const price = totalTicket/numberWheel;
-        const cityWin = stringWin === '' ? '' : win[0][2];
-        const numWin = stringWin === '' ? '' : win[0][4];
-        result.push([ Number((price - price * 8 / 100).toFixed(2)), stringWin, cityWin, win[0][3], numWin]);
+        
+        if(stringWin === '') result.push([0])
+        else result.push([ Number((price - price * 8 / 100).toFixed(2)), stringWin, win[0][2], win[0][3], win[0][4]]);
     });
 
     return result;

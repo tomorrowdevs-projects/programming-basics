@@ -86,11 +86,12 @@ function printTicket (ticket) {
     const wheel = ticket.city.join('  ');
     const types = ticket.type.join('  ');
     const prices = ticket.prices.reduce((string, el, index) => string + centerWord(ticket.type[index].length+2, `€${el}`), '');
-    const lineWidth = 64;
+    const num = ticket.generateNumber.join(' - ');
     const win = ticket.winning ? 'Winning:' + ticket.winning : 'Winning : NO !';
+    const lineWidth = Math.max(title.length, wheel.length, types.length, num.length, win.length) + 2;
 
-    return '+' + separator(lineWidth,'=') + [title, wheel,types, prices, ticket.generateNumber.join(' - '), win].map(el => {
-        return `+${separator(lineWidth,' ')}+\n|${centerWord(lineWidth, el)}|`;
+    return `+${separator(lineWidth,'=')}+\n` + [title, wheel, types, prices, num, win].map(el => {
+        return `|${centerWord(lineWidth, el)}|\n|${separator(lineWidth,' ')}|`;
 
     }).join('\n') + '\n+' + separator(lineWidth,'=') + '+\n\n'
 };
@@ -113,7 +114,7 @@ function printCashWin (cashWin) {
 
 //create the txt file with the tickets
 function createTicketFile (ticketString, cashWin) {
-    fs.writeFileSync('ticket.txt', ticketString + 'The total spent on all tickets is € ' + cashWin[1]);
+    fs.writeFileSync('ticket.txt', ticketString + 'The total spent on all tickets is € ' + cashWin[0]);
 };
 
 //Check the winnings and show the tickets, the extraction and any winnings to the console
