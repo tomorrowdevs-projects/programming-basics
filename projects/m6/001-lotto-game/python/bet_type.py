@@ -37,13 +37,14 @@ class BetType():
         """
         minimum = BetType.min_per_type[bet_type]
         maximum = Bill.max_gen_per_bill
-        try:
-            num = int(num)
-            if minimum <= num <= maximum:
-                return True
-            return False
-        except ValueError:
-            return False
+        if isinstance(num, str):
+            try:
+                if minimum <= int(num) <= maximum:
+                    return True
+                return False
+            except ValueError:
+                return False
+        raise ValueError("The 'num' argument must be of type 'str'.")
 
     @staticmethod
     def bet_table() -> "str":

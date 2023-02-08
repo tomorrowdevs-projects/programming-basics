@@ -77,7 +77,7 @@ class Game():
                     return True
             except ValueError:
                 return False
-        return False
+        raise ValueError("The 'bill_number' argument must be of type 'str'.")
 
     def generate_bills(self) -> "None":
         """Generate bills by asking the user for the bet-type, how many numbers to generate and the city.
