@@ -1,4 +1,4 @@
-from random import randint
+import random
 
 class Bill():
     """Represents a lottery bill.
@@ -39,7 +39,7 @@ class Bill():
         """
         gen_num = []
         while len(gen_num) < self.numbers_to_generate:
-            num = randint(Bill.min_num, Bill.max_num)
+            num = random.randint(Bill.min_num, Bill.max_num)
             if num not in gen_num:
                 gen_num.append(num)
         gen_num.sort()

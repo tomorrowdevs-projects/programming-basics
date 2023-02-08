@@ -23,6 +23,28 @@ class Game():
         """
         self.number_of_bills = number_of_bills
         self.bills_generated = []
+    
+    @staticmethod
+    def start_game() -> "Game":
+        """Instantiates an object of type 'Game'.
+        
+        :return: object of type 'Game'
+        :rtype: Game
+        """
+        print("\n{:122}\n".format("LOTTO GAME"))
+        bills_to_generate = input(">> Enter the number of bills to start playing ('0': exit, 'help': see instructions): ").strip()
+        while not Game.is_a_valid_number(bills_to_generate):
+            if bills_to_generate == "0":
+                quit()
+            elif bills_to_generate == "help":
+                print(Game.instruction())
+            else:
+                print("Error! '{}' is not a number between {} and {}.".format(bills_to_generate, Game.min_num_bill, Game.max_num_bill))
+            bills_to_generate = input(">> Enter the number of bills: ").strip()
+        print()
+        new_game = Game(int(bills_to_generate))
+        Game.generate_bills(new_game)
+        return new_game
 
     @staticmethod
     def instruction() -> "str":
@@ -48,13 +70,14 @@ class Game():
         :return: `True` if the number is valid, `False` otherwise
         :rtype: bool
         """
-        try:
-            bill_number = int(bill_number)
-            if Game.min_num_bill <= bill_number <= Game.max_num_bill:
-                return True
-            return False
-        except ValueError:
-            return False
+        if isinstance(bill_number, str):
+            try:
+                bill_number = int(bill_number)
+                if Game.min_num_bill <= bill_number <= Game.max_num_bill:
+                    return True
+            except ValueError:
+                return False
+        return False
 
     def generate_bills(self) -> "None":
         """Generate bills by asking the user for the bet-type, how many numbers to generate and the city.
@@ -72,13 +95,13 @@ class Game():
         :return: a string containing the bet-type
         :rtype: str
         """
-        choose = input(">> Choose the type of bet: ").lower()
+        choose = input(">> Choose the type of bet: ").lower().strip()
         while not BetType.is_a_valid_type(choose):
             if choose == "help":
                 print(BetType.bet_table())
             else:
                 print("Error! '{}' is not an allowed type of bet.".format(choose))
-            choose = input(">> Choose a valid bet type (or enter 'help' for more information): ").lower()
+            choose = input(">> Choose a valid bet type (or enter 'help' for more information): ").lower().strip()
         return choose
 
     def choose_numbers(bet_type) -> "int":
@@ -101,31 +124,18 @@ class Game():
         :return: the city chosen by the user
         :rtype: str
         """
-        choose = input(">> Enter the city: ").capitalize()
+        choose = input(">> Enter the city: ").capitalize().strip()
         while not City.is_a_valid_city(choose):
             if choose.lower() == "help":
                 print(City.city_table())
             else:
                 print("Error! '{}' is not an available city.".format(choose))
-            choose = input(">> Enter a valid city (or enter 'help' to see the available cities): ").capitalize()
+            choose = input(">> Enter a valid city (or enter 'help' to see the available cities): ").capitalize().strip()
         return choose
 
 
 if __name__ == "__main__":
-    print("\n{:122}\n".format("LOTTO GAME"))
-    bills_to_generate = input(">> Enter the number of bills to start playing (or enter 'help' to see instructions): ")
-    while not Game.is_a_valid_number(bills_to_generate):
-        if bills_to_generate == "0":
-            quit()
-        elif bills_to_generate == "help":
-            print(Game.instruction())
-        else:
-            print("Error! '{}' is not a number between 0 and {}.".format(bills_to_generate, Game.max_num_bill))
-        bills_to_generate = input(">> Enter the number of bills: ")
-    print()
-    new_game = Game(int(bills_to_generate))
-    Game.generate_bills(new_game)
-
+    new_game = Game.start_game()
     for bill in new_game.bills_generated:
         print(bill)
     
