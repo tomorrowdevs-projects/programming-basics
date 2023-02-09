@@ -119,7 +119,7 @@ function printDateNextDay(dey, month, year) {
 if ((yearUserIn >= 1584 && yearUserIn >= 3999) || (monthUserIn >= 01 && monthUserIn <= 12)) {
   // I determine months with 31 days
   if ((monthUserIn === 1) || (monthUserIn === 3) || (monthUserIn === 5) || (monthUserIn === 7) || (monthUserIn === 8) || (monthUserIn === 10) || (monthUserIn === 12)) {
-    // case months of December of  31 Day
+    // case months whit  31 Day
     if (monthUserIn === 12) {
       // function to calculate the date of December and the start of the new year + year leep
       deyManthYearNew(deyUserIn, monthUserIn, yearUserIn);
