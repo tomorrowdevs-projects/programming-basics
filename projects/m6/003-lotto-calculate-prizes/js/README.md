@@ -131,18 +131,22 @@ What type of bet do you want to place?
 n) Next
 ```
 Enter the amount you want to play for each type of win you have chosen <a name="prices"></a>
+
+Alongside you can see the maximum playable amount for each type of bet, 
+
+bets from 0.5 to 200 euros are accepted, but the total amount of the ticket must be from 1 to 200 euros.
 ```
 =================================================
 Estratto <> Ambo <> Terno <> Quaterna <> Cinquina
 =================================================
 
-Indicates the amount for each type of bet
+Indicates the amount for each type of bet, from €1 to €200 for each ticket in steps of €0.5
 
-Estratto € 5
-Ambo € 5
-Terno € 2
-Quaterna € 2
-Cinquina € 1
+max €198 - Estratto € 20
+max €178.5 - Ambo € 10
+max €169 - Terno € 5
+max €164.5 - Quaterna € 2
+max €163 - Cinquina € 0.5
 ```
 When you're ready will be generated the second ticket if you have chosen more than 1. <a name="more"></a>
 
