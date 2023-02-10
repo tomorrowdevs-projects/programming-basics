@@ -36,25 +36,21 @@ function checkWin (ticket, extraction) {
     
     const indexType = ticket.type.map(el => Bill.types.indexOf(el));
 
-    if (ticket.city[0] !== 'Tutte') {
-        ticket.city.forEach(wheel => {
-            const numberWin = ticket.generateNumber.filter(num => extraction[wheel].includes(num));
-
-            indexType.forEach(el => {
-                if (numberWin.length >= el+1) result.push([combinations(numberWin.length, el+1), ticket.type[el], wheel, ticket.id, numberWin])
-            })
+    const check = wheel => {
+        const numberWin = ticket.generateNumber.filter(num => extraction[wheel].includes(num));
+    
+        indexType.forEach(el => {
+            if (numberWin.length >= el+1) result.push([combinations(numberWin.length, el+1), Bill.types[el], wheel, ticket.id, numberWin])
         })
+    };
 
-    } else {
-        for (const prop in extraction) {
-            const numberWin = ticket.generateNumber.filter(num => extraction[prop].includes(num));
-
-            indexType.forEach(el => {
-                if (numberWin.length >= el+1) result.push([combinations(numberWin.length, el+1), ticket.type[el], prop, ticket.id, numberWin])
-            })
-        }
-    }
-    return result
+    if (ticket.city[0] !== 'Tutte') ticket.city.forEach(wheel => check(wheel))
+    else for (const prop in extraction) check(prop)
+    
+    if(result.every(el => el[1] === 'Estratto')) {  //if they are all estratti, the one with the most winning numbers returns
+        const index = result.reduce((acc, cur, index) => cur[0] > result[acc][0] ? index : acc, 0);
+        return [ result[index] ]
+    } else return result
 };
 
 //check the winnings for each ticket played
@@ -94,7 +90,7 @@ function moneyWon (winnerTickets, tickets) {
         for (const type of tickets[index].type.reverse()) {
             for (const matched of ticket) {
                 if (matched[1] === type) { 
-                    ticket.forEach(elem => { if (elem[2] === matched[2]) win.push(elem)});
+                    ticket.forEach(elem => { if (elem[2] === matched[2]) win.push(elem) });
                     break;
                 }
             };
