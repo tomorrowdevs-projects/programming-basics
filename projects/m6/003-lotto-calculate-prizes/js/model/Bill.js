@@ -14,7 +14,7 @@ class Bill {
     _prices;
     _generateNumber;
     _total;
-    _winning;
+    _winning = false;
 
     constructor (numbers, city, type, prices) {
         Bill.counter += 1;
@@ -84,12 +84,12 @@ class Bill {
     //check if there are bets from 1 to 200 euros and if the number of elements of prices are equal to those of types
     get prices () { return this._prices };
     set prices (price) {
-        const [ priceMin, priceMax ] = [ 1, 200 ];
+        const [ priceMin, priceMax ] = [ 0.5, 200 ];
 
         if (ClassUtils.checkInputArray(price) && price.length === this._type.length) {
 
             if(price.every(el => typeof el === 'number' && el >= priceMin && el <= priceMax)) {
-                this._prices = price.map(el => Math.round(el));
+                this._prices = price;
                 const total = this._prices.reduce((acc, el) => acc + el);
 
                 if(total >= 1 && total <= 200) this._total = total

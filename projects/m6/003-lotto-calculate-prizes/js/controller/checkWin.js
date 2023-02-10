@@ -30,7 +30,7 @@ function combinations (numberWin, type) {
 // - ticket = object, single instances of ticket
 // - extraction = object, single instances of extraction
 // # return = array of array, if there are wins, it returns an array of 4 elements:
-// the type, the wheel, thi ticket id and the winning number, example: [ ['Estratto', 'Milano', 101, [45]], ['Ambo', 'Torino', 101, [37, 56]] ]
+// the type, the wheel, the ticket id and the winning number, example: [ [ 2, 'Estratto', 'Bari', 105, [ 49, 45 ] ], [ 1, 'Ambo', 'Bari', 105, [ 49, 45 ] ], ]
 function checkWin (ticket, extraction) {
     const result = [];
     
@@ -54,7 +54,6 @@ function checkWin (ticket, extraction) {
             })
         }
     }
-
     return result
 };
 
@@ -77,7 +76,10 @@ function checkAllWin (tickets, extraction) {
 // @ combination to calculate the dividend and establish the amount won
 // - winnerTicket = array of all matches between tickets and fake extractions
 // - tickets = array of all ticket instances
-// # return = an array of array with all the total win amounts for each ticket
+// # return = an array of array with all the total win amounts for each ticket,the winning combination, the wheel, the ticket id and the winning numbers
+// if there are no wins the result will be an array with 0
+//eg.: [ [ 4.82, '2 Estratto 1 Ambo ', 'Venezia', 103, [ 78, 24 ] ], [ 0.62, '1 Estratto ', 'Cagliari', 104, [ 68 ] ], [0] ]
+
 function moneyWon (winnerTickets, tickets) {
     const moltiplier = [11.23, 250, 4500, 120000, 6000000];
     const result = [];
@@ -100,12 +102,12 @@ function moneyWon (winnerTickets, tickets) {
         };
 
         let stringWin = '';
-        win.forEach(wheelWon => {
+        win.forEach(wheelWon => {   //win is equal to the filtered checkWin return of non-paying melds
             stringWin += `${wheelWon[0]} ${wheelWon[1]} `;
             const priceValue = typePrice[tickets[index].type.indexOf(wheelWon[1])];
             const indexType = Bill.types.indexOf(wheelWon[1]);
             const divider = combinations(numberPlayed, indexType+1);
-            totalTicket += Number((Math.floor(wheelWon[0] * moltiplier[indexType] * priceValue / divider *100) /100).toFixed(2));
+            totalTicket += Math.floor(wheelWon[0] * moltiplier[indexType] * priceValue / divider *100) /100;
         });
 
         const price = totalTicket/numberWheel;
@@ -117,8 +119,8 @@ function moneyWon (winnerTickets, tickets) {
     return result;
 };
 
-//shows the amount won for each ticket also specifying which wheel and type of win , the total won among all and the total spent
-//insertion of any winnings in the ticket applications
+//calculates the amount won between all tickets and the total spent
+//insertion of any winnings in the ticket instances
 // @ moneyWon -> calculates the winnings of all tickets
 // - winnerTicket = array of all matches between tickets and fake extractions
 // - tickets = array of all ticket instances

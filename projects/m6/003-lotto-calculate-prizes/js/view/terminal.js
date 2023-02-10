@@ -10,7 +10,7 @@ const messages = {
     wheels: 'Which wheel do you want to play?\n',
     types: 'What type of bet do you want to place?\n',
     next: '\nn) Next\n\n',
-    amount: 'Indicates the amount for each type of bet\n',
+    amount: 'Indicates the amount for each type of bet, from €1 to €200 for each ticket in steps of €0.5\n',
     tax: 'Total winnings already detaxed by 8%:\n',
     repeat: '\n\nDo you want to play again?\n',
 };

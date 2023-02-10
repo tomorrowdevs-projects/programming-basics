@@ -139,13 +139,20 @@ function prices (type, num) {
     terminal.show('clear', print.ticketTitle(num));
     terminal.show('', print.printInline(type));
     terminal.show('', 'amount');
-
+    
     const result = [];
+    let total = 0;
 
-    type.forEach(el => {
-        const input = check.inputAndCheck(check.arrayNumber(1,200), el + ' € ');
-        result.push(Number(input))
-    })
+    type.forEach((el, index) => {
+        const exclude = (type.length - (index + 1)) * 0.5; //it excludes amounts higher than the maximum amount that can be spent, leaving a minimum of 0.5 to play for the other types of bet
+        let min = type.length === 1 ? 0.5 : 0; //if you play only one type of bet the minimum bet is €1
+        const max = (200 - total - min - exclude) * 2;  //calculates the total elements to create in the array given to inputAndCheck to generate all the values allowed for input
+
+        const input = Number(check.inputAndCheck([...Array(max)].map(_ => `${min+= 0.5}`), `max €${type.length === 1 ? max/2+0.5 : max/2} - ${el} € `));
+        total += input;
+        result.push(input)
+    });
+
     return result;
 };
 

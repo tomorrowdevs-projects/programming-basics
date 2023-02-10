@@ -5,7 +5,7 @@ const terminal = require('./terminal');
 ///////////////////// Print ///////////////////////
 ///////////////////////////////////////////////////
 
-//prints a numbered vertical list from an array to the console
+//prints a numbered vertical list from an array
 // - arr = The array to print
 // # return = an array with all the numbers in the list
 function printList (arr) {
@@ -123,13 +123,17 @@ function createTicketFile (ticketString, cashWin) {
 // @ createTicketFile Create the txt file with the tickets
 function showAll (tickets, extraction, cashWin) {
 
+    //print fake extraction
     terminal.show('clear', printFakeExtraction(extraction));
 
+    //print tickets
     const ticketString = printAllTicket(tickets);
     terminal.show('', ticketString);
 
+    //print total won
     printCashWin(cashWin);
 
+    //create file tickets.txt
     createTicketFile(ticketString, cashWin);
 };
 
