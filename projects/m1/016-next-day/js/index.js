@@ -1,15 +1,9 @@
-// *******Costant prompt Syn *******************/
-const prompt = require("prompt-sync")();//*****/
-// *********************************************/
-
-let dayUserIn, monthUserIn, yearUserIn;
-
-dayUserIn = parseInt(prompt("Insert the Day   --> "));
-monthUserIn = parseInt(prompt("Insert the Month --> "));
-//yearUserIn = parseInt(prompt("Insert the Year  --> "));
-yearUserIn = parseInt(2013);
-
-//**************************************************************************************************************
+//*************** IMPUT DAY - MONTH - YEAR **************
+let dayUserIn = parseInt(prompt("Insert the Day   --> "));
+let monthUserIn = parseInt(prompt("Insert the Month --> "));
+let yearUserIn = parseInt(prompt("Insert the Year  --> "));
+//*************END IMPUT DAY - MONTH - YEAR **************
+//*********************** FUNCTION ***********************
 // function to message ERROR
 function messageError() {
     console.log("\nERROR!\n");
@@ -22,7 +16,6 @@ function dayNextOne_MonthNextOne_YearNextNew(dayNextOne, monthNextOne, yearNextN
     yearNextNew = ++yearNextNew;
     // date printing function
     printDateNextDay(dayNextOne, monthNextOne, yearNextNew);
-
     return dayNextOne_MonthNextOne_YearNextNew;
 }
 
@@ -33,7 +26,6 @@ function dayOneMonthNextTeYearCurrent(dayOne, monthNext, theYearCurrent) {
     monthNext = ++monthNext;
     // date printing function
     printDateNextDay(dayOne, monthNext, theYearCurrent);
-
     return dayOneMonthNextTeYearCurrent;
 }
 
@@ -43,7 +35,6 @@ function dayNextMonthYearCurrent(dayNext, monthCurrent, yearCurrent) {
     dayNext = ++dayNext;
     // date printing function
     printDateNextDay(dayNext, monthCurrent, yearCurrent);
-
     return dayNextMonthYearCurrent;
 }
 
@@ -66,11 +57,9 @@ function dayManthYearNew(dayOneNew, monthOneNew, yearNew) {
 
 // function to calculate the date the Febbrary
 function dayMonthFebbrary(dayOneFebbrary, monthFebbrary, yearMonthFebbrary) {
-
     if (dayOneFebbrary === 28) {
         // function calculation  day one and next month + year current
         dayOneMonthNextTeYearCurrent(dayOneFebbrary, monthFebbrary, yearMonthFebbrary);
-
     } else if (dayOneFebbrary < 27) {
         // function to calculate the successive days of the current month
         dayNextMonthYearCurrent(dayOneFebbrary, monthFebbrary, yearMonthFebbrary);
@@ -118,15 +107,23 @@ function printDateNextDay(day, month, year) {
     }
     return printDateNextDay;
 }
-
+//*********************** END FUNCTION ***********************
 // check years and months
 if ((yearUserIn >= 1584 && yearUserIn >= 3999) || (monthUserIn >= 01 && monthUserIn <= 12)) {
     // I determine months with 31 days
     if ((monthUserIn === 1) || (monthUserIn === 3) || (monthUserIn === 5) || (monthUserIn === 7) || (monthUserIn === 8) || (monthUserIn === 10) || (monthUserIn === 12)) {
+
         // CASE MONTH WITH 31 DAY + NEW YEAR
         if (monthUserIn === 12) {
             // function to calculate the date of December and the start of the new year + year leep
             dayManthYearNew(dayUserIn, monthUserIn, yearUserIn);
+        }
+
+        // CASE MONTH WITH 28 DAY --> MONTH FEBBRARY
+        else if (monthUserIn === 2) {
+            // function to calculate the date of Febbrary  whit 28 days
+            dayMonthFebbrary(dayUserIn, monthUserIn, yearUserIn);
+
             // CASE MONTH WITH 31 DAY
         } else if (dayUserIn === 31) {
             // function calculation  day one and next month + year current
@@ -138,6 +135,7 @@ if ((yearUserIn >= 1584 && yearUserIn >= 3999) || (monthUserIn >= 01 && monthUse
             // function to message ERROR
             messageError();
         }
+
         // CASE MONTH WITH 30 DAY 
     } else if (dayUserIn === 30) {
         // function calculation  day one and next month + year current
@@ -146,11 +144,8 @@ if ((yearUserIn >= 1584 && yearUserIn >= 3999) || (monthUserIn >= 01 && monthUse
         // function to calculate the successive days of the current month
         dayNextMonthYearCurrent(dayUserIn, monthUserIn, yearUserIn);
     } else if (dayUserIn > 30) {
+            // function to message ERROR
         messageError();
-        // CASE MONTH WITH 28 DAY --> MONTH FEBBRARY 
-    } else if (monthUserIn === 2) {
-        // function to calculate the date of Febbrary  whit 28 days
-        dayMonthFebbrary(dayUserIn, monthUserIn, yearUserIn);
     }
 } else {
     // function to message ERROR
