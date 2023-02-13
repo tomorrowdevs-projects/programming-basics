@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "devDependencies": {
+    "jest": "^29.2.2"
+  },
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
+}
