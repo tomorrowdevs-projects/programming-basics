@@ -7,7 +7,7 @@ class City():
     cities = ["Bari", "Cagliari", "Firenze", "Genova", "Milano", "Napoli", "Palermo", "Roma", "Torino", "Venezia", "Tutte"]
 
     @staticmethod
-    def is_a_valid_city(city: "str") -> "bool":
+    def is_a_valid_city(city: str) -> bool:
         """Check that a city is available in the game.
         
         :param city: string containing the name of a city
@@ -20,7 +20,7 @@ class City():
         return False
     
     @staticmethod
-    def city_table() -> "str":
+    def city_table() -> str:
         """Returns a table containing the cities available in the game.
         
         :return: a string containing the table
