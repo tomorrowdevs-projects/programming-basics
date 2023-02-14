@@ -1,8 +1,15 @@
-//*************** IMPUT DAY - MONTH - YEAR **************
-let dayUserIn = parseInt(prompt("Insert the Day   --> "));
+// variable declaration containing the data to be entered by the user
+/*let dayUserIn = parseInt(prompt("Insert the Day   --> "));
 let monthUserIn = parseInt(prompt("Insert the Month --> "));
-let yearUserIn = parseInt(prompt("Insert the Year  --> "));
-//*************END IMPUT DAY - MONTH - YEAR **************
+let yearUserIn = parseInt(prompt("Insert the Year  --> "));*/
+
+let dateUserIn = prompt("Insert the Date in the format: GG-MM-AAAA ");
+let dateUserInSplit = dateUserIn.split('');
+
+let dayUserIn = parseInt(dateUserInSplit[0] + dateUserInSplit[1]);
+let monthUserIn = parseInt(dateUserInSplit[3] + dateUserInSplit[4]);
+let yearUserIn = parseInt(dateUserInSplit[6] + dateUserInSplit[7] + dateUserInSplit[8] + dateUserInSplit[9]);
+
 //*********************** FUNCTION ***********************
 // function to message ERROR
 function messageError() {
@@ -71,8 +78,8 @@ function dayMonthFebbrary(dayOneFebbrary, monthFebbrary, yearMonthFebbrary) {
 }
 
 // function to determine if this year is a leap year
+// declaration of a variable containing the year leap function, to be used in the year leap print function
 function yearLeapDate(yearLeap) {
-    // if the inserted year is divided by 400 or by 4 and has a rest of 0 --> leap year
     if (yearLeap % 400 === Number()) {
         return true;
     } else if ((yearLeap % 100) === Number()) {
@@ -86,7 +93,8 @@ function yearLeapDate(yearLeap) {
 
 // function print date year leeap
 function printYearLeapDate(printYearLeep) {
-    if (printYearLeep === true) {
+    let yearleapVar = yearLeapDate(printYearLeep);
+    if (yearleapVar === true) {
         console.log("The ", printYearLeep, " is a Year Leapp");
     } else {
         console.log("The ", printYearLeep, " is a not Year Leapp");
@@ -144,7 +152,7 @@ if ((yearUserIn >= 1584 && yearUserIn >= 3999) || (monthUserIn >= 01 && monthUse
         // function to calculate the successive days of the current month
         dayNextMonthYearCurrent(dayUserIn, monthUserIn, yearUserIn);
     } else if (dayUserIn > 30) {
-            // function to message ERROR
+        // function to message ERROR
         messageError();
     }
 } else {
