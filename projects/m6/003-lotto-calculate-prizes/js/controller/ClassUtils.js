@@ -17,7 +17,7 @@ function compareArray (arr1, arr2) {
 };
 
 //private function to generate random numbers between 1 and 90 that are never the same
-// - number = number, how many numbers you want to generate
+// - num = number, how many numbers you want to generate
 // # return = an array of numbers
 function genNumber (num) {
     const result = [];

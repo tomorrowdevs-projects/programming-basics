@@ -38,7 +38,6 @@ function checkWin (ticket, extraction) {
 
     const check = wheel => {
         const numberWin = ticket.generateNumber.filter(num => extraction[wheel].includes(num));
-    
         indexType.forEach(el => {
             if (numberWin.length >= el+1) result.push([combinations(numberWin.length, el+1), Bill.types[el], wheel, ticket.id, numberWin])
         })
@@ -46,8 +45,8 @@ function checkWin (ticket, extraction) {
 
     if (ticket.city[0] !== 'Tutte') ticket.city.forEach(wheel => check(wheel))
     else for (const prop in extraction) check(prop)
-    
-    if(result.every(el => el[1] === 'Estratto')) {  //if they are all estratti, the one with the most winning numbers returns
+
+    if(result.every(el => el[1] === 'Estratto') && result.length > 0) {  //if they are all estratti, the one with the most winning numbers returns
         const index = result.reduce((acc, cur, index) => cur[0] > result[acc][0] ? index : acc, 0);
         return [ result[index] ]
     } else return result

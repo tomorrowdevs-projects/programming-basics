@@ -2,6 +2,7 @@ const { Bill } = require('../model/Bill');
 const print = require('./print');
 const check = require('./check');
 const terminal = require('./terminal');
+const { genTickets } = require('../controller/utils');
 
 ///////////////////////////////////////////////////
 //////////////// Menage choices ///////////////////
@@ -33,9 +34,9 @@ function fillTickets (ticketNumber) {
         const wheel = choose(number, 'whell', i+1);
         const type = choose(number, 'type', i+1);
         const price = prices(type, i+1);
-        tickets.push(new Bill(number, wheel, type, price));
+        tickets.push([number, wheel, type, price]);
     };
-    return tickets
+    return genTickets(tickets)
 };
 
 //ask for user input from 1 to 10
