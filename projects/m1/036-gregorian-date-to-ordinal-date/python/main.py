@@ -10,7 +10,8 @@ def is_a_leap_year(year):
 
 
 def ordinalDate(day,month,year):
-    if (day>28 and month == 2 and not is_a_leap_year(year)) or (day>29 and month == 2 and is_a_leap_year(year)) or (day>30 and (month==11 or month == 4 or month == 6 or month == 9)) or (day>31 and (month== 1 or month == 3 or month == 5 or month == 7 or month == 8 or month == 10 or month == 12)):
+    if (day>28 and month == 2 and not is_a_leap_year(year)) or (day>29 and month == 2 and is_a_leap_year(year)) or \
+     (day>30 and (month==11 or month == 4 or month == 6 or month == 9)) or (day>31 and (month== 1 or month == 3 or month == 5 or month == 7 or month == 8 or month == 10 or month == 12)):
         return 0
     else:
         ordinal_day = day
