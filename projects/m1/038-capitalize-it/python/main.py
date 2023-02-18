@@ -1,6 +1,11 @@
 def capitalize_it(string: str) -> str:
     '''
     Returns a new copy of the string that has been correctly capitalized
+    It capitalizes:
+    - the first non-space character in the string,
+    - the firstnon-space character after a period, exclamation mark or question mark
+    - a lowercase “i” if it is preceded by a space and followed by a space, period, exclamation mark, question mark or apostrophe.
+    - last "i" personal pronouns in a sentence
     '''
     capitalized_string=""
 
