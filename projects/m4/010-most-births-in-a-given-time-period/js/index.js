@@ -1,17 +1,17 @@
+// Import custom utils
+const customUtils = require('./custom-utils-class');
+
 // Check input existence
-try {
-    if(typeof process.argv[2] == 'undefined') throw 'Missing starting year.';
-    if(typeof process.argv[3] == 'undefined') throw 'Missing ending year.';
-} catch (err) {
-    console.log(err);
-    return;
-}
+const inputExists = customUtils.checkInputExistance({
+    2: 'Missing starting year.',
+    3: 'Missing ending year.',
+});
+
+if(!inputExists) return;
 
 // Modules
 const readline = require('readline');
 const fs = require('fs');
-const fsp = require('node:fs/promises');
-const path = require('path');
 
 // Global vars
 const dataDir = '../../009-names-that-reachned-number-one/babynames/';
@@ -23,9 +23,12 @@ main();
 
 
 /* FUNCTIONS */
+/**
+ * Main Function
+ */
 async function main() {
-    const fileList = await getFilesList(dataDir, ['.txt']);
-    
+    const fileList = await customUtils.getFilesList(dataDir, ['.txt']);
+
     // Check years existence in data files
     try {
         for(let sy = startingYear; sy <= endingYear; sy++) {
@@ -43,7 +46,7 @@ async function main() {
 
     // Calc all births for each name for each requested year
     const namesData = {};
-    for(const file of generatorFileFromArray(requiredFiles)) {
+    for(const file of customUtils.generatorFileFromArray(requiredFiles)) {
         const namesYearData = await formatBabynamesDataFromFile(file);
 
         for(const gender in namesYearData) {
@@ -72,32 +75,19 @@ async function main() {
                 nBabies = namesData[gender][name];
             }
         }
+
         const plural = mostUsedName.length > 1;
-        console.log(`Most common name${plural ? 's' : ''} between ${startingYear} and ${endingYear} for ${gender} ${plural ? 'are' : 'is'} ${mostUsedName.join(', ')} (${nBabies} babies).`);
+
+        console.log(`Most common name${plural ? 's' : ''} between ${startingYear} and ${endingYear} for ${gender == 'F' ? 'females' : 'males'} ${plural ? 'are' : 'is'} ${mostUsedName.join(', ')} (${nBabies} babies).`);
     }
 
 }
 
 /**
- * @param {string} dir - The path of the directory
- * @param {array} [exceptions = null] - retrieve only files with the desired extensions
- * @returns {array} files - the list files in the directory
+ * Reads a file line by line and returns a formatted data object
+ * @param {string} file - the file path to read
+ * @returns {object} - baby names data from file
  */
-async function getFilesList(dir, extensions = null) {
-    let files = await fsp.readdir(dir);
-    if(Array.isArray(extensions)) files = files.filter( f => extensions.includes(path.extname(f)) );
-    return {
-        dir,
-        files
-    };
-}
-
-function* generatorFileFromArray(files) {
-    for(let i = 0; i < files.length; i++) {
-        yield files[i];
-    }
-}
-
 function formatBabynamesDataFromFile(file) {
 
     return new Promise( (resolve, reject) => {
