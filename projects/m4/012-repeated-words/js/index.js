@@ -36,6 +36,7 @@ function parseFile(filePath) {
         });
 
         stream.on('line', line => {
+            // Format current line as array of word
             const a = line.toLowerCase().split(' ').map( w => w.replace(/[^a-z|0-9]/gi, '')).filter( e => e != '');
 
             // Check repeated words
@@ -54,9 +55,13 @@ function parseFile(filePath) {
                 }
             }
 
-            output[row] = repeatedWords;
+            // If repeated words are found, add them to the output obj
+            if(repeatedWords.length > 0) output[row] = repeatedWords;
+
+            // Save current row as prevRow for next iteration
             prevRow = a;
 
+            // Increase row counter
             row++;
         });
 
