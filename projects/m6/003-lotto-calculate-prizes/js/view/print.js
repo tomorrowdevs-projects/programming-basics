@@ -105,6 +105,7 @@ function printAllTicket (tickets) {
 };
 
 //shows the total won among all and the total spent
+// - cashwin = array with 2 elements, the total invested and the total won
 function printCashWin (cashWin) {
     terminal.show('', 'tax');
     terminal.show('', `Total winnings: € ${cashWin[1]}\nTotal invested: € ${cashWin[0]}`);

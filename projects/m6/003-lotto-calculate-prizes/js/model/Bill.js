@@ -14,7 +14,6 @@ class Bill {
     _prices;
     _generateNumber;
     _total;
-    _winning = false;
 
     constructor (numbers, city, type, prices) {
         Bill.counter += 1;
@@ -23,7 +22,7 @@ class Bill {
         this.city = city;       //Array - wheels played
         this.type = type;       //Array - type of play, e.g. Ambo or Terno
         this.prices = prices;   //Array - amount played
-
+        this._winning = false;
         this._generateNumber = ClassUtils.genNumber(this._numbers); //generated numbers
     };
 

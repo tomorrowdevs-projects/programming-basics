@@ -6,11 +6,11 @@ const ClassUtils = require('../controller/ClassUtils');
 
 class Extraction {
     static counter = 0;
+    _cities = ['Bari', 'Cagliari', 'Firenze', 'Genova', 'Milano', 'Napoli', 'Palermo', 'Roma', 'Torino', 'Venezia'];
+    _number = 5;
     _date;
-    _wheel;
-    _howManyNumber;
 
-    constructor (wheel, howManyNumber) {
+    constructor () {
         Extraction.counter += 1;
         this.numExtraction = Extraction.counter;
 
@@ -19,31 +19,8 @@ class Extraction {
             month: "short",
             year: "numeric",
         });
-        this.wheel = wheel;
-        this.howManyNumber = howManyNumber;
 
         this.getAll = this.#generate();
-    };
-
-    //getter for date
-    get date () { return this._date }
-    
-    //getter and setter for wheel
-    //Verify that it is a string array with at least 1 element
-    //otherwise an exception is raised
-    get wheel () { return this._wheel };
-    set wheel (arr) {
-        
-        if (ClassUtils.checkInputArray(arr) && arr.every(el => typeof el === 'string')) this._wheel = arr;
-        else throw new Error (`${arr} is a invalid Wheels, Extraction instance not created\nAccept an array of strings`);
-    };
-
-    //getter and setter for numbers
-    //Check that it is a positive integer, otherwise an exception is raised
-    get howManyNumber () { return this._howManyNumber };
-    set howManyNumber (number) { 
-        if (typeof number === 'number' && number > 0 && Number.isInteger(number)) this._howManyNumber = number
-        else throw new Error (`${number} is a invalid numbers, Extraction instance not created\nAccepted parameters : positive integer number`)
     };
 
     getWheel (wheel) { if (wheel in this.getAll) return this.getAll[wheel] }
@@ -53,8 +30,8 @@ class Extraction {
     #generate () {
         const result = {};
 
-        this._wheel.forEach(el => {
-            result[el] = ClassUtils.genNumber(this._howManyNumber)
+        this._cities.forEach(el => {
+            result[el] = ClassUtils.genNumber(this._number)
         })
         return result
     };

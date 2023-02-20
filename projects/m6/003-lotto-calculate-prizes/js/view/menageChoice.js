@@ -9,14 +9,14 @@ const { genTickets } = require('../controller/utils');
 ///////////////////////////////////////////////////
 
 //input request to define how many tickets want to play
-// @ uses fllTickets function to which it passes the result of the choice
-// @ utils.arrayNumber to generate an array with possible accepted inputs
+// @ check.arrayNumber to generate an array with possible accepted inputs
 function howManyTicket () {
     terminal.show('clear', 'howMany');
     return check.inputAndCheck(check.arrayNumber(1,5), '> ');
 };
 
-//prompts the user for all data to fill out all tickets and create instances and finally prints them
+//prompts the user for all data to fill out all tickets
+// @ genticket - controller - generates all ticket instances by providing it with data collected from the user
 // @ usa chooseNumber function for the request of how many numbers to play each card, 
 // @ choose requesting the type of bet and the wheels, 
 // @ prices requesting the amount for each type of bet,
@@ -47,10 +47,11 @@ function chooseNumber () {
 };
 
 //manages the choice of wheels or types of bet
-// @ use utils.printInline to print the user choices, utils.printList to print the possible choices that the user can make
-// @ utils.ticketTitle to generate the numbered title, utils.inputAndCheck for prompting and input verification
-// @ utils.menageWheel to manage conditions on wheel choice
-// @ utils.menageType to manage conditions on type of bet choice
+// @ use print.printInline to print the user choices, utils.printList to print the possible choices that the user can make
+// @ print.ticketTitle to generate the numbered title, utils.inputAndCheck for prompting and input verification
+// @ print.printList prints a vertical numbered list of wheels or types of bet
+// @ menageWheel to manage conditions on wheel choice
+// @ menageType to manage conditions on type of bet choice
 // - numbersPlayed = number, the amount of numbers played in this ticket
 // - wheelOrType = string, 'wheel'for choosing the wheel or 'type' for choosing the type
 // - num = number, the ticket number to be printed in the title

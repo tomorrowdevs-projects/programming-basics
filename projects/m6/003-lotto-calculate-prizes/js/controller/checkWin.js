@@ -56,7 +56,7 @@ function checkWin (ticket, extraction) {
 // @ checkWin -> check the winnings for each single ticket
 // - tickets = array, All ticket instance object
 // - extraction = the extraction instances object
-// # return = result is the result of the match
+// # return = result for all tickets
 function checkAllWin (tickets, extraction) {
     const result = [];
 
@@ -67,7 +67,7 @@ function checkAllWin (tickets, extraction) {
     return result;
 };
 
-//Calculates the total won for each ticket played
+//Check the winnings against all the matches obtained and calculate the winning ones and the total amount won
 // @ combination to calculate the dividend and establish the amount won
 // - winnerTicket = array of all matches between tickets and fake extractions
 // - tickets = array of all ticket instances
