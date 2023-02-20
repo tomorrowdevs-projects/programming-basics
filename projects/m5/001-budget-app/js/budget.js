@@ -81,7 +81,7 @@ class Category {
         
         const outputString = `${title}\n${list}${finalBalanceString}`;
         
-        console.log(outputString);
+        return outputString;
     }
 
 };
