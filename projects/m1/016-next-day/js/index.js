@@ -1,161 +1,102 @@
-// variable declaration containing the data to be entered by the user
-/*let dayUserIn = parseInt(prompt("Insert the Day   --> "));
-let monthUserIn = parseInt(prompt("Insert the Month --> "));
-let yearUserIn = parseInt(prompt("Insert the Year  --> "));*/
+let dayIn = parseInt(prompt("Insert the Day   --> "));
+let monthIn = parseInt(prompt("Insert the Month --> "));
+let yearIn = parseInt(prompt("Insert the Year  --> "));
 
-let dateUserIn = prompt("Insert the Date in the format: GG-MM-AAAA ");
-let dateUserInSplit = dateUserIn.split('');
-
-let dayUserIn = parseInt(dateUserInSplit[0] + dateUserInSplit[1]);
-let monthUserIn = parseInt(dateUserInSplit[3] + dateUserInSplit[4]);
-let yearUserIn = parseInt(dateUserInSplit[6] + dateUserInSplit[7] + dateUserInSplit[8] + dateUserInSplit[9]);
-
-//*********************** FUNCTION ***********************
-// function to message ERROR
-function messageError() {
-    console.log("\nERROR!\n");
-}
-// function calculation  day one and month one + year next new
-function dayNextOne_MonthNextOne_YearNextNew(dayNextOne, monthNextOne, yearNextNew) {
-    // calculation  day one and next month + year current
-    dayNextOne = 1;
-    monthNextOne = 1;
-    yearNextNew = ++yearNextNew;
-    // date printing function
-    printDateNextDay(dayNextOne, monthNextOne, yearNextNew);
-    return dayNextOne_MonthNextOne_YearNextNew;
-}
-
-// function calculation  day one and next month + year current
-function dayOneMonthNextTeYearCurrent(dayOne, monthNext, theYearCurrent) {
-    // calculation  day one and next month + year current
-    dayOne = 1;
-    monthNext = ++monthNext;
-    // date printing function
-    printDateNextDay(dayOne, monthNext, theYearCurrent);
-    return dayOneMonthNextTeYearCurrent;
-}
-
-// function to calculate the successive days of the current month
-function dayNextMonthYearCurrent(dayNext, monthCurrent, yearCurrent) {
-    // calculate the successive days of the current month
-    dayNext = ++dayNext;
-    // date printing function
-    printDateNextDay(dayNext, monthCurrent, yearCurrent);
-    return dayNextMonthYearCurrent;
-}
-
-// function to calculate the date of December and the start of the new year + year leep
-function dayManthYearNew(dayOneNew, monthOneNew, yearNew) {
-    if (dayOneNew === 31) {
-        // function calculation  day one and month one + year next new
-        dayNextOne_MonthNextOne_YearNextNew(dayOneNew, monthOneNew, yearNew);
-        // function print date year leeap
-        printYearLeapDate(yearNew);
-    } else if (dayOneNew < 30) {
-        // function to calculate the successive days of the current month
-        dayNextMonthYearCurrent(dayOneNew, monthOneNew, yearNew);
-    } else if (dayOneNew > 31) {
-        // function to message ERROR
-        messageError();
+// function case febbrary
+function caseFebbrary(day, month, year) {
+    if (day < 1 || day > 28) {
+        console.log("\nERROR \n")
+    } else {
+        if (day === 28) {
+            day = 1
+            month = month + 1;
+            printDate(day, month, year);
+        } else {
+            day = day + 1;
+            printDate(day, month, year);
+        }
     }
-    return dayManthYearNew;
 }
-
-// function to calculate the date the Febbrary
-function dayMonthFebbrary(dayOneFebbrary, monthFebbrary, yearMonthFebbrary) {
-    if (dayOneFebbrary === 28) {
-        // function calculation  day one and next month + year current
-        dayOneMonthNextTeYearCurrent(dayOneFebbrary, monthFebbrary, yearMonthFebbrary);
-    } else if (dayOneFebbrary < 27) {
-        // function to calculate the successive days of the current month
-        dayNextMonthYearCurrent(dayOneFebbrary, monthFebbrary, yearMonthFebbrary);
-    } else if (dayOneFebbrary > 28) {
-        // function to message ERROR
-        messageError();
+// function case December
+function caseNewYearDecember(day, month, year) {
+    if (day < 1 || day > 31) {
+        console.log("\nERROR\n");
+    } else {
+        if (day === 31) {
+            day = 1;
+            month = 1;
+            year = year + 1;
+            printDate(day, month, year);
+            printYearLeapDate(year);
+        }
     }
-    return dayMonthFebbrary;
 }
-
-// function to determine if this year is a leap year
-// declaration of a variable containing the year leap function, to be used in the year leap print function
-function yearLeapDate(yearLeap) {
-    if (yearLeap % 400 === Number()) {
+// function year leeap
+function yearLeapDate(year) {
+    if (year % 400 === Number()) {
         return true;
-    } else if ((yearLeap % 100) === Number()) {
+    } else if ((year % 100) === Number()) {
         return false;
-    } else if (yearLeap % 4 === Number()) {
+    } else if (year % 4 === Number()) {
         return true;
     } else {
         return false;
     }
 }
-
 // function print date year leeap
-function printYearLeapDate(printYearLeep) {
-    let yearleapVar = yearLeapDate(printYearLeep);
-    if (yearleapVar === true) {
-        console.log("The ", printYearLeep, " is a Year Leapp");
-    } else {
-        console.log("The ", printYearLeep, " is a not Year Leapp");
+function printYearLeapDate(year) {
+    let yearleap = yearLeapDate(year);
+    if (yearleap === true) {
+        console.log("\nThe " + year + " is a Year Leapp");
     }
-    return printYearLeapDate;
 }
-
-// date printing function
-function printDateNextDay(day, month, year) {
+// function print date
+function printDate(day, month, year) {
     if ((day >= 10 && month >= 10)) {
-        console.log("\nThe next date is the one entered and: " + day + "-" + month + "-" + year + "\n");
+        console.log("\nThe next date is the one insered and: " + day + "-" + month + "-" + year + "\n");
     } else if (day < 10 && month < 10) {
-        console.log("\nThe  next date is the one entered and: " + "0" + day + "-0" + month + "-" + year + "\n");
+        console.log("\nThe  next date is the one insered and: " + "0" + day + "-0" + month + "-" + year + "\n");
     } else if (day < 10 && month >= 10) {
-        console.log("\nThe  next date is the one entered and: " + "0" + day + "-" + month + "-" + year + "\n");
+        console.log("\nThe  next date is the one insered and: " + "0" + day + "-" + month + "-" + year + "\n");
     } else if (day >= 10 && month < 10) {
-        console.log("\nThe  next date is the one entered and: " + day + "-0" + month + "-" + year + "\n");
+        console.log("\nThe  next date is the one insered and: " + day + "-0" + month + "-" + year + "\n");
     }
-    return printDateNextDay;
 }
-//*********************** END FUNCTION ***********************
-// check years and months
-if ((yearUserIn >= 1584 && yearUserIn >= 3999) || (monthUserIn >= 01 && monthUserIn <= 12)) {
-    // I determine months with 31 days
-    if ((monthUserIn === 1) || (monthUserIn === 3) || (monthUserIn === 5) || (monthUserIn === 7) || (monthUserIn === 8) || (monthUserIn === 10) || (monthUserIn === 12)) {
 
-        // CASE MONTH WITH 31 DAY + NEW YEAR
-        if (monthUserIn === 12) {
-            // function to calculate the date of December and the start of the new year + year leep
-            dayManthYearNew(dayUserIn, monthUserIn, yearUserIn);
+if ((yearIn >= 1000 && yearIn <= 9999) && (monthIn >= 01 && monthIn <= 12)) {
+    if (monthIn === 2 || monthIn === 4 || monthIn === 6 || monthIn === 9 || monthIn === 11) {
+        if (monthIn === 2 && dayIn === 28) {
+            caseFebbrary(dayIn, monthIn, yearIn);
         }
-
-        // CASE MONTH WITH 28 DAY --> MONTH FEBBRARY
-        else if (monthUserIn === 2) {
-            // function to calculate the date of Febbrary  whit 28 days
-            dayMonthFebbrary(dayUserIn, monthUserIn, yearUserIn);
-
-            // CASE MONTH WITH 31 DAY
-        } else if (dayUserIn === 31) {
-            // function calculation  day one and next month + year current
-            dayOneMonthNextTeYearCurrent(dayUserIn, monthUserIn, yearUserIn);
-        } else if (dayUserIn <= 30) {
-            // function to calculate the successive days of the current month
-            dayNextMonthYearCurrent(dayUserIn, monthUserIn, yearUserIn);
-        } else if (dayUserIn > 31) {
-            // function to message ERROR
-            messageError();
+        else {
+            if (dayIn === 30) {
+                dayIn = 1;
+                monthIn = monthIn + 1;
+                printDate(dayIn, monthIn, yearIn);
+            } else if (dayIn < 30) {
+                dayIn = dayIn + 1;
+                printDate(dayIn, monthIn, yearIn);
+            } else if (dayIn > 30) {
+                console.log("\nERROR\n")
+            }
         }
-
-        // CASE MONTH WITH 30 DAY 
-    } else if (dayUserIn === 30) {
-        // function calculation  day one and next month + year current
-        dayOneMonthNextTeYearCurrent(dayUserIn, monthUserIn, yearUserIn);
-    } else if (dayUserIn <= 29) {
-        // function to calculate the successive days of the current month
-        dayNextMonthYearCurrent(dayUserIn, monthUserIn, yearUserIn);
-    } else if (dayUserIn > 30) {
-        // function to message ERROR
-        messageError();
+    } else {
+        if (monthIn === 12 && dayIn === 31) {
+            caseNewYearDecember(dayIn, monthIn, yearIn);
+        }
+        else {
+            if (dayIn === 31) {
+                dayIn = 1;
+                monthIn = monthIn + 1;
+                printDate(dayIn, monthIn, yearIn);
+            } else if (dayIn < 31) {
+                dayIn = dayIn + 1;
+                printDate(dayIn, monthIn, yearIn);
+            } else if (dayIn > 31) {
+                console.log("\nERROR\n");
+            }
+        }
     }
 } else {
-    // function to message ERROR
-    messageError();
+    console.log("\nERROR\n");
 }
