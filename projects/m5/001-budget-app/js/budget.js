@@ -20,7 +20,7 @@ class Category {
     
 
     withdraw(amount, description = ``) {
-        if (!this.check_funds(amount, this.#balance)) return false;
+        if (!this.check_funds(amount)) return false;
 
         this.ledger.push({description, amount: -amount})
         this.#balance -= amount;
@@ -40,7 +40,7 @@ class Category {
 
     transfer(amount, category) {
 
-        if (!this.check_funds(amount, this.get_balance())) return false;
+        if (!this.check_funds(amount)) return false;
 
         this.withdraw(amount, `Transfer to ${category.name}`);
         category.deposit(amount, `Transfer from ${this.name}`);
@@ -48,9 +48,9 @@ class Category {
     }
 
 
-    check_funds(amount, balance) {
-        if (amount <= balance) return true;
-        if (amount > balance) return false;
+    check_funds(amount) {
+        if (amount <= this.#balance) return true;
+        if (amount > this.#balance) return false;
     }
 
     print() {
