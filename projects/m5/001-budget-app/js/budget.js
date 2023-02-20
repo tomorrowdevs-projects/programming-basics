@@ -3,11 +3,13 @@
 class Category {
 
     #balance;
+    #withdraws;
 
     constructor(name) {
         this.name = name;
         this.ledger = [];
         this.#balance = 0;
+        this.#withdraws = 0;
     }
 
 
@@ -22,6 +24,7 @@ class Category {
 
         this.ledger.push({description, amount: -amount})
         this.#balance -= amount;
+        this.#withdraws += amount;
         return true;
     }
 
@@ -30,13 +33,17 @@ class Category {
         return this.#balance;
     }
 
+    get_withdraws() {
+        return this.#withdraws;
+    }
+
 
     transfer(amount, category) {
 
-        if (!this.check_funds(amount, category.get_balance())) return false;
+        if (!this.check_funds(amount, this.get_balance())) return false;
 
-        category.withdraw(amount, `Transfer to ${this.name}`);
-        this.deposit(amount, `Transfer from ${category.name}`);
+        this.withdraw(amount, `Transfer to ${category.name}`);
+        category.deposit(amount, `Transfer from ${this.name}`);
         return true;
     }
 
@@ -79,13 +86,5 @@ class Category {
 
 };
 
-const food = new Category(`Food`);
-const clothing = new Category(`Clothing`);
-food.deposit(1000000);
-console.log(food.withdraw(1000, `restaurant and more food`));
-console.log(food.get_balance());
-console.log(food.ledger);
-clothing.deposit(1000, `Stipendio`);
-console.log(food.transfer(50, clothing));
-food.print();
-clothing.print();
+
+module.exports = Category;
