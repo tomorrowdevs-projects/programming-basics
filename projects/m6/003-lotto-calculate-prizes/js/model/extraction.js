@@ -1,4 +1,4 @@
-const ClassUtils = require('../controller/ClassUtils');
+const { genNumber } = require('../controller/ClassUtils');
 
 ///////////////////////////////////////////////////
 //////////////// Fake Extraction //////////////////
@@ -23,7 +23,10 @@ class Extraction {
         this.getAll = this.#generate();
     };
 
-    getWheel (wheel) { if (wheel in this.getAll) return this.getAll[wheel] }
+    getWheel (wheel) { 
+        if (wheel in this.getAll) return this.getAll[wheel];
+        else throw new Error (`Invalid name of wheel`)
+    }
 
     //creates an array of 10 arrays with all numbers drawn for each wheel
     // # return = array of array
@@ -31,7 +34,7 @@ class Extraction {
         const result = {};
 
         this._cities.forEach(el => {
-            result[el] = ClassUtils.genNumber(this._number)
+            result[el] = genNumber(this._number)
         })
         return result
     };

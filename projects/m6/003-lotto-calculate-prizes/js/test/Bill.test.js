@@ -1,10 +1,13 @@
-const Bill = require('../lotto-game/model/Bill');
+const Bill = require('../model/Bill');
 
 describe('Bill Class', () => {
 
     describe('Getter & Setter', () => {
         const ticket = new Bill.Bill(8,['Bari'],['Ambo', 'Quaterna'],[5,2]);
 
+        it('get id', () => {
+            expect(ticket.id).toBe(101)
+        })
         it('get numbers', () => {
             expect(ticket.numbers).toBe(8)
         })
@@ -17,6 +20,9 @@ describe('Bill Class', () => {
         it('get prices', () => {
             expect(ticket.prices).toEqual([5,2])
         })
+        it('get total', () => {
+            expect(ticket.total).toBe(7)
+        })
         it('get generateNumber', () => {
             expect(Array.isArray(ticket.generateNumber)).toBeTruthy();
             expect(ticket.generateNumber).toHaveLength(8);
@@ -25,6 +31,16 @@ describe('Bill Class', () => {
                 expect(el).toBeGreaterThan(0);
                 expect(el).toBeLessThan(91);
             })
+        })
+
+        it('get and set winning', () => {
+            expect(ticket.winning).toBeFalsy();
+
+            ticket.winning = [ 3.59, '2 Estratto 1 Ambo ', 'Bari', 101, [ 7, 10 ] ];
+
+            expect(ticket.winning).toBe('(7,10) 2 Estratto 1 Ambo  on Bari € 3.59');
+            ticket.winning = [0];
+            expect(ticket.winning).toBeFalsy();
         })
 
         it('set numbers > 10', () => {
@@ -47,7 +63,7 @@ describe('Bill Class', () => {
             try{
                 ticket4 = new Bill.Bill(5,'Bari',['Ambo']);
             } catch (err) {
-                expect(err.message).toBe(`Input "Bari" isn't an array or it is empty, Bill instance not created`);
+                expect(err.message).toBe(`Input Bari isn't an array or it is empty, Bill instance not created`);
             }
         })
 
@@ -68,7 +84,7 @@ describe('Bill Class', () => {
             try{
                 ticket7 = new Bill.Bill(5,['Bari'],'Ambo');
             } catch (err) {
-                expect(err.message).toBe(`Input "Ambo" isn't an array or it is empty, Bill instance not created`);
+                expect(err.message).toBe(`Input Ambo isn't an array or it is empty, Bill instance not created`);
             }
         })
 
@@ -92,37 +108,24 @@ describe('Bill Class', () => {
             try{
                 ticket10 = new Bill.Bill(5,['Bari'],['Ambo','Terno'],[1,201]);
             } catch (err) {
-                expect(err.message).toBe('1,201 is a invalid price, Bill instance not created\nAccepted parameters : from €1 to €200')
+                expect(err.message).toBe('1,201 is a invalid price, Bill instance not created\nAccepted parameters : from €0.5 to €200')
             }
             try{
                 ticket11 = new Bill.Bill(5,['Bari'],['Ambo','Terno'],[5]);
             } catch (err) {
                 expect(err.message).toBe("5 is a invalid price, Bill instance not created\nInput doesn't contain the right number of elements")
             }
-        })
-    })
 
-    describe('Print Method', () => {
-        it('Check table before and after rnd numbers', () => {
-            ticket12 = new Bill.Bill(3,['Bari'],['Ambo'],[5]);
-
-            const printBefore = ticket12.print(6).slice(0,573);
-            const printAfter = ticket12.print(6).slice(586);
-            expect(printBefore).toBe(`+==========================================================+
-|               LOTTO GAME TICKET #6 **€ 5**               |
-+==========================================================+
-|                           Bari                           |
-+==========================================================+
-|                           Ambo                           |
-+==========================================================+
-|                            €5                            |
-+==========================================================+
-|                       `);
-            expect(printAfter).toBe(`                      |
-+==========================================================+
-
-`)
-
+            try{
+                ticket12 = new Bill.Bill(5,['Bari'],['Ambo'],[0.5]);
+            } catch (err) {
+                expect(err.message).toBe("Invalid price sum, Bill instance not created\nThe total Ticket amount is 0.5, accepted from 1 to 200")
+            }
+            try{
+                ticket13 = new Bill.Bill(5,['Bari'],['Ambo', 'Terno'],[134, 70]);
+            } catch (err) {
+                expect(err.message).toBe("Invalid price sum, Bill instance not created\nThe total Ticket amount is 204, accepted from 1 to 200")
+            }
         })
     })
 })

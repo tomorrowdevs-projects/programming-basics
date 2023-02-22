@@ -20,7 +20,7 @@ function check (possibleInput, input) {
 // - inputString = string that is displayed in the prompt
 // # return = correctly input
 function inputAndCheck (possibleInput, inputString) {
-    const input = check(possibleInput, prompt(inputString));
+    const input = check(possibleInput, module.exports.prompt(inputString));
 
     if (input || input === 0) return input;
     else {
@@ -36,4 +36,4 @@ function arrayNumber (min, max) {
     return [...Array(max-min+1)].map(_ => `${min++}`)
 };
 
-module.exports = {  check, inputAndCheck, arrayNumber }
+module.exports = {  check, inputAndCheck, arrayNumber, prompt }

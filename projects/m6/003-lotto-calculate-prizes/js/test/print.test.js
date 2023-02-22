@@ -1,18 +1,32 @@
-const print = require('../lotto-game/print/print');
-const Bill = require('../lotto-game/model/Bill');
+const print = require('../view/print');
+const Bill = require('../model/Bill');
+const fs = require('fs');
 
-const ticket = [new Bill.Bill(5,['Bari','Milano'],['Ambo', 'Terno'],[2,5]), 
-                new Bill.Bill(10,['Firenze'],['Ambo', 'Terno', 'Cinquina'], [1,5,1]),
-                new Bill.Bill(5,['Tutte'],['Ambo', 'Terno', 'Cinquina'], [5,5,1]) ];
+const ticket = [[5,['Bari','Milano'],['Ambo', 'Terno'],[2,5]], 
+                [10,['Firenze'],['Ambo', 'Terno', 'Cinquina'], [1,5,1]],
+                [5,['Tutte'],['Ambo', 'Terno', 'Cinquina'], [5,5,1]] ];
 
-describe('Check Input', () => {
+const ticket1 = new Bill.Bill(...ticket[1]);
+ticket1._generateNumber = [6,57,25,18,9,58,5,26,61,56];
+const ticket2 = new Bill.Bill(...ticket[2]);
+ticket2._generateNumber = [10,51,29,68,90];
 
-    it('check', () => {
-        expect(print.check(['1','3','x'], 'x')).toBe('x');
-        expect(print.check(['1','3','x'], '1')).toBe('1');
-        expect(print.check(['1','3','x'], '2')).toBeFalsy();
-    })
-});
+const extractions = {
+    numExtraction: 23,
+    date: '05/10/2024',
+    getAll: {
+        Bari: [80,26,57,29,31],
+        Cagliari: [10,43,49,32,50],
+        Firenze: [85,87,68,14,20],
+        Genova: [21,46,42,51,82],
+        Milano: [41,62,50,15,89],
+        Napoli: [72,42,14,88,61],
+        Palermo: [12,77,54,1,69],
+        Roma: [39,42,7,41,1],
+        Torino: [30,3,84,90,31],
+        Venezia: [43,3,5,41,68] 
+    }
+};
 
 describe('Print', () => {
 
@@ -23,11 +37,12 @@ describe('Print', () => {
     })
 
     it('separator', () => {
-        expect(print.separator(10)).toBe('==========');
+        expect(print.separator(10,'=')).toBe('==========');
+        expect(print.separator(0,'=')).toBe('');
     })
 
     it('ticketTitle', () => {
-        expect(print.ticketTitle(20)).toBe('\n                      TICKET #20\n');
+        expect(print.ticketTitle(20)).toBe('\n                      TICKET 20\n');
     })
 
     it('printInline', () => {
@@ -35,7 +50,7 @@ describe('Print', () => {
     })
 
     it('showCompletedTicket', () => {
-        expect(print.showCompletedTicket(ticket)).toBe('Ticket #1 : 5 numbers played on the Bari,Milano wheel with Ambo € 2 ,Terno € 5\nTicket #2 : 10 numbers played on the Firenze wheel with Ambo € 1 ,Terno € 5 ,Cinquina € 1\nTicket #3 : 5 numbers played on the Tutte wheel with Ambo € 5 ,Terno € 5 ,Cinquina € 1\n');
+        expect(print.showCompletedTicket(ticket)).toBe('Ticket 1 : 5 numbers played on the Bari,Milano wheel with Ambo € 2 ,Terno € 5\nTicket 2 : 10 numbers played on the Firenze wheel with Ambo € 1 ,Terno € 5 ,Cinquina € 1\nTicket 3 : 5 numbers played on the Tutte wheel with Ambo € 5 ,Terno € 5 ,Cinquina € 1\n');
     })
 
     it('centerWord', () => {
@@ -44,33 +59,187 @@ describe('Print', () => {
     })
 
     it('printFakeExtraction', () => {
-        const table = print.printFakeExtraction([[[2,'Estratto', 4], [1,'Ambo', 6],1], [[1,'Terno', 0], 2]]);
-        const tableArr = table.split('\n');
-
-        expect(table).toHaveLength(2002);
-        expect(tableArr).toHaveLength(24);
-        expect(tableArr[0]).toBe('');
-        expect(tableArr[1]).toBe('                 FAKE EXTRACTIONS                          TICKET WIN                    ');
-        expect(tableArr[23]).toBe('');
-
-        tableArr.forEach((el, index) => {
-            if (index % 2 === 0 && index !== 0) expect(el).toBe('+==========+==========================+==================================================+');
-            if (index % 2 !== 0 && index > 1 && index < 22) {
-                expect(el[0]).toBe('|');
-                expect(el[11]).toBe('|');
-                expect(el[38]).toBe('|');
-                expect(el[89]).toBe('|');
-                const citiesName = el.split('|')[1].trim();
-                expect(Bill.cities.includes(citiesName)).toBeTruthy();
-
-                const win = el.split('|')[3].trim();
-                if (index === 3) expect(win).toBe('#2 1 Terno');
-                else if (index === 11) expect(win).toBe('#1 2 Estratto');
-                else if (index === 15) expect(win).toBe('#1 1 Ambo');
-                else expect(win).toBe('')
-            }
+        expect(print.printFakeExtraction(extractions)).toBe(`
+ FAKE EXTRACTIONS n° 23 del 05/10/2024 
++==========+==========================+
+|   Bari   |  80 - 26 - 57 - 29 - 31  |
++==========+==========================+
+| Cagliari |  10 - 43 - 49 - 32 - 50  |
++==========+==========================+
+| Firenze  |  85 - 87 - 68 - 14 - 20  |
++==========+==========================+
+|  Genova  |  21 - 46 - 42 - 51 - 82  |
++==========+==========================+
+|  Milano  |  41 - 62 - 50 - 15 - 89  |
++==========+==========================+
+|  Napoli  |  72 - 42 - 14 - 88 - 61  |
++==========+==========================+
+| Palermo  |  12 - 77 - 54 - 1 - 69   |
++==========+==========================+
+|   Roma   |   39 - 42 - 7 - 41 - 1   |
++==========+==========================+
+|  Torino  |  30 - 3 - 84 - 90 - 31   |
++==========+==========================+
+| Venezia  |   43 - 3 - 5 - 41 - 68   |
++==========+==========================+
+`)
             
-        })
-
     })
+
+    it('printTicket', () => {
+
+        expect(print.printTicket(ticket1)).toBe(`+==============================================+
+|        LOTTO GAME TICKET #101 **€ 7**        |
+|                                              |
+|                   Firenze                    |
+|                                              |
+|            Ambo  Terno  Cinquina             |
+|                                              |
+|             €1    €5       €1                |
+|                                              |
+| 6 - 57 - 25 - 18 - 9 - 58 - 5 - 26 - 61 - 56 |
+|                                              |
+|                Winning : NO !                |
+|                                              |
++==============================================+
+
+`);
+        ticket1._winning = [ 2.15, '2 Estratto 1 Ambo ', 'Palermo', 101, [ 52, 44 ] ];
+        expect(print.printTicket(ticket1)).toBe(`+======================================================+
+|            LOTTO GAME TICKET #101 **€ 7**            |
+|                                                      |
+|                       Firenze                        |
+|                                                      |
+|                Ambo  Terno  Cinquina                 |
+|                                                      |
+|                 €1    €5       €1                    |
+|                                                      |
+|     6 - 57 - 25 - 18 - 9 - 58 - 5 - 26 - 61 - 56     |
+|                                                      |
+| Winning:(52,44) 2 Estratto 1 Ambo  on Palermo € 2.15 |
+|                                                      |
++======================================================+
+
+`);
+    });
+
+    it('printAllTicket', () => {
+        expect(print.printAllTicket([ticket1, ticket2])).toBe(`+======================================================+
+|            LOTTO GAME TICKET #101 **€ 7**            |
+|                                                      |
+|                       Firenze                        |
+|                                                      |
+|                Ambo  Terno  Cinquina                 |
+|                                                      |
+|                 €1    €5       €1                    |
+|                                                      |
+|     6 - 57 - 25 - 18 - 9 - 58 - 5 - 26 - 61 - 56     |
+|                                                      |
+| Winning:(52,44) 2 Estratto 1 Ambo  on Palermo € 2.15 |
+|                                                      |
++======================================================+
+
++=================================+
+| LOTTO GAME TICKET #102 **€ 11** |
+|                                 |
+|              Tutte              |
+|                                 |
+|      Ambo  Terno  Cinquina      |
+|                                 |
+|       €5    €5       €1         |
+|                                 |
+|     10 - 51 - 29 - 68 - 90      |
+|                                 |
+|         Winning : NO !          |
+|                                 |
++=================================+
+
+`);
+    });
+
+    it('createTicketFile', () => {
+        fs.unlinkSync('tickets.txt');
+        print.createTicketFile(print.printAllTicket([ticket2]), [40])
+        expect(fs.existsSync('tickets.txt')).toBe(true);
+        expect(fs.readFileSync('tickets.txt', 'utf8')).toBe(`+=================================+
+| LOTTO GAME TICKET #102 **€ 11** |
+|                                 |
+|              Tutte              |
+|                                 |
+|      Ambo  Terno  Cinquina      |
+|                                 |
+|       €5    €5       €1         |
+|                                 |
+|     10 - 51 - 29 - 68 - 90      |
+|                                 |
+|         Winning : NO !          |
+|                                 |
++=================================+
+
+The total spent on all tickets is € 40`)
+    });
+
+    it('showAll', () => {
+        const logSpy2 = jest.spyOn(console, 'log');
+        print.showAll([ticket1, ticket2], extractions, [45,670]);
+
+        expect(logSpy2).toHaveBeenNthCalledWith(1,`
+ FAKE EXTRACTIONS n° 23 del 05/10/2024 
++==========+==========================+
+|   Bari   |  80 - 26 - 57 - 29 - 31  |
++==========+==========================+
+| Cagliari |  10 - 43 - 49 - 32 - 50  |
++==========+==========================+
+| Firenze  |  85 - 87 - 68 - 14 - 20  |
++==========+==========================+
+|  Genova  |  21 - 46 - 42 - 51 - 82  |
++==========+==========================+
+|  Milano  |  41 - 62 - 50 - 15 - 89  |
++==========+==========================+
+|  Napoli  |  72 - 42 - 14 - 88 - 61  |
++==========+==========================+
+| Palermo  |  12 - 77 - 54 - 1 - 69   |
++==========+==========================+
+|   Roma   |   39 - 42 - 7 - 41 - 1   |
++==========+==========================+
+|  Torino  |  30 - 3 - 84 - 90 - 31   |
++==========+==========================+
+| Venezia  |   43 - 3 - 5 - 41 - 68   |
++==========+==========================+
+`); 
+         expect(logSpy2).toHaveBeenNthCalledWith(2,`+======================================================+
+|            LOTTO GAME TICKET #101 **€ 7**            |
+|                                                      |
+|                       Firenze                        |
+|                                                      |
+|                Ambo  Terno  Cinquina                 |
+|                                                      |
+|                 €1    €5       €1                    |
+|                                                      |
+|     6 - 57 - 25 - 18 - 9 - 58 - 5 - 26 - 61 - 56     |
+|                                                      |
+| Winning:(52,44) 2 Estratto 1 Ambo  on Palermo € 2.15 |
+|                                                      |
++======================================================+
+
++=================================+
+| LOTTO GAME TICKET #102 **€ 11** |
+|                                 |
+|              Tutte              |
+|                                 |
+|      Ambo  Terno  Cinquina      |
+|                                 |
+|       €5    €5       €1         |
+|                                 |
+|     10 - 51 - 29 - 68 - 90      |
+|                                 |
+|         Winning : NO !          |
+|                                 |
++=================================+
+
+`);
+        expect(logSpy2).toHaveBeenNthCalledWith(3,'Total winnings already detaxed by 8%:\n');
+        expect(logSpy2).toHaveBeenNthCalledWith(4,`Total winnings: € 670
+Total invested: € 45`) 
+    });
 });

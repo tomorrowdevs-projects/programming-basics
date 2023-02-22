@@ -1,12 +1,12 @@
 ///////////////////////////////////////////////////
-//////////////// Bill utilities ///////////////////
+//////////////// Class utilities //////////////////
 ///////////////////////////////////////////////////
 
 //checks if the input is an array and if it contains at least one element
 // # return = true or an exception is raised
 function checkInputArray (input) {
-    if (Array.isArray(input) && input.length > 0) return true;
-    else throw new Error (`Input "${input}" isn't an array or it is empty, Bill instance not created`);
+    if (Array.isArray(input) && input.length > 0) return true
+    else return false
 };
 
 //compare 2 arrays

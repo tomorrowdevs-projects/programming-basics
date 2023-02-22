@@ -1,31 +1,86 @@
-const menage = require('../lotto-game/controller/menageChoice');
-const Bill = require('../lotto-game/model/Bill');
-const utils = require('../lotto-game/controller/utils')
+const menage = require('../view/menageChoice');
+const check = require('../view/check')
+const Bill = require('../model/Bill');
 
 describe('Menage choice', () => {
+    const spy = jest.spyOn(check, 'inputAndCheck');
 
-    it('arrayNumber', () => {
-        expect(utils.arrayNumber(1,10)).toEqual(['1','2','3','4','5','6','7','8','9','10']);
-        expect(utils.arrayNumber(5,8)).toEqual(['5','6','7','8']);
-    })
+    it('howManyTicket', () => {
+        spy.mockReturnValue(2);
+        expect(menage.howManyTicket()).toBe(2);
+    });
+
+    it('chooseNumber', () => {
+        spy.mockReturnValue(5);
+        expect(menage.chooseNumber()).toBe(5);
+    });
 
     it('menageWheel', () => {
-        function test (numbersPlayed, whellOrType, num, selected, cities) {
-            return [numbersPlayed, whellOrType, num, selected, cities]
-        }
-        expect(menage.menageWheel('4',5,'wheel',1,[],[...Bill.cities],test)).toEqual([5,'wheel',1,['Genova'],['Bari','Cagliari','Firenze','Milano','Napoli','Palermo','Roma','Torino','Venezia']]);
-        expect(menage.menageWheel('11',3,'wheel',1,[],[...Bill.cities],test)).toEqual(['Tutte']);
-        expect(menage.menageWheel('n',3,'wheel',1,[],[...Bill.cities],test)).toEqual([3,'wheel',1,[],['Bari','Cagliari','Firenze','Genova','Milano','Napoli','Palermo','Roma','Torino','Venezia','Tutte']]);
-        expect(menage.menageWheel('n',3,'wheel',1,['Milano'],[...Bill.cities],test)).toEqual(['Milano']);
-    })
+        spy.mockReturnValue('n').mockReturnValueOnce(4);
+        expect(menage.menageWheel(5,1)).toEqual(['Genova']);
+
+        spy.mockReturnValue('11')
+        expect(menage.menageWheel(3,1)).toEqual(['Tutte']);
+
+        spy.mockReturnValue('n').mockReturnValueOnce(2).mockReturnValueOnce(4).mockReturnValueOnce(3).mockReturnValueOnce(1);
+        expect(menage.menageWheel(5,1)).toEqual(['Cagliari', 'Milano', 'Genova', 'Bari']);
+
+        spy.mockReturnValue('n').mockReturnValueOnce(12).mockReturnValueOnce(4);
+        expect(menage.menageWheel(5,1)).toEqual(['Genova']);
+    });
 
     it('menageType', () => {
-        function test (numbersPlayed, whellOrType, num, selected, cities, type) {
-            return [numbersPlayed, whellOrType, num, selected, cities, type]
-        }
-        expect(menage.menageType('3',5,'type',1,[],['Test'],[...Bill.types],test)).toEqual([5,'type',1,['Terno'],['Test'],['Estratto','Ambo','Quaterna','Cinquina']]);
-        expect(menage.menageType('n',3,'type',1,[],['Test'],[...Bill.types],test)).toEqual([3,'type',1,[],['Test'],['Estratto','Ambo','Terno','Quaterna','Cinquina']]);
-        expect(menage.menageType('n',3,'type',1,['Terno'],['Test'],[...Bill.types],test)).toEqual(['Terno']);
+        spy.mockReturnValue('n').mockReturnValueOnce(3);
+        expect(menage.menageType(5,1)).toEqual(['Terno']);
 
-    })
+        spy.mockReturnValue('n').mockReturnValueOnce(1).mockReturnValueOnce(2);
+        expect(menage.menageType(3,1)).toEqual(['Estratto','Terno']);
+        
+        expect(menage.menageType(1,1)).toEqual(['Estratto']);
+        
+        spy.mockReturnValue('n').mockReturnValueOnce('n').mockReturnValueOnce(1);
+        expect(menage.menageType(3,1)).toEqual(['Estratto']);
+    });
+
+    it('prices', () => {
+        spy.mockReturnValue(5);
+        expect(menage.prices(['Estratto', 'Ambo'], 1)).toEqual([5,5])
+        expect(menage.prices(['Estratto'], 1)).toEqual([5])
+    });
+
+    it('fillTickets', () => {
+        menage.chooseNumber = jest.fn().mockReturnValue(3).mockReturnValueOnce(5);
+        menage.menageWheel = jest.fn().mockReturnValue(['Genova', 'Milano', 'Firenze']).mockReturnValueOnce(['Tutte']);
+        menage.menageType = jest.fn().mockReturnValue(['Ambo', 'Terno']).mockReturnValueOnce(['Estratto' ,'Quaterna']);
+        menage.prices = jest.fn().mockReturnValue([5,12]).mockReturnValueOnce([9,10]);
+        const fill = menage.fillTickets(2);
+
+        expect(fill.length).toBe(2);
+
+        fill.forEach((el, index) => {
+            expect(el).toBeInstanceOf(Bill.Bill);
+
+            if (index === 0) {
+                expect(el.numbers).toBe(5);
+                expect(el.city).toEqual(['Tutte']);
+                expect(el.type).toEqual(['Estratto' ,'Quaterna']);
+                expect(el.prices).toEqual([9,10]);
+            }
+
+            if (index === 1) {
+                expect(el.numbers).toBe(3);
+                expect(el.city).toEqual(['Genova', 'Milano', 'Firenze']);
+                expect(el.type).toEqual(['Ambo', 'Terno']);
+                expect(el.prices).toEqual([5,12]);
+            }
+        })
+    });
+
+    it('repeat', () => {
+        spy.mockReturnValue('y');
+        const cb = () => 5;
+        expect(menage.repeat(cb)).toBe(5);
+        spy.mockReturnValue('n');
+        expect(menage.repeat(cb)).toBeUndefined();
+    });
 });

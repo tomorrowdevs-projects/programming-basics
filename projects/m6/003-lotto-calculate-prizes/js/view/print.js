@@ -24,7 +24,7 @@ function printList (arr) {
 // - symbol = string, the character to use to form the line
 // # return = string
 function separator (lineWidth, symbol) {
-    return `${symbol.padStart(lineWidth, symbol)}`
+    return lineWidth > 0 ? `${symbol.padStart(lineWidth, symbol)}` : ''
 };
 
 //generates the title for tickets with numbering
@@ -38,11 +38,12 @@ const ticketTitle = ticketNumber => `\n                      TICKET ${ticketNumb
 // # return = string
 function printInline (arr) {
     const listCategory = arr.join(' <> ');
+    console.log(listCategory.length);
     return `${separator(listCategory.length, '=')}\n${listCategory}\n${separator(listCategory.length, '=')}\n`
 };
 
 //creates a formatted string with all tickets created
-// - ticketArr = array with all Bill instances
+// - ticketArr = array with all ticket Data
 // # return = string
 function showCompletedTicket (ticketArr) {
     return ticketArr.reduce((res, ticket, index) => {
@@ -104,13 +105,6 @@ function printAllTicket (tickets) {
     return ticketString
 };
 
-//shows the total won among all and the total spent
-// - cashwin = array with 2 elements, the total invested and the total won
-function printCashWin (cashWin) {
-    terminal.show('', 'tax');
-    terminal.show('', `Total winnings: € ${cashWin[1]}\nTotal invested: € ${cashWin[0]}`);
-};
-
 //create the txt file with the tickets
 function createTicketFile (ticketString, cashWin) {
     fs.writeFileSync('tickets.txt', ticketString + 'The total spent on all tickets is € ' + cashWin[0]);
@@ -132,7 +126,7 @@ function showAll (tickets, extraction, cashWin) {
     terminal.show('', ticketString);
 
     //print total won
-    printCashWin(cashWin);
+    terminal.show('', 'tax', `Total winnings: € ${cashWin[1]}\nTotal invested: € ${cashWin[0]}`);
 
     //create file tickets.txt
     createTicketFile(ticketString, cashWin);
@@ -146,7 +140,7 @@ module.exports = {  printList,
                     showCompletedTicket,
                     printFakeExtraction,
                     centerWord,
-                    printCashWin,
+                    printTicket,
                     createTicketFile,
                     printAllTicket,
                     showAll

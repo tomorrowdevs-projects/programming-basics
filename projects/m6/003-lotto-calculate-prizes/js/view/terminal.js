@@ -18,11 +18,13 @@ const messages = {
 //show messages in console
 // - clear = string 'clear' to empty the console
 // - key = the keys of messages to display the corresponding message
-function show (clear, key) {
+function show (clear, ...args) {
     if(clear === 'clear') console.clear();
 
-    if(key in messages) console.log(messages[key])
-    else console.log(key)
+    args.forEach(el => {
+        if(el in messages) console.log(messages[el])
+        else console.log(el)
+    })
 };
 
 module.exports = { show }
