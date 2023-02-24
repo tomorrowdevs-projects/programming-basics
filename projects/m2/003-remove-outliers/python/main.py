@@ -24,7 +24,7 @@ if __name__=="__main__":
     if len(list_of_number) < 4:
         raise ValueError("Inserisci almeno 4 numeri")
     
-out_list = remove_outliers(list_of_number,2)
+    out_list = remove_outliers(list_of_number,2)
 
-print(out_list)
-print(list_of_number)
+    print(out_list)
+    print(list_of_number)
