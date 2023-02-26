@@ -14,4 +14,8 @@ console.log(
   )}`
 );
 
-//document.write(`The total reimbursement of the deposited containers is $ ${refoundTot.toFixed(2)}`);
+document.write(
+  `The total reimbursement of the deposited containers is $ ${refoundTot.toFixed(
+    2
+  )}`
+);
