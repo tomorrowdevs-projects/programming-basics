@@ -9,26 +9,18 @@ readDir()
     return file;
 })
 .then((file) => {
-
     return new Promise ((resolve, reject) => {
-
         fs.readFile (`./files/${file}`, 'utf-8', (err, data) => {
 
             if (err) reject (`ERROR: The requested file does not exist!`);
             resolve (data);
-            
         });
-
     });
-
 })
 .then((data) => showPopularNames(getPopularNames(getFileContent(data))))
 .catch((err) => console.log(err));
 
-
-
 const data = fs.readFileSync(`./files/yob1880.txt`, 'utf8');
-
 
 const getFileContent = text => {
 
@@ -46,18 +38,15 @@ const getFileContent = text => {
         };
 
         dataSet.push(baby);
-
     });
 
     return dataSet;
 };
 
-
 const getPopularNames = array => {
 
     const females = array.filter((obj) => obj.sex === `F`).sort((a, b) => parseFloat(b.popularity) - parseFloat(a.popularity));
     const males = array.filter((obj) => obj.sex === `M`).sort((a, b) => parseFloat(b.popularity) - parseFloat(a.popularity));
-
     const babies = [males.slice(0, 10), females.slice(0, 10)];
 
     return babies;
