@@ -14,9 +14,7 @@ function getPassword (array) {
     };
 
     return getPassword(array.splice(2));
-
 };
-
 
 const getList = string => {
 
@@ -28,7 +26,6 @@ const getList = string => {
     });
 
     return filteredArray;
-
 };
 
 readFile(`text1.txt`)
