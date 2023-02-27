@@ -1,7 +1,6 @@
 const fs = require('fs');
 
 const prompt = require('prompt-sync')();
-
 const command = prompt("Insert your command line: ");
 const fileName = prompt("Insert the name of the file you want to open: ");
     
