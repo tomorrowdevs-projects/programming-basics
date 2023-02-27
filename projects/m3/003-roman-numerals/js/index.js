@@ -2,8 +2,6 @@
 let string = prompt("--- Roman Numerals ---\n\nEnter a Roman Numeral to convert it into a number: ");
 //let string = "MMDCCXII"; //used this string to test.
 
-
-
     function convertRoman (string, int = 0) {
 
 //base case; stop the recursion when there are no other characters in the string.
@@ -37,6 +35,5 @@ let string = prompt("--- Roman Numerals ---\n\nEnter a Roman Numeral to convert 
         return convertRoman(string.substring(1), int);
 
     }
-
 
 alert(string + " is equal to " + convertRoman(string) + "!");
