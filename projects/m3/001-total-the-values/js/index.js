@@ -1,8 +1,5 @@
-
-
 // Requiring prompt-sync to use prompt in terminal mode.
 const prompt = require('prompt-sync')();
-
 
 function totalInput() {
 
@@ -13,6 +10,5 @@ function totalInput() {
     return (value === "" || isNaN(value)) ? result : (result + totalInput());
 
 };
-
 
 console.log(totalInput());
