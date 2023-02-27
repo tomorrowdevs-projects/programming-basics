@@ -1,7 +1,4 @@
-
-
 const coinsDenominations = [0.01, 0.05, 0.10, 0.25];
-
 
 function isPossibleChange (total, numberOfCoins, coinsDenominations) {
 
@@ -27,11 +24,7 @@ function isPossibleChange (total, numberOfCoins, coinsDenominations) {
     return isPossibleChange(total - coinsDenominations[coinsDenominations.indexOf(Math.max(...coinsDenominations))], numberOfCoins - 1, coinsDenominations);
   };
 
-
-
   return isPossibleChange(total, numberOfCoins, coinsDenominations.slice(0, -1));
 };
-
-// console.log(isPossibleChange(0.45, 5, coinsDenominations));
 
 module.exports = isPossibleChange;
