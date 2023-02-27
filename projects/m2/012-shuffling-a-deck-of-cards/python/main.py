@@ -13,7 +13,7 @@ def create_deck()-> list:
 
     return deck
 
-def shuffle_deck(deck:list) -> list:
+def shuffle_deck(deck:list):
     
     index = 0
     while index < len(deck):
