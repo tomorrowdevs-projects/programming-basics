@@ -2,13 +2,9 @@
 // Requiring `prompt-sync` to use prompt in terminal mode.
 const prompt = require("prompt-sync")();
 
-
 const number = Number(prompt("Please, enter a positive integer to convert it into binary form:"));
 
-
-
     function getBinary (number, string = "") {
-
 
 //get string or error based on number value; add the remainder of number to string if number > 0.
         if (number === 0) {
@@ -21,8 +17,6 @@ const number = Number(prompt("Please, enter a positive integer to convert it int
         };
 
     };
-
-
 
 console.log(getBinary(number));
 

@@ -1,6 +1,5 @@
 const prompt = require("prompt-sync")();
 
-
     function getBinary (number, string = "") {
 
         if (number === 0) {
@@ -13,6 +12,5 @@ const prompt = require("prompt-sync")();
         };
 
     };
-
 
 module.exports = getBinary;
