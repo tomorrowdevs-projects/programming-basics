@@ -21,7 +21,6 @@ const getWords = array => {
     const ruleBreakerWords = [];
 
     array.forEach(e => {
-
         if (e.includes(`ei`) || e.includes(`cie`)) ruleBreakerWords.push(e);
         if (e.includes(`ie`) && !e.includes(`cie`)) ruleFollowerWords.push(e);
     });
