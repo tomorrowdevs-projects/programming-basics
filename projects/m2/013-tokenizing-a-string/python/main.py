@@ -40,7 +40,7 @@ def tokenizing_a_string(math_exp:str) -> list:
     return tokens
 
 
-if __name__ == "__main__"_:
+if __name__ == "__main__":
     expression = input("math expression: ")
     print(tokenizing_a_string(expression))
 
