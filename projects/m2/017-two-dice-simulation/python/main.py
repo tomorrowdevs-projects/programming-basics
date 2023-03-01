@@ -66,7 +66,7 @@ for item in rolls.keys():
     frequency[item] = ((rolls[item] / numb_of_rolls))
 
 #print table that summarize data
-    print("{:8}{:8}{:10}{:10}".format("Total","Occurs","Frequency","Probability"))
+print("{:8}{:8}{:10}{:10}".format("Total","Occurs","Frequency","Probability"))
 for total in rolls:
     prob = calc_probability(numb_of_rolls,rolls[total],probability[total])
     print("{:^8}{:^8}{:^9.1%}{:9.2%}".format(total,rolls[total],frequency[total],prob))
