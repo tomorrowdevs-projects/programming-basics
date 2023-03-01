@@ -7,6 +7,27 @@ def two_dice_roll() -> int:
 
     return random.randint(1,6) + random.randint(1,6)
 
+def calc_probability(totrolls:int,success:int,prob:float):
+    '''
+    Calculates the probability of getting exactly 'success' number of successes with 'totrolls' number of rolls.
+    The probability of success is prob
+    '''
+
+    def fattoriale(n:int):
+        '''
+        return the factorial of n
+        '''
+        fatt = 1
+        for i in range(1,n+1):
+            fatt *= i
+        return fatt
+    
+
+    coeff_bin = fattoriale(totrolls)/((fattoriale(success)*(fattoriale(totrolls-success))))
+    result  = coeff_bin * prob**success * (1-prob)**(totrolls-success)
+
+    return result
+
 #'rolls' is a dictionary containing key-value pairs consisting of total rolled and the number of times rolled
 rolls = {}
 
@@ -44,29 +65,8 @@ frequency = {}
 for item in rolls.keys():
     frequency[item] = ((rolls[item] / numb_of_rolls))
 
-def calc_probability(totrolls:int,success:int,prob:float):
-    '''
-    Calculates the probability of getting exactly 'success' number of successes with 'totrolls' number of rolls.
-    The probability of success is prob
-    '''
-
-    def fattoriale(n:int):
-        '''
-        return the factorial of n
-        '''
-        fatt = 1
-        for i in range(1,n+1):
-            fatt *= i
-        return fatt
-    
-
-    coeff_bin = fattoriale(totrolls)/((fattoriale(success)*(fattoriale(totrolls-success))))
-    result  = coeff_bin * prob**success * (1-prob)**(totrolls-success)
-
-    return result
-
-
-print("{:8}{:8}{:10}{:10}".format("Total","Occurs","Frequency","Probability"))
+#print table that summarize data
+    print("{:8}{:8}{:10}{:10}".format("Total","Occurs","Frequency","Probability"))
 for total in rolls:
     prob = calc_probability(numb_of_rolls,rolls[total],probability[total])
     print("{:^8}{:^8}{:^9.1%}{:9.2%}".format(total,rolls[total],frequency[total],prob))
