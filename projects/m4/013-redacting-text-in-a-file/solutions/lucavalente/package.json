@@ -1,0 +1,11 @@
+{
+  "name": "lucavalente",
+  "version": "1.0.0",
+  "description": "test",
+  "main": "013-Redactung text in a file.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC"
+}
