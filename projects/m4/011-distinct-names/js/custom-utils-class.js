@@ -1,4 +1,6 @@
 // Modules
+const readline = require('readline');
+const fs = require('fs');
 const fsp = require('node:fs/promises');
 const path = require('path');
 
@@ -35,6 +37,28 @@ class CustomUtils {
             dir,
             files
         };
+    }
+
+    formatBabynamesDataFromFile(file, input) {
+
+        return new Promise( (resolve, reject) => {
+            const output = input;
+    
+            const stream = readline.createInterface({
+                input: fs.createReadStream(file),
+            });
+        
+            stream.on('line', line => {
+                const lineAsArr = line.split(',');
+        
+                if(!output.hasOwnProperty(lineAsArr[1])) output[lineAsArr[1]] = [];
+                if(!output[lineAsArr[1]].includes(lineAsArr[0])) output[lineAsArr[1]].push(lineAsArr[0]);
+            });
+        
+            stream.on('close', () => resolve(output));
+            stream.on('error', err => reject(err));
+        });
+    
     }
 
     /**
