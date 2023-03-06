@@ -1,47 +1,36 @@
-const fs = require(`fs`);
+const fs = require('fs');
 const prompt = require(`prompt-sync`)();
-const readFile = require(`./read_file`);
+const fileName = prompt(`Please, enter the name of the file you'd like to inspect to search for words with the six vowels in order: `);
 
-readFile(getFileName())
-.then((data) => getWords(data))
-.then((textArray) => findSpecificWords(textArray))
-.catch((err) => console.log(err));
-
-
-
-const getWords = text => {
-
-    const textArray = text.toLowerCase().match(/\b(\w+)\b/g);
-
-    return textArray;
-};
-
-
-function getFileName() {
-
-    return prompt(`Please, enter the name of the file you'd like to inspect to search for words with the six vowels in order: `)
-
-};
-
-
-const findSpecificWords = wordsArray => {
-
-    const found = [];
-    const exampleArray = [`a`, `e`, `i`, `o`, `u`, `y`];
-
-    wordsArray.forEach(word => {
-
-        let onlyVowels = word.match(/[aeiouy]+/g);
-        onlyVowels = onlyVowels.join(``).split(``).sort();
-        
-        if (onlyVowels.join(``) === exampleArray.join(``))  found.push(word);
-
+function getFile(file) {
+    return new Promise ((resolve, reject) => {
+        fs.readFile (`./files/${file}`, 'utf-8', (err, data) => {
+            if (err) reject (`ERROR: The is no file named "${file}" in the selected folder!`);
+            resolve (data);
+        });
     });
+}; 
 
-    const output = (found.length >= 1) ? `The words with the six vowels in order in your file are: ${found.join(`, `)}` : `There are no words with the six vowels in order in your file!`
+async function findSpecificWords(fileName) {
+    try {
+        const text = await getFile(fileName);
+        const textList = text.toLowerCase().match(/\b(\w+)\b/g);
+        const found = [];
+        const exampleArray = [`a`, `e`, `i`, `o`, `u`, `y`];
 
-   console.log(output);
+        textList.forEach(word => {
+            let onlyVowels = word.match(/[aeiouy]+/g);
+            onlyVowels = onlyVowels.join(``).split(``).sort();
+            
+            if (onlyVowels.join(``) === exampleArray.join(``))  found.push(word);
+        });
 
+        const output = (found.length >= 1) ? `The words with the six vowels in order in your file are: ${found.join(`, `)}` : `There are no words with the six vowels in order in your file!`
+
+    console.log(output);
+    } catch (error) {
+        console.log(error)
+    }
 };
 
-
+findSpecificWords(fileName);
