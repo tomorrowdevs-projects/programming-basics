@@ -113,6 +113,20 @@ describe(Category, () => {
     });
   });
 
+  describe(".checkAmount()", () => {
+    test("Expected `checkAmount` method to be True.", () => {
+      const actual = food.checkAmount(70);
+      const expected = true;
+      expect(actual).toEqual(expected);
+    });
+
+    test("Expected `checkAmount` method to be False.", () => {
+      const actual = food.checkAmount(7000000);
+      const expected = false;
+      expect(actual).toEqual(expected);
+    });
+  });
+
   describe(".printBudget()", () => {
     test("Expected different string representation of object.", () => {
       const actual = food.printBudget();
