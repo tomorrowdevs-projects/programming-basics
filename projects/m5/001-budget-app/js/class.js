@@ -7,7 +7,6 @@ class Category {
   constructor(category) {
     this.category = category;
     this.ledger = [];
-    this.balance = 0;
   }
 
   /**
@@ -19,7 +18,6 @@ class Category {
   deposit(amount, description = "") {
     if (this.checkAmount(amount)) {
       this.ledger.push({ amount: +amount, description: description });
-      this.balance += +amount;
     }
   }
 
@@ -36,7 +34,6 @@ class Category {
         amount: -amount,
         description: description,
       });
-      this.balance -= amount;
       return true;
     } else {
       return false;
@@ -49,7 +46,11 @@ class Category {
    * @returns {string} - returns formatted balance with two decimals
    */
   getBalance() {
-    return +this.balance.toFixed(2);
+    let tempAmount = 0;
+    for(const operation of this.ledger){
+      tempAmount += +operation.amount;
+    }
+    return tempAmount.toFixed(2);
   }
 
   /**
@@ -75,7 +76,7 @@ class Category {
    * @returns {boolean} - True if the balance is enough to cover the amount, false otherwise
    */
   checkFunds(amount) {
-    return !(+amount > +this.balance);
+    return !(+amount > +this.getBalance());
   }
 
   /**

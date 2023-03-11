@@ -62,7 +62,7 @@ describe(Category, () => {
       clothes.deposit(1000, "budget");
       clothes.withdraw(450, "New jacket");
       const actual = clothes.getBalance();
-      const expected = 550;
+      const expected = "550.00";
       expect(actual).toEqual(expected);
     });
   });
