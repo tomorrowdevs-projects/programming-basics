@@ -1,13 +1,12 @@
 
 def inserisci_float(prompt):
-    ok = False
-    while not ok:
+
+    while True:
         try:
             val =  input(prompt)
             float_val = float(val)
             return float_val
         except:
-            ok = False
             print(f"inserito valore non numerico: {val}")
 
 
