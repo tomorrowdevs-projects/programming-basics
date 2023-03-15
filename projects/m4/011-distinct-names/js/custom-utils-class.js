@@ -39,6 +39,12 @@ class CustomUtils {
         };
     }
 
+    /**
+     * Parse each line of file and adds the name in relative gender Set
+     * @param {string} file - the file path
+     * @param {object} input - the object that contains the sets for each gender
+     * @returns 
+     */
     formatBabynamesDataFromFile(file, input) {
 
         return new Promise( (resolve, reject) => {
@@ -49,27 +55,18 @@ class CustomUtils {
             });
         
             stream.on('line', line => {
-                const lineAsArr = line.split(',');
-        
-                if(!output.hasOwnProperty(lineAsArr[1])) output[lineAsArr[1]] = [];
-                if(!output[lineAsArr[1]].includes(lineAsArr[0])) output[lineAsArr[1]].push(lineAsArr[0]);
+                if(line.length > 0) {
+                    const lineAsArr = line.split(',');
+            
+                    if(!output.hasOwnProperty(lineAsArr[1])) output[lineAsArr[1]] = new Set();
+                    output[lineAsArr[1]].add(lineAsArr[0]);
+                }
             });
         
             stream.on('close', () => resolve(output));
             stream.on('error', err => reject(err));
         });
     
-    }
-
-    /**
-     * Generator function for files paths
-     * @param {array} files 
-     * @yields file path from files list
-     */
-    * generatorFileFromArray(files) {
-        for(let i = 0; i < files.length; i++) {
-            yield files[i];
-        }
     }
 
     /**

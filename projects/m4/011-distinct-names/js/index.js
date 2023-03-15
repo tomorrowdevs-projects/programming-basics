@@ -16,13 +16,15 @@ async function main() {
     let babynamesData = {};
     let fileCounter = 0;
 
-    fileList.files.forEach( async file => {
-        babynamesData = await customUtils.formatBabynamesDataFromFile(dir + file, babynamesData);
-    
-        // Show progress
-        fileCounter++;
-        console.log(`${customUtils.progress(fileCounter, fileList.files.length)} %`);
-    });
+    await Promise.all(
+        fileList.files.map( async file => {
+            babynamesData = await customUtils.formatBabynamesDataFromFile(dir + file, babynamesData);
+        
+            // Show progress
+            fileCounter++;
+            console.log(`${customUtils.progress(fileCounter, fileList.files.length)} %`);
+        })
+    );
 
     // Show final output
     console.log(babynamesData);
