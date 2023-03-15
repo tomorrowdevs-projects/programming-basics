@@ -38,24 +38,8 @@ async function main() {
     const requiredFiles = Array.from({ length: endingYear - startingYear + 1 }, (_, i) => `${dataDir}yob${startingYear + i}.txt`);
 
     // Calc all births for each name for each requested year
-    const namesData = await customUtils.sumBabynamesForEachYear(requiredFiles);
+    const totalBabynames = await customUtils.sumBabynamesForEachYear(requiredFiles);
 
-    console.log(namesData)
-
-    // Determine the boy’s name and the girl’s name given to the most children during the indicated years
-    for(const gender in namesData) {
-        let mostUsedName = [];
-        let nBabies = 0;
-        for(const name in namesData[gender]) {
-            if(nBabies <= namesData[gender][name]) {
-                mostUsedName.push(name);
-                nBabies = namesData[gender][name];
-            }
-        }
-
-        const plural = mostUsedName.length > 1;
-
-        console.log(`Most common name${plural ? 's' : ''} between ${startingYear} and ${endingYear} for ${gender == 'F' ? 'females' : 'males'} ${plural ? 'are' : 'is'} ${mostUsedName.join(', ')} (${nBabies} babies).`);
-    }
-
+    // Prints the most common names for each gender
+    customUtils.mostCommonNamesPrinter(totalBabynames).forEach( resultString => console.log(resultString) );
 }

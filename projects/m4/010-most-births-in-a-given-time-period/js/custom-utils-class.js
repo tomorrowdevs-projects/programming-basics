@@ -67,49 +67,51 @@ class CustomUtils {
 
     }
 
-    sumBabynamesForEachYear(fileList) {
+    /**
+     * Pass the array of data file and returns and object with the sum for each year of baby names, divided by genders
+     * @param {array} fileList 
+     * @returns {object}
+     */
+    async sumBabynamesForEachYear(fileList) {
+        const output = {};
 
-        return new Promise( resolve => {
+        await Promise.all(    
+            fileList.map( async file => {
+                const dataYear = await this.formatBabynamesDataFromFile(file);
+                Object.keys(dataYear).forEach( gender => Object.keys(dataYear[gender]).forEach( name => {
+                    if(!output.hasOwnProperty(gender)) output[gender] = {};
+                    !output[gender].hasOwnProperty(name) ? output[gender][name] = parseInt(dataYear[gender][name]) : output[gender][name] += parseInt(dataYear[gender][name]); 
+                }));
+            })
+        );
 
-            let namesData = {};
-    
-            fileList.forEach( async file => {
-                const namesYearData = await this.formatBabynamesDataFromFile(file);
-        
-                if(Object.keys(namesData).length === 0) {
-                    namesData = namesYearData;
-                    return;
-                }
-        
-                Object.keys(namesData).forEach( gender => {
-                    if(!namesData.hasOwnProperty(gender)) namesData[gender] = {};
-        
-                    Object.keys(namesYearData[gender]).forEach( name => {
-                        if(typeof namesData[gender][name] === 'undefined') {
-                            namesData[gender][name] = parseInt(namesYearData[gender][name]);
-                        } else {
-                            namesData[gender][name] += parseInt(namesYearData[gender][name]);
-                        }
-                    })
-                });
-        
-            });
-
-            console.log(Object.keys(namesData).length);
-
-            resolve(namesData);
-        })
+        return output;
     }
 
     /**
-     * Generator function for files paths
-     * @param {array} files 
-     * @yields file path from files list
+     * Pass an object with genders as key, object with the list of baby names as value, 
+     * and outputs a string with the most common names for each gender
+     * @param {object} totalBabynames
+     * @returns {array} stringList - an array of string, the result for each gender
      */
-    * generatorFileFromArray(files) {
-        for(let i = 0; i < files.length; i++) {
-            yield files[i];
-        }
+    mostCommonNamesPrinter(totalBabynames) {
+        const stringsList = [];
+
+        Object.keys(totalBabynames).forEach( gender => {
+            let mostUsedName = [];
+            let nBabies = 0;
+            Object.keys(totalBabynames[gender]).forEach( name => {
+                if(nBabies <= totalBabynames[gender][name]) {
+                    mostUsedName.push(name);
+                    nBabies = totalBabynames[gender][name];
+                }
+            });
+    
+            const plural = mostUsedName.length > 1;
+            stringsList.push(`Most common name${plural ? 's' : ''} for ${gender == 'F' ? 'females' : 'males'} ${plural ? 'are' : 'is'} ${mostUsedName.join(', ')} (${nBabies} babies).`);
+        });
+        
+        return stringsList;
     }
 
 }
