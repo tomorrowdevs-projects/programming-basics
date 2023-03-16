@@ -22,4 +22,7 @@ const outputFile = process.argv[4];
 const contentToRedact = fs.readFileSync(inputFile, {encoding:'utf8', flag:'r'});
 const redactedWords = fs.readFileSync(redactedWordsListFile, {encoding:'utf8', flag:'r'}).replace(/\r\n/g, ' ').split(' ');
 
-fs.writeFile(outputFile, customUtils.redacter(contentToRedact, redactedWords), err => console.log(err));
+fs.writeFile(outputFile, customUtils.redacter(contentToRedact, redactedWords), err => {
+    if(err) console.log(err)
+});
+console.log(`Generated redacted file in ${outputFile}.`);

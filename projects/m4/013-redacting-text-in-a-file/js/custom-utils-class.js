@@ -19,7 +19,7 @@ class CustomUtils {
     }
     
     /**
-     * Redact the inputText hiding the redactedWods
+     * Redact the inputText hiding the redactedWords
      * @param {string} inputText 
      * @param {array} redactedWords 
      * @returns {string} the redacted text
@@ -27,10 +27,10 @@ class CustomUtils {
     redacter(inputText, redactedWords) {
         let output = inputText;
     
-        redactedWords.forEach( rw => {
-            const substitute = this.genSubstitute(rw.length);
-            const rwAsRegex = new RegExp(rw, 'gmi');
-            output = output.replace(rwAsRegex, substitute);
+        redactedWords.forEach( redWord => {
+            const substitute = this.genSubstitute(redWord.length);
+            const redWordAsRegex = new RegExp(redWord, 'gmi');
+            output = output.replace(redWordAsRegex, substitute);
         })
     
         return output;
@@ -43,11 +43,7 @@ class CustomUtils {
      * @returns {string}
      */
     genSubstitute(length, substitute = '*') {
-        let output = ''
-        for(let i = 0; i < length; i++) {
-            output += substitute;
-        }
-        return output;
+        return Array.from({ length }, _ => substitute).join('');
     }
 }
 
