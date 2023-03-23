@@ -1,4 +1,4 @@
-const prompt = require("prompt-sync")({sigint: true});
+// const prompt = require("prompt-sync")({sigint: true});
 // Since it doesn't exist a way to have a multiline prompt in Javascript like in Python, we simulate the new line using the space, then the user can write all the ages separated by a space, and finish insert a space alone after the last age.
 
 function askAges(){
