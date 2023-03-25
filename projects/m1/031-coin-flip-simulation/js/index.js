@@ -26,8 +26,6 @@ for (let counter = 0; counter < 10; counter++) {
     while (true) {
         // call to " randomFunction" function containing the " Math.random() " method to generate random numbers
         flip_Single = randomFunction(2);
-        /* flip_Single = Math.floor(Math.random()*2);
-           flip_Single = (Math.floor(Math.random()*2) == 0) ? "T" : "H"; */
 
         /* " IF " condition to simulate fair coin flips with equal probability of coming up:
            - " 0 " --> inserts into the " flips_Array " array the string " h " 
