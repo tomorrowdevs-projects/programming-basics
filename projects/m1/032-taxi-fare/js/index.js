@@ -1,7 +1,8 @@
 /* function to define the total price of the travel
-    - variable " price_Additional_Single_Meter " --> calculates the price for the metre
+    - variable " price_Additional_Single_Meter "     --> calculates the price for the metre
     - variable " price_Additional_Single_Kilometre " --> calculates the total distance price
-    - variable " price_Total_Travel " --> total travel price */
+    - variable " price_Total_Travel "                --> total travel price */
+
 function priceDistanceFunction(distance) {
 
     price_Additional_Single_Metro = 0.25 / 140;
