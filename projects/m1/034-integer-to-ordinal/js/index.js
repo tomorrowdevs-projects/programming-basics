@@ -9,20 +9,20 @@ function functionNumberOrdinary(numberInteger) {
     return numberOrdinary;
 }
 // string-type variable declaration
-let result_Namber_Ordinay = "";
+let result_Number_Ordinary = "";
 // variable " number_Integer " --> stores integer number entry 
 let number_Integer = parseInt(prompt("Enter a integer number --> "));
 // variable " number_Ordinal " --> store call to function " functionNumberOrdinary "
 let number_Ordinary = functionNumberOrdinary(number_Integer);
 
 /* IF " conditional for input range whole numbers between 1 and 12 (inclusive) from User
-    - variable " result_Namber_Ordinay " --> result storage
+    - variable " result_Number_Ordinary " --> result storage
    ELSE 
     - returns an empty string if the function is called with an argument outside the range of integers " 1 to 12 " */
 if (number_Integer >= 1 && number_Integer <= 12) {
-    result_Namber_Ordinay = `The " ORDINARY " number corresponding to number " INTEGER " *" ${number_Integer} "* is --> ${number_Ordinary.toUpperCase()}`;
+    result_Number_Ordinary = `The " ORDINARY " number corresponding to number " INTEGER " *" ${number_Integer} "* is --> ${number_Ordinary.toUpperCase()}`;
 } else {
-    result_Namber_Ordinay = "";
+    result_Number_Ordinary = "";
 }
 // display with a " console.log() of the result"
-console.log(`\n${result_Namber_Ordinay}\n`);
+console.log(`\n${result_Number_Ordinary}\n`);
