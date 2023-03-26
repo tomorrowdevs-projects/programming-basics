@@ -45,21 +45,13 @@ class Hat {
         const pickedBalls = [];
 
         if(numberOfBalls >= this.contents.length) {
-            this.contents = [];
-            return balls;
+            return this.contents;
         };
 
-        for (let k = 0; k < numberOfBalls; k++) {
-            for (let i = balls.length - 1; i > 0; i--) {
-              const j = Math.floor(Math.random() * (i + 1));
-              const temp = balls[i];
-              balls[i] = balls[j];
-              balls[j] = temp;
-            };
-            this.contents.splice(this.contents.indexOf(balls[0]), 1);
-            balls.splice(0, 1);
-            pickedBalls.push(balls[0]);
-        };
+        const random = Math.floor(Math.random() * balls.length); 
+        pickedBalls.push(balls[random]);
+        this.contents.splice(this.contents.indexOf(balls[random]), 1);
+        balls.splice(random, 1);
         return pickedBalls;
     }
 };
