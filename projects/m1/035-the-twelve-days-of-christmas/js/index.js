@@ -1,18 +1,18 @@
-/** Variables and constants of numeric and string types
+/* 
  * @variable { day_VerseNumber }         --> declared globally because used both inside the @function { twelveDaysChristmas } as an @array of ordinary days and externally
  * @variable { gift_DayChristmas }       --> declared globally because it is used both inside the @function { twelveDaysChristmas } as the @array { gift_DayChristmas } of ordinary days and externally
- * @const { lyrics_Complete }            --> empty @array where the list of gifts is stored to be inserted with the @metod uniscift()
- * @variable { lyrics_Complete_Display } --> complete song display
+ * @const { lyrics_Complete }            --> @array where the list of gifts is stored to be inserted with the @metod uniscift()
+ * @variable { lyrics_Complete_Display } --> type string for complete song display
 */
 let day_VerseNumber;
 let gift_DayChristmas;
 const lyrics_Complete = [];
 let lyrics_Complete_Display = "";
 
-/** 
-* @function twelveDaysChristmas 
+/* 
+* @function twelveDaysChristmas               --> function that displays one verse of the song. 
 * @param {ParamDataTypeHere}                  --> ordinary day verse number
-* @ @array {day_VerseNumber}                  --> contains the 12 ordinal days
+* @array {day_VerseNumber}                    --> contains the 12 ordinal days
 * @array {gift_DayChristmas}                  --> contains the list of 12 gifts
 * @variable {day_VerseNumber}                 --> allow to select the different elements through the for loop 
 * @variable {gift_DayChristmas}               --> allow to select the different elements through the for loop 
@@ -31,7 +31,7 @@ function twelveDaysChristmas(numberDayVerse) {
     return versesLineOne_giftDayChristmas;
 }
 
-/** 
+/* 
  * @for Loop to display the function 12 times
  * @metod {unshift()} to insert at each increnent the element will always be the first element in the gift list 
  * @variable in which the call to the function @function {twelveDaysChristmas} + @array {lyrics_Complete} is stored for displaying the complete lyrics of the song
