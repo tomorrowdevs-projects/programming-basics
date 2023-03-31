@@ -1,5 +1,5 @@
 n = int(input("Enter a number equal or greater than 2: "))
-if n <= 2:
+if n < 2:
     print("Error")
 
 
