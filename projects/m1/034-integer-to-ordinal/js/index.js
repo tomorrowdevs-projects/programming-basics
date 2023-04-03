@@ -18,7 +18,7 @@ function parseOrdinalNummber( number ){
 }
 
 function init(){
-    for (let i = 1; i <= 13; i++){
+    for (let i = 1; i <= 12; i++){
         console.log( parseOrdinalNummber( i ) );
     }
 
