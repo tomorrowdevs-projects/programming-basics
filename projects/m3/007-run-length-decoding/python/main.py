@@ -1,6 +1,8 @@
 def run_length_decompression(l:list) -> list:
     '''
-    
+    Compression is achieved by replacing groups of repeated values with one copy of the value, followed by the number of times that it should be repeated. For example, the list `["A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "A", "B", "B", "B","B","A","A","A","A","A","A","B"]`would be compressed as `["A",12,"B",4,"A",6,"B",1]`. 
+
+    Decompression is performed by replicating each value in the list the number of times indicated
     '''
     if len(l)==0:
          return []
