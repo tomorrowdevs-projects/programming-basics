@@ -1,10 +1,16 @@
-// const prompt = require("prompt-sync")({sigint: true});
-// Since it doesn't exist a way to have a multiline prompt in Javascript like in Python, we simulate the new line using the space, then the user can write all the ages separated by a space, and finish insert a space alone after the last age.
+const prompt = require("prompt-sync")({sigint: true});
 
-function askAges(){
-    const ages = prompt( "Please enter members group ages, thanks. You can enter the ages one after the other separating them with a single space.", 'Example: 18 23 2 41 78 ' );
-    return ages.split( ' ' );
+function askAges( ages = [] ){
+    const askedAge = prompt( 'Enter member\'s group age.' );
+    
+    if( askedAge.trim() === '' ){
+        return ages;
+    }
+
+    ages.push( askedAge );
+    return askAges( ages );
 }
+
 
 function setPrice( ages ){
     let price = 23;
@@ -35,7 +41,7 @@ function processAges( ages ){
         const age = parseInt( ages[i] );
 
         if ( ! Number.isInteger( age ) || age < 0 ){
-            console.log( 'You have entered one or more age or space in a wrong format. Closing the program...');
+            console.log( 'You have entered one or more age in a wrong format. Closing the program...');
             return false;
         }
 
@@ -45,16 +51,17 @@ function processAges( ages ){
     return totalPrice;
 }
 
-function payment_message( price ){
+function paymentMessage( price ){
     console.log( 'The admission cost for the group is $ ' + price.toFixed(2) );
 }
 
 function init(){
+    console.log( 'Please enter members group ages, one by one (if you want to close the program leave the field blank).' );
     const askedAges = askAges();  
     const priceAmount = processAges( askedAges );
 
     if ( priceAmount ){
-        payment_message( priceAmount );
+        paymentMessage( priceAmount );
     }
 
     return;
