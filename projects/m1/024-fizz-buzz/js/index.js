@@ -1,34 +1,28 @@
-// const prompt = require("prompt-sync")({ sigint: true}) ;
-
 function playFizzBuzz(){
-    for (let i = 1; i <= 100; i++) {
+    let phrases = '';
+
+    const length = 100;
+
+    for (let i = 1; i <= length; i++) {
         let phrase = i;
 
-        const divisbleBy3 = i % 3 == 0 ? true: false;
-        const divisbleBy5 = i % 5 == 0 ? true: false;
-
-        if ( divisbleBy3 ){
+        if ( i % 3 === 0 ){
             phrase = 'fizz';
-        }
-
-        if ( divisbleBy5 ){
+        } else if ( i % 5 === 0){
             phrase = 'buzz';
-        }
-
-        if ( divisbleBy3 && divisbleBy5 ){
+        } else if ( i % 3 === 0 && i % 5 === 0){
             phrase = 'fizz and buzz';
+
         }
 
-        console.log( phrase );
+        phrases += i === length ? phrase : phrase + '\n';
     }
 
-    return;
-    
+    return phrases;
 }
 
 function init(){
-    playFizzBuzz();
+    console.log( playFizzBuzz() );
     return;
 }
-
 init();
