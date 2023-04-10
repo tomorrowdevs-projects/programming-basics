@@ -1,23 +1,5 @@
 // const prompt = require("prompt-sync")({ sigint: true}) ;
 
-function askBitValues( bitStrings = [] ){
-
-    const bitString = prompt( 'Please enter a 8-bit value.', 'Example: 01010101' );
-
-    if ( bitString.trim() === '' ) {
-        console.log( 'Closing the program...' );
-        return;
-    }
-
-    if ( bitString.length === 8 ){
-        console.log( findParityType( bitString ) );
-    } else {
-        console.log('The entered value isn\'t 8 characters long.');
-    }
-
-    return askBitValues( bitStrings );
-}
-
 function findParityType( bitString ){
 
     let ones = 0;
@@ -30,21 +12,42 @@ function findParityType( bitString ){
             if ( bitValue === '1' ){
                 ones++;
             } else {
-                return 'Wrong value.';
+                return false;
             }
         }
     }
 
-    if (ones % 2 === 0){
+    if ( ones % 2 === 0 ){
         parityBit = 0;
     } 
 
-    return 'Parity bit is ' + parityBit;
+    return parityBit;
 }
 
 function init(){
-    askBitValues();
+    let askedBitString;
+
+    while( askedBitString !== '' ){
+
+        askedBitString = prompt( 'Please enter a 8-bit value.' );
+
+        if ( askedBitString.length === 8 ){
+
+            const parityBit = findParityType( askedBitString );
+
+            if( parityBit !== false ){
+                console.log( 'Parity bit is ' + parityBit );
+            } else {
+                console.log( 'Wrong value.' );
+            }
+
+        } else {
+            console.log( 'Wrong bit string length.' );
+        }
+
+    }
+
+    console.log( 'Closing the program...' );
     return;
 }
-
 init();
