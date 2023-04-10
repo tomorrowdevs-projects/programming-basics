@@ -1,16 +1,31 @@
-const prompt = require("prompt-sync")({sigint: true});
+// const prompt = require("prompt-sync")({sigint: true});
 
-function askAges( ages = [] ){
-    const askedAge = prompt( 'Enter member\'s group age.' );
-    
-    if( askedAge.trim() === '' ){
-        return ages;
+function verifyAge( age ){
+    if ( isNaN( age ) || age < 0 ){
+        console.log( 'Age in a wrong format. Closing the program...');
+        return false;
     }
 
-    ages.push( askedAge );
-    return askAges( ages );
+    return true;
 }
 
+function askAges(){
+
+    const ages = [];
+    let askedAge;
+
+    while( askedAge !== '' ){
+
+        askedAge = prompt( 'Enter member\'s group age.' );
+
+        if( askedAge !== '' && verifyAge( askedAge ) ) {
+            ages.push( askedAge );
+        }
+
+    }
+    
+    return ages;
+}
 
 function setPrice( ages ){
     let price = 23;
@@ -40,8 +55,7 @@ function processAges( ages ){
 
         const age = parseInt( ages[i] );
 
-        if ( ! Number.isInteger( age ) || age < 0 ){
-            console.log( 'You have entered one or more age in a wrong format. Closing the program...');
+        if ( ! verifyAge( age ) ){
             return false;
         }
 
@@ -60,7 +74,7 @@ function init(){
     const askedAges = askAges();  
     const priceAmount = processAges( askedAges );
 
-    if ( priceAmount ){
+    if ( priceAmount !== false ){
         paymentMessage( priceAmount );
     }
 
