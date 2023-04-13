@@ -1,24 +1,21 @@
 function playFizzBuzz(){
     let phrases = '';
 
-    const length = 100;
-
-    for (let i = 1; i <= length; i++) {
-        let phrase = i;
+    for (let i = 1; i <= 100; i++) {
 
         if ( i % 3 === 0 ){
-            phrase = 'fizz';
-        } else if ( i % 5 === 0){
-            phrase = 'buzz';
-        } else if ( i % 3 === 0 && i % 5 === 0){
-            phrase = 'fizz and buzz';
-
+            phrases += 'fizz' + '\n';
+        } else if ( i % 5 === 0 ){
+            phrases += 'buzz' + '\n';
+        } else if ( i % 3 === 0 && i % 5 === 0 ){
+            phrases += 'fizz and buzz' + '\n';
+        } else {
+            phrases += i + '\n';
         }
 
-        phrases += i === length ? phrase : phrase + '\n';
     }
 
-    return phrases;
+    return phrases.replace( /\n$/, '' );
 }
 
 function init(){
