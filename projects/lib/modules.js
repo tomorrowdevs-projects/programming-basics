@@ -1,5 +1,3 @@
-const prompt = require("prompt-sync")({ sigint: true}) ;
-
 function isBoolean( value ) {
   return typeof value === 'boolean';
 }
@@ -18,7 +16,7 @@ function isLeapYear( value ){
 }
 
 /** Function from exercise m1/034-integer-to-ordinal  */
-function parseOrdinalNummber( number ){
+function parseOrdinalNumber( number ){
     const textualOrdinalNumbers = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth'];
 
     if ( number < 1 || number > 12 ){
@@ -94,14 +92,14 @@ function verifyDay( day, month, year ){
         if ( ! isLeapYear( year ) ){
             maxMonthsDuration[1] = 28;
         }
-        
+
         if( day <= maxMonthsDuration[month -1] ){
             return day;
         }
 
         console.log( 'The day exceeds the number of days in the month.' );
     } 
-    
+
     return false;
 }
 
@@ -113,14 +111,11 @@ function calculateFebruaryDays( year ){
     return false;
 }
 
-
-// verifica il leap per il month
-
-
-module.exports = {
+// module.exports = { // For CommonJS environment
+export { // For ES module environment. In addition for Visual Studio Code two package.json files must be created, one in this file folder, the other one in the application file folder, they must contain the following code { "type": "module" }
     isBoolean,
     isLeapYear,
-    parseOrdinalNummber,
+    parseOrdinalNumber,
     askDay,
     askMonth,
     askYear,
