@@ -1,4 +1,5 @@
-const { parseOrdinalNummber } = require( '../../../lib/modules.js' );
+// const { parseOrdinalNummber } = require( '../../../lib/modules.js' ); // For CommonJS environment
+import { parseOrdinalNumber } from '../../../lib/modules.js'; // For ES module environment (see the imported file for additional informations)
 
 function generate12DaysOfChristmasLyric( number ){
 
@@ -19,7 +20,7 @@ function generate12DaysOfChristmasLyric( number ){
 
     const repeatingVerse = number !== 1 ? '\n' + 'And a partridge in a pear tree' : '';
 
-    return '\n' + '*On the ' + parseOrdinalNummber( number ) + ' day of Christmas my true love sent to me:' + '\n' + gifts[ number - 1 ] + repeatingVerse + '.*';
+    return '\n' + '*On the ' + parseOrdinalNumber( number ) + ' day of Christmas my true love sent to me:' + '\n' + gifts[ number - 1 ] + repeatingVerse + '.*';
 }
 
 function init(){    
