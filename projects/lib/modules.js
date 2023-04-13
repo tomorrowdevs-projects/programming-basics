@@ -26,6 +26,25 @@ function parseOrdinalNumber( number ){
     return textualOrdinalNumbers[number - 1];
 }
 
+/** Function from exercise m1/034-integer-to-ordinal  */
+function parseOrdinalNumberNew( number, maxValue ){
+
+    let currentNumber = '';
+
+    for (let i = 1; i <= maxValue; i++) {
+        if( number % 10 === 1 ){
+            currentNumber = number + 'st';
+        } else if( number % 10 === 2 ){
+            currentNumber = number + 'nd';
+        } else if( number % 10 === 3 ){
+            currentNumber = number + 'rd';
+        } else {
+            currentNumber = number + 'th';
+        }
+    }
+
+    return currentNumber
+}
 
 function askDay(){
     const askedDay = parseInt ( prompt( 'Enter a day.', 'Example: 12' ) );
@@ -116,6 +135,7 @@ export { // For ES module environment. In addition for Visual Studio Code two pa
     isBoolean,
     isLeapYear,
     parseOrdinalNumber,
+    parseOrdinalNumberNew,
     askDay,
     askMonth,
     askYear,
