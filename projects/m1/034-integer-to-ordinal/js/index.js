@@ -6,8 +6,8 @@ It should return an empty string if the function is called with an argument outs
 Include a main program that demonstrates your function by displaying each integer from 1 to 12 and its ordinal number. 
 Your main program should only run when your file has not been imported into another program.
 */
-
-function parseOrdinalNummber( number ){
+/* 
+function parseOrdinalNumber( number ){
     const textualOrdinalNumbers = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth'];
 
     if ( number < 1 || number > 12 ){
@@ -19,7 +19,37 @@ function parseOrdinalNummber( number ){
 
 function init(){
     for (let i = 1; i <= 12; i++){
-        console.log( parseOrdinalNummber( i ) );
+        console.log( parseOrdinalNumber( i ) );
+    }
+
+    return;
+}
+init();
+*/
+
+function parseOrdinalNumberNew( number, maxValue ){
+
+    let currentNumber = '';
+
+    for (let i = 1; i <= maxValue; i++) {
+        if( number % 10 === 1 ){
+            currentNumber = number + 'st';
+        } else if( number % 10 === 2 ){
+            currentNumber = number + 'nd';
+        } else if( number % 10 === 3 ){
+            currentNumber = number + 'rd';
+        } else {
+            currentNumber = number + 'th';
+        }
+    }
+
+    return currentNumber
+}
+
+function init(){
+    const maxValue = 100;
+    for (let i = 1; i <= maxValue; i++){
+        console.log( parseOrdinalNumberNew( i, maxValue ) );
     }
 
     return;
