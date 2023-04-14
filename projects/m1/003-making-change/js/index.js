@@ -1,59 +1,55 @@
-//input cifra da convertire
-let importoTotale = 476;
-let monetaPartenza = 200; //tonie
-let monetaOttenuta = 0;
-let restoMoneta = 0;
+// Data type request
+const prompt = require('prompt-sync')();
+let totalAmount = parseInt(prompt("Enter the total amount in cents: "), 10);
 
-console.log("Hai introdotto nella macchina " + importoTotale + " centesimi "+ "che equivalgono a");
+let startingCoin = 200; //toonies
+let obtainedCoin = 0;
+let remainingCoin = 0;
 
-if (importoTotale >= monetaPartenza) {
-    monetaOttenuta = importoTotale / monetaPartenza;
-    console.log( Math.trunc(monetaOttenuta)+" toonie");
-    importoTotale = (importoTotale % monetaPartenza)
+console.log("You have inserted into the machine " + totalAmount + " cents " + "which are equivalent to");
 
+if (totalAmount >= startingCoin) {
+    obtainedCoin = totalAmount / startingCoin;
+    console.log(Math.trunc(obtainedCoin) + " toonies");
+    totalAmount = (totalAmount % startingCoin);
 }
 
-monetaPartenza = 100; //loonie
+startingCoin = 100; //loonies
 
-if (importoTotale >= monetaPartenza) {
-    monetaOttenuta = importoTotale / monetaPartenza;
-    console.log( Math.trunc(monetaOttenuta)+" loonie");
-    importoTotale = (importoTotale % monetaPartenza)
-
+if (totalAmount >= startingCoin) {
+    obtainedCoin = totalAmount / startingCoin;
+    console.log(Math.trunc(obtainedCoin) + " loonies");
+    totalAmount = (totalAmount % startingCoin);
 }
 
-monetaPartenza = 25; //quarter
+startingCoin = 25; //quarters
 
-if (importoTotale >= monetaPartenza) {
-    monetaOttenuta = importoTotale / monetaPartenza;
-    console.log( Math.trunc(monetaOttenuta)+" quarter");
-    importoTotale = (importoTotale % monetaPartenza)
-
+if (totalAmount >= startingCoin) {
+    obtainedCoin = totalAmount / startingCoin;
+    console.log(Math.trunc(obtainedCoin) + " quarters");
+    totalAmount = (totalAmount % startingCoin);
 }
 
-monetaPartenza = 10; //dime
+startingCoin = 10; //dimes
 
-if (importoTotale >= monetaPartenza) {
-    monetaOttenuta = importoTotale / monetaPartenza;
-    console.log( Math.trunc(monetaOttenuta)+" dime");
-    importoTotale = (importoTotale % monetaPartenza)
-
+if (totalAmount >= startingCoin) {
+    obtainedCoin = totalAmount / startingCoin;
+    console.log(Math.trunc(obtainedCoin) + " dimes");
+    totalAmount = (totalAmount % startingCoin);
 }
 
-monetaPartenza = 5; //nickel
+startingCoin = 5; //nickels
 
-if (importoTotale >= monetaPartenza) {
-    monetaOttenuta = importoTotale / monetaPartenza;
-    console.log( Math.trunc(monetaOttenuta)+" nickel");
-    importoTotale = (importoTotale % monetaPartenza)
-
+if (totalAmount >= startingCoin) {
+    obtainedCoin = totalAmount / startingCoin;
+    console.log(Math.trunc(obtainedCoin) + " nickels");
+    totalAmount = (totalAmount % startingCoin);
 }
 
-monetaPartenza = 1; //penny
+startingCoin = 1; //pennies
 
-if (importoTotale >= monetaPartenza) {
-    monetaOttenuta = importoTotale / monetaPartenza;
-    console.log( Math.trunc(monetaOttenuta)+" penny");
-    importoTotale = (importoTotale % monetaPartenza)
-
+if (totalAmount >= startingCoin) {
+    obtainedCoin = totalAmount / startingCoin;
+    console.log(Math.trunc(obtainedCoin) + " pennies");
+    totalAmount = (totalAmount % startingCoin);
 }
