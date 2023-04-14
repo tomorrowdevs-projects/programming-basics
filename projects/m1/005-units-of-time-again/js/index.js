@@ -1,44 +1,42 @@
-// inserimento input utente
-let totalInputSeconds = 673876543;
+// user input
+const prompt = require('prompt-sync')();
+let totalInputSeconds = parseInt(prompt("Enter the total seconds: "), 10);
 
-// dichiarazioni variabili
-let days = 86400;
-let hours = 3600;
-let minutes = 60
-let seconds = 1
+// variable declarations
+const days = 86400;
+const hours = 3600;
+const minutes = 60;
+const seconds = 1;
 let totalDays = 0;
 let totalHours = 0;
 let totalMinutes = 0;
-let totalSeconds = 0;
 
-//conversione dei secondi in giorni
+// convert seconds to days
 if (totalInputSeconds >= days) {
     totalDays = totalInputSeconds / days;
     totalDays = Math.trunc(totalDays);
     totalInputSeconds = (totalInputSeconds % days);
-
-//conversione dei secondi in ore
 }
+
+// convert seconds to hours
 if (totalInputSeconds >= hours) {
     totalHours = totalInputSeconds / hours;
     totalHours = Math.trunc(totalHours);
     totalInputSeconds = (totalInputSeconds % hours);
-
-//conversione dei secondi in minuti
 }
+
+// convert seconds to minutes
 if (totalInputSeconds >= minutes) {
     totalMinutes = totalInputSeconds / minutes;
     totalMinutes = Math.trunc(totalMinutes);
     totalInputSeconds = (totalInputSeconds % minutes);
-
 }
 
-//conversione dei risultati in formato stringa a due cifre
+// convert results to two-digit string format
 totalDaysString = totalDays.toString().padStart(2, "0");
 totalHoursString = totalHours.toString().padStart(2, "0");
 totalMinutesString = totalMinutes.toString().padStart(2, "0");
 totalInputSecondsString = totalInputSeconds.toString().padStart(2, "0");
 
-//display
-console.log("Durata complessiva del timer "+totalDaysString +":"+totalHoursString+":"+totalMinutesString+":"+totalInputSecondsString);
-
+// display
+console.log("Total timer duration: " + totalDaysString + ":" + totalHoursString + ":" + totalMinutesString + ":" + totalInputSecondsString);
