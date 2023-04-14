@@ -1,16 +1,16 @@
-// input dati
-let days = 5;
-let hours = 5;
-let minutes = 3;
-let seconds = 20;
+// input data
+const prompt = require('prompt-sync')();
+const days = parseInt(prompt("Enter the days: "), 10);
+const hours = parseInt(prompt("Enter the hours: "), 10);
+const minutes = parseInt(prompt("Enter the minutes: "), 10);
+const seconds = parseInt(prompt("Enter the seconds: "), 10);
 
-// conversione da dato a secondi
-let dayInSecond = days * 86400;
-let hoursInSecond = hours * 3600;
-let minutesInSecond = minutes * 60;
+// conversion from data to seconds
+const dayInSecond = days * 86400;
+const hoursInSecond = hours * 3600;
+const minutesInSecond = minutes * 60;
 
-// somma secondi
+// sum seconds
 let totalseconds = dayInSecond + hoursInSecond + minutesInSecond + seconds;
-// display risultato
-console.log(days + " giorni " + hours + " ore " + minutes + " minuti " + seconds + " secondi" + " sono in totale " + totalseconds + " secondi!");
-
+// display result
+console.log(days + " days " + hours + " hours " + minutes + " minutes " + seconds + " seconds" + " are in total " + totalseconds + " seconds!");
