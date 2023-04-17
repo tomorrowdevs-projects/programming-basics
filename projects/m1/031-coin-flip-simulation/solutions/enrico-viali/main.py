@@ -39,7 +39,7 @@ This project requires to be completed in a maximum of **2 hours**
 
 from random import random
 
-def simulation(nr_consec_occurr):
+def simulation(nr_consec_occurr : int):
     """STWU."""
 
     if nr_consec_occurr < 0:
@@ -67,7 +67,7 @@ if __name__ == "__main__":
     nr_simul = 10
     somma = 0
     for i in range(nr_simul):
-        nr = simulation(5)
+        nr = simulation(3)
         print(f"({nr} flips)")
         somma += nr
     print(f"\nOn average, {somma/nr_simul:.2f} flips were needed.")
