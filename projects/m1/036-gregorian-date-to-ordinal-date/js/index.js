@@ -1,6 +1,36 @@
 // const prompt = require("prompt-sync")({ sigint: true}) ;
 
-const { askDay, askMonth, askYear, isDayValue, isMonthValue, isYearValue, calculateFebruaryDays, verifyDay } = require( '../../../lib/modules.js' );
+const { isDayValue, isMonthValue, isYearValue, calculateFebruaryDays, verifyDay } = require( '../../../lib/modules.js' );
+
+function askDay(){
+    const askedDay = parseInt ( prompt( 'Enter a day.', 'Example: 12' ) );
+
+    if ( isDayValue( askedDay ) ){
+        return askedDay;
+    }
+
+    return askDay();
+}
+
+function askMonth(){
+    const askedMonth = parseInt ( prompt( 'Enter a month.', 'Example: 04' ) );
+
+    if ( isMonthValue( askedMonth ) ){
+        return askedMonth;
+    }
+
+    return askMonth();
+}
+
+function askYear(){
+    const askedYear = parseInt ( prompt( 'Enter a year.', 'Example: 2021' ) );
+
+    if ( isYearValue( askedYear ) ){
+        return askedYear;
+    }
+
+    return askYear();
+}
 
 function calculateOrdinalDay( day, month, year ){
     if ( isDayValue( day ) && isMonthValue( month ) && isYearValue( year ) ){
