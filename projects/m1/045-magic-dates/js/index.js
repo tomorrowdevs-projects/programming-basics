@@ -1,5 +1,5 @@
-// const { parseOrdinalNummber } = require( '../../../lib/modules.js' ); // For CommonJS environment
-import { isLeapYear } from '../../../lib/modules.js'; // For ES module environment (see the imported file for additional informations)
+const { isLeapYear } = require( '../../../lib/modules.js' ); // For CommonJS environment
+// import { isLeapYear } from '../../../lib/modules.js'; // For ES module environment (see the imported file for additional informations)
 
 function findMagicDateByYear( year, maxMonthsDuration ){
 
