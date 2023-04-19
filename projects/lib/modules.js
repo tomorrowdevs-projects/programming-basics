@@ -46,36 +46,6 @@ function parseOrdinalNumberNew( number, maxValue ){
     return currentNumber
 }
 
-function askDay(){
-    const askedDay = parseInt ( prompt( 'Enter a day.', 'Example: 12' ) );
-
-    if ( isDayValue( askedDay ) ){
-        return askedDay;
-    }
-
-    return askDay();
-}
-
-function askMonth(){
-    const askedMonth = parseInt ( prompt( 'Enter a month.', 'Example: 04' ) );
-
-    if ( isMonthValue( askedMonth ) ){
-        return askedMonth;
-    }
-
-    return askMonth();
-}
-
-function askYear(){
-    const askedYear = parseInt ( prompt( 'Enter a year.', 'Example: 2021' ) );
-
-    if ( isYearValue( askedYear ) ){
-        return askedYear;
-    }
-
-    return askYear();
-}
-
 function isDayValue( day ){
     if ( ! isNaN( day ) && day > 0 && day <= 31 ){
         return day;
