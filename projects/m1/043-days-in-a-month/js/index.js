@@ -1,5 +1,5 @@
-// const { calculateFebruaryDays } = require( '../../../lib/modules.js' ); // For CommonJS environment
-import { isMonthValue, isYearValue, isLeapYear } from '../../../lib/modules.js'; // For ES module environment (see the imported file for additional informations)
+const { isMonthValue, isYearValue, isLeapYear } = require( '../../../lib/modules.js' ); // For CommonJS environment
+// import { isMonthValue, isYearValue, isLeapYear } from '../../../lib/modules.js'; // For ES module environment (see the imported file for additional informations)
 
 // const prompt = require("prompt-sync")({ sigint: true}) ; // For CommonJS environment
 import promptSync from 'prompt-sync'; // For ES module environment (tou need to import "prompt-sync" and assign it to a constant as is done in the following line)
