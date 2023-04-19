@@ -34,6 +34,10 @@ test('returns false for 1995', () => {
   expect( isLeapYear( 1995 ) ).toEqual( false );
 });
 
+test('returns false for 2000', () => {
+  expect( isLeapYear( 2000 ) ).toEqual( true );
+});
+
 test('returns true for 1700', () => {
   expect( isLeapYear( 1700 ) ).toEqual( false );
 });
@@ -52,6 +56,10 @@ test('returns twelfth for 12', () => {
   expect( parseOrdinalNumber( 12 ) ).toEqual( 'twelfth' );
 });
 
+test('returns false for 13', () => {
+  expect( parseOrdinalNumber( 13 ) ).toEqual( '' );
+});
+
 
 /** Test for parseOrdinalNumberNew */
 test('returns 1st for 1', () => {
@@ -62,7 +70,11 @@ test('returns 10th for 10', () => {
   expect( parseOrdinalNumberNew( 10, 15 ) ).toEqual( '10th' );
 });
 
-test('returns 31st for 31', () => {
+test('returns 32nd for 32', () => {
+  expect( parseOrdinalNumberNew( 32, 100 ) ).toEqual( '32nd' );
+});
+
+test('returns 33rd for 33', () => {
   expect( parseOrdinalNumberNew( 33, 100 ) ).toEqual( '33rd' );
 });
 
@@ -130,8 +142,12 @@ test('returns true for 29, 2, 1996', () => {
   expect( verifyDay( 29, 2, 1996 ) ).toEqual( true );
 });
 
-test('returns true for 29, 2, 1997', () => {
+test('returns false for 29, 2, 1997', () => {
   expect( verifyDay( 29, 2, 1997 ) ).toEqual( false );
+});
+
+test('returns false for 32, 13, -1000', () => {
+  expect( verifyDay( 32, 13, -1000 ) ).toEqual( false );
 });
 
 
