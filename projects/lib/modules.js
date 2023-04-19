@@ -1,3 +1,6 @@
+const prompt = require("prompt-sync")({ sigint: true}) ;
+
+
 function isBoolean( value ) {
   return typeof value === 'boolean';
 }
@@ -48,7 +51,7 @@ function parseOrdinalNumberNew( number, maxValue ){
 
 function isDayValue( day ){
     if ( ! isNaN( day ) && day > 0 && day <= 31 ){
-        return day;
+        return true;
     }
 
     console.log( 'The day entered is not correct, enter a positive number between 1 and 31.' );
@@ -57,7 +60,7 @@ function isDayValue( day ){
 
 function isMonthValue( month ){
     if ( ! isNaN( month ) && month > 0 && month <= 12 ){
-        return month;
+        return true;
     }
 
     console.log( 'The month entered is not correct, enter a positive integer number between 1 and 12.' );
@@ -66,7 +69,7 @@ function isMonthValue( month ){
 
 function isYearValue( year ){
     if ( ! isNaN( year ) && year >= 0 ){
-        return year;
+        return true;
     }
 
     console.log( 'The year entered is not correct, enter a positive integer number from 0 and above.' );
@@ -83,7 +86,7 @@ function verifyDay( day, month, year ){
         }
 
         if( day <= maxMonthsDuration[month -1] ){
-            return day;
+            return true;
         }
 
         console.log( 'The day exceeds the number of days in the month.' );
@@ -100,15 +103,12 @@ function calculateFebruaryDays( year ){
     return false;
 }
 
-// module.exports = { // For CommonJS environment
-export { // For ES module environment. In addition for Visual Studio Code two package.json files must be created, one in this file folder, the other one in the application file folder, they must contain the following code { "type": "module" }
+module.exports = { // For CommonJS environment
+// export { // For ES module environment. In addition for Visual Studio Code two package.json files must be created, one in this file folder, the other one in the application file folder, they must contain the following code { "type": "module" }
     isBoolean,
     isLeapYear,
     parseOrdinalNumber,
     parseOrdinalNumberNew,
-    askDay,
-    askMonth,
-    askYear,
     isDayValue,
     isMonthValue,
     isYearValue,
