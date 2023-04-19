@@ -54,7 +54,7 @@ function isDayValue( day ){
         return true;
     }
 
-    console.log( 'The day entered is not correct, enter a positive number between 1 and 31.' );
+    console.warn( 'The day entered is not correct, enter a positive number between 1 and 31.' );
     return false;
 }
 
@@ -63,7 +63,7 @@ function isMonthValue( month ){
         return true;
     }
 
-    console.log( 'The month entered is not correct, enter a positive integer number between 1 and 12.' );
+    console.warn( 'The month entered is not correct, enter a positive integer number between 1 and 12.' );
     return false;
 }
 
@@ -72,7 +72,7 @@ function isYearValue( year ){
         return true;
     }
 
-    console.log( 'The year entered is not correct, enter a positive integer number from 0 and above.' );
+    console.warn( 'The year entered is not correct, enter a positive integer number from 0 and above.' );
     return false;
 }
 
@@ -89,7 +89,7 @@ function verifyDay( day, month, year ){
             return true;
         }
 
-        console.log( 'The day exceeds the number of days in the month.' );
+        console.warn( 'The day exceeds the number of days in the month.' );
     } 
 
     return false;
