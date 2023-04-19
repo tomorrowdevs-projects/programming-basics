@@ -1,4 +1,4 @@
-const { parseOrdinalNummber } = require( '../../../lib/modules.js' ); // For CommonJS environment
+const { parseOrdinalNumber } = require( '../../../lib/modules.js' ); // For CommonJS environment
 // import { parseOrdinalNumber } from '../../../lib/modules.js'; // For ES module environment (see the imported file for additional informations)
 
 function generate12DaysOfChristmasLyric( number ){
