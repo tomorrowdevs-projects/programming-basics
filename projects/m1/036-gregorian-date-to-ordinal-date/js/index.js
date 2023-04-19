@@ -1,6 +1,7 @@
 // const prompt = require("prompt-sync")({ sigint: true}) ;
 
-const { isDayValue, isMonthValue, isYearValue, calculateFebruaryDays, verifyDay } = require( '../../../lib/modules.js' );
+const { isDayValue, isMonthValue, isYearValue, calculateFebruaryDays, verifyDay } = require( '../../../lib/modules.js' ); // For CommonJS environment
+// import { isDayValue, isMonthValue, isYearValue, calculateFebruaryDays, verifyDay } from '../../../lib/modules.js'; // For ES module environment (see the imported file for additional informations)
 
 function askDay(){
     const askedDay = parseInt ( prompt( 'Enter a day.', 'Example: 12' ) );
