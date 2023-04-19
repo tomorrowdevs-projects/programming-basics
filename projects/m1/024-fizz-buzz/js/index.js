@@ -1,25 +1,24 @@
-function playFizzBuzz(){
-    let phrases = '';
+function playFizzBuzz( numberPlayed ){
 
-    for (let i = 1; i <= 100; i++) {
-
-        if ( i % 3 === 0 ){
-            phrases += 'fizz' + '\n';
-        } else if ( i % 5 === 0 ){
-            phrases += 'buzz' + '\n';
-        } else if ( i % 3 === 0 && i % 5 === 0 ){
-            phrases += 'fizz and buzz' + '\n';
+        if ( numberPlayed % 3 === 0 && numberPlayed % 5 === 0 ){
+            return 'fizz and buzz';
+        } else if ( numberPlayed % 3 === 0 ){
+            return 'fizz';
+        } else if ( numberPlayed % 5 === 0 ){
+            return 'buzz';
         } else {
-            phrases += i + '\n';
+            return numberPlayed;
         }
 
-    }
-
-    return phrases.replace( /\n$/, '' );
 }
 
 function init(){
-    console.log( playFizzBuzz() );
+    for (let i = 1; i <= 100; i++) {
+        console.log( playFizzBuzz( i ) );
+    }
+
     return;
 }
 init();
+
+module.exports = { playFizzBuzz } // For CommonJS environment
