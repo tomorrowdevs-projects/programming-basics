@@ -18,7 +18,7 @@ function properDivisors(numberUser){
     let dividersList = [];
 
     for(let i = 0; i <= numberUser; i++){
-        if(numberUser % i === 0){
+        if(numberUser % i === 0 && i != numberUser){
             dividersList.push(i);
         }
     }
