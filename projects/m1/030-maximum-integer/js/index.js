@@ -14,4 +14,3 @@ while (num < 100) {
 
 console.log(`The maximum value found was: ${max}`);
 console.log(`The maximum value was updated: ${numCount} times`);
-
