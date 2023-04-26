@@ -19,45 +19,50 @@ def replace_substring_with_asterisk(string: str,substring: str) -> str:
     #transform again the list into a string and return it
     return "".join(string)
 
+try:
+        
+    import sys
 
-import sys
+    text_file = open(sys.argv[1],'r')
+    sensitive_file = open(sys.argv[2],'r')
+    redacted_file = open(sys.argv[3],'w')
 
-text_file = open(sys.argv[1],'r')
-sensitive_file = open(sys.argv[2],'r')
-redacted_file = open(sys.argv[3],'w')
+    sensitive_words_list = sensitive_file.read().upper().split()
+    sensitive_file.close()
 
-sensitive_words_list = sensitive_file.read().upper().split()
-sensitive_file.close()
+    for line in text_file:
+        #each line in text_file becomes a list of words
+        line_words = line.split()
 
-for line in text_file:
-    #each line in text_file becomes a list of words
-    line_words = line.split()
+        for word_in_line in line_words:
 
-    for word_in_line in line_words:
+            #To be case unsensitive I need an uppercase string to compare with sensitive worlds
+            upper_word = word_in_line.upper()
 
-        #To be case unsensitive I need an uppercase string to compare with sensitive worlds
-        upper_word = word_in_line.upper()
+            #if upper_word is in sensitive_word_list, split its chars into a list and replace with *
+            if upper_word in sensitive_words_list:
+                word_in_line = list(word_in_line)
+                for index in range(0,len(word_in_line)):
+                    word_in_line[index] = '*'
+                word_in_line = "".join(word_in_line)
+            else:
+                #if upper_word isn't in sensitive_word_list, probably a sensitive world could be into upper_word
+                for sensitive_word in sensitive_words_list:
+                    if sensitive_word in upper_word:
+                        word_in_line = replace_substring_with_asterisk(word_in_line,sensitive_word)
 
-        #if upper_word is in sensitive_word_list, split its chars into a list and replace with *
-        if upper_word in sensitive_words_list:
-            word_in_line = list(word_in_line)
-            for index in range(0,len(word_in_line)):
-                word_in_line[index] = '*'
-            word_in_line = "".join(word_in_line)
-        else:
-            #if upper_word isn't in sensitive_word_list, probably a sensitive world could be into upper_word
-            for sensitive_word in sensitive_words_list:
-                if sensitive_word in upper_word:
-                    word_in_line = replace_substring_with_asterisk(word_in_line,sensitive_word)
+            #write the redacted word in file
+            redacted_file.write(word_in_line+" ")
 
-        #write the redacted word in file
-        redacted_file.write(word_in_line+" ")
+        redacted_file.write('\n')
 
-    redacted_file.write('\n')
-
-text_file.close()
-redacted_file.close()
-
+    text_file.close()
+    redacted_file.close()
+    
+except FileNotFoundError: 
+    print("File not founded")
+except IndexError:
+    print("File name arg omitted")
 
                     
 
