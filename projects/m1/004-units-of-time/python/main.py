@@ -3,7 +3,7 @@ hours = int(input('your hours: '))
 minutes = int(input('your minutes: '))
 seconds = int(input('your seconds: '))
 
-if days and hours and minutes and seconds >= 0:
+if days >=0 and hours >= 0 and minutes >= 0 and seconds >= 0:
     convert_days = days * 86400
     convert_hours = hours * 3600
     convert_minutes = minutes * 60
