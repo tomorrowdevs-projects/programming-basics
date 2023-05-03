@@ -1,11 +1,11 @@
-
-small_containers = 30
-big_containers = 80
+small_containers = input('Drink containers holding one liter or less: ')
+big_containers = input ('Drink containers holding more than one liter: ')
 
 #Calculate the refound
-refund = ((big_containers * 0.25) + (small_containers * 0.10))
+refund_small_containers= int (small_containers) * 0.10
+refund_big_containers= int (big_containers) * 0.25
 
-refund = format(refund, '.2f')
+refund_total = int (refund_small_containers) + int (refund_big_containers)
 
 
-print(f"You're refound is $ {refund}")
+print('refund total is {} $'. format(refund_total))
