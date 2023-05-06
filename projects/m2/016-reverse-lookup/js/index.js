@@ -14,10 +14,8 @@ function reverseLockup(obj, value){
     const keyObject = []
 
     //Check if userValue exists in the dictionary
-    for(let item in obj){
-        if(obj[item] === value){
-        keyObject.push(item);
-        } 
+    for (const [key, value] of Object.entries(obj)){
+        if (value === number) keyObject.push(key);
     }
 
     const checkResponse = keyObject.length > 0 ? keyObject.join(', ') : "Nessun risultato"
