@@ -46,22 +46,22 @@ function writeNumber(number, list){
     } else {
 
         if(number in list) {
-        message = list[number]
+            message = list[number]
         } else {
-        hundred = list[calcHundreds]
-        ten = list[calcTens]
-        unit = list[calcUnits]
-        
-        if(hundred !== 'zero'){
-            message += hundred + ' hundred '
-        } 
-        
-        if(ten !== 'zero') {
-            message += ten + '-'
-        } 
-        
-        message += unit
-        }
+            hundred = list[calcHundreds]
+            ten = list[calcTens]
+            unit = list[calcUnits]
+            
+            if(hundred !== 'zero'){
+                message += hundred + ' hundred '
+            } 
+            
+            if(ten !== 'zero') {
+                message += ten + '-'
+            } 
+            
+            message += unit
+            }
     }
 
     return message
