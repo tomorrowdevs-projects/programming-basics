@@ -7,16 +7,12 @@ const userText= prompt('Enter the message', 'Hello, World!').toUpperCase()
 
 const morseCode = (text, code) => {
   const splitText = text.split('')
-  let message = ''
 
-   const newMessage = splitText.map((letter) => { 
-    for(let item in code){
-      if(item.includes(letter)){
-        message += code[item] + ' '
-      } 
-    }
-   })
-   return message
+  const newMessage = splitText.map((letter) => { 
+    if(letter in code) return code[letter]
+  })
+
+  return newMessage.join(' ')
 }
 
 console.log(morseCode(userText, code))
