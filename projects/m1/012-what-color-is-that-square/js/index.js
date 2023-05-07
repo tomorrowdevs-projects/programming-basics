@@ -4,10 +4,10 @@ const positionChoise = prompt('Inserisci le coordinate che vuoi trovare. Scrivi 
 let xUtent = positionChoise.charAt(0);
 let yUtent = parseInt(positionChoise.charAt(1));
 
-positionX = false;
-positionY = false;
-positionYNumber = 0;
-positionXNumber = 0;
+let positionX = false;
+let positionY = false;
+let positionYNumber = 0;
+let positionXNumber = 0;
 
 const xChoise = ["a","b","c","d","e","f","g","h"];
 for (let i = 0; i < xChoise.length; i++) {
