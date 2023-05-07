@@ -13,42 +13,34 @@ for (let i = 0; i < monthChoice.length; i++) {
 if (!found) {
   console.log("Non hai inserito il nome corretto del mese!");
 } else {
+  let days = 0;
   switch (month) {
-    case "gennaio":
-      console.log("il tuo mese ha 31 giorni");
+    case "gennaio": days = 31;
       break;
-    case "febbraio":
-      console.log("il tuo mese ha 29 giorni o 28 giorni nel caso si tratti di un anno bisestile");
+    case "marzo": days = 31;
       break;
-    case "marzo":
-      console.log("il tuo mese ha 31 giorni");
+    case "aprile": days = 30;
       break;
-    case "aprile":
-      console.log("il tuo mese ha 30 giorni");
+    case "maggio": days = 31;
       break;
-    case "maggio":
-      console.log("il tuo mese ha 31 giorni");
+    case "giugno": days = 30;
       break;
-    case "giugno":
-      console.log("il tuo mese ha 30 giorni");
+    case "luglio": days = 31;
       break;
-    case "luglio":
-      console.log("il tuo mese ha 31 giorni");
+    case "agosto": days = 31;
       break;
-    case "agosto":
-      console.log("il tuo mese ha 31 giorni");
+    case "settembre": days = 30;
       break;
-    case "settembre":
-      console.log("il tuo mese ha 30 giorni");
+    case "ottobre": days = 31;
       break;
-    case "ottobre":
-      console.log("il tuo mese ha 31 giorni");
+    case "novembre": days = 30;
       break;
-    case "novembre":
-      console.log("il tuo mese ha 30 giorni");
-      break;
-    case "dicembre":
-      console.log("il tuo mese ha 31 giorni");
+    case "dicembre": days = 31;
       break;
   }
+}
+if (month !== "febbraio") {
+console.log("Il tuo mese ha ${days} giorni");
+} else {
+  console.log("Il tuo mese ha 29 giorni o 28 giorni nel caso si tratti di un anno bisestile");
 }
