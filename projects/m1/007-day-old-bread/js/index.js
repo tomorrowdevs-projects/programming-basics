@@ -13,7 +13,6 @@ const realPricePadded = realPrice.padStart(maxLenght, " ");
 const discountPricePadded = discountPrice.padStart(maxLenght, " ");
 const finalPricePadded = finalPrice.padStart(maxLenght, " ");
 
-
-console.log("Costo totale  " + realPricePadded + " Euro");
-console.log("Sconto totale " + discountPricePadded + " Euro");
-console.log("Prezzo finale " + finalPricePadded + " Euro");
+console.log(`Costo totale ${realPricePadded} Euro`);
+console.log(`Sconto totale ${discountPricePadded} Euro`);
+console.log(`Prezzo finale ${finalPricePadded} Euro`);
