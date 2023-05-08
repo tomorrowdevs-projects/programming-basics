@@ -1,9 +1,9 @@
 # The Sieve of Eratosthenes
 
-The Sieve of Eratosthenes is a technique that was developed more than 2,000 years ago to easily find all of the prime numbers between 2 and some limit, say 100. A
-description of the algorithm follows:
+The Sieve of Eratosthenes is a technique that was developed more than 2,000 years ago to easily find all the 
+prime numbers between 2 and some limit, say 100. A description of the algorithm follows:
 
-Write down all of the numbers from 0 to the limit Cross out 0 and 1 because they are not prime
+Write down all the numbers from 0 to the limit Cross out 0 and 1 because they are not prime
 
 Set *p* equal to 2
 
@@ -11,7 +11,7 @@ While *p* is less than the limit do
     Cross out all multiples of *p* (but not *p* itself)
     Set *p* equal to the next number in the list that is not crossed out
 
-Report all of the numbers that have not been crossed out as prime
+Report all the numbers that have not been crossed out as prime
 
 The key to this algorithm is that it is relatively easy to cross out every nth number on a piece of paper. This is also an easy task for a computer—a for loop can simulate this behavior when a third parameter is provided to the *range* function. 
 
