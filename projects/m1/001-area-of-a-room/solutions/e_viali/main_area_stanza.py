@@ -1,9 +1,9 @@
 
-def inserisci_float(prompt):
+def inserisci_float(prompt: str) -> None:
 
     while True:
+        val =  input(prompt)
         try:
-            val =  input(prompt)
             float_val = float(val)
             return float_val
         except:
