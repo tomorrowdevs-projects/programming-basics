@@ -48,11 +48,3 @@ def check_to_win(ticket, extraction):   # ticket = Lotto_ticket(). 'extraction' 
         return f'GAME OVER'
     else:
         return winners_bills
-
-
-
-ticket = Lotto_Ticket()
-ex = lotto_extraction()
-print(ticket)
-print(show_lotto_extraction(ex))
-print(check_to_win(ticket, ex))
