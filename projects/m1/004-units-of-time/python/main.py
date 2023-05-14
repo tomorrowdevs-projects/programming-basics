@@ -11,4 +11,4 @@ def seconds_ammount(days, hours, minutes, seconds):
     seconds_minutes = minutes * 60
     return seconds_day + seconds_hours + seconds_minutes + seconds 
 
-print("The total ammount of seconds are: " + str(seconds_ammount(days, hours, minutes, seconds)))
+print("The total amount of seconds are: " + str(seconds_ammount(days, hours, minutes, seconds)))
