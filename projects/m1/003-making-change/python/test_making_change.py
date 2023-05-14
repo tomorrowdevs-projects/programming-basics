@@ -40,6 +40,7 @@ class TestMakingChange(TestCase):
                     output_coins_name.append(i)
 
         output = set(zip(output_coins_name, output_values))
+        print(output)
         return output
 
     @skipIf(is_file_empty, 'Empty file')
@@ -48,17 +49,17 @@ class TestMakingChange(TestCase):
         """
         Check if return a correct result
         """
-        mock_input.return_value = 500
+        mock_input.return_value = 742
 
-        good_result = {('toonies', '2'), ('loonies', '1'), ('quarters', '0'),
-                       ('dimes', '0'), ('nickels', '0'), ('pennies', '0')}
+        good_result = {('toonies', '3'), ('loonies', '1'), ('quarters', '1'),
+                       ('dimes', '1'), ('nickels', '1'), ('pennies', '2')}
 
         with patch('sys.stdout', new_callable=io.StringIO) as mock_print:
             sys.modules.pop(self.module_name, None)
             importlib.import_module(name=self.module_name, package='files')
 
             output = self.format_output(mock_print.getvalue())
-            self.assertTrue(output.issubset(good_result))
+            self.assertEqual(output, good_result, 'The result is different from the expected')
 
     @skipIf(is_file_empty, 'Empty file')
     @patch('builtins.input')
