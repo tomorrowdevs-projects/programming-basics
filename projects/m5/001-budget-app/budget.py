@@ -124,44 +124,54 @@ def create_spend_chart(*args):
     
     '''
     out_string = "Percentage spent by category\n"
-    plot = {}
-    for y in range(100,-10,-10):
-        plot[y] = list()
-    
-    category_name_processed = list()
+
+    def total_withdraw(*args):
+        '''
+        Returns the amount of withdraws of all category passed
+        '''
+        amount_of_withdraws = 0
+        for obj in args:
+            for category in obj:
+                amount_of_withdraws += category.total_withdraw()
+        return amount_of_withdraws
+
+    #category_name_processed is a dict with category.name as key and a list of dot (number of dot correspond to 
+    # percentage spent in each category)
+    category_name_processed = {}
+    amount_of_withdraws = total_withdraw(*args)
+
     for obj in args:
         for category in obj:
-            #calcola il totale deposito e il totale speso, calcola la percentuale
-            percentage = int((category.total_withdraw() / category.total_deposit() * 100) // 10 * 10)
-            #assegna i pallini alla lista nel dizionario plot e aggiungi il nome categoria ad una lista ordinata di categorie
-            for i in range(100,-10,-10):
-                if i == percentage:
-                    plot[i].append(" o")
-                    percentage -= 10
+           
+            percentage = int(category.total_withdraw() / amount_of_withdraws * 100) // 10 * 10
+            category_name_processed[category.name] = list()
+            
+            for i in range(0,110,10):
+                if i <= percentage:
+                    category_name_processed[category.name].append("o")
                 else:
-                    plot[i].append("  ")
-                
-            category_name_processed.append(category.name)
+                    category_name_processed[category.name].append(" ")
 
-    for line in plot.keys():
-        out_string += "{:>3}|".format(line)
-        for dot in plot[line]:
-            out_string += f"{dot}"
+    for i in range(100,-10,-10):
+        out_string += "{:>3}| ".format(i)
+        for cat in category_name_processed.keys():
+            out_string += category_name_processed[cat][i//10]
+            out_string += "  "
         out_string += "\n"
     out_string += "    ----------\n"
     
-
-    max = max_lenght_of_string_in_a_list(category_name_processed)
+    
+    max = max_lenght_of_string_in_a_list(list(category_name_processed.keys()))
 
     for i in range(0,max+1):
-        out_string += "    "
-        for category in category_name_processed:
-            out_string += " "
+        out_string += "     "
+        for category in category_name_processed.keys():
             try:
                 out_string += category[i]
             except IndexError:
                 out_string += " "
-        out_string += "\n"
+            out_string += "  "
+        out_string += "\n" 
        
 
     return out_string
