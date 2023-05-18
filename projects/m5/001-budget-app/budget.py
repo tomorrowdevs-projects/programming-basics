@@ -15,7 +15,8 @@ class Category:
         for operation in self.ledger:
             operation_string += "{:<23.23}".format(operation["description"]) + "{:7.2f}\n".format(operation["amount"])
         out_str += operation_string
-        out_str += "Total: {}\n".format(self.get_balance())
+        out_str += "Total: {}".format(self.get_balance())
+
         return out_str
 
 
@@ -35,8 +36,8 @@ class Category:
     
     def check_funds(self, amount:float):
         '''
-        Accepts an amount as an argument. It returns `False` if the amount is greater than the balance of the budget category and returns `True` otherwise. 
-        This method should be used by both the `withdraw` method and `transfer` method.
+        Accepts an amount as an argument. It returns `False` 
+        if the amount is greater than the balance of the budget category and returns `True` otherwise. 
         '''
         balance = self.get_balance()
         if amount > balance:
@@ -121,10 +122,11 @@ def max_lenght_of_string_in_a_list(l:list) -> int:
 
 def create_spend_chart(*args):
     '''
-    
+    Creates a chart to show the percentage spent in each category passed in to the function. 
+    The percentage spent should be calculated only with withdrawals and not with deposits.
+    Percentage of each category is defined as sum of withdrawals of the category / sum of withdrawals of all categories *100
+    rounded to nearest tens down
     '''
-    out_string = "Percentage spent by category\n"
-
     def total_withdraw(*args):
         '''
         Returns the amount of withdraws of all category passed
@@ -134,6 +136,8 @@ def create_spend_chart(*args):
             for category in obj:
                 amount_of_withdraws += category.total_withdraw()
         return amount_of_withdraws
+    
+    out_string = "Percentage spent by category\n"
 
     #category_name_processed is a dict with category.name as key and a list of dot (number of dot correspond to 
     # percentage spent in each category)
@@ -142,7 +146,8 @@ def create_spend_chart(*args):
 
     for obj in args:
         for category in obj:
-           
+            
+            #for each category calculate percentage and initialize it the list of dots in category_name_processed
             percentage = int(category.total_withdraw() / amount_of_withdraws * 100) // 10 * 10
             category_name_processed[category.name] = list()
             
@@ -152,6 +157,7 @@ def create_spend_chart(*args):
                 else:
                     category_name_processed[category.name].append(" ")
 
+    #create the chart visualization and join it to the out_string to be returned
     for i in range(100,-10,-10):
         out_string += "{:>3}| ".format(i)
         for cat in category_name_processed.keys():
@@ -159,11 +165,11 @@ def create_spend_chart(*args):
             out_string += "  "
         out_string += "\n"
     out_string += "    ----------\n"
-    
-    
+       
+    #to visualize the category name in vertical I need the max lenght of category name which have to write
     max = max_lenght_of_string_in_a_list(list(category_name_processed.keys()))
 
-    for i in range(0,max+1):
+    for i in range(0,max):
         out_string += "     "
         for category in category_name_processed.keys():
             try:
@@ -171,8 +177,8 @@ def create_spend_chart(*args):
             except IndexError:
                 out_string += " "
             out_string += "  "
-        out_string += "\n" 
-       
+        out_string += "\n"
+    out_string = out_string[:-1] 
 
     return out_string
 
