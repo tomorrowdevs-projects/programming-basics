@@ -1,0 +1,19 @@
+on:
+  pull_request:
+    types:
+      - closed
+
+jobs:
+  if_merged:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    steps:
+        - name: Discord notification
+          env:
+            DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+            DISCORD_USERNAME: GitHub Bot
+            DISCORD_AVATAR: https://qph.cf2.quoracdn.net/main-qimg-b2ffb3a32c2e07826c887815599de6f3
+          uses: Ilshidur/action-discord@0.3.2
+          with:
+            args: 'The repository ${{ github.event.repository.name }} has been updated. Remember to update the local repository'
+
