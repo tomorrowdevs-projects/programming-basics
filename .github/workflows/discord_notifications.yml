@@ -12,7 +12,7 @@ jobs:
     steps:
         - name: Discord notification
           env:
-            DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+            DISCORD_WEBHOOK: ${{ secrets.DISCORD }}
             DISCORD_USERNAME: GitHub Bot
             DISCORD_AVATAR: https://qph.cf2.quoracdn.net/main-qimg-b2ffb3a32c2e07826c887815599de6f3
           uses: Ilshidur/action-discord@0.3.2
