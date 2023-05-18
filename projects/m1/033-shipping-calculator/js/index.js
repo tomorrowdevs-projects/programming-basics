@@ -10,6 +10,6 @@ function shippingCalculator (numItems) {
 }
 
 let numItems = parseInt(prompt('How many items did you buy?'));
-let shippingCharge = shippingCalculator (numItems);
+const shippingCharge = shippingCalculator (numItems);
 console.log(`Your shipping charge is:${shippingCharge}`)
 console.log(`Your number of items: ${numItems}`);
