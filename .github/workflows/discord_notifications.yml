@@ -1,3 +1,5 @@
+name: Discord notification
+
 on:
   pull_request:
     types:
