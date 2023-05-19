@@ -1,35 +1,41 @@
 import copy
 import random
 
-class Hat:
-    
+class Hat:    
     def __init__(self, **kwargs):
         self.contents = []
-        for key, value in kwargs.items():
-            for x in range(value):
-                self.contents.append(key)
+        for color, balls_number in kwargs.items():
+            for n in range(balls_number):
+                self.contents.append(color)
 
     def draw(self, num_of_balls):
-        if num_of_balls > len(self.contents):
-            return self.contents
-        balls_drawed = []
-        for x in range(num_of_balls):
-            choice = random.choice(self.contents)
-            balls_drawed.append(choice)
-            self.contents.remove(choice)
-        return balls_drawed
+        balls_drawn = []
+        if num_of_balls >= len(self.contents):
+            balls_drawn = copy.deepcopy(self.contents)
+        else: 
+            for ball in range(num_of_balls):
+                random_ball = random.choice(self.contents)
+                self.contents.remove(random_ball)
+                balls_drawn.append(random_ball)
+        return balls_drawn
 
 def experiment(hat, expected_balls, num_balls_drawn, num_experiments):
-    successes = 0
-    for x in range(num_experiments):
-        hat_cpy = copy.deepcopy(hat)
-        picked_balls = hat_cpy.draw(num_balls_drawn)
-        success = True
-        for key, value in expected_balls.items():
-            if picked_balls.count(key) < value:
-                success = False
-                break
-        if success:
-            successes += 1
-
-    return successes / num_experiments
+    successful_experiments = 0
+    for exp in range(num_experiments):
+        temp_hat = copy.deepcopy(hat)
+        balls_drawn = temp_hat.draw(num_balls_drawn)
+        successful = True
+        
+        for color, balls_number in expected_balls.items():
+            if successful:
+                for n in range(balls_number):
+                    if color in balls_drawn:
+                        balls_drawn.remove(color)
+                    else:
+                        successful = False
+    
+        if successful:
+            successful_experiments += 1
+    
+    percentage = successful_experiments / num_experiments
+    return percentage
