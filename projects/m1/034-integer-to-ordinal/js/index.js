@@ -1,20 +1,8 @@
 //1) array solution.
 function getNumberFromUser (myNum) {
-  num = new Array(); //Created an array which contain twelve elements with twelve value,in this case every element contain a string 
-  num[1] = 'First';
-  num[2] = "Second";
-  num[3] = "Third";
-  num[4] = 'Fourth';
-  num[5] = "Fifth";
-  num[6] = "Sixth";
-  num[7] = 'Seventh';
-  num[8] = "eighth";
-  num[9] = "Nineth";
-  num[10] = 'Tenth';
-  num[11] = "Eleventh";
-  num[12] = "Twelfth";
-
-  return num[myNum];
+ //Created an array which contain twelve string elements. 
+ const ordinalNumbers = ['First', "Second", "Third", 'Fourth', "Fifth", "Sixth", 'Seventh', "eighth", "Nineth", 'Tenth', "Eleventh", "Twelfth"];
+  return ordinalNumbers[myNum - 1]; 
 }
 // the function receives the input from the prompt, reads the position of the element and returns its value.
 let myNum = 0;
@@ -37,7 +25,7 @@ while (true) {
 
 //2) object solution.
 function getNumberFromUser(num) {
-  const ordinalNum = {  //created an object with property = integer number and value = ordinal number.
+  const ordinalNumbers = {  //created an object with property = integer number and value = ordinal number.
     1 : 'first',
     2 : 'second',
     3 : 'third',
@@ -53,7 +41,7 @@ function getNumberFromUser(num) {
   };
   
   
-    return ordinalNum[myNum];
+    return ordinalNumbers[myNum];
    
 }
 // the function receives the input from the prompt, reads the property of the object and returns its value.
