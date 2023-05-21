@@ -40,7 +40,6 @@ class TestMakingChange(TestCase):
                     output_coins_name.append(i)
 
         output = set(zip(output_coins_name, output_values))
-        print(output)
         return output
 
     @skipIf(is_file_empty, 'Empty file')
