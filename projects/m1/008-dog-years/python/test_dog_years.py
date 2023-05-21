@@ -29,7 +29,7 @@ class TestDogYears(TestCase):
             sys.modules.pop(self.module_name, None)
             importlib.import_module(name=self.module_name, package='files')
 
-            result = float(re.findall(r'\d+\.\d+', mock_print.getvalue())[0])
+            result = float(re.findall(r'\d+\.\d+', mock_print.getvalue())[-1])
             self.assertEqual(10.5, result)
 
     @skipIf(is_file_empty, 'Empty file')
@@ -45,7 +45,7 @@ class TestDogYears(TestCase):
             sys.modules.pop(self.module_name, None)
             importlib.import_module(name=self.module_name, package='files')
 
-            result = float(re.findall(r'\d+\.\d+', mock_print.getvalue())[0])
+            result = float(re.findall(r'\d+\.\d+', mock_print.getvalue())[-1])
             self.assertEqual(21.0, result)
 
     @skipIf(is_file_empty, 'Empty file')
@@ -61,7 +61,7 @@ class TestDogYears(TestCase):
             sys.modules.pop(self.module_name, None)
             importlib.import_module(name=self.module_name, package='files')
 
-            result = float(re.findall(r'\d+\.\d+', mock_print.getvalue())[0])
+            result = float(re.findall(r'\d+\.\d+', mock_print.getvalue())[-1])
             self.assertEqual(153.0, result)
 
     @skipIf(is_file_empty, 'Empty file')
@@ -77,7 +77,7 @@ class TestDogYears(TestCase):
             sys.modules.pop(self.module_name, None)
             importlib.import_module(name=self.module_name, package='files')
 
-            result = re.findall(r'\d+\.\d+', mock_print.getvalue())
+            result = re.findall(r'\d+\.\d+', mock_print.getvalue()[-1])
             self.assertEqual([], result)
 
     # --------------------------------------------------------------------------------------------------------------- #
