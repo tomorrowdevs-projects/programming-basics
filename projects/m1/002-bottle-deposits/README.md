@@ -14,6 +14,12 @@ For this project solution you may use:
 - Variables, expressions, statements
 - Strings
 
+# Test
+Execute the test to validate your solution.
+
+- **Python**: `python -m unittest python/test_bottle_deposits.py`
+
+
 # Deadline
 
 This project requires to be completed in a maximum of **2 hours**
