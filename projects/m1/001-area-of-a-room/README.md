@@ -16,7 +16,7 @@ For this project solution you may use:
 # Test
 Execute the test to validate your solution.
 
-- python: `python -m unittest projects/m1/001-area-of-a-room/python/test_area_of_a_room.py`
+- **Python**: `python -m unittest python/test_area_of_a_room.py`
 
 # Deadline
 
