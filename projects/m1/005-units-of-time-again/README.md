@@ -9,12 +9,21 @@ Use your research skills determine what additional character needs to be include
 so that leading zeros are used instead of leading spaces when a number is formatted to a particular width.
 
 Example: 93397  = 1:01:56:37
+
 # Documentation
 
 For this project solution you may use:
 
 - Variables, expressions, statements
 - Strings
+
+
+# Test
+Execute the test to validate your solution.
+
+- **Python**: `python -m unittest python/test_units_of_time_again.py`
+
+
 
 # Deadline
 
