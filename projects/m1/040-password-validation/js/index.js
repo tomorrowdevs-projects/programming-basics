@@ -8,13 +8,13 @@ function passValid(){
         return false;
     }
     if (!/[A-Z]/.test(pass)){
-        return false + "2";
+        return false;
     }
     if (!/[a-z]/.test(pass)){
-        return false + "3";
+        return false;
     }
     if (!/[\d]/.test(pass)){
-        return false + "4";
+        return false;
     }
     return true
 }
