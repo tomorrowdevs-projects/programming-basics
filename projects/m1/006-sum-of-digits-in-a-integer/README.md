@@ -12,9 +12,21 @@ For this project solution you may use:
 
 
 # Test
-Execute the test to validate your solution.
+Execute the test to validate your solution.  
 
-- **Python**: `python -m unittest python/test_sum_of_digits_in_a_integer.py`
+**VSCODE**   
+To run the test command from the README.md install the extension **runme**. 
+Press Ctrl+Shift+x search and install the **runme** extension. 
+
+
+**Python**
+
+```sh
+python -m unittest python/test_sum_of_digits_in_a_integer.py
+```
+
+or run the command from the terminal  
+`python -m unittest projects/m1/006-sum-of-digits-in-a-integer/python/test_sum_of_digits_in_a_integer.py`
 
 
 # Deadline

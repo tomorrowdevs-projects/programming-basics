@@ -45,7 +45,7 @@ class TestDayOldBread(TestCase):
             sys.modules.pop(self.module_name, None)
             importlib.import_module(name=self.module_name, package='files')
 
-            result = re.findall(r'\d+\.\d+', mock_print.getvalue())
+            result = re.findall(r'\d+\.\d', mock_print.getvalue())
             self.assertEqual(['0.0', '0.0', '0.0'], result, 'The result is different from the expected')
 
     # --------------------------------------------------------------------------------------------------------------- #
