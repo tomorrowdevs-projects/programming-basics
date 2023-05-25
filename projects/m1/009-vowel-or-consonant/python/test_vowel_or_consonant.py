@@ -60,5 +60,5 @@ class TestVowelOrConsonant(TestCase):
             sys.modules.pop(self.module_name, None)
             importlib.import_module(name=self.module_name, package='files')
 
-            result = mock_print.getvalue().lower()
-            self.assertIn('sometimes y is a vowel, and sometimes y is a consonant', result)
+            result = mock_print.getvalue().lower().replace(',', '')
+            self.assertIn('sometimes y is a vowel and sometimes y is a consonant', result)

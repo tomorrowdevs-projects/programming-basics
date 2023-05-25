@@ -18,9 +18,21 @@ For this project solution you may use:
 
 
 # Test
-Execute the test to validate your solution.
+Execute the test to validate your solution.  
 
-- **Python**: `python -m unittest python/test_vowel_or_consonant.py`
+**VSCODE**   
+To run the test command from the README.md install the extension **runme**. 
+Press Ctrl+Shift+x search and install the **runme** extension. 
+
+
+**Python**
+
+```sh
+python -m unittest python/test_vowel_or_consonant.py
+```
+
+or run the command from the terminal  
+`python -m unittest projects/m1/009-vowel-or-consonant/python/test_vowel_or_consonant.py`
 
 
 # Deadline

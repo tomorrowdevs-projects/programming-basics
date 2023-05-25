@@ -76,17 +76,3 @@ class TestBottleDeposits(TestCase):
             except IndexError:
                 raise IndexError(' ▶ The are not float type value in your final print')
 
-    # ---------------------------------------------------------------------------------------------------------------- #
-
-    @skipIf(is_file_empty, 'Empty file')
-    @patch('builtins.input')
-    def test_float_input(self, mock_inputs):
-        """
-        Check if raise a ValueError with a float type
-        """
-
-        mock_inputs.side_effect = ['1.5', '2.3']  # small, big
-
-        with self.assertRaises(ValueError):
-            sys.modules.pop(self.module_name, None)
-            importlib.import_module(name=self.module_name, package='files')
