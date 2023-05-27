@@ -36,7 +36,7 @@ Press Ctrl+Shift+x search and install the **runme** extension.
 **Python**
 
 ```sh
-python -m unittest test_is_it_a_leap_year.py
+python -m unittest python/test_is_it_a_leap_year.py
 ```
 
 or run the command from the terminal  
