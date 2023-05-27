@@ -41,7 +41,7 @@ python -m unittest python/test_what_day_of_the_week.py
 or run the command from the terminal  
 `python -m unittest projects/m1/017-what-day-of-the-week/python/test_what_day_of_the_week.py`
 
-
+https://spu.edu/ddowning/percal.htm
 
 # Deadline
 
