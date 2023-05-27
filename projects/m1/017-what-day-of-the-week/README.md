@@ -13,6 +13,8 @@ and **reports the day of the week for January 1 of that year**.
 The output from your program **should include the full name of the day of the week**, not just the integer returned by the formula.
 
 Example:    
+Input: 2023  
+Output: Wednesday
 
 # Documentation
 
