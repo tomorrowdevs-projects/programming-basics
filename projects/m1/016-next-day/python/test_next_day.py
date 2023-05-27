@@ -11,7 +11,7 @@ file_path = Path(__file__).absolute().parent / 'main.py'
 is_file_empty = os.stat(file_path).st_size == 0
 
 
-@skipIf(is_file_empty, 'Empty file')
+@skipIf(is_file_empty, 'Empty file. Test 016 Skipped')
 class TestNextDay(TestCase):
 
     def setUp(self) -> None:
