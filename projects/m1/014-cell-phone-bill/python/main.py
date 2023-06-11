@@ -18,10 +18,8 @@ if minutes > 50 or messages > 50:
     
     print(f'Base charge: {base_charge:.2f}€\nExtra minutes charge: {extra_min:.2f}€\nExtra messages charge: {extra_msg:.2f}€\n911 fee: {fee_911:.2f}€\nTax: {tax:.2f}€\nTotal bill amount: {final_bill:.2f}€')
 
-#else: 
-   ###tax = (base_charge + fee_911) * 0.05
-    ##final_bill = (base_charge + fee_911) + tax
-    #print(f'Base charge: {base_charge:.2f}€\n911 fee: {fee_911:.2f}€\nTax: {tax:.2f}€\nTotal bill amount: {final_bill:.2f}€')
+else: 
+   print('Incorrect input.')
 
 
 
