@@ -1,12 +1,6 @@
-#Intro
-
-def intro() :
-    print(input("Hello nice to meet you"))
-
-intro()    
+month = input(" What is the months of your birthday ").lower()
 
 day = int(input("Please type your birthday "))
-month = input(" What is the months of your birthday ")
 
 zodiac_sign=""
 
@@ -14,7 +8,7 @@ if (month == "december" and day >= 22) or (month == "january" and day <=19):
     zodiac_sign = "Capricorn"
 
 if (month == "january" and day >= 20) or (month == "february" and day <=18):
-    zodiac_sign = "Acquarius"
+    zodiac_sign = "Aquarius"
 
 if (month == "february" and day >= 19) or (month == "march" and day <=20):
     zodiac_sign = "Pisces"
