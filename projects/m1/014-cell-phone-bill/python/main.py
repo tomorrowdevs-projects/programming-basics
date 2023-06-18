@@ -12,7 +12,7 @@ if base_minutes_consumed > 50:
 if base_text_consumed > 50:
         extra_text_charge = (base_text_consumed -50) * 0.15
     
-locals_sales_tax = (15 + extra_minutes_charge + extra_text_charge + 0.44) * (6.43) 
+locals_sales_tax = (15 + extra_minutes_charge + extra_text_charge + 0.44) * (5/100) 
 
 total_bill_ammount = (15 + extra_minutes_charge + extra_text_charge + 0.44 + locals_sales_tax)
 
@@ -24,6 +24,6 @@ if extra_text_charge > 0: print (" For extra text consunmed is charge par €{:.
 
 print(" The 911 fee cost €0.44 ")
 
-print(" The local sale tax is €{:.2f} ".format(locals_sales_tax))
+print(" The sales tax is €{:.2f} ".format(locals_sales_tax))
 
 print(" The total bill ammount is €{:.2f} ".format(total_bill_ammount))
