@@ -37,38 +37,28 @@
 // 742 centesimi = 3 toonies, 1 loonies, 1 quarters, 1 dimes, 1 nickels, 2 pennys.
 
 
-let penny = "1 cent";
-let nichel = "5 cent";
-let dime = "10 cent";
-let quarto = "25 cent";
-let loonie = "100 cent";
-let toonie = "200 cent";
-let or = " or "
+let userCents = prompt( "enter the amount of cents and then you will receive the change in cents: ");
 
-let purchase = prompt("your purchase is from?");
-let payment = prompt("you pay with which banknote?");
+let toonies = Math.floor(userCents / 200);
+let remainder = userCents % 200;
 
-let remainder = payment - purchase;
+let loonies = Math.floor(remainder / 100);
+remainder =  remainder % 100;
 
-console.log(remainder);
+let quarters = Math.floor(remainder / 25);
+remainder =  remainder % 25;
 
-if(remainder == 0){
-    alert("you don't have to receive change")
-}else if(remainder >0 && remainder <10){
-    alert("you receive the sum the " + nichel + or + penny);
-}else if(remainder >= 10 && remainder <24){
-    alert("you receive the sum the " + dime + or + nichel + or + penny)
-}else if(remainder >= 25 && remainder <100){
-    alert("you receive the sum the "+ quarto + or + dime + or + nichel + or + penny)
-}else if(remainder >= 100 && remainder <200 ){
-    alert("you receive the sum the "+ loonie + or + quarto + or + dime + or + nichel + or + penny)
-}else if(remainder >= 200 && remainder <=741){
-    alert("you receive the sum the "+ toonie + or + loonie + or + quarto + or + dime + or + nichel + or + penny)
-}else if(remainder == 742) {
-    alert("you receive " + " 3 " + toonie + " 1 " + loonie + " 1 " + quarto + " 1 " + dime + " 1 " + nichel + " 1 " + " 2 " + penny)
-}else if(remainder >= 743){
-    alert("you receive the sum the "+ toonie + or + loonie + or + quarto + or + dime + or + nichel + or + penny)
-}
+let dimes = Math.floor(remainder / 10);
+remainder = remainder % 10;
+
+let nickels =  Math.floor(remainder / 5);
+remainder = remainder % 5;
+
+let pennies = Math.floor(remainder / 1);
+remainder = remainder % 1;
+
+
+alert(`Your change is: ${toonies} toonies, ${loonies} loonies, ${quarters} quarters,${dimes} dimes, ${nickels} nickels,${pennies} pennies!`);
 
 
 
