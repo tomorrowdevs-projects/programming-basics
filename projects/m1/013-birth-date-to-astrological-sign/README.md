@@ -23,6 +23,11 @@ This system of astrology divides the year into twelve zodiac signs, as outline i
 Write a program that asks the user to **enter his or her month and day of birth**.    
 Then your program should **return the user’s zodiac sign** as part of an appropriate output message.
 
+Example:   
+Month input: December   
+Day input: 22   
+Output: Capricorn  
+
 # Documentation
 
 For this project solution you may use:

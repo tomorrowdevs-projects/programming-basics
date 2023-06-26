@@ -27,10 +27,10 @@ Input messages: 55
 
 Output:  
 Base charge: 15.00€  
-Extra minutes charge: 112.50€
-Extra messages charge: 0.75€
-911 fee: 0.44€
-Tax: 6.43€
+Extra minutes charge: 112.50€  
+Extra messages charge: 0.75€  
+911 fee: 0.44€  
+Tax: 6.43€  
 Total bill amount: 135.12€
 
 
