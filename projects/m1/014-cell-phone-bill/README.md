@@ -65,3 +65,30 @@ or run the command from the terminal
 # Deadline
 
 This project requires to be completed in a maximum of **2 hours**
+
+
+# Bolletta del cellulare
+
+Un particolare piano telefonico comprende 50 minuti di trasmissione e 50 sms a € 15,00 al mese.
+Ogni minuto aggiuntivo di trasmissione costa € 0,25, mentre gli SMS aggiuntivi costano € 0,15 ciascuno.
+Tutte le fatture dei telefoni cellulari includono un addebito aggiuntivo di € 0,44 per supportare i call center del 911 e l'intera fattura (compresa la carica del 911) è soggetta all'imposta sulle vendite del 5%.
+Scrivere un programma che legga il numero di minuti e messaggi di testo utilizzati in un mese dall'utente. Visualizza l'addebito base, l'addebito dei minuti aggiuntivi (se presenti),
+addebito aggiuntivo per i messaggi di testo (se presente), la tariffa del 911, le tasse e l'importo totale della fattura.
+Visualizzare i costi dei minuti aggiuntivi e dei messaggi di testo solo se l'utente ha sostenuto costi in queste categorie.
+Assicurati che tutti gli addebiti vengano visualizzati utilizzando 2 cifre decimali.
+
+# Documentazione
+
+Per questa soluzione di progetto è possibile utilizzare:
+
+- Variabili, espressioni, istruzioni
+- Condizionali e ricorsione
+- Iterazione
+- Stringhe
+
+# Scadenza
+
+Questo progetto deve essere completato in un massimo di **2 ore**
+Ulteriori informazioni su questo testo di originePer avere ulteriori informazioni sulla traduzione è necessario il testo di origine
+Invia commenti
+Riquadri laterali
