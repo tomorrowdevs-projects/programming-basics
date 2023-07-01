@@ -12,7 +12,7 @@ is_file_empty = os.stat(file_path).st_size == 0
 
 
 @skipIf(is_file_empty, 'Empty file. Test 013 Skipped')
-class TestWhatColorIsThatSquare(TestCase):
+class TestBirthDateToAstrologicalSign(TestCase):
 
     def setUp(self) -> None:
         self.module_name = 'projects.m1.013-birth-date-to-astrological-sign.python.main'
@@ -40,7 +40,7 @@ class TestWhatColorIsThatSquare(TestCase):
                 importlib.import_module(name=self.module_name, package='files')
 
                 result = mock_print.getvalue().lower()
-                self.assertIn('capricorn', result, f'{month_}{day_} sign is capricorn.')
+                self.assertIn('capricorn', result, f'{month_} {day_} sign is capricorn.')
 
     @patch('builtins.input')
     def test_ok_aquarius(self, mock_inputs):
