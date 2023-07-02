@@ -78,6 +78,7 @@ let minuteInput = +prompt(`You insert the minute: `);
 let smsInput = +prompt(`you insert the minute: `);
 
 const pattern = /[0-9]/g;
+console.log(pattern)
 
 
 
@@ -113,7 +114,7 @@ alert (` You pay:
          Tax: ${salesTaxUser.toFixed(2)}€
          Total bill amount: ${totalBillAmount.toFixed(2)}€`)
 } else{
-    alert(`you don't insert right parameters!`)
+    alert(`you have not entered the correct parameters`)
 }
 
 
