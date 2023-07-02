@@ -77,6 +77,11 @@ console.log(baseCharge)
 let minuteInput = +prompt(`You insert the minute: `);
 let smsInput = +prompt(`you insert the minute: `);
 
+const pattern = /[0-9]/g;
+
+
+
+
 let minutesExtra;
 let smsExtra;
 
@@ -99,13 +104,16 @@ if(minuteInput <= 50){
 
 
 
+if((pattern.test(minuteInput) == true) && (pattern.test(smsInput) == true)){
+alert (` You pay:  
+         Base charge: ${charge}€ 
+         Extra minutes charge: ${minutesExtra.toFixed(2)}€ 
+         Extra messages charge: ${smsExtra.toFixed(2)}€
+         911 fee: ${commission.toFixed(2)}€ 
+         Tax: ${salesTaxUser.toFixed(2)}€
+         Total bill amount: ${totalBillAmount.toFixed(2)}€`)
+} else{
+    alert(`you don't insert right parameters!`)
+}
 
 
-
-alert(` You pay:  
-Base charge: ${charge}€ 
- Extra minutes charge: ${minutesExtra.toFixed(2)}€ 
-Extra messages charge: ${smsExtra.toFixed(2)}€
-911 fee: ${commission.toFixed(2)}€ 
-Tax: ${salesTaxUser.toFixed(2)}€
- Total bill amount: ${totalBillAmount.toFixed(2)}€`)
