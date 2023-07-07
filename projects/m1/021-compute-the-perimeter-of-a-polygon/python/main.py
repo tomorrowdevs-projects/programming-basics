@@ -25,4 +25,4 @@ while True:
     x_prev = x
     y_prev = y
 
-print(perimeter)
+print("The perimeter of that polygon is", perimeter)
