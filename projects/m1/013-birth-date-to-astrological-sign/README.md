@@ -1,7 +1,8 @@
 # Birth Date to Astrological Sign
 
-The horoscopes commonly reported in newspapers use the position of the sun at the time of one’s birth to try and predict the future. 
-This system of astrology divides the year into twelve zodiac signs, as outline in the table below:
+The horoscopes commonly reported in newspapers use the position of the sun at 
+the time of one’s birth to try and predict the future.    
+This system of astrology divides the year into twelve zodiac signs, as outline in the table below:  
 
 
 | Zodiac Sign |       Date Range           |
@@ -19,8 +20,13 @@ This system of astrology divides the year into twelve zodiac signs, as outline i
 | Scorpio     | October 23 to November 21  |
 | Sagittarius | November 22 to December 21 |
 
-Write a program that asks the user to enter his or her month and day of birth. 
-Then your program should report the user’s zodiac sign as part of an appropriate output message.
+Write a program that asks the user to **enter his or her month and day of birth**.    
+Then your program should **return the user’s zodiac sign** as part of an appropriate output message.
+
+Example:   
+Month input: December   
+Day input: 22   
+Output: Capricorn  
 
 # Documentation
 
@@ -30,6 +36,25 @@ For this project solution you may use:
 - Conditionals and recursion
 - Iteration
 - Strings
+
+
+# Test
+Execute the test to validate your solution.  
+
+**VSCODE**   
+To run the test command from the README.md install the extension **runme**. 
+Press Ctrl+Shift+x search and install the **runme** extension. 
+
+
+**Python**
+
+```sh
+python -m unittest python/test_birth_day_to_astrological_sign.py
+```
+
+or run the command from the terminal  
+`python -m unittest projects/m1/013-birth-date-to-astrological-sign/python/test_birth_day_to_astrological_sign.py`
+
 
 # Deadline
 

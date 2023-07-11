@@ -1,9 +1,9 @@
 # Avoiding Duplicates
 
-In this exercise, you will create a program that reads words from the user until the user enters a blank line. 
-After the user enters a blank line your program should dis- play each word entered by the user exactly once. 
-The words should be displayed in the same order that they were first entered. 
-
+In this exercise, you will write a function called "remove duplicates" that reads words from the user until the user enters a blank line. 
+After the user enters a blank line your program should display each word entered by the user exactly once. 
+The words should be displayed in the same order that they were first entered.   
+Write a main function that demonstrates your function.   
 For example, if the user enters:
 *first*
 *second*

@@ -14,9 +14,21 @@ For this project solution you may use:
 - Strings
 
 # Test
-Execute the test to validate your solution.
+Execute the test to validate your solution.  
 
-- python: `python -m unittest projects/m1/001-area-of-a-room/python/test_area_of_a_room.py`
+**VSCODE**   
+To run the test command from the README.md install the extension **runme**. 
+Press Ctrl+Shift+x search and install the **runme** extension. 
+
+
+**Python**
+
+```sh
+python -m unittest python/test_area_of_a_room.py
+```
+
+or run the command from the terminal  
+`python -m unittest projects/m1/001-area-of-a-room/python/test_area_of_a_room.py`
 
 # Deadline
 
