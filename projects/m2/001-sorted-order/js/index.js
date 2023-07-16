@@ -1,7 +1,7 @@
 const prompt= require("prompt-sync")();
 let numberArray = [];
 
-function AddNumber() {
+const AddNumber = () => {
   let valueChoice = -1;
 
   while (valueChoice !== 0) {
@@ -14,11 +14,9 @@ function AddNumber() {
 }
 AddNumber();
 
-numberArray.sort(function(a, b) {
-  return a - b;
-});
+numberArray.sort((a, b) => a - b);
 
 for (let x=0; x < numberArray.length; x++) {
-  let myNumber= numberArray[x];
+  const myNumber= numberArray[x];
   console.log(myNumber);
 }
