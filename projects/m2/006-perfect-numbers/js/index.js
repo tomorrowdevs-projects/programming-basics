@@ -33,8 +33,8 @@ function perfectNumber(valueChoice) {
   }
 }
 
-function totalPerfectNumber() {
-  for (let x = 1; x <= 10000; x++) {
+function printTotalPerfectNumber(maxValue) {
+  for (let x = 1; x <= maxValue; x++) {
     if (isPerfectNumber(x)) {
       console.log(x);
     }
@@ -44,4 +44,4 @@ function totalPerfectNumber() {
 valueChoice = addNumber();
 perfectNumber(valueChoice);
 console.log("I numeri perfetti da 1 a 10000 sono: ");
-totalPerfectNumber();
+printTotalPerfectNumber(10000);
