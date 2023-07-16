@@ -1,5 +1,5 @@
 const prompt = require("prompt-sync")();
-let wordsArray = [];
+const wordsSet = new Set();
 
 function addWords() {
   let valueChoice = "valore";
@@ -8,26 +8,16 @@ function addWords() {
     valueChoice = prompt("Inserisci una parola. Inserisci una riga vuota per concludere: ");
 
     if (valueChoice !== "") {
-      wordsArray.push(valueChoice);
+      wordsSet.add(valueChoice);
     }
   }
 
-  return avoidingDuplicates(wordsArray);
+  return Array.from(wordsSet);
 }
 
-function avoidingDuplicates(wordsArray) {
-  let newWordsArray = [];
-  wordsArray.forEach(element => {
-      if (!newWordsArray.includes(element)) {
-          newWordsArray.push(element);
-      }
-  });
-  return newWordsArray;
-}
-
-let newWordsArray = addWords();
+const newWordsArray = addWords();
 
 for (let x = 0; x < newWordsArray.length; x++) {
-  let myWords = newWordsArray[x];
+  const myWords = newWordsArray[x];
   console.log(myWords);
 }
