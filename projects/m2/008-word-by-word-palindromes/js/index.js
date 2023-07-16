@@ -1,5 +1,5 @@
 const prompt = require("prompt-sync")();
-let wordsArray = [];
+const wordsArray = [];
 
 function onlyWords(inputString) {
   if (inputString && typeof inputString === "string") {
