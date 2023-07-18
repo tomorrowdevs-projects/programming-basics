@@ -19,7 +19,7 @@ function cleanForSortingNumbers( values ){
 function bubbleSortNumbers( values, order = 'ASC' ){
 
     if( Array.isArray( values ) && values.length > 1 ) { // We check that valuesToOrder is an array and has more than one element
-        const valuesToOrder = [...cleanForSortingNumbers(values)];
+        const valuesToOrder = cleanForSortingNumbers(values);
 
         let isSwapped = true;
 
@@ -54,7 +54,7 @@ function bubbleSortNumbers( values, order = 'ASC' ){
 function selectionSortNumbers( values, order = 'ASC' ){
 
     if( Array.isArray( values ) && values.length > 1 ) {
-        const valuesToOrder = [...cleanForSortingNumbers(values)];
+        const valuesToOrder = cleanForSortingNumbers(values);
 
         for ( let i = 0; i < valuesToOrder.length - 1; i++ ){ 
             let mininumValueIndex = i; 
@@ -85,7 +85,7 @@ function selectionSortNumbers( values, order = 'ASC' ){
 function insertionSortNumbers(values, order = 'ASC' ){
 
     if( Array.isArray( values ) && values.length > 1 ) {
-        const valuesToOrder = [...cleanForSortingNumbers(values)];
+        const valuesToOrder = cleanForSortingNumbers(values);
 
         for (let i = 1; i < valuesToOrder.length; i++) {
             let currentElement = valuesToOrder[i];
@@ -115,7 +115,7 @@ function insertionSortNumbers(values, order = 'ASC' ){
 function quickSortNumbers( values, order = 'ASC' ){
 
     if( Array.isArray( values ) && values.length > 1 ) { 
-        const valuesToOrder = [...cleanForSortingNumbers(values)];
+        const valuesToOrder = cleanForSortingNumbers(values);
 
         const pivot = valuesToOrder[valuesToOrder.length-1]; 
         const leftArray = []; 
@@ -145,8 +145,8 @@ function mergeSortNumbersArray( leftArrayToSort, rightArrayToSort, order = 'ASC'
     
     if( Array.isArray( leftArrayToSort ) && Array.isArray( rightArrayToSort ) ) {
         const sortedArray = [];
-        const leftArray = [...cleanForSortingNumbers(leftArrayToSort)];
-        const rightArray = [...cleanForSortingNumbers(rightArrayToSort)];
+        const leftArray = cleanForSortingNumbers(leftArrayToSort);
+        const rightArray = cleanForSortingNumbers(rightArrayToSort);
 
         if( order === 'ASC' ){
 
@@ -180,7 +180,7 @@ function mergeSortNumbersArray( leftArrayToSort, rightArrayToSort, order = 'ASC'
 function mergeSortNumbers( values, order = 'ASC' ){
 
     if( Array.isArray( values ) && values.length > 1 ) {
-        const valuesToOrder = [...cleanForSortingNumbers(values)];
+        const valuesToOrder = cleanForSortingNumbers(values);
         const leftArray = mergeSortNumbers( valuesToOrder.splice( 0, Math.ceil( valuesToOrder.length / 2 ) ), order );
         const rightArray = mergeSortNumbers( valuesToOrder, order );
 
@@ -210,7 +210,7 @@ function findFirstChildIndex( parentIndex ){
 
 function buildMaxHeap( values ){
     if( Array.isArray( values ) && values.length > 1 ) {
-        const valuesToOrder = [...cleanForSortingNumbers(values)];
+        const valuesToOrder = cleanForSortingNumbers(values);
         const lastParent = findParentIndex( valuesToOrder.length - 1 );
 
         for (let parentIndex = lastParent; parentIndex >= 0; parentIndex--) {
