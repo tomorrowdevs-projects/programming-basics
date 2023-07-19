@@ -2,14 +2,10 @@
 const { quickSortNumbers } = require( '../../../lib/sort-modules.js' );
 
 function properDivisors( integer ){
-
-    if( integer === 1 ){
-        return [1];
-    }
     const divisors = [];
     // To reduce loop's iterations we use square root of "integer" instead "integer" or "integer" / 2
     // If a number is not divisible by iteration values ​​less than the square root, then it cannot be divisible by values ​​greater than the square root.
-    for (let i = 1 ; i <= Math. sqrt(integer); i++) {
+    for (let i = 1 ; i <= Math.sqrt(integer); i++) {
 
         if( integer % i === 0 ){
             divisors.push(i);
@@ -20,9 +16,8 @@ function properDivisors( integer ){
             }
         }
     }
-
-    // Since the dividers have not been added to the list in ascending order, it is necessary to sort them
-    return quickSortNumbers(divisors);
+    // Since the dividers have not been added to the list in ascending order, it is necessary to sort them and remove the higher value because it's the number itsleft and we want proper divisors
+    return quickSortNumbers(divisors).slice(0,-1);
 }
 
 function askPositiveInteger(){
