@@ -21,14 +21,14 @@ function properDivisors( integer ){
 }
 
 function askPositiveInteger(){
-    const askedPositiveInteger = parseInt( prompt( 'Please enter an integer positive number' ) );
+    let askedPositiveInteger = parseInt( prompt( 'Enter a positive integer number.' ) );
 
-    if(Number.isInteger( askedPositiveInteger ) && askedPositiveInteger > 0){
-        return askedPositiveInteger;
+    while ( ! Number.isInteger( askedPositiveInteger ) || askedPositiveInteger <= 0 ) {
+        console.log('You entered an invalid value.');
+        askedPositiveInteger = parseInt( prompt( 'Enter a positive integer number.' ) );
     }
 
-    console.log('You entered an invalid value, closing the ')
-    return askPositiveInteger();
+    return askedPositiveInteger;
 }
 // This check ensure that the main program only runs when the solution has not been imported into another file.
 // i.e. if require.main is the current module, then the current module was loaded from the node command line and not from other file
