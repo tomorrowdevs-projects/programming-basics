@@ -1,16 +1,16 @@
 function onlyWords(phrase){
     const exceptions = [',','.','?','‐','\'','!',':',';']
-    const words = [];
-    let word = '';
+    const words = [''];
+    let j = 0;
 
     for (let i = 0; i < phrase.trim().length; i++) {
         const letter = phrase.charAt(i);
 
         if( letter !== ' ' ){
-            word += letter;
+            words[j] += letter;
         } else {
-            words.push(word);
-;           word = '';
+            j++;
+            words[j] = '';
         }
     }
 
