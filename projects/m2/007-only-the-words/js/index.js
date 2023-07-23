@@ -1,7 +1,7 @@
 function onlyWords(phrase){
     const words = [''];
 
-    if(phrase.length > 0){
+    if(typeof phrase === "string" && phrase.length > 0){
         const exceptions = [',','.','?','‐','\'','!',':',';']
         let j = 0;
 
