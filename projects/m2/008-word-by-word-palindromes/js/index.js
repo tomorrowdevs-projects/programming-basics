@@ -1,20 +1,23 @@
 // const prompt = require("prompt-sync")({ sigint: true}) ;
 
 function getWordsLowercase(phrase){
-    const punctuation = [',','.','?','‐','\'','!',':',';'];
     const words = [''];
-    let j = 0;
 
-    for (let i = 0; i < phrase.trim().length; i++) {
-        const letter = phrase.charAt(i);
+    if(typeof phrase === "string" && phrase.length > 0){
+        const punctuation = [',','.','?','‐','\'','!',':',';'];
+        let j = 0;
 
-        if( letter !== ' ' ){
-            if( ! punctuation.includes(letter) ){
-                words[j] += letter.toLowerCase();
+        for (let i = 0; i < phrase.trim().length; i++) {
+            const letter = phrase.charAt(i);
+
+            if( letter !== ' ' ){
+                if( ! punctuation.includes(letter) ){
+                    words[j] += letter.toLowerCase();
+                }
+            } else {
+                j++;
+                words[j] = '';
             }
-        } else {
-            j++;
-            words[j] = '';
         }
     }
 
