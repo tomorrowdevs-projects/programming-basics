@@ -15,11 +15,7 @@ function findPrimeNumbers(limit){
     while( p < limit ){
         let next = 0;
         for (let i = p; i*p <= limit; i++) {
-            const notPrimeIndex = (i*p)-2;
-
-            if( notPrimeIndex !== -1 ){
-                numbersList[(i*p)-2] = 0;
-            }
+            numbersList[(i*p)-2] = 0;
         }
 
         for (let i = p-2; i < numbersList.length; i++) {
