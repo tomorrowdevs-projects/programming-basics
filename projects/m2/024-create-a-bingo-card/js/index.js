@@ -1,14 +1,14 @@
 function generateBingoCard() {
-    let ranges = [[1, 15], [16, 30], [31, 45], [46, 60], [61, 75]];
-    let headers = ['B', 'I', 'N', 'G', 'O'];
-    let bingoColumns = {};
+    const ranges = [[1, 15], [16, 30], [31, 45], [46, 60], [61, 75]];
+    const headers = ['B', 'I', 'N', 'G', 'O'];
+    const bingoColumns = {};
 
     for (let i = 0; i < 5; i++) {
-        let column = [];
+        const column = [];
         for (let j = 0; j < 5; j++) {
-            let min = ranges[i][0];
-            let max = ranges[i][1];
-            let randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
+            const min = ranges[i][0];
+            const max = ranges[i][1];
+            const randomNum = Math.floor(Math.random() * (max - min + 1)) + min;
             column.push(randomNum);
         }
         bingoColumns[headers[i]] = column;
