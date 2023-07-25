@@ -1,12 +1,12 @@
 function generateBingoCard() {
-    let ranges = [[1, 15], [16, 30], [31, 45], [46, 60], [61, 75]];
-    let headers = ['B', 'I', 'N', 'G', 'O'];
-    let bingoColumns = {};
+    const ranges = [[1, 15], [16, 30], [31, 45], [46, 60], [61, 75]];
+    const headers = ['B', 'I', 'N', 'G', 'O'];
+    const bingoColumns = {};
 
     for (let i = 0; i < 5; i++) {
-        let column = [];
+        const column = [];
         let nums = Array.from({length: ranges[i][1] - ranges[i][0] + 1}, (_, idx) => idx + ranges[i][0]);
-        nums = shuffle(nums); 
+        nums = shuffle(nums);  
         for (let j = 0; j < 5; j++) {
             column.push(nums[j]);  
         }
@@ -34,9 +34,8 @@ function generateBingoCalls() {
 function shuffle(array) {
     let currentIndex = array.length, temporaryValue, randomIndex;
 
-    
     while (0 !== currentIndex) {
-        
+
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
 
@@ -55,7 +54,7 @@ bingoCalls = shuffle(bingoCalls);
 function checkBingoCard(card) {
     let headers = ['B', 'I', 'N', 'G', 'O'];
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < headers.length; i++) {
         if (headers.every(header => card[header][i] === 0)) {
             return true;
         }
@@ -65,13 +64,6 @@ function checkBingoCard(card) {
         if (card[header].every(num => num === 0)) {
             return true;
         }
-    }
-
-    if (headers.every((header, i) => card[header][i] === 0)) {
-        return true;
-    }
-    if (headers.every((header, i) => card[header][4 - i] === 0)) {
-        return true;
     }
 
     return false;
@@ -100,7 +92,6 @@ function simulateGame() {
 }
 
 function main() {
-
     let results = [];
     for (let i = 0; i < 1000; i++) {
         results.push(simulateGame());
