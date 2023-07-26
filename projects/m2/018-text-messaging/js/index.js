@@ -1,4 +1,4 @@
-const prompt = require("prompt-sync")({ sigint: true}) ;
+// const prompt = require("prompt-sync")({ sigint: true}) ;
 
 const dictionary = [
     ' ',
@@ -34,7 +34,7 @@ function createDictionaryByKey(dictionary){
 
 function convertToKeyPresses(message, dictionary){
     message = message.toUpperCase();
-    convertedMessage = '';
+    let convertedMessage = '';
 
     for (let i = 0; i < message.length; i++) {
         const letter = message[i];
