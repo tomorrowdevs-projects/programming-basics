@@ -1,16 +1,29 @@
-function generateBingoCardNumber(){
-    const bingoCardNumber = {};
+function generateBingoCardNumbers(){
     const gameName = 'BINGO';
+    const bingoCardNumbers = [];
+    const generatedNumbers = [];
 
-    for (let i = 1; i <= gameName.length; i++) {
-        const pointsForColumn = 15
-        const minValueForThisColumn = i*pointsForColumn - (pointsForColumn - 1);
-        const maxValueForThisColumn = i*pointsForColumn;
+    for (let i = 0; i < 5; i++) {
+        const bingoCardNumber = {};
 
-        bingoCardNumber[gameName.charAt(i-1)] = Math.floor( Math.random()*(maxValueForThisColumn - minValueForThisColumn + 1) + minValueForThisColumn);
+        for (let i = 1; i <= gameName.length; i++) {
+            const pointsForColumn = 15
+            const minValueForThisColumn = i*pointsForColumn - (pointsForColumn - 1);
+            const maxValueForThisColumn = i*pointsForColumn;
+            const generatedNumber = Math.floor( Math.random()*(maxValueForThisColumn - minValueForThisColumn + 1) + minValueForThisColumn);
+
+            if( ! generatedNumbers.includes(generatedNumber) ){
+                generatedNumbers.push(generatedNumber);
+                bingoCardNumber[gameName.charAt(i-1)] = generatedNumber;
+            } else {
+                i--;
+            }
+        }
+
+        bingoCardNumbers.push(bingoCardNumber);
     }
-
-    return bingoCardNumber;
+    
+    return bingoCardNumbers;
 }
 
 function designDashedLine(tableLength){
@@ -61,15 +74,17 @@ function designBingoCard(bingoCardRecords){
 
 if (require.main === module) { 
     function init(){
-        const setOf5BingoCards = [];
-        for(let i = 0; i < 5; i++){
-            setOf5BingoCards.push( generateBingoCardNumber() );
-        }
-
-        const table = designBingoCard(setOf5BingoCards);
+        const bingoCardNumbers = generateBingoCardNumbers();
+        const table = designBingoCard(bingoCardNumbers);
         console.log(table);
 
         return;
     } 
     init();
 }
+
+module.exports = { // For CommonJS environment
+    // export { // For ES module environment. In addition for Visual Studio Code two package.json files must be created, one in this file folder, the other one in the application file folder, they must contain the following code { "type": "module" }
+    designBingoCard,
+    generateBingoCardNumbers
+};
