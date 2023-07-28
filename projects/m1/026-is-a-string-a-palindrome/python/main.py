@@ -6,9 +6,11 @@ for i in reversed(USER_INPUT):
     new_word += i
 
 if new_word == USER_INPUT:
-    print(f'{USER_INPUT} is a palyndrome')
+    result = f'{USER_INPUT} is a palyndrome'
 else:
-    print(f'{USER_INPUT} isn\'t a palyndrome')
+    result = f'{USER_INPUT} is not a palyndrome'
+
+print(result)
 
 
 

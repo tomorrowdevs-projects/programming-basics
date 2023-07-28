@@ -1,11 +1,13 @@
+result = ''
 
-for i in range(0,101):
-    if i % 3 == 0 and i % 5 != 0:
-        print(f"{i} fizz!")
-    elif i % 3 != 0 and i % 5 == 0:
-        print(f'{i} buzz')
-    elif i % 5 == 0 and i % 5 == 0:
-        print(f"{i} fizz! buzz!")
+for i in range(1,101):
+    if i % 3 == 0 and i % 5 == 0:
+        result = result + f"{i} fizz! buzz!\n"
+    elif i % 3 == 0:
+        result = result + f'{i} fizz!\n'
+    elif i % 5 == 0:
+        result = result + f"{i} buzz! \n"
     else:
-        print(i)
+        result = result + f'{i} \n'
 
+print(result)
