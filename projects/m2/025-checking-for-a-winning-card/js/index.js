@@ -1,125 +1,152 @@
-const { designBingoCard, generateBingoCardNumbers } = require( '../../024-create-a-bingo-card/js/index.js' );
-// import { designBingoCard, generateBingoCardNumbers } from '../../024-create-a-bingo-card/js/index.js'; // For ES module environment (see the imported file for additional informations)
+import { designBingoCard } from '../../024-create-a-bingo-card/js/index.js';
 
-function drawnBingoNumbers(drawns){
-    const drawnNumbers = [];
-
-    for (let i = 0; i < drawns; i++) {
-        const drawnNumber = Math.floor(Math.random()*75 + 1);
-
-        if( ! drawnNumbers.includes(drawnNumber) ){
-            drawnNumbers.push(drawnNumber);            
-        }  else {
-            i--;
-        }
-    }
-
-    return drawnNumbers;
-}
-
-function markOutNumbers(bingoCardNumbers, drawnNumbers){
-    const markedBingoCard = [];
-    // mark the numbers drawn on the Bingo card replacing them with a 0
+// To mark the potential drawn numbers on the Bingo card
+function markOutDrawnNumber(bingoCardNumbers, drawnNumber){
+    // Mark the numbers drawn on the Bingo card replacing them with a 0
     for (let i = 0; i < bingoCardNumbers.length; i++) {
+        const bingoCardRow = bingoCardNumbers[i];
 
-        const bingoCardNumber = bingoCardNumbers[i];
-        markedBingoCard[i] = []
-
-        Object.keys(bingoCardNumber).forEach( key => {
-            if( drawnNumbers.includes(bingoCardNumber[key]) ){
-                markedBingoCard[i].push(0);
-            } else {
-                markedBingoCard[i].push(bingoCardNumber[key]);
+        Object.keys(bingoCardRow).forEach( key => {
+            if(drawnNumber === key + bingoCardRow[key]){
+                bingoCardRow[key] = 0;
             }
         });
-
     }
 
-    return markedBingoCard;
+    return;
 }
 
-function isWinning(recordsToCheck){
-    const results = [];
+// Check if the Bingo card a line of five zeros (vertical, horizontal or diagonal), the zeros represent the numbers drawn.
+function isWinning(markedBingoCard){
+    const gameName = 'BINGO';
+    let lineType = '';
+    let won; // This uninitialized control boolean is used to determine if the winning line has been found, it will be set to true at the start of each cycle and to false whenever a non-zero number is found.
 
-    for (let i = 0; i < recordsToCheck.length; i++) {
-        let winning = true;
-
-        for (let j = 0; j < recordsToCheck[i].length; j++) {
-            if(recordsToCheck[i][j] !== 0){
-                winning = false;
-            }
-        }
-
-        results.push(winning);
-    }
-
-    if( results.includes(true) ){
-        return true;
-    }
-
-    return false;
-}
-
-function generateRecords(markedBingoCard){
-    const verticalRecord = [];
-    const diagonalRecord = [[],[]];
-
-    for (let i = 0; i < markedBingoCard.length; i++) {
-
-        for (let j = 0; j < markedBingoCard[i].length; j++) {
-            // vertical record assignment
-            if( verticalRecord[j] === undefined ){
-                verticalRecord[j] = [];
-            }        
-            verticalRecord[j].push(markedBingoCard[i][j]);
-            // left diagonal record assignment
-            if(i === j){
-                diagonalRecord[0].push(markedBingoCard[i][j]);
-            }
-            // right diagonal record assignment
-            if(j === markedBingoCard.length-i-1){
-                diagonalRecord[1].push(markedBingoCard[i][j]);
-            }
-        }
-
-    }
-
-    return [markedBingoCard, verticalRecord, diagonalRecord];
-}
-
-function init(){
-    // Draw several numbers
-    const drawnNumbers = drawnBingoNumbers(60);
-    // Creating several Bingo cards
-    for(let i = 0; i < 7; i++){
-        const bingoCardNumbers = generateBingoCardNumbers();
-        const table = designBingoCard(bingoCardNumbers);
-        // Design Bingo card
-        console.log(table);
-        // Check the Bingo card, mark the numbers that came out during the draw and return a marked Bingo Card
-        const markedBingoCard = markOutNumbers(bingoCardNumbers, drawnNumbers);
-        // Generate two lists containing the numbers taken from the verticals and the diagonals and adds them to a set containing those taken from the horizontals
-        const generatedRecords = generateRecords(markedBingoCard);
-
-        // Checks whether or not the Bingo card contain a winning line, be it horizontal, vertical or diagonal
-        for (let i = 0; i < generatedRecords.length; i++) {
-
-            const result = isWinning(generatedRecords[i]);
-
-            if( result === true ){
-                console.log(result);
+    for (let i = 0; i < gameName.length; i++) {
+        // The first check is done for horizontal lines
+        won = true;
+        for (let j = 0; j < gameName.length; j++) {
+            if(markedBingoCard[i][gameName[j]] !== 0){
+                won = false;
                 break;
             }
         }
+        // If no winning line is found among the horizontal ones then the vertical ones are checked
+        if(won === false){
+            won = true;
+            for (let j = 0; j < gameName.length; j++) {
+                if(markedBingoCard[j][gameName[i]] !== 0){
+                    won = false;
+                    break;
+                }
+            }
+            // If no winning line is found among the vertical ones then the two diagonals are checked
+            // The first diagonal starts at the top left and ends at the bottom right
+            if(won === false){
+                // To avoid further cycles, the diagonal check is performed only on the main first cycle
+                if(i === 0){
+                    won = true;
+                    for (let j = 0; j < gameName.length; j++) {
+                        if(markedBingoCard[i+j][gameName[j]] !== 0){
+                            won = false;
+                            break;
+                        }
+                    }
+                    // The second diagonal starts at the top right and ends at the bottom left
+                    if(won === false){
+                        won = true;
+                        for (let j = 0; j < gameName.length; j++) {
+                            if(markedBingoCard[i+j][gameName[gameName.length -j -1]] !== 0){
+                                won = false;
+                                break;
+                            }
+                        }
+
+                        if(won === true){
+                            lineType = 'diagonal (from right to left)';
+                            break;
+                        }
+                    } else {
+                        lineType = 'diagonal (from left to right)';
+                        break;
+                    }
+
+                }
+                
+            } else {
+                lineType = 'vertical';
+                break;
+            }
+        } else {
+            lineType = 'horizontal';
+            break;
+        }
+    }
+
+    if(won === true){
+        console.log('The winning line is ' + lineType + '.');
+    }
+    return won;
+}
+
+function init(){
+    // Creates a list of numbers to drawn to verify that the program finds the winning cards for horizontal, vertical, diagonal and non-winning lines
+    const horizontalWinningCalls = ['B8', 'I17', 'N39', 'G53', 'O74'];
+    const verticalWinningCalls = ['I22', 'I21', 'I17', 'I26', 'I18'];
+    const diagonalLRWinningCalls = ['B9', 'I21', 'N39', 'G48', 'O72'];
+    const diagonalRLWinningCalls = ['O67', 'G47', 'N39', 'I26', 'B6'];
+    const horizontalLosingCalls = ['O68', 'G47', 'N39', 'I26', 'B6'];
+    
+    const bingoCalls = [
+        horizontalWinningCalls,
+        verticalWinningCalls,
+        diagonalLRWinningCalls,
+        diagonalRLWinningCalls,
+        horizontalLosingCalls
+    ];
+    
+    // At each drawn it is checked if the Bingo card is winner
+    for(let i = 0; i < bingoCalls.length; i++){
+        const bingoCardNumbers = [
+            { B: 9, I: 22, N: 40, G: 49, O: 67 },
+            { B: 2, I: 21, N: 41, G: 47, O: 68 },
+            { B: 8, I: 17, N: 39, G: 53, O: 74 },
+            { B: 1, I: 26, N: 31, G: 48, O: 66 },
+            { B: 6, I: 18, N: 45, G: 60, O: 72 }
+        ];
+        // Design Bingo card
+        const table = designBingoCard(bingoCardNumbers);
+        console.log(table);
+        // Make a shallow copy of the Bingo card to have both the original and the marked one
+        const markedBingoCard = [...bingoCardNumbers];
+        let won = false;
+        // Check the Bingo card, mark the numbers that came out during the draw and return a marked Bingo Card
+        for (let j = 0; j < bingoCalls[i].length; j++) {
+            const drawnNumber = bingoCalls[i][j];
+            markOutDrawnNumber(markedBingoCard, drawnNumber); // Working on the same object change it without creating a shallow copy
+            // Checks whether or not the Bingo card contain a winning line, be it horizontal, vertical or diagonal
+            if(j > 3){ // Start to check if winning from fifth drawn numbers to avoid useless check
+                if( isWinning(markedBingoCard) ){
+                    console.log('The last Bingo number to be drawn which led to the win is ' + drawnNumber);
+                    console.log((j+1) + ' numbers have been drawn.');
+                    won = true;
+                    break;
+                }
+            }
+        }
+
+        if(won === false){
+            console.log('This Bingo card is not winning.');
+        }
+
+        console.log(designBingoCard(markedBingoCard) + '\n');
     }
 
     return;
 } 
 init();
 
-module.exports = { // For CommonJS environment
-    // export { // For ES module environment. In addition for Visual Studio Code two package.json files must be created, one in this file folder, the other one in the application file folder, they must contain the following code { "type": "module" }
-    markOutNumbers,
-    generateRecords,
+export {
+    markOutDrawnNumber,
     isWinning
 };
