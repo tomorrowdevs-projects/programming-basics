@@ -83,8 +83,7 @@ if (require.main === module) {
     init();
 }
 
-module.exports = { // For CommonJS environment
-    // export { // For ES module environment. In addition for Visual Studio Code two package.json files must be created, one in this file folder, the other one in the application file folder, they must contain the following code { "type": "module" }
+export {
     designBingoCard,
     generateBingoCardNumbers
 };
