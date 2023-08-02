@@ -1,6 +1,11 @@
-import { designBingoCard } from '../../024-create-a-bingo-card/js/index.js';
+import {designBingoCard} from '../../024-create-a-bingo-card/js/index.js';
 
-// To mark the potential drawn numbers on the Bingo card
+/**
+ *  To mark the potential drawn numbers on the Bingo card, it's a void function, the received parameter is modified directly
+ * @param {Array} bingoCardNumbers bingo card containing a series of 5 lines which in turn contain 5 numbers
+ * @param {string} drawnNumber the drawn number to check among the bingo card numbers, consisting of a letter and one or two numbers, i.e. B5 or I18
+ * @return {undefined} an undefined value because it's working directly on the received parameter without creating a copy
+ */
 function markOutDrawnNumber(bingoCardNumbers, drawnNumber){
     // Mark the numbers drawn on the Bingo card replacing them with a 0
     for (let i = 0; i < bingoCardNumbers.length; i++) {
@@ -16,7 +21,11 @@ function markOutDrawnNumber(bingoCardNumbers, drawnNumber){
     return;
 }
 
-// Check if the Bingo card a line of five zeros (vertical, horizontal or diagonal), the zeros represent the numbers drawn.
+/**
+ * Check if the Bingo card has a line of five zeros (vertical, horizontal or diagonal), the zeros represent the numbers drawn.
+ * @param {Array} markedBingoCard the bingo Card to check
+ * @return {boolean} true if a line of 5 zeros is found, false otherwise
+ */
 function isWinning(markedBingoCard){
     const gameName = 'BINGO';
     let lineType = '';
@@ -114,7 +123,7 @@ function init(){
             { B: 1, I: 26, N: 31, G: 48, O: 66 },
             { B: 6, I: 18, N: 45, G: 60, O: 72 }
         ];
-        // Design Bingo card
+        
         const table = designBingoCard(bingoCardNumbers);
         console.log(table);
         // Make a shallow copy of the Bingo card to have both the original and the marked one
@@ -123,8 +132,8 @@ function init(){
         // Check the Bingo card, mark the numbers that came out during the draw and return a marked Bingo Card
         for (let j = 0; j < bingoCalls[i].length; j++) {
             const drawnNumber = bingoCalls[i][j];
-            markOutDrawnNumber(markedBingoCard, drawnNumber); // Working on the same object change it without creating a shallow copy
-            // Checks whether or not the Bingo card contain a winning line, be it horizontal, vertical or diagonal
+            markOutDrawnNumber(markedBingoCard, drawnNumber);
+            
             if(j > 3){ // Start to check if winning from fifth drawn numbers to avoid useless check
                 if( isWinning(markedBingoCard) ){
                     console.log('The last Bingo number to be drawn which led to the win is ' + drawnNumber);
