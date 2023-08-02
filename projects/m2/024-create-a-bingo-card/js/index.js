@@ -1,3 +1,7 @@
+/**
+ * Generates a Bingo card with random numbers, no duplicates, from B1 to O75
+ * @return {Array} the generated bingo Card 
+ */
 function generateBingoCardNumbers(){
     const gameName = 'BINGO';
     const bingoCardNumbers = [];
@@ -26,6 +30,11 @@ function generateBingoCardNumbers(){
     return bingoCardNumbers;
 }
 
+/**
+ * Generates a dashed line as long as the space occupied by the width of the bingo card
+ * @param {number} tableLength bingo card width
+ * @return {string} the dashed line
+ */
 function designDashedLine(tableLength){
     let dashedLine = '';
     for (let i = 0; i < tableLength; i++) {
@@ -35,6 +44,10 @@ function designDashedLine(tableLength){
     return dashedLine;
 }
 
+/**
+ * Generates the head of the Bingo card containing BINGO divided by pipes and spaces
+ * @return {string} the head of the bingo card
+ */
 function designBingoCardHead(){
     let tableHead = '';
     const gameName = 'BINGO';
@@ -46,6 +59,10 @@ function designBingoCardHead(){
     return tableHead;
 }
 
+/**
+ * Generates a row of the Bingo card containing the numbers divided by pipes and spaces
+ * @return {string} the generated a row of the bingo card
+ */
 function designBingoCardRow(bingoCardNumber){
     let tableRow = '';
     let count = 0;
@@ -59,6 +76,11 @@ function designBingoCardRow(bingoCardNumber){
     return tableRow;
 }
 
+/**
+ * Generates the Bingo card
+ * @param {Array} bingoCardRecords all the numbers of the Bingo card
+ * @return {string} the bingo Card complete and filled out with head and rows
+ */
 function designBingoCard(bingoCardRecords){
     const tableHead = designBingoCardHead();
     const tableLength = tableHead.length;
@@ -72,7 +94,9 @@ function designBingoCard(bingoCardRecords){
     return `${dashedLine}\n${tableHead}\n${dashedLine}${bingoCardRows}`;
 }
 
-if (require.main === module) { 
+// The main program only runs if the file containing your solution has not been imported into another program
+import {pathToFileURL} from 'url'
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
     function init(){
         const bingoCardNumbers = generateBingoCardNumbers();
         const table = designBingoCard(bingoCardNumbers);
