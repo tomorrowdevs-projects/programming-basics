@@ -1,16 +1,26 @@
-import { generateBingoCardNumbers } from '../../024-create-a-bingo-card/js/index.js';
-import { markOutDrawnNumber, isWinning } from '../../025-checking-for-a-winning-card/js/index.js';
+import {generateBingoCardNumbers} from '../../024-create-a-bingo-card/js/index.js';
+import {markOutDrawnNumber, isWinning} from '../../025-checking-for-a-winning-card/js/index.js';
 
-// Function created using the Fisher-Yates algorithm to shuffle bingo numbers
+/**
+ * Created using the Fisher-Yates algorithm to shuffle bingo numbers
+ * @param {Array} values bingo numbers to be shuffle
+ * @return {Array} bingo number shuffled
+ */
 function fisherYatesShuffle(values) {
-    for (let i = values.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i+1));
-        [values[i], values[j]] = [values[j], values[i]];
+    if( Array.isArray(values) ){
+        for (let i = values.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i+1));
+            [values[i], values[j]] = [values[j], values[i]];
+        }
     }
 
     return values;
 }
-// To create an ordered list of bingo numbers
+
+/**
+ * Create an ordered list of bingo numbers from B1 to O75
+ * @return {Array} ordered list of bingo numbers
+ */
 function generateBingoCalls(){
     const gameName = 'BINGO';
     const bingoCalls = [];
@@ -24,25 +34,27 @@ function generateBingoCalls(){
     return bingoCalls;
 }
 
-function init(){
-    // Draw several numbers
-    const bingoCalls = generateBingoCalls();
-    const randomBingoCalls = fisherYatesShuffle(bingoCalls);
-
+/**
+ * Calculate the minimum, maximum and average number of calls that must be made before a Bingo card wins playing a fixed number of times
+ * @param {number} numberOfSimulations how many times to create and check a Bingo card
+ * @param {Array} callsList a list of Bingo numbers
+ * @return {Array} minimum, maximum and average number of calls made before a Bingo card wins
+ */
+function calculateStatisticsCalls(numberOfSimulations, callsList){
     let minCalls = 0;
     let maxCalls = 0;
     let totalCalls = 0;
-    // Creating 1,000 Bingo cards to simulate as many matches and found the minimum, maximum and average number of calls that must be made before the card wins.
-    for(let i = 0; i < 1000; i++){
+
+    for(let i = 0; i < numberOfSimulations; i++){
         const bingoCardNumbers = generateBingoCardNumbers();
         // Make a shallow copy of the Bingo card to have both the original and the marked one
         const markedBingoCard = [...bingoCardNumbers];
         // Check the Bingo card, mark the numbers that came out during the draw and return a marked Bingo Card
         let won = false;
-        for (let j = 0; j < randomBingoCalls.length; j++) {
-            const drawnNumber = randomBingoCalls[j];
-            markOutDrawnNumber(markedBingoCard, drawnNumber); // Working on the same object change it without creating a shallow copy
-            // Checks whether or not the Bingo card contain a winning line, be it horizontal, vertical or diagonal
+        for (let j = 0; j < callsList.length; j++) {
+            const drawnNumber = callsList[j];
+            markOutDrawnNumber(markedBingoCard, drawnNumber);
+            
             if(j > 3){ // Start to check if winning from fifth drawn numbers to avoid useless check
                 if( isWinning(markedBingoCard) ){
                     const numberOfDrawns = j+1;
@@ -72,9 +84,17 @@ function init(){
         }
     }
 
+    return [minCalls, maxCalls, totalCalls/numberOfSimulations];
+}
+
+function init(){
+    const bingoCalls = generateBingoCalls();
+    const randomBingoCalls = fisherYatesShuffle(bingoCalls);
+    const [minCalls, maxCalls, averageCalls] = calculateStatisticsCalls(1000, randomBingoCalls);
+
     console.log('Minimum ' + minCalls);
     console.log('Max ' + maxCalls);
-    console.log('Average ' + totalCalls/1000);
+    console.log('Average ' + averageCalls);
 
     return;
 } 
