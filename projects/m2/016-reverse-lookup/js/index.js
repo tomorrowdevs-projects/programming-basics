@@ -1,14 +1,11 @@
 function reverseLookup(dictionary, value){
-    const keys = [];
-
-    Object.keys( dictionary ).forEach( key => {
-        if( dictionary[key] === value ){
-            keys.push(key);
-        }
+    const keys = Object.keys( dictionary ).filter( key => {
+        return dictionary[key] === value;
     });
 
     return keys;
 }
+
 if( require.main === module ){
     function init(){
 
