@@ -1,27 +1,43 @@
+
+function findMatchingIndex(firstList, secondList){
+    let matchingIndex = false;
+    firstList.forEach((value, index) => {
+        if (secondList[0] === value) {
+            matchingIndex = index;
+        }
+    });
+
+    return matchingIndex;
+}
+
 function isSublist(largerList, smallerList){
-    if( largerList.length >  smallerList.length){
+    if( largerList.length > smallerList.length){
         if( Array.isArray( smallerList ) && smallerList.length === 0 ){
             return true;
         }
 
-        const firstElementindex = largerList.indexOf(smallerList[0]);
+        let matchingIndex = findMatchingIndex(largerList, smallerList);
+        if(matchingIndex !== false){
+            let sublist = true;
 
-        if( firstElementindex !== -1 ){
-            for (let i = 0; i < smallerList.length; i++) {
-                if( smallerList[i] !== largerList[firstElementindex+i]){
-                    return false;
+            smallerList.forEach((value) => {
+                if( value !== largerList[matchingIndex]){
+                    sublist = false;
+                } else {
+                    matchingIndex++;
                 }
-            }
+            });
 
-            return true;
+            return sublist;
         }
+
     }
 
     return false;
 }
 
 function init(){
-    console.log(isSublist([1, 2, 3, 4], [1, 2]));
+    console.log(isSublist([1, 2, 3, 4], [1]));
     return;
 }
 init();
