@@ -6,6 +6,8 @@ function isAnagram(originalText, potentialAnagram){
             if( ! originalText.includes( potentialAnagram.charAt(i) )){
                 return false;
             }
+
+            originalText = originalText.replace(potentialAnagram.charAt(i), '');
         }
 
         return true;
@@ -15,7 +17,6 @@ function isAnagram(originalText, potentialAnagram){
 }
 
 function init(){
-
     const askedOriginalText = prompt('Enter the original text.');
     const askedPotentialAnagram = prompt('Enter its anagram to verify.');
 
