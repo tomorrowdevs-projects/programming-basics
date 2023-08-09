@@ -9,7 +9,7 @@ function convertToMorseCode(message, dictionary){
     for (let i = 0; i < message.length; i++) {
         const letter = message[i];
 
-        if(Object.keys(dictionary).includes(letter)){
+        if(letter in dictionary){
             convertedMessage += dictionary[letter] + ' ';
         }
     }
