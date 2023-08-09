@@ -1,18 +1,15 @@
 // const prompt = require("prompt-sync")({ sigint: true}) ;
 
 function calculateUniqueCharacters(text){
-    let uniqueCharactersCount = 0;
-    const uniqueCharactersDictionary = [];
+    const uniqueCharactersDictionary = new Set();
 
     for (let i = 0; i < text.length; i++) {
         const character = text.charAt(i);
 
-        if( ! uniqueCharactersDictionary.includes(character) ){        
-            uniqueCharactersDictionary.push(character);
-        } 
+        uniqueCharactersDictionary.add(character);
     }
 
-    uniqueCharactersCount = uniqueCharactersDictionary.length;
+    const uniqueCharactersCount = uniqueCharactersDictionary.size;
 
     return uniqueCharactersCount;
 }
