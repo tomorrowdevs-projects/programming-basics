@@ -12,7 +12,7 @@ let numberArray = [];
 let insertNumber = parseInt(prompt(`Insert the number. the program ends when you enter 0: `))
 
 
-function showValue2 (insertNumber){
+function showValue(insertNumber){
     numberArray.push(insertNumber)
 
 while(insertNumber > 0){
@@ -39,4 +39,4 @@ const REVERSE_AND_SHIFT = (array) => {
     array.shift();
 }
 
-showValue2(insertNumber);
+showValue(insertNumber);
