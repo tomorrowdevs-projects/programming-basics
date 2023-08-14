@@ -28,8 +28,9 @@
 
 let userStringInput = prompt("Please enter the phrase", "Contractions include: don't, isn't, and wouldn't.")
 let regExpNumber = /[0-9]/;
+let regExpPuntctuationMarks =  /[^\p{L}'\s]+/gu
 function listWords(phrase){
-  let listWords = phrase.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g, "").split(" ")
+  let listWords = phrase.replace(regExpPuntctuationMarks, "").split(" ")
   return console.log(listWords.join(" "));
 }
 
