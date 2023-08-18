@@ -22,6 +22,70 @@ function markOutDrawnNumber(bingoCardNumbers, drawnNumber){
 }
 
 /**
+ *  Check if a horizontal line of the Bingo card is winning, i.e. if it contains only zeros
+ * @param {string} gameName name of the game where each letter is assigned as a name to a column
+ * @param {Array} bingoCardLine the list of numbers to check that make up the horizontal line
+ * @return {boolean} if the line wins, the returned value is true, otherwise false
+ */
+function checkHorizontalLine(gameName, bingoCardLine){
+    for (let i = 0; i < gameName.length; i++) {
+        if(bingoCardLine[gameName[i]] !== 0){
+            return false;
+        }
+    }
+
+    return true;
+}
+
+/**
+ *  Check if the Bingo card has a winning vertical line, i.e. contains only zeros
+ * @param {string} bingoCardColumn the column in which to search for numbers
+ * @param {Array} markedBingoCard the bingo Card to check
+ * @return {boolean} if a winning line is found, the returned value is true, otherwise false
+ */
+function checkVerticalLine(bingoCardColumn, markedBingoCard){
+    for (let i = 0; i < markedBingoCard.length; i++) {
+        if(markedBingoCard[i][bingoCardColumn] !== 0){
+            return false;
+        }
+    }
+
+    return true;
+}
+
+/**
+ *  Check if the Bingo card has a winning diagonal line starting at the top left and ending at the bottom right, i.e. contains only zeros
+ * @param {string} gameName name of the game where each letter is assigned as a name to a column
+ * @param {Array} markedBingoCard the bingo Card to check
+ * @return {boolean} if a winning line is found, the returned value is true, otherwise false
+ */
+function checkFirstDiagonalLine(gameName, markedBingoCard){
+    for (let i = 0; i < gameName.length; i++) {
+        if(markedBingoCard[i][gameName[i]] !== 0){
+            return false;
+        }
+    }
+
+    return true;
+}
+
+/**
+ *  Check if the Bingo card has a winning diagonal line starting at the top right and ending at the bottom left, i.e. contains only zeros
+ * @param {string} gameName name of the game where each letter is assigned as a name to a column
+ * @param {Array} markedBingoCard the bingo Card to check
+ * @return {boolean} if a winning line is found, the returned value is true, otherwise false
+ */
+function checkSecondDiagonalLine(gameName, markedBingoCard){
+    for (let i = 0; i < gameName.length; i++) {
+        if(markedBingoCard[i][gameName[gameName.length -i -1]] !== 0){
+            return false;
+        }
+    }
+    return true;
+
+}
+
+/**
  * Check if the Bingo card has a line of five zeros (vertical, horizontal or diagonal), the zeros represent the numbers drawn.
  * @param {Array} markedBingoCard the bingo Card to check
  * @return {boolean} true if a line of 5 zeros is found, false otherwise
@@ -32,69 +96,32 @@ function isWinning(markedBingoCard){
     let won; // This uninitialized control boolean is used to determine if the winning line has been found, it will be set to true at the start of each cycle and to false whenever a non-zero number is found.
 
     for (let i = 0; i < gameName.length; i++) {
-        // The first check is done for horizontal lines
-        won = true;
-        for (let j = 0; j < gameName.length; j++) {
-            if(markedBingoCard[i][gameName[j]] !== 0){
-                won = false;
-                break;
-            }
-        }
-        // If no winning line is found among the horizontal ones then the vertical ones are checked
-        if(won === false){
-            won = true;
-            for (let j = 0; j < gameName.length; j++) {
-                if(markedBingoCard[j][gameName[i]] !== 0){
-                    won = false;
-                    break;
-                }
-            }
-            // If no winning line is found among the vertical ones then the two diagonals are checked
-            // The first diagonal starts at the top left and ends at the bottom right
-            if(won === false){
-                // To avoid further cycles, the diagonal check is performed only on the main first cycle
-                if(i === 0){
-                    won = true;
-                    for (let j = 0; j < gameName.length; j++) {
-                        if(markedBingoCard[i+j][gameName[j]] !== 0){
-                            won = false;
-                            break;
-                        }
-                    }
-                    // The second diagonal starts at the top right and ends at the bottom left
-                    if(won === false){
-                        won = true;
-                        for (let j = 0; j < gameName.length; j++) {
-                            if(markedBingoCard[i+j][gameName[gameName.length -j -1]] !== 0){
-                                won = false;
-                                break;
-                            }
-                        }
-
-                        if(won === true){
-                            lineType = 'diagonal (from right to left)';
-                            break;
-                        }
-                    } else {
-                        lineType = 'diagonal (from left to right)';
-                        break;
-                    }
-
-                }
-                
-            } else {
-                lineType = 'vertical';
-                break;
-            }
-        } else {
+        if( won = checkHorizontalLine(gameName, markedBingoCard[i]) ){
             lineType = 'horizontal';
             break;
+        }
+
+        if( won = checkVerticalLine(gameName[i], markedBingoCard) ){
+            lineType = 'vertical';
+            break;
+        }
+        // To avoid further cycles, the diagonal check is performed only on the main first cycle
+        if(i === 0){
+            if( won = checkFirstDiagonalLine(gameName, markedBingoCard) ){
+                lineType = 'diagonal (from left to right)';
+                break;
+            }
+
+            if( won = checkSecondDiagonalLine(gameName, markedBingoCard) ){
+                lineType = 'diagonal (from right to left)';
+                break;
+            }
         }
     }
 
     if(won === true){
         console.log('The winning line is ' + lineType + '.');
-    }
+    } 
     return won;
 }
 
