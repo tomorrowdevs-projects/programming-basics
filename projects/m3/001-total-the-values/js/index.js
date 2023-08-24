@@ -4,10 +4,10 @@ function sumAskedNumbers(){
     const askedNumber = prompt('Enter a number');
 
     if(askedNumber === ''){
-        return '0.0';
+        return parseFloat('0.0');
     }
     
-    return(parseFloat(askedNumber) + parseFloat(sumAskedNumbers()));
+    return(parseFloat(askedNumber) + sumAskedNumbers());
 }
 
 function init(){
