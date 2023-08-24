@@ -56,16 +56,16 @@ test("returns [1,7] for [7,1,'b',false,'a','a',undefined,[2],null]", () => {
   expect( bubbleSortNumbers( listToClean2 ) ).toEqual( [1,7] );
 });
 test("returns [7,5,4,3,1,-10] for [4,-10,3,5,1,7]", () => {
-  expect( bubbleSortNumbers( numericList, 'DESC' ) ).toEqual( [7,5,4,3,1,-10] );
+  expect( bubbleSortNumbers( numericList, false ) ).toEqual( [7,5,4,3,1,-10] );
 });
 test("returns [7,5,4,3,1,-10] for [4,-10,'a','b','z',3,5,'d','hello','h',1,7]", () => {
-  expect( bubbleSortNumbers( mixedList, 'DESC' ) ).toEqual( [7,5,4,3,1,-10] );
+  expect( bubbleSortNumbers( mixedList, false ) ).toEqual( [7,5,4,3,1,-10] );
 });
 test("returns [2678,5,5,3,0] for [5,'hello',2678,false,true,'b',[7,9,0],0,5,3,{'id':68}]", () => {
-  expect( bubbleSortNumbers( listToClean1, 'DESC' ) ).toEqual( [2678,5,5,3,0] );
+  expect( bubbleSortNumbers( listToClean1, false ) ).toEqual( [2678,5,5,3,0] );
 });
 test("returns [7,1] for [7,1,'b',false,'a','a',undefined,[2],null]", () => {
-  expect( bubbleSortNumbers( listToClean2, 'DESC' ) ).toEqual( [7,1] );
+  expect( bubbleSortNumbers( listToClean2, false ) ).toEqual( [7,1] );
 });
 test("returns 'hello' for 'hello'", () => {
   expect( bubbleSortNumbers( 'hello' ) ).toEqual( 'hello' );
@@ -91,16 +91,16 @@ test("returns [1,7] for [7,1,'b',false,'a','a',undefined,[2],null]", () => {
   expect( selectionSortNumbers( listToClean2 ) ).toEqual( [1,7] );
 });
 test("returns [7,5,4,3,1,-10] for [4,-10,3,5,1,7]", () => {
-  expect( selectionSortNumbers( numericList, 'DESC' ) ).toEqual( [7,5,4,3,1,-10] );
+  expect( selectionSortNumbers( numericList, false ) ).toEqual( [7,5,4,3,1,-10] );
 });
 test("returns [7,5,4,3,1,-10] for [4,-10,'a','b','z',3,5,'d','hello','h',1,7]", () => {
-  expect( selectionSortNumbers( mixedList, 'DESC' ) ).toEqual( [7,5,4,3,1,-10] );
+  expect( selectionSortNumbers( mixedList, false ) ).toEqual( [7,5,4,3,1,-10] );
 });
 test("returns [2678,5,5,3,0] for [5,'hello',2678,false,true,'b',[7,9,0],0,5,3,{'id':68}]", () => {
-  expect( selectionSortNumbers( listToClean1, 'DESC' ) ).toEqual( [2678,5,5,3,0] );
+  expect( selectionSortNumbers( listToClean1, false ) ).toEqual( [2678,5,5,3,0] );
 });
 test("returns [7,1] for [7,1,'b',false,'a','a',undefined,[2],null]", () => {
-  expect( selectionSortNumbers( listToClean2, 'DESC' ) ).toEqual( [7,1] );
+  expect( selectionSortNumbers( listToClean2, false ) ).toEqual( [7,1] );
 });
 test("returns 'hello' for 'hello'", () => {
   expect( selectionSortNumbers( 'hello' ) ).toEqual( 'hello' );
@@ -126,16 +126,16 @@ test("returns [1,7] for [7,1,'b',false,'a','a',undefined,[2],null]", () => {
   expect( insertionSortNumbers( listToClean2 ) ).toEqual( [1,7] );
 });
 test("returns [7,5,4,3,1,-10] for [4,-10,3,5,1,7]", () => {
-  expect( insertionSortNumbers( numericList, 'DESC' ) ).toEqual( [7,5,4,3,1,-10] );
+  expect( insertionSortNumbers( numericList, false ) ).toEqual( [7,5,4,3,1,-10] );
 });
 test("returns [7,5,4,3,1,-10] for [4,-10,'a','b','z',3,5,'d','hello','h',1,7]", () => {
-  expect( insertionSortNumbers( mixedList, 'DESC' ) ).toEqual( [7,5,4,3,1,-10] );
+  expect( insertionSortNumbers( mixedList, false ) ).toEqual( [7,5,4,3,1,-10] );
 });
 test("returns [2678,5,5,3,0] for [5,'hello',2678,false,true,'b',[7,9,0],0,5,3,{'id':68}]", () => {
-  expect( insertionSortNumbers( listToClean1, 'DESC' ) ).toEqual( [2678,5,5,3,0] );
+  expect( insertionSortNumbers( listToClean1, false ) ).toEqual( [2678,5,5,3,0] );
 });
 test("returns [7,1] for [7,1,'b',false,'a','a',undefined,[2],null]", () => {
-  expect( insertionSortNumbers( listToClean2, 'DESC' ) ).toEqual( [7,1] );
+  expect( insertionSortNumbers( listToClean2, false ) ).toEqual( [7,1] );
 });
 test("returns 'hello' for 'hello'", () => {
   expect( insertionSortNumbers( 'hello' ) ).toEqual( 'hello' );
@@ -161,16 +161,16 @@ test("returns [1,7] for [7,1,'b',false,'a','a',undefined,[2],null]", () => {
   expect( quickSortNumbers( listToClean2 ) ).toEqual( [1,7] );
 });
 test("returns [7,5,4,3,1,-10] for [4,-10,3,5,1,7]", () => {
-  expect( quickSortNumbers( numericList, 'DESC' ) ).toEqual( [7,5,4,3,1,-10] );
+  expect( quickSortNumbers( numericList, false ) ).toEqual( [7,5,4,3,1,-10] );
 });
 test("returns [7,5,4,3,1,-10] for [4,-10,'a','b','z',3,5,'d','hello','h',1,7]", () => {
-  expect( quickSortNumbers( mixedList, 'DESC' ) ).toEqual( [7,5,4,3,1,-10] );
+  expect( quickSortNumbers( mixedList, false ) ).toEqual( [7,5,4,3,1,-10] );
 });
 test("returns [2678,5,5,3,0] for [5,'hello',2678,false,true,'b',[7,9,0],0,5,3,{'id':68}]", () => {
-  expect( quickSortNumbers( listToClean1, 'DESC' ) ).toEqual( [2678,5,5,3,0] );
+  expect( quickSortNumbers( listToClean1, false ) ).toEqual( [2678,5,5,3,0] );
 });
 test("returns [7,1] for [7,1,'b',false,'a','a',undefined,[2],null]", () => {
-  expect( quickSortNumbers( listToClean2, 'DESC' ) ).toEqual( [7,1] );
+  expect( quickSortNumbers( listToClean2, false ) ).toEqual( [7,1] );
 });
 test("returns 'hello' for 'hello'", () => {
   expect( quickSortNumbers( 'hello' ) ).toEqual( 'hello' );
@@ -196,16 +196,16 @@ test("returns [1,7] for [7,1,'b',false,'a','a',undefined,[2],null]", () => {
   expect( mergeSortNumbers( listToClean2 ) ).toEqual( [1,7] );
 });
 test("returns [7,5,4,3,1,-10] for [4,-10,3,5,1,7]", () => {
-  expect( mergeSortNumbers( numericList, 'DESC' ) ).toEqual( [7,5,4,3,1,-10] );
+  expect( mergeSortNumbers( numericList, false ) ).toEqual( [7,5,4,3,1,-10] );
 });
 test("returns [7,5,4,3,1,-10] for [4,-10,'a','b','z',3,5,'d','hello','h',1,7]", () => {
-  expect( mergeSortNumbers( mixedList, 'DESC' ) ).toEqual( [7,5,4,3,1,-10] );
+  expect( mergeSortNumbers( mixedList, false ) ).toEqual( [7,5,4,3,1,-10] );
 });
 test("returns [2678,5,5,3,0] for [5,'hello',2678,false,true,'b',[7,9,0],0,5,3,{'id':68}]", () => {
-  expect( mergeSortNumbers( listToClean1, 'DESC' ) ).toEqual( [2678,5,5,3,0] );
+  expect( mergeSortNumbers( listToClean1, false ) ).toEqual( [2678,5,5,3,0] );
 });
 test("returns [7,1] for [7,1,'b',false,'a','a',undefined,[2],null]", () => {
-  expect( mergeSortNumbers( listToClean2, 'DESC' ) ).toEqual( [7,1] );
+  expect( mergeSortNumbers( listToClean2, false ) ).toEqual( [7,1] );
 });
 test("returns 'hello' for 'hello'", () => {
   expect( mergeSortNumbers( 'hello' ) ).toEqual( 'hello' );
@@ -231,16 +231,16 @@ test("returns [1,7] for [7,1,'b',false,'a','a',undefined,[2],null]", () => {
   expect( heapSortNumbers( listToClean2 ) ).toEqual( [1,7] );
 });
 test("returns [7,5,4,3,1,-10] for [4,-10,3,5,1,7]", () => {
-  expect( heapSortNumbers( numericList, 'DESC' ) ).toEqual( [7,5,4,3,1,-10] );
+  expect( heapSortNumbers( numericList, false ) ).toEqual( [7,5,4,3,1,-10] );
 });
 test("returns [7,5,4,3,1,-10] for [4,-10,'a','b','z',3,5,'d','hello','h',1,7]", () => {
-  expect( heapSortNumbers( mixedList, 'DESC' ) ).toEqual( [7,5,4,3,1,-10] );
+  expect( heapSortNumbers( mixedList, false ) ).toEqual( [7,5,4,3,1,-10] );
 });
 test("returns [2678,5,5,3,0] for [5,'hello',2678,false,true,'b',[7,9,0],0,5,3,{'id':68}]", () => {
-  expect( heapSortNumbers( listToClean1, 'DESC' ) ).toEqual( [2678,5,5,3,0] );
+  expect( heapSortNumbers( listToClean1, false ) ).toEqual( [2678,5,5,3,0] );
 });
 test("returns [7,1] for [7,1,'b',false,'a','a',undefined,[2],null]", () => {
-  expect( heapSortNumbers( listToClean2, 'DESC' ) ).toEqual( [7,1] );
+  expect( heapSortNumbers( listToClean2, false ) ).toEqual( [7,1] );
 });
 test("returns 'hello' for 'hello'", () => {
   expect( heapSortNumbers( 'hello' ) ).toEqual( 'hello' );
@@ -259,8 +259,8 @@ test("returns [2,3,0,2100,1,-20] for [2100,1,-20] and [2,3,0]", () => {
 test("returns [1,2,3,4,5,6] for [1,3,5] and [2,4,6]", () => {
   expect( mergeSortNumbersArray( [1,3,5], [2,4,6] ) ).toEqual( [1,2,3,4,5,6] );
 });
-test("returns [6,5,4,3,2,1] for [1,3,5], [2,4,6] and 'DESC'", () => {
-  expect( mergeSortNumbersArray( [1,3,5], [2,4,6], 'DESC' ) ).toEqual( [2,4,6,1,3,5] );
+test("returns [6,5,4,3,2,1] for [1,3,5], [2,4,6] and false", () => {
+  expect( mergeSortNumbersArray( [1,3,5], [2,4,6], false ) ).toEqual( [2,4,6,1,3,5] );
 });
 test("returns [2,3,0] for [2,3,0] and 'hello'", () => {
   expect( mergeSortNumbersArray( list1Of2, 'hello' ) ).toEqual( [[2,3,0],'hello'] );
