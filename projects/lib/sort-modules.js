@@ -16,9 +16,9 @@ function cleanForSortingNumbers( values ){
 }
 
 
-function bubbleSortNumbers( values, order = 'ASC' ){
+function bubbleSortNumbers( values, ascending = true ){
 
-    if( Array.isArray( values ) && values.length > 1 ) { // We check that valuesToOrder is an array and has more than one element
+    if( Array.isArray( values ) && values.length > 1 && typeof ascending === 'boolean' ) { // We check that valuesToOrder is an array and has more than one element
         const valuesToOrder = cleanForSortingNumbers(values);
 
         let isSwapped = true;
@@ -26,22 +26,12 @@ function bubbleSortNumbers( values, order = 'ASC' ){
         do {
             isSwapped = false;
 
-            if ( order === 'ASC' ) {
-                for (let i = 0; i < valuesToOrder.length - 1; i++) {
-                    if (valuesToOrder[i] > valuesToOrder[i + 1]) {
-                        [ valuesToOrder[i], valuesToOrder[i + 1] ] = [ valuesToOrder[i + 1], valuesToOrder[i] ];
-                        isSwapped = true;
-                    }
-                }
-            } else if ( order === 'DESC' ) {
-                for (let i = 0; i < valuesToOrder.length - 1; i++) {
-                    if (valuesToOrder[i] < valuesToOrder[i + 1]) {
-                        [ valuesToOrder[i], valuesToOrder[i + 1] ] = [ valuesToOrder[i + 1], valuesToOrder[i] ];
-                        isSwapped = true;
-                    }
+            for (let i = 0; i < valuesToOrder.length - 1; i++) {
+                if ( (ascending && valuesToOrder[i] > valuesToOrder[i + 1]) || (! ascending && valuesToOrder[i] < valuesToOrder[i + 1]) ) {
+                    [ valuesToOrder[i], valuesToOrder[i + 1] ] = [ valuesToOrder[i + 1], valuesToOrder[i] ];
+                    isSwapped = true;
                 }
             }
-
         } while ( isSwapped );
 
         return valuesToOrder;
@@ -51,25 +41,18 @@ function bubbleSortNumbers( values, order = 'ASC' ){
 }
 
 
-function selectionSortNumbers( values, order = 'ASC' ){
+function selectionSortNumbers( values, ascending = true ){
 
-    if( Array.isArray( values ) && values.length > 1 ) {
+    if( Array.isArray( values ) && values.length > 1 && typeof ascending === 'boolean' ) {
         const valuesToOrder = cleanForSortingNumbers(values);
 
         for ( let i = 0; i < valuesToOrder.length - 1; i++ ){ 
             let mininumValueIndex = i; 
             
             for ( let j = i + 1; j < valuesToOrder.length; j++ ){ 
-                if ( order === 'ASC' ) {
-                    if( valuesToOrder[j] < valuesToOrder[mininumValueIndex] ){
-                        mininumValueIndex = j; 
-                    }
-                } else if ( order === 'DESC' ) {
-                    if( valuesToOrder[j] > valuesToOrder[mininumValueIndex] ){
-                        mininumValueIndex = j; 
-                    }
+                if ( (ascending && valuesToOrder[j] < valuesToOrder[mininumValueIndex]) || (! ascending && valuesToOrder[j] > valuesToOrder[mininumValueIndex]) ){
+                    mininumValueIndex = j; 
                 }
-
             }
 
             [ valuesToOrder[i], valuesToOrder[mininumValueIndex] ] = [ valuesToOrder[mininumValueIndex], valuesToOrder[i] ];
@@ -82,25 +65,18 @@ function selectionSortNumbers( values, order = 'ASC' ){
 }
 
 
-function insertionSortNumbers(values, order = 'ASC' ){
+function insertionSortNumbers(values, ascending = true ){
 
-    if( Array.isArray( values ) && values.length > 1 ) {
+    if( Array.isArray( values ) && values.length > 1 && typeof ascending === 'boolean' ) {
         const valuesToOrder = cleanForSortingNumbers(values);
 
         for (let i = 1; i < valuesToOrder.length; i++) {
             let currentElement = valuesToOrder[i];
             let j = i - 1;
     
-            if ( order === 'ASC' ) {
-                while (j >= 0 && valuesToOrder[j] > currentElement) { 
-                    valuesToOrder[j + 1] = valuesToOrder[j];
-                    j--;
-                }
-            } else if ( order === 'DESC' ) {
-                while (j >= 0 && valuesToOrder[j] < currentElement) { 
-                    valuesToOrder[j + 1] = valuesToOrder[j];
-                    j--;
-                }
+            while( (ascending && j >= 0 && valuesToOrder[j] > currentElement) || (! ascending && j >= 0 && valuesToOrder[j] < currentElement) ){
+                valuesToOrder[j + 1] = valuesToOrder[j];
+                j--;
             }
 
             valuesToOrder[j + 1] = currentElement; 
@@ -112,9 +88,10 @@ function insertionSortNumbers(values, order = 'ASC' ){
     return values;
 };
 
-function quickSortNumbers( values, order = 'ASC' ){
 
-    if( Array.isArray( values ) && values.length > 1 ) { 
+function quickSortNumbers( values, ascending = true ){
+
+    if( Array.isArray( values ) && values.length > 1 && typeof ascending === 'boolean' ) { 
         const valuesToOrder = cleanForSortingNumbers(values);
 
         const pivot = valuesToOrder[valuesToOrder.length-1]; 
@@ -131,60 +108,46 @@ function quickSortNumbers( values, order = 'ASC' ){
             }
         }
 
-        if( order === 'ASC' ){
+        if( ascending ){
             return [ ...quickSortNumbers( leftArray ), pivot, ...quickSortNumbers( rightArray ) ];
-        } else if ( order === 'DESC' ) {
-            return [ ...quickSortNumbers( rightArray, 'DESC' ), pivot, ...quickSortNumbers( leftArray, 'DESC' ) ];
+        } else {
+            return [ ...quickSortNumbers( rightArray, false ), pivot, ...quickSortNumbers( leftArray, false ) ];
         }
     }
 
     return values;
 }
 
-function mergeSortNumbersArray( leftArrayToSort, rightArrayToSort, order = 'ASC' ){
+
+function mergeSortNumbersArray( leftArrayToSort, rightArrayToSort, ascending = true ){
     
-    if( Array.isArray( leftArrayToSort ) && Array.isArray( rightArrayToSort ) ) {
+    if( Array.isArray( leftArrayToSort ) && Array.isArray( rightArrayToSort ) && typeof ascending === 'boolean' ) {
         const sortedArray = [];
         const leftArray = cleanForSortingNumbers(leftArrayToSort);
         const rightArray = cleanForSortingNumbers(rightArrayToSort);
 
-        if( order === 'ASC' ){
-
-            while ( leftArray.length && rightArray.length ) {
-                if ( leftArray[0] < rightArray[0] ) {
-                    sortedArray.push( leftArray.shift() );
-                } else {
-                    sortedArray.push( rightArray.shift() );
-                }
+        while ( leftArray.length && rightArray.length ) {
+            if ( (ascending && leftArray[0] < rightArray[0]) || (! ascending && leftArray[0] > rightArray[0]) ) {
+                sortedArray.push( leftArray.shift() );
+            } else {
+                sortedArray.push( rightArray.shift() );
             }
-
-        } else if ( order === 'DESC' ) {
-
-            while ( leftArray.length && rightArray.length ) {
-                if ( leftArray[0] > rightArray[0] ) {
-                    sortedArray.push( leftArray.shift() );
-                } else {
-                    sortedArray.push( rightArray.shift() );
-                }
-            }
-
         }
-            
+  
         return [ ...sortedArray, ...leftArray, ...rightArray ];
-
     }
 
     return [leftArrayToSort, rightArrayToSort];
 }
 
-function mergeSortNumbers( values, order = 'ASC' ){
+function mergeSortNumbers( values, ascending = true ){
 
-    if( Array.isArray( values ) && values.length > 1 ) {
+    if( Array.isArray( values ) && values.length > 1 && typeof ascending === 'boolean' ) {
         const valuesToOrder = cleanForSortingNumbers(values);
-        const leftArray = mergeSortNumbers( valuesToOrder.splice( 0, Math.ceil( valuesToOrder.length / 2 ) ), order );
-        const rightArray = mergeSortNumbers( valuesToOrder, order );
+        const leftArray = mergeSortNumbers( valuesToOrder.splice( 0, Math.ceil( valuesToOrder.length / 2 ) ), ascending );
+        const rightArray = mergeSortNumbers( valuesToOrder, ascending );
 
-        return mergeSortNumbersArray( leftArray, rightArray, order );
+        return mergeSortNumbersArray( leftArray, rightArray, ascending );
     }
 
     return values;
@@ -207,6 +170,7 @@ function findFirstChildIndex( parentIndex ){
 
     return false;
 }
+
 
 function buildMaxHeap( values ){
     if( Array.isArray( values ) && values.length > 1 ) {
@@ -239,23 +203,20 @@ function buildMaxHeap( values ){
     return values;
 }
 
-function heapSortNumbers( values, order = 'ASC' ){
-
-    if( Array.isArray( values ) && values.length > 1 ) {
+function heapSortNumbers( values, ascending = true ){
+    if( Array.isArray( values ) && values.length > 1 && typeof ascending === 'boolean' ) {
         let valuesToOrder = [...values];
         const orderedValues = [];
         
         while (valuesToOrder.length > 0) {
             valuesToOrder = buildMaxHeap( valuesToOrder );
             [ valuesToOrder[0], valuesToOrder[valuesToOrder.length-1] ] = [ valuesToOrder[valuesToOrder.length-1], valuesToOrder[0] ];
-            if( order === 'ASC'){
+            if(ascending){
                 // Place the discarded element at the beginning of the separated array
                 orderedValues.unshift( valuesToOrder[valuesToOrder.length-1] );
-            } else if (order === 'DESC'){
+            } else {
                 // Place the discarded element at the end of the separated array
                 orderedValues.push( valuesToOrder[valuesToOrder.length-1] );                
-            } else {
-                return values;
             }
             
             valuesToOrder.pop();
