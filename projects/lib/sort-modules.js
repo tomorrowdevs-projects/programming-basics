@@ -1,13 +1,10 @@
 function cleanForSortingNumbers( values ){
     if( Array.isArray( values ) && values.length > 0 ) {
-        const cleanedList = [];
         const listToClean = [...values];
-
-        for (let i = 0; i < listToClean.length; i++) {
-            if( typeof listToClean[i] === 'number' ){
-                cleanedList.push(listToClean[i]);
-            }
-        }
+        
+        const cleanedList = listToClean.filter( element => {
+            return typeof element === 'number';
+        });
 
         return cleanedList;
     }
