@@ -17,7 +17,7 @@ function scrabbleScore(word,obj){
  let countPoint = 0;
  let array = word.split("")
  console.log(array)
- for(let char of word){
+ for(let char of array){
     for(let point in obj){
         if(obj[point].find((value) => value === char)){
             countPoint += Number(point)
