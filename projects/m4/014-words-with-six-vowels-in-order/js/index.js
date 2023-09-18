@@ -1,4 +1,4 @@
-const fs = require('fs');
+const fs = require('fs').promises;
 
 function findWordsWithVowels(data) {
     const words = data.split('\n');
@@ -7,25 +7,32 @@ function findWordsWithVowels(data) {
     const matchingWords = words.filter(word => vowelPattern.test(word));
 
     if (matchingWords.length > 0) {
-        console.log('Parole trovate con tutte le vocali in ordine:');
-        matchingWords.forEach(word => console.log(word));
+        return matchingWords;
     } else {
-        console.log('Nessuna parola trovata con tutte le vocali in ordine.');
+        return [];
     }
 }
 
-if (process.argv.length !== 3) {
-    console.log("Uso: node findVowels.js <nomefile>");
+const filenames = process.argv.slice(2);
+
+if (filenames.length === 0) {
+    console.error('Per favore, fornisci almeno un nome di file.');
     process.exit(1);
 }
 
-const filename = process.argv[2];
+const fileReadPromises = filenames.map(filename => fs.readFile(filename, 'utf8'));
 
-fs.readFile(filename, 'utf8', (err, data) => {
-    if (err) {
+Promise.all(fileReadPromises)
+    .then(filesData => {
+        const allMatchingWords = filesData.map(data => findWordsWithVowels(data)).flat();
+
+        if (allMatchingWords.length > 0) {
+            console.log('Parole trovate con tutte le vocali in ordine:');
+            allMatchingWords.forEach(word => console.log(word));
+        } else {
+            console.log('Nessuna parola trovata con tutte le vocali in ordine.');
+        }
+    })
+    .catch(err => {
         console.error(`Errore nella lettura del file: ${err.message}`);
-        process.exit(1);
-    }
-
-    findWordsWithVowels(data);
-});
+    });
