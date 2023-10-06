@@ -38,5 +38,5 @@ while rest > 0:
         rest = rest % penny
 
 
-print(f"{cents_user} cents = {num_toonie} toonies, {num_loonie} loonies, "
+print(f"{num_toonie} toonies, {num_loonie} loonies, "
       f"{num_quarter} quarters, {num_dime} dimes, {num_nickel} nickels, {num_penny} pennies.")
