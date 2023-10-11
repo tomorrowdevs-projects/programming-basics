@@ -16,8 +16,6 @@ Write a program that **reads a year** from the user and
 displays a message indicating **whether it is a leap year**.
 '''
 
-valid_input = False
-
 def check_leap_year(year):
     is_leap = False
     
@@ -32,23 +30,20 @@ def check_leap_year(year):
 
     return is_leap
 
+while True:
+    try:
+        year_from_user = int(input("\nWhich year do you want to check if leap or not? "))
 
-while valid_input == False:
-    year_from_user = int(input("\nWhich year do you want to check if leap or not? "))
+    except ValueError:
+        print("\nInput error, please try again..")
+        continue
 
-    if int(year_from_user) == False:
-        print("\nSorry, it is invalid input, please try again..\n")
+    if check_leap_year(year_from_user) == True:
+        print(f"\n{year_from_user} is a leap year.\n")
+        break
     else:
-        valid_input = True
-
-        if check_leap_year(year_from_user) == True:
-            print(f"\n{year_from_user} is a leap year.\n")
-        else:
-            print(f"\n{year_from_user} is not a leap year.\n")
-
-        # want_to_continue = str.lower(input("\nDo you want to check other years?(y/n) "))
-
-        # if want_to_continue == 'y':
-        #     valid_input = False
-
+        print(f"\n{year_from_user} is not a leap year.\n")
+        break
+    
+    
 print("\nBye! Have a nice day!\n")
