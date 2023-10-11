@@ -14,7 +14,7 @@ The output from your program **should include the full name of the day of the we
 
 Example:    
 Input: 2023  
-Output: Wednesday
+Output: Sunday
 
 # Documentation
 

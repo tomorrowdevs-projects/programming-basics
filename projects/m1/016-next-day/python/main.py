@@ -17,8 +17,6 @@ Example:
 Ensure that your program **works correctly for leap years**.
 '''
 
-from datetime import date
-
 def check_leap_year(year):
     is_leap = False
     
