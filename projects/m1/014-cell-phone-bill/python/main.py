@@ -11,16 +11,19 @@ call_center_support = 0.44
 tax = 0.05
  
 # user input
-valid_input = False
-
-while valid_input == False:
-    minutes_user = int(input("\nHow many minutes you used this month? "))
-    text_user = int(input("How many messages did you use this month? "))
-    if minutes_user >= 0 or int(minutes_user) == True or text_user >= 0 or int(text_user) == True:
-        valid_input = True
-    else:
+while True:
+    try:
+        minutes_user = int(input("\nHow many minutes you used this month? "))
+        text_user = int(input("How many messages did you use this month? "))
+    except ValueError:
         print("\nInput error, please try again..")
+        continue
 
+    if minutes_user >= 0 or text_user >= 0:
+        break
+    else:
+        print("\nSorry, you insert negative value, please try again..")
+        
 
 total_bill = base_charge + call_center_support
 
