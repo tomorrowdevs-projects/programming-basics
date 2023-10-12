@@ -32,8 +32,3 @@ while True:
         
     except ValueError:
         print(f"\n{ValueError} - Input Error, please try again.. ")
-
- 
-    
-
-    
