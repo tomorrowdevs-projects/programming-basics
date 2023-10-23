@@ -1,0 +1,9 @@
+
+Nel profondo regno di CPeria, la principessa è stata rapita da un malefico mago e rinchiusa in un castello sorvegliato da creature mostruose. La tua missione è liberarla e condurla fuori da quel luogo oscuro. Il castello è composto da varie stanze e la tua avventura inizia nella stanza numero 1. Quest'ultima ha un'uscita a ovest. Alcune stanze sono collegate tra di loro, e altre sono separate da spesse mura. La principessa è tenuta prigioniera in una stanza. Per raggiungerla, dovrai sconfiggere due mostri che bloccano il tuo cammino. Quando l'avrai liberata dovrai uscire dal labirinto per completare la tua missione.
+Attacca i mostri solo se hai l'arma giusta, altrimenti incontrerai una morte certa. E se tenti di lasciare il castello senza la principessa, avrai fallito nella tua missione.
+Ma attenzione! Nel castello ci sono anche tesori nascosti. Porti con te una borsa dove potrai raccogliere oggetti preziosi. Ma ricorda, la borsa può contenere solo 4 oggetti alla volta.
+
+Ora, avventuriero, è il momento di iniziare. Riuscirai a salvare la principessa e a trovare i tesori nascosti?
+
+Questi sono i comandi che potrai utilizzare nel gioco: MUOVI [muovi nella direzione N,E,S,O], PRENDI [prendi oggetto], LASCIA [oggetto], GUARDA [guarda la stanza], ATTACCA [attacca il mostro], LIBERA [libera la principessa], ESCI [esci dal gioco], COMANDI [mostra i comandi disponibili]
+
