@@ -1,13 +1,6 @@
-let Larghezza 
-Larghezza = 2
-let Lunghezza 
-Lunghezza = 3
-let Area=(Larghezza)*(Lunghezza)+("m²")
-
-
-
-console.log(Area)
-
-git add *
-git commit -m "soluzione esercizio 001"
-git push
+let inputlarghezza = prompt("scrivi larghezza in metri della stanza espressa in numeri decimali:")
+let inputlunghezza = prompt("scrivi lunghezza in metri della stanza espressa in numeri decimali:")
+let larghezza = parseFloat(inputlarghezza)
+let lunghezza = parseFloat(inputlunghezza)
+let Area = (larghezza)*(lunghezza)+("m²")
+console.log(Area) 
