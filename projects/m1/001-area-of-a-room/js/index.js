@@ -1,0 +1,6 @@
+let inputlarghezza = prompt("scrivi larghezza in metri della stanza espressa in numeri decimali:")
+let inputlunghezza = prompt("scrivi lunghezza in metri della stanza espressa in numeri decimali:")
+let larghezza = parseFloat(inputlarghezza)
+let lunghezza = parseFloat(inputlunghezza)
+let Area = (larghezza)*(lunghezza)+("m²")
+console.log(Area) 
