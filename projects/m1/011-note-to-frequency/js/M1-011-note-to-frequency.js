@@ -25,7 +25,6 @@ do {
   } else {
     alert(`\nError! --> The data entered are not musical notes.\n`);
   }
-
 } while (!note_Octave_check)
 
 // Calculate exponent frequencies of musical notes.
