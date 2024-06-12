@@ -362,3 +362,8 @@ Cargo.lock
 # End of https://www.toptal.com/developers/gitignore/api/node,go,java,intellij,visualstudiocode,haskell,erlang,elixir,rust
 /.vs/ProjectSettings.json
 /.vs/slnx.sqlite
+
+# Byte-compiled / optimized /DLL files
+__pycache__/
+*.py[cod]
+*$py.class
