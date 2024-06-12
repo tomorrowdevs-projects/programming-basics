@@ -1,0 +1,7 @@
+Example file for this exercise.
+Spelling mistakles are one of many differnt kinds of errors that might appear in a written work.
+Another error for some writers is a repeated word.
+An author might duplicate a word, as shown in the following sentence:
+"At least onevalue must be entered entered in order to compute the average".
+This line will contain a repeated word at the begginning of next line
+line (the word "line" is repeated).
