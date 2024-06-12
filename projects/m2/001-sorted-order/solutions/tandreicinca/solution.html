@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta>
+    </head charset="utf-8">
+    <link rel="stylesheet" href="001-sorted-order.js">
+    <title>ESERCIZIO</title>
+    <body>
+        
+    </body>
+</html>
+
+<script>
+const numberList = [];
+numberList [0] = prompt ("Give me a number!");
+let i = numberList.length;
+for (numberList [i-1]; i != 0; i++) {
+    numberList [i] = prompt ("Give me antoher number!");
+    if (numberList [i] == 0) {
+        numberList.sort(function(a,b){return a - b});
+        numberList.shift();
+        alert (numberList)
+        break
+
+    }
+}
+
+</script>
