@@ -1,0 +1,10 @@
+Sofia 100
+Aurora 90
+Giulia 80
+Ginevra 70
+Alice 60
+Emma 50
+Giorgia 40
+Beatrice 30
+Greta 20
+Vittoria 10
