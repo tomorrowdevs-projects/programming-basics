@@ -1,0 +1,5 @@
+Unix-based operating systems typically include a tool named cat,
+which is short for concatenate.
+Its purpose is to display the concatenation of one or more files
+whose names are provided as command line arguments.
+The files are displayed in the same order that they appear on the command line.
