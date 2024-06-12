@@ -1,0 +1,23 @@
+
+note_user = input('Insert a note: ')
+
+octave = int(note_user[1])
+note = note_user[0]
+
+def calc_freq(freq , oct):
+  print( freq / 2**(4 - oct))
+
+if note == 'C':
+    calc_freq(261.63, octave)
+elif note == 'D':
+    calc_freq(293.66, octave)
+elif note == 'E':
+    calc_freq(329.63, octave)
+elif note == 'F':
+    calc_freq(349.23, octave)
+elif note == 'G':
+    calc_freq(392.00, octave)
+elif note == 'A':
+    calc_freq(440.00, octave)
+elif note == 'B':
+    calc_freq(493.88, octave)
