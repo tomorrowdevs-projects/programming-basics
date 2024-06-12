@@ -9,9 +9,11 @@ let time_SecondIn,
   time_SecondHours,
   time_SecondDay;
 
-time_SecondIn = 274259;
+//time_SecondIn = 274259
 
-//time_SecondIn = +prompt("Please enter the seconds you want to display in the format D:HH:MM:SS = ");
+time_SecondIn = +prompt(
+  "Please enter the seconds you want to display in the format D:HH:MM:SS = "
+);
 
 time_Second = Math.trunc(time_SecondIn / seconds);
 time_Second = time_Second % 60;
