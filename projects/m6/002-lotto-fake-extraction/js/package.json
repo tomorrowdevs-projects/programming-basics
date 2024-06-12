@@ -1,0 +1,20 @@
+{
+  "name": "mirkodallaglio",
+  "version": "1.0.0",
+  "description": "Lotto Game",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "jest --coverage --watch"
+  },
+  "author": "Mirko Dall'aglio",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.3.1"
+  },
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
+}
