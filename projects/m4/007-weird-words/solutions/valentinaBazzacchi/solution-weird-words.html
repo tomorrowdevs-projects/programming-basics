@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Weird Words</title>
+</head>
+
+<body>
+    <input type="file" onchange="readFile(this)">
+    
+    <script>
+        // Task: 
+        // Create a program that processes a file containing lines of text. 
+        // Each line in the file may contain many words (or no words at all). 
+        // Any words that do not contain an E adjacent to an I should be ignored. 
+        // Words that contain an adjacent E and I (in either order) should be examined 
+        // to determine whether or not they follow the “I before E except after C” rule. 
+        // Construct and report two lists: One that contains all of the words that follow the rule, 
+        // and one that contains all of the words that violate the rule.
+        // Report the lengths of the lists. 
+
+        // Function to get a list of words from a text, deleting punctuation marks and numbers
+        function onlyWordsList(str) {
+            const regexp = /[^a-z]+/g;
+            // Turns a string to lowercase and splits it into an array
+            const list = str.toLowerCase().split(" ");
+
+            // Matches each elements of the array with a regular expression 
+            // Replace the punctuation marks with a white space
+            // Splits the words next to white space in sub-arrays
+            // The result is an array of arrays with only words and empty string
+            const noMarks = list.map((elem) => {
+                return elem.replace(regexp, " ").split(" ");
+            })
+
+            // Flats the sub-arrays and deletes the empty strings 
+            const words = noMarks.flat().filter((elem) => {
+                return elem != "";
+            })
+
+            return words;
+        }
+
+        // File to import "Prova5.txt"
+        function readFile(input) {
+
+            const file = input.files[0];
+
+            const reader = new FileReader();
+
+            // Reads the input file as a text
+            reader.readAsText(file);
+
+            reader.onload = function () {
+                const pattern = /(ie)|(ei)/g
+
+                const list = onlyWordsList(this.result);
+
+                // Gets a list with only the words that contain an adjacent E and I (in either order)
+                const patternWords = list.filter((word) => {
+                    return word.match(pattern);
+                })
+                console.log(patternWords);
+
+                // Initializes two sets: one that will contain all of the words that follow the rule, 
+                // and one that will contain all of the words that violate the rule
+                const ruleSet = new Set();
+                const excSet = new Set();
+
+                patternWords.forEach((word) => {
+                    const index_ei = word.indexOf("ei");
+                    const index_ie = word.indexOf("ie");
+
+                    if (index_ei > -1 && word.charAt(index_ei - 1) === "c") {
+                        ruleSet.add(word);
+                    } else if (index_ie > -1 && word.charAt(index_ie - 1) !== "c") {
+                        ruleSet.add(word);
+                    } else {
+                        excSet.add(word);
+                    }
+                })
+
+                // Displays the results
+                for (let value of ruleSet) console.log("Word that follow the rule: " + value);
+                console.log("Number of words that follow the rule: " + ruleSet.size);
+                
+                for (let value of excSet) console.log("Word that violate the rule: " + value);
+                console.log("Number of words that violate the rule: " + excSet.size);
+            
+            }; // end function "reader.onload"
+        } // end function "readFile"
+    
+    </script>
+</body>
+
+</html>
