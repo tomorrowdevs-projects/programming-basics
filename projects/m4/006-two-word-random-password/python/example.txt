@@ -1,0 +1,4 @@
+This file have some words that will be used to create random password.
+Two words concatenated produce the password.
+Lenght of password must be between 8 and 10 characters,
+and each word used is at least 3 characters long.
