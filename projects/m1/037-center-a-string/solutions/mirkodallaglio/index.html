@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      .class {
+        display: block;
+        margin: 50px auto;
+        border-radius: 8px;
+        box-shadow: 5px 5px 5px darkgrey;
+      }
+      input{
+        width: 450px;
+        height: 25px;
+        font-size: 1.12em;
+        text-align: center;
+      }
+      label{
+        display: block;
+        position: relative;
+        font-size: 1.2em;
+        text-align: center;
+        font-weight: bold;
+        top: 45px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        border-radius: 8px;
+      }
+      button{
+        width: 200px;
+        background-color: rgb(96, 96, 247);
+        color: whitesmoke;
+        height: 50px;
+        font-size: 1.5em;
+      }
+      #errorMessage{
+        position: absolute;
+        background-color: red;
+        display: none;
+        width: 450px;
+        height: 25px;
+        font-size: 1.12em;
+        text-align: center;
+        font-weight: bold;
+        top: 85px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        border-radius: 8px;
+      }
+    </style>
+</head>
+<body>
+  <label for="input">Enter a word or phrase</label>
+  <input type="text" id="string" class="class" name="string">
+
+  <div id="errorMessage" name="errorMessage">Enter a word o phrase</div>
+
+  <label for="widthArea">Write the width of the window</label>
+  <input type="number" id="widthArea" class="class" name="widthArea" value="50">
+
+  <button id="btn" class="class">↓ Append Text ↓</button>
+
+  <textarea id="textarea" class="class" name="textarea" rows="20" cols="50"></textarea>
+
+  <script src="./index.js"></script>  
+</body>
+</html>
