@@ -1,0 +1,28 @@
+def proper_divisors(n):
+    results = []
+    divisor = n - 1         # In this case, i cannot bare in mind, like proper divisors, the itself number.
+
+    while divisor >= 1:
+        if n % divisor == 0:
+            results.append(divisor)  
+        divisor -= 1
+
+    
+    return results
+
+def perfect_numbers(n):
+    if sum(proper_divisors(n)) == n:
+        return True
+    else:
+        return False
+
+def main():
+    for n in range(1, 10000):
+        if perfect_numbers(n) == True:
+            print(n)
+
+main()
+
+
+
+
