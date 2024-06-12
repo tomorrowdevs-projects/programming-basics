@@ -1,0 +1,5 @@
+print ("Questo programma calcola l'area di un stanza in metri.")
+larghezza = input("Inserisci la larghezza con numero decimale ")
+lunghezza = input("inserisci la lunghezza con numero decimale ")
+risultato = float(larghezza) * float(lunghezza)
+print (risultato)
