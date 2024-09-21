@@ -7,6 +7,26 @@ Before committing anything to that repo, please read the contribution guide at [
 
 <hr>
 
+# Follow the Learning Path
+
+[Variables, Expressions, Statements and Strings](https://github.com/tomorrowdevs-projects/programming-basics-variables)
+
+[Conditionals and Iterations](https://github.com/tomorrowdevs-projects/programming-basics-conditionals-iteration)
+
+[Functions](https://github.com/tomorrowdevs-projects/programming-basics-functions)
+
+[Array and Objects](https://github.com/tomorrowdevs-projects/programming-basics-array-objects)
+
+[Recursions](https://github.com/tomorrowdevs-projects/programming-basics-recursion)
+
+[Files and Promises](https://github.com/tomorrowdevs-projects/programming-basics-files-promises)
+
+[Object Oriented Programming](https://github.com/tomorrowdevs-projects/programming-basics-oop)
+
+[Complete Projects](https://github.com/tomorrowdevs-projects/programming-basics-complete-projects)
+
+<hr>
+
 <img src="./logo-td.png">
 
 ### A Mentorship program for developers
