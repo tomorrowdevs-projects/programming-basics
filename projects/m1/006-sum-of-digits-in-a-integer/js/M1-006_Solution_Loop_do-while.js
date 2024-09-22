@@ -4,7 +4,7 @@ let numberIn, checkCharacters, array_split_numberIn, number = (sumNumber = i = 0
 do {
   numberIn = prompt(`Please insered the number -->`);
   // I use the test() function to detect whether the numbers entered contain  characters
-  checkCharacters = /[a-z,A-Z,`¬¦!\+\-\."£$€%^&\*)(=+;:@'#><?}{,\/,\\,|\[\]~]/.test(numberIn);
+  checkCharacters = /[a-z,A-Z,`¬¦!\+\-\."£$€%^&\*)(=+;:@'#><?}{,\/,\\,|\[\]]/.test(numberIn);
   // if characters are present,
   if (checkCharacters) {
     // i return an 'Error' message.
