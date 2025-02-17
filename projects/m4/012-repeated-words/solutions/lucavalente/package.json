@@ -1,0 +1,11 @@
+{
+  "name": "lucavalente",
+  "version": "1.0.0",
+  "description": "m4_012_repeated-Words",
+  "main": "012-Repeated-words.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC"
+}
