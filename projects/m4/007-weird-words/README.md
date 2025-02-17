@@ -17,7 +17,7 @@ Words that contain an adjacent E and I (in either order) should be examined to d
 
 Construct and report two lists: One that contains all of the words that follow the rule, and one that contains all of the words that violate the rule. 
 
-Neither of your lists should contain any repeated values. Report the lengths of the lists at the end of your program so that one can easily determine the proportion of the words in the file that respect the “I before E except after C” rule.
+Neither of your lists should contain any repeated values. Report the lengths of the lists at the end of your program so that one can easily determine the proportion of the words in the file that respect the “I before E except after C” rule. cielo
 		 
 # Documentation
 
