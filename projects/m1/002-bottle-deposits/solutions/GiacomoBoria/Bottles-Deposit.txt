@@ -1,0 +1,12 @@
+In questo esercizio si doveva creare un programma che calcolasse la 
+quantità di rimborso da dare 
+all'tente a seconda della dimensione e quantità delle bottiglie riportate.
+- Due diverse quantità di rimborso
+- Due diverse misure di Bottiblie
+
+Soluzione:
+- Chiedere quantità e dimensioni bottiglie
+- Calcolare quantità bottiglie * quantità rimborso (da 1 lito e più 
+grandi)
+- Sommare i risultati
+- Riportare il risultato a schermo
