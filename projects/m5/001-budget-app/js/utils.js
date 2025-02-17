@@ -1,5 +1,3 @@
-//m5-001-budget-app
-
 // Class that create a budjet category with the desired name
 class Category {
     constructor(name) {
@@ -91,7 +89,7 @@ class Category {
             ledgerString.push((element['description'].substring(0,23) + 
             (element['amount'].toFixed(2).toString().padStart((maxCharNumber-element['description'].slice(0,23).length)))))
         })
-        return console.log(`${titleLine}\n${ledgerString.join('\n')}\nTotal: ${this.getBalance()}`)
+        return(`${titleLine}\n${ledgerString.join('\n')}\nTotal: ${this.getBalance()}`)
     }
 }
 
@@ -182,42 +180,8 @@ const createSpendChart = (listOfCategory) => {
     }
 
     //write chart
-    return console.log(`Percentage spent by category\n${stringO}\n${stringLine}\n${stringVerticalCategory}`) 
+    return (`Percentage spent by category\n${stringO}\n${stringLine}\n${stringVerticalCategory}`) 
 }
 
-/*----------------------------------------------------------------------------
+module.exports =  {Category, createSpendChart};
 
-/** Initialization of Objects with Category */
-const categoryFood =  new Category('Food');
-const categoryClothing =  new Category('Clothing');
-const categoryEntertainment =  new Category('Entertainment');
-const categoryAuto =  new Category('Auto');
-const categoryBusiness = new Category('Business')
-
-/*
-// Tests 
-categoryFood.deposit(1000, 'initial deposit')
-categoryFood.withdraw(10.15, 'groceries')
-categoryFood.withdraw(15.89, 'restaurant and more food for dessert')
-categoryFood.transfer(50.00, categoryClothing)
-categoryClothing.withdraw(25.55)
-categoryClothing.withdraw(100)
-categoryAuto.deposit(1000, 'initial deposit')
-categoryAuto.withdraw(15)
-*/
-
-//test 2
-categoryFood.deposit(900,'deposit')
-categoryEntertainment.deposit(900,'deposit')
-categoryBusiness.deposit(900,'deposit')
-categoryFood.withdraw(105.55)
-categoryEntertainment.withdraw(33.40)
-categoryBusiness.withdraw(10.99)
-
-
-
-categoryFood.printResult()
-//categoryClothing.printResult()
-//categoryAuto.printResult()
-
-createSpendChart([categoryBusiness,categoryFood,categoryEntertainment])
