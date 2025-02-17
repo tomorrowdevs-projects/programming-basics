@@ -1,0 +1,4 @@
+Example of word with with with repeated word.
+In new new line, with some word.
+Only if there is a word.
+Example of word with with with with repeated word.
