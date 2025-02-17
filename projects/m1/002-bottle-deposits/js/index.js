@@ -1,0 +1,1 @@
+consolo.log ("solution 2")
