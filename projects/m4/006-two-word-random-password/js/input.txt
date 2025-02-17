@@ -1,0 +1,3 @@
+Questa è una prova di un testo:
+per scegliere due parole a caso e,
+concatenarle per creare una PSW.
