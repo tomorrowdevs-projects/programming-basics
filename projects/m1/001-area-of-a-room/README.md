@@ -33,3 +33,21 @@ or run the command from the terminal
 # Deadline
 
 This project requires to be completed in a maximum of **2 hours**
+
+## -----------------------------------------------------------
+
+# AREA DI UNA STANZA
+
+Scrivete un programma che chieda all'utente di inserire la larghezza e la lunghezza di una stanza. Una volta letti questi valori, il programma deve calcolare e visualizzare l'area della stanza. La lunghezza e la larghezza devono essere inserite come numeri in virgola mobile. Includere le unità di misura nel messaggio di prompt e di output: piedi o metri, a seconda dell'unità di misura con cui si è più a proprio agio a lavorare.
+unità con cui ci si trova più a proprio agio a lavorare.
+
+# Documentazione
+
+Per la soluzione di questo progetto si possono utilizzare:
+
+- Variabili, espressioni, dichiarazioni
+- Stringhe
+
+# Scadenza
+
+Questo progetto deve essere completato in un massimo di **2 ore**.
