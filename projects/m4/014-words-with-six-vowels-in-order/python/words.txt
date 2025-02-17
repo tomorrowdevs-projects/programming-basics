@@ -1,0 +1,5 @@
+This file contains a list of words and some of them have the six vowels in order.
+If the vowels appear more than once it will not be searched by the program.
+Program, constraint, facetiously, arsenious,
+alphabetical, occuremces, adventitiously,
+abstemiously, luckily.
