@@ -1,0 +1,11 @@
+Pam 110
+Sofia 100
+Giulia 90
+Aurora 80
+Alice 70
+Ginevra 60
+Emma 50
+Giorgia 40
+Greta 30
+Beatrice 20
+Anna 10
