@@ -1,0 +1,32 @@
+
+
+def problem(integer):
+    if integer == 1:
+        print("first")
+    if integer == 2:
+        print("second")
+    if integer == 3:
+        print("third")
+    if integer == 4:
+        print("fourth")
+    if integer == 5:
+        print("fifth")
+    if integer == 6:
+        print("sixth")
+    if integer == 7:
+        print("seventh")
+    if integer == 8:
+        print("eight")
+    if integer == 9:
+        print("nineth")
+    if integer == 10:
+        print("tenth")
+    if integer == 11:
+        print("eleventh")
+    if integer == 12:
+        print("twelfth")
+    if integer > 12:
+        print("")
+
+definition = int(input("Please insert a number from 1 to 12: "))
+problem(definition)
