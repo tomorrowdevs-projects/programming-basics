@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+ 
+    <style>
+      .all{
+        display: block;
+        margin: 50px auto;
+        text-align: center;
+      }
+      #error{
+        color: red;
+        font-weight: bolder;
+        font-size: 20px;
+      }
+      button{
+        background-color: aqua;
+        border-radius: 10px;
+        font-size: 28px;
+        font-weight: bold;
+        box-shadow: 4px 4px 4px grey;
+      }
+      #input, #input2{
+        transform: translateX(16%);
+        font-size: 20px;
+      }
+      #password{
+        background-color: rgb(12, 245, 12);
+        border-radius: 15px;
+        height: 40px;
+        font-size: 35px;
+        width: 35%;
+      }
+      #allWords, #chosenWords{
+        width: 70%;
+        margin: 10px auto;
+        font-size: 22px;
+      }
+      .hidden{
+        display: none;
+      }
+      .chosen{
+        background-color: yellow;
+        border-radius: 7px;
+      }
+      .w1Part{
+        background-color: blue;
+        color: whitesmoke;
+        border-radius: 7px;
+      }
+      .w2Part{
+        background-color: rgb(230, 33, 76);
+        border-radius: 7px;
+      }
+    </style>
+</head>
+<body>
+
+  <h1 class="all">Password Generator</h1>
+
+  <input type="file" id="input" onchange="readFiles(this)" accept=".txt,.md" class="all">
+
+  <button id="regen" class="hidden all">REGENERATE</button>
+
+  <div id="error" class="all"></div>
+
+  <div id="content" class="all hidden">
+    <h3 class="all">Words between 7 and 10 characters without punctuation found in your text file :</h3>
+    <p class="all" id="allWords"></p>
+
+    <h3 class="all">The two chosen words:</h3>
+    <div class="all" id="chosenWords">
+      WORD 1 : <span id="word1"></span>    --    WORD 2 : <span id="word2"></span>
+    </div>
+
+    <h3 class="all" id="password"></h3>
+  </div>
+
+  <script src="./index.js"></script>  
+</body>
+</html>
