@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Diplay the head of a file</title>
+
+</head>
+
+<body>
+
+    <input type="file" onchange="readFile(this)">
+
+    <script>
+        function readFile(input) {
+
+            const file = input.files[0];
+            console.log(typeof input.files[0]); // object
+
+            const reader = new FileReader();
+            console.log(typeof reader); // object
+            // FileReader objects can read from a file or a blob in the format "String" with readAsText() method.
+            reader.readAsText(file);
+
+            reader.onload = function () {
+                // When the reading is finished, we can access the result
+                // If successful: reader.result is the result
+                console.log(typeof this.result); // string  
+                // Splits the string reader.result in an array of lines 
+                const lines = this.result.split("\n");
+                console.log(Array.isArray(lines)); // true
+
+                // Creates a new array with the first 10 lines (head) and display it
+                const head = lines.filter((line, index) => {
+                    return index < 10;
+                });
+                console.log(head); // first 10 lines
+                console.log(head.length); // 10
+            };
+        } // end function
+
+    </script>
+
+
+</body>
+
+</html>
