@@ -1,0 +1,15 @@
+{
+  "name": "mirkodallaglio",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage --watch"
+  },
+  "devDependencies": {
+    "jest": "^29.2.2"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
