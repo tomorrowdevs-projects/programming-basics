@@ -1,0 +1,4 @@
+Sensitive information is often ******d, or ******ed, from documents before they are released to the public.
+In this exercise you will write a program that ******s all *****rences of sensitive ****s in a text **** by replacing them with aste****s.
+Your program should ****** sensitive ****s wherever they *****, even if they occur in the middle of another word.
+The **** of sensitive ****s will be provided in a separate ****.
