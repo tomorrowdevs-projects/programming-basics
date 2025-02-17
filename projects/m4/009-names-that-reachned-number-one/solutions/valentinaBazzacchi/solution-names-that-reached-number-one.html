@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Names that Reached Number One (Promise)</title>
+
+</head>
+
+<body>
+
+    <input type="file" id="fileinput" multiple>
+    <script>
+        
+        // Task: display two lists, one containing the most popular names 
+        // for boys and the other containing the most popular names for girls
+
+        // Promise that reads a file as text
+        function readFileAsText(file) {
+            return new Promise(function (resolve) {
+                const reader = new FileReader();
+
+                reader.onload = function () {
+                    resolve(reader.result);
+                };
+
+                reader.readAsText(file);
+            });
+        }
+
+        // Handle multiple file uploads (import from the folder "names")
+        document.getElementById("fileinput").addEventListener("change", function (e) {
+            let files = Array.from(e.currentTarget.files);
+
+            let readers = [];
+
+            // Store promises in array
+            for (let i = 0; i < files.length; i++) {
+                readers.push(readFileAsText(files[i]));
+            }
+
+            // Trigger Promises
+            Promise.all(readers).then((texts) => {
+                // Texts will be an array that contains an item
+                // with the text of every selected file
+                // ["File1 Content", "File2 Content" ... "FileN Content"]
+
+                // Splits each item of "texts" in a sub-list with 3 items:
+                // 0: name, 1: gender, 2: freq
+                const lists = texts.map(list => list.split("\n"));
+                
+                // Declares two sets which will contain the most popular 
+                // female and male names for each selected year
+                const female = new Set();
+                const male = new Set();
+
+                // Loops trought the lists... 
+                lists.forEach((list) => {
+                    // The most popular female name is the first item
+                    // of the first item in list
+                    let topFemale = list[0].split(",");
+                    female.add(topFemale[0]);
+
+                    let topMale;
+                    // Loops trought each list of "lists"...
+                    for (let i = 0; i < list.length; i++) {
+
+                        // The most popular male name is the first item 
+                        // of the first item in list that contains ",M,"
+                        if (list[i].includes(",M,")) {
+                            topMale = list[i].split(",");
+                            break;
+                        }
+                    }
+                    male.add(topMale[0]);
+
+                }) // end forEach
+
+                // Displays the sets that containing the most popular names 
+                // for boys and for girls from the selected files	
+
+                console.log(male);
+                console.log(female);
+
+            }) // end Promise.all
+        }, false);
+    
+    </script>
+</body>
+
+</html>
