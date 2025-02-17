@@ -1,28 +1,28 @@
 def ordinal_number(integer_number):
     if integer_number == 1:
-        return "First"
+        return "first"
     elif integer_number == 2:
-        return "Second"
+        return "second"
     elif integer_number == 3:
-        return "Third"
+        return "third"
     elif integer_number == 4:
-        return "Fourth"
+        return "fourth"
     elif integer_number == 5:
-        return "Fifth"
+        return "fifth"
     elif integer_number == 6:
-        return "Sixth"
+        return "sixth"
     elif integer_number == 7:
-        return "Seventh"
+        return "seventh"
     elif integer_number == 8:
-        return "Eighth"
+        return "eighth"
     elif integer_number == 9:
-        return "Ninth"
+        return "ninth"
     elif integer_number == 10:
-        return "Tenth"
+        return "tenth"
     elif integer_number == 11:
-        return "Eleventh"
+        return "eleventh"
     elif integer_number == 12:
-        return "Twelfth"
+        return "twelfth"
     else:
         return ""
 
