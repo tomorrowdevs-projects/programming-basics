@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "async": "^3.2.4",
+    "read-multiple-files": "^3.0.0"
+  }
+}
