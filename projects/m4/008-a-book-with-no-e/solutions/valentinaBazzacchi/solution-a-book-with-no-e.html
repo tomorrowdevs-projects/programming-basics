@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>A Book with No E...</title>
+
+</head>
+
+<body>
+
+    <input type="file" onchange="readFile(this)">
+    
+    <script>
+        // Task: Write a program that reads a list of words from a file and determines 
+        // what proportion of the words use each letter of the alphabet. 
+        // Display this result for all 26 letters and include an additional message 
+        // that identifies the letter that is used in the smallest proportion of the words.  
+
+        // File to import "Prova6.txt"
+        function readFile(input) {
+
+            const file = input.files[0];
+
+            const reader = new FileReader();
+
+            // Reads the input file as a text
+            reader.readAsText(file);
+
+            reader.onload = function () {
+
+                const text = this.result.toLowerCase();
+
+                // Initializes an "alphabet" object that has as keys all 26 letters and initial value equal to zero
+                const alphabet = {};
+                for (let i = 97; i < 123; i++) {
+                    alphabet[String.fromCharCode(i)] = 0;
+                }
+
+                // Loops through the letters of the text and counts the frequency of each one
+                let counter = 0; // Counts total number of letters in the text
+                for (letter of text) {
+                    if (letter in alphabet) {
+                        alphabet[letter] += 1;
+                        counter += 1;
+                    }
+                }
+
+                // Determines what proportion of the words use each letter of the alphabet
+                // Creates a new list where each item is a list of a letter and its proportion
+                const wordsProp = [];
+                for (let letter in alphabet) {
+                    wordsProp.push([letter, ((alphabet[letter] / counter) * 100).toFixed(2)]);
+                }
+
+                // Displays the results
+                wordsProp.forEach((elem) => {
+                    console.log(`Letter: ${elem[0]} - Proportion: ${elem[1]}%`);
+                })
+
+                // Sorts the values ​​of the proportions of the letters in ascending order
+                wordsProp.sort(function (a, b) {
+                    return a[1] - b[1];
+                });
+
+                // Display the result
+                console.log(`The letter that is used in the smallest proportion of the words is: ${wordsProp[0][0]}`);
+
+            }; // end function "reader.onload"
+        } // end function "readFile"
+
+    </script>
+
+</body>
+
+</html>
