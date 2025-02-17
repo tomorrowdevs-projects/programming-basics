@@ -1,0 +1,3 @@
+This is just an example of a txt file.
+I will use this text to determine and display the frequencies of all of the letters.
+Ignore spaces, punctuation marks, and digits like 1, 2, 6 etc.
